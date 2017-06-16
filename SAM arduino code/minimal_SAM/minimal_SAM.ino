@@ -1,0 +1,30 @@
+#define statusLedPin 13
+#define ledPinTop 11
+#define ledPinMiddle 10
+#define ledPinBottom 9
+#define button2pin 8
+#define button1pin 7
+#define button2ledpin 6
+#define button1ledpin 5
+#define pumpPin 3
+#define flowSensorPin 2
+
+
+void setup() {  
+  pinMode(button1pin, INPUT_PULLUP);
+  pinMode(button2pin, INPUT_PULLUP);
+  pinMode(button1ledpin,OUTPUT);
+  pinMode(button2ledpin,OUTPUT);
+
+  Serial.begin(9600);
+}
+
+void loop() {
+  digitalWrite(button1ledpin,!digitalRead(button1pin));
+  digitalWrite(button2ledpin,!digitalRead(button2pin));
+  Serial.print(!digitalRead(button1pin));
+  Serial.print('\t');
+  Serial.print(!digitalRead(button2pin));
+  Serial.println();
+  delay(50);
+}
