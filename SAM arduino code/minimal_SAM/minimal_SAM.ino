@@ -11,6 +11,11 @@
 
 
 void setup() {  
+  
+  pinMode(ledPinTop,OUTPUT);
+  pinMode(ledPinMiddle,OUTPUT);
+  pinMode(ledPinBottom,OUTPUT);
+  
   pinMode(button1pin, INPUT_PULLUP);
   pinMode(button2pin, INPUT_PULLUP);
   pinMode(button1ledpin,OUTPUT);
@@ -20,6 +25,7 @@ void setup() {
 }
 
 void loop() {
+  /*
   digitalWrite(button1ledpin,!digitalRead(button1pin));
   digitalWrite(button2ledpin,!digitalRead(button2pin));
   Serial.print(!digitalRead(button1pin));
@@ -27,4 +33,17 @@ void loop() {
   Serial.print(!digitalRead(button2pin));
   Serial.println();
   delay(50);
+  */
+  digitalWrite(ledPinTop,HIGH);
+  digitalWrite(ledPinMiddle,LOW);
+  digitalWrite(ledPinBottom,LOW);
+  delay(500);
+  digitalWrite(ledPinTop,LOW);
+  digitalWrite(ledPinMiddle,HIGH);
+  digitalWrite(ledPinBottom,LOW);
+  delay(500);
+  digitalWrite(ledPinTop,LOW);
+  digitalWrite(ledPinMiddle,LOW);
+  digitalWrite(ledPinBottom,HIGH);
+  delay(500);
 }
