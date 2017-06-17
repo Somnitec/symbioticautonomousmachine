@@ -4,8 +4,9 @@ void flowStuff() {
   if (currentMillis - flowTimer >= flowUpdateTime) {
     flowTimer = currentMillis;
 
-    digitalWrite(pumpPin, !digitalRead(pumpPin));
-    
+    //digitalWrite(pumpPin, !digitalRead(pumpPin));
+    //if(waterFlow<100.)digitalWrite(pumpPin,HIGH);
+    //else digitalWrite(pumpPin,LOW);
 
     Serial.print("waterFlow: ");
     Serial.print(waterFlow, 3);

@@ -12,7 +12,7 @@
 volatile double waterFlow = 0;
 
 #define  buttonUpdateTime 10//ms
-#define  flowUpdateTime 1000//ms
+#define  flowUpdateTime 10//ms
 #define  ledUpdateTime 500//ms
 
 void setup() {
