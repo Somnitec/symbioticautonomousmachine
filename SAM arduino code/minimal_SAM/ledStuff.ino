@@ -42,7 +42,7 @@ void ledStuff() {
     else if (deviceState == 4) {
       breath();
 
-      analogWrite(button1ledpin, fmap(sin(ledstate * 4 + (10 * PI) / 3), -1, 1, 50, 255));
+      analogWrite(button1ledpin, fmap(sin(ledstate * 10 + (6 * PI) / 3), -1, 1, 50, 255));
       analogWrite(button2ledpin, 0);
     }
   }

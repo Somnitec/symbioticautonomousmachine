@@ -8,10 +8,10 @@ void buttonStuff() {
 
     boolean button1state=!digitalRead(button1pin);
     boolean button2state=!digitalRead(button2pin);
-    if(button1state){
+    if(button1state==true&&deviceState==0){
       deviceState=1;
       waterFlow=0;
-      Serial.print('a');
+      Serial.println('a');
     }
     if(button2state)deviceState=2;
 
