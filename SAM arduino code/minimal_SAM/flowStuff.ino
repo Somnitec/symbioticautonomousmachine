@@ -4,13 +4,21 @@ void flowStuff() {
   if (currentMillis - flowTimer >= flowUpdateTime) {
     flowTimer = currentMillis;
 
-    //digitalWrite(pumpPin, !digitalRead(pumpPin));
-    //if(waterFlow<100.)digitalWrite(pumpPin,HIGH);
-    //else digitalWrite(pumpPin,LOW);
+    if (deviceState == 3) {
+      digitalWrite(pumpPin, !digitalRead(pumpPin));
+      if (waterFlow < liquidAmount)digitalWrite(pumpPin, HIGH);
+      else {
+        digitalWrite(pumpPin, LOW);
+        deviceState = 4;
+        Serial.println("b");
+      }
 
-    Serial.print("waterFlow: ");
-    Serial.print(waterFlow, 3);
-    Serial.println(" mL");    
+
+      //Serial.print("waterFlow: ");
+      //Serial.print(waterFlow, 3);
+      //Serial.println(" mL");
+    }
+    else digitalWrite(pumpPin, LOW);
   }
 }
 

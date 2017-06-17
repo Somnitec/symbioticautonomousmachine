@@ -29,18 +29,35 @@ volatile double waterFlow = 0;
 
 #define  buttonUpdateTime 10//ms
 #define  flowUpdateTime 10//ms
-#define  ledUpdateTime 5//ms
+#define  ledUpdateTime 10//ms
+#define  serialUpdateTime 50//ms
 
-#define ledBreathSpeed 0.05
+//idle animation
+#define ledBreathSpeed 0.02
 #define ledBreathMax 50
 #define ledBreathMin 20
 
-int deviceState = 0;
+//waiting animation
+
+
+//error
+#define blinkOnTime 100
+#define blinkOffTime 120
+#define amountOfBlinks 2
+
+#define blinkBrightness 30
+
+//pumping
+#define liquidAmount 100//ml
+
+//printing
+
+int deviceState =2;
 //0=idle
-//1=sodabutton pressed, waiting for izettle
+//1=sodabutton pressed, waiting for izettle, sent serial 'a' to pc, pc sends back '3' when ack
 //2=grain button pressed -> error
-//3=(attempting to) pumping (potentially changing lightness towards fuller cup)
-//4=cup full, printing note
+//3=(attempting to) pumping (potentially changing lightness towards fuller cup), sent 'b' to when succesful
+//4=cup full, printing note, sends back '0' to ack
 
 void setup() {
 
@@ -62,8 +79,9 @@ void setup() {
 
 void loop() {
   buttonStuff();
-  //flowStuff();
+  flowStuff();
   ledStuff();
+  serialStuff();
 }
 
 float fmap(float x, float in_min, float in_max, float out_min, float out_max)
