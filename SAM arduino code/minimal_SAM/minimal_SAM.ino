@@ -1,18 +1,18 @@
 /*
-notes
-!!!get new smaller slangklemmen
-Tap closed works, but water sprays out because of leaky clamps
+  notes
+  !!!get new smaller slangklemmen
+  Tap closed works, but water sprays out because of leaky clamps
 
-todo
+  todo
 
-(grain button to error animation)
-Pushbutton animations
+  (grain button to error animation)
+  Pushbutton animations
 
 
-pushbutton to tap
-Ticket printing after tapping finished
-izettle/sumup bluetooth distance test
- */
+  pushbutton to tap
+  Ticket printing after tapping finished
+  izettle/sumup bluetooth distance test
+*/
 
 #define statusLedPin 13
 #define ledPinTop 11
@@ -34,6 +34,13 @@ volatile double waterFlow = 0;
 #define ledBreathSpeed 0.05
 #define ledBreathMax 50
 #define ledBreathMin 20
+
+int deviceState = 0;
+//0=idle
+//1=sodabutton pressed, waiting for izettle
+//2=grain button pressed -> error
+//3=(attempting to) pumping (potentially changing lightness towards fuller cup)
+//4=cup full, printing note
 
 void setup() {
 
