@@ -11,6 +11,10 @@
 
 volatile double waterFlow = 0;
 
+#define  buttonUpdateTime 10//ms
+#define  flowUpdateTime 1000//ms
+#define  ledUpdateTime 500//ms
+
 void setup() {
 
   pinMode(ledPinTop, OUTPUT);
@@ -30,42 +34,9 @@ void setup() {
 }
 
 void loop() {
-  /*
-    digitalWrite(button1ledpin,!digitalRead(button1pin));
-    digitalWrite(button2ledpin,!digitalRead(button2pin));
-    Serial.print(!digitalRead(button1pin));
-    Serial.print('\t');
-    Serial.print(!digitalRead(button2pin));
-    Serial.println();
-    delay(50);
-  */
-  /*
-    digitalWrite(ledPinTop,HIGH);
-    digitalWrite(ledPinMiddle,LOW);
-    digitalWrite(ledPinBottom,LOW);
-    delay(500);
-    digitalWrite(ledPinTop,LOW);
-    digitalWrite(ledPinMiddle,HIGH);
-    digitalWrite(ledPinBottom,LOW);
-    delay(500);
-    digitalWrite(ledPinTop,LOW);
-    digitalWrite(ledPinMiddle,LOW);
-    digitalWrite(ledPinBottom,HIGH);
-    delay(500);
-  */
-  /*
-    digitalWrite(pumpPin,HIGH);
-    delay(500);
-    digitalWrite(pumpPin,LOW);
-    delay(500);
-  */
-  Serial.print("waterFlow: ");
-  Serial.print(waterFlow,3);
-  Serial.println(" mL");
-  delay(500);
+  buttonStuff();
+  flowStuff();
+  ledStuff();
 }
 
-void flowSensor()   //measure the quantity of square wave
-{
-  waterFlow += 1.0 / 5.880;
-}
+
