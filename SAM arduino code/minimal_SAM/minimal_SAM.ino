@@ -1,3 +1,19 @@
+/*
+notes
+!!!get new smaller slangklemmen
+Tap closed works, but water sprays out because of leaky clamps
+
+todo
+
+(grain button to error animation)
+Pushbutton animations
+
+
+pushbutton to tap
+Ticket printing after tapping finished
+izettle/sumup bluetooth distance test
+ */
+
 #define statusLedPin 13
 #define ledPinTop 11
 #define ledPinMiddle 10
@@ -13,7 +29,11 @@ volatile double waterFlow = 0;
 
 #define  buttonUpdateTime 10//ms
 #define  flowUpdateTime 10//ms
-#define  ledUpdateTime 500//ms
+#define  ledUpdateTime 5//ms
+
+#define ledBreathSpeed 0.05
+#define ledBreathMax 50
+#define ledBreathMin 20
 
 void setup() {
 
@@ -35,8 +55,11 @@ void setup() {
 
 void loop() {
   buttonStuff();
-  flowStuff();
+  //flowStuff();
   ledStuff();
 }
 
-
+float fmap(float x, float in_min, float in_max, float out_min, float out_max)
+{
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
