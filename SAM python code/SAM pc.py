@@ -38,7 +38,6 @@ while True:
         hDC.StartPage ()
 
 
-
         pagewidth =390
 
         fontsize = 32

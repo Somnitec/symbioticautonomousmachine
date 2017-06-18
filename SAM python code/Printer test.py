@@ -16,11 +16,10 @@ hDC.StartPage ()
 
 #price = round(random.uniform(1.00,1.75),2)
 userinput = float(input("The cents will be: "))
-print(userinput)
 total = round(1+userinput/100,2)
-print( "the price is "+str(total))
 price = round(total/1.06,2)
 btw = round(total-price,2)
+print( "the price is "+str(total))
 
 
 file = open('receiptno.txt', 'r') 
