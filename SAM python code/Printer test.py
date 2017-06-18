@@ -1,6 +1,5 @@
 
 
-
 import win32ui
 import random
 import datetime
@@ -17,10 +16,8 @@ hDC.StartPage ()
 
 #price = round(random.uniform(1.00,1.75),2)
 price = round(1+int(input("The cents will be: "))/100,2)
-print(price)
 btw = round(price*0.06,2)
-total = price+btw
-print(total)
+total = round(price+btw,2)
 file = open('receiptno.txt', 'r') 
 receiptno = int(file.readline())
 receiptno+=1
@@ -60,11 +57,11 @@ hDC.TextOut(240,6*linedistance,time.strftime("%H:%M:%S")+"  "+str(mylist[0]))
 
 hDC.SelectObject(fontnormal)
 hDC.TextOut(0,8*linedistance,"1 cup kefir soda")
-hDC.TextOut(320,8*linedistance,"€"+"%0.2f" %price)
+hDC.TextOut(320,8*linedistance,u"\u20ac"+"%0.2f" %price)
 hDC.TextOut(0,9*linedistance,"BTW 6%")
-hDC.TextOut(320,9*linedistance,"€"+"%0.2f" %btw)
+hDC.TextOut(320,9*linedistance,u"\u20ac"+"%0.2f" %btw)
 hDC.TextOut(0,11*linedistance,"Total")
-hDC.TextOut(320,11*linedistance,"€"+"%0.2f" %total)
+hDC.TextOut(320,11*linedistance,u"\u20ac"+"%0.2f" %total)
 
 hDC.TextOut(40,15*linedistance,"Rate your soda out of 5")
 hDC.TextOut(25,16*linedistance,"on twitter @nonhumanSAM")
