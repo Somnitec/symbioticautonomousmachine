@@ -15,9 +15,14 @@ hDC.StartPage ()
 #constructing the page
 
 #price = round(random.uniform(1.00,1.75),2)
-price = round(1+int(input("The cents will be: "))/100,2)
-btw = round(price*0.06,2)
-total = round(price+btw,2)
+userinput = float(input("The cents will be: "))
+print(userinput)
+total = round(1+userinput/100,2)
+print( "the price is "+str(total))
+price = round(total/1.06,2)
+btw = round(total-price,2)
+
+
 file = open('receiptno.txt', 'r') 
 receiptno = int(file.readline())
 receiptno+=1
@@ -63,7 +68,7 @@ hDC.TextOut(320,9*linedistance,u"\u20ac"+"%0.2f" %btw)
 hDC.TextOut(0,11*linedistance,"Total")
 hDC.TextOut(320,11*linedistance,u"\u20ac"+"%0.2f" %total)
 
-hDC.TextOut(40,15*linedistance,"Rate your soda out of 5")
+hDC.TextOut(50,15*linedistance,"Rate your soda out of 5")
 hDC.TextOut(25,16*linedistance,"on twitter @nonhumanSAM")
 
 hDC.SelectObject(fontbig)
