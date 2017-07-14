@@ -19,15 +19,15 @@ void ledStuff() {
     }
     else if (deviceState == 2) {
       for (int i = 0; i < amountOfBlinks; i++) {
-        analogWrite(ledPinTop, blinkBrightness);
-        analogWrite(ledPinMiddle, blinkBrightness);
-        analogWrite(ledPinBottom, blinkBrightness);
+        //analogWrite(ledPinTop, blinkBrightness);
+        //analogWrite(ledPinMiddle, blinkBrightness);
+        //analogWrite(ledPinBottom, blinkBrightness);
         analogWrite(button1ledpin, 0);
         analogWrite(button2ledpin, 255);
         delay(blinkOnTime);
-        analogWrite(ledPinTop, 0);
-        analogWrite(ledPinMiddle, 0);
-        analogWrite(ledPinBottom, 0);
+        //analogWrite(ledPinTop, 0);
+        //analogWrite(ledPinMiddle, 0);
+        //analogWrite(ledPinBottom, 0);
         analogWrite(button2ledpin, 0);
         delay(blinkOffTime);
       }

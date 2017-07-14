@@ -10,14 +10,15 @@ while True:
     print ("Message from arduino: ")
     print (msg)
     if msg == b'a':
-        input("izettle transaction completed?")
-        print ("transaction succeeded, can pump ")
-        ser.write(b'3')
         userinput = float(input("The cents will be: "))
         total = round(1+userinput/100,2)
         price = round(total/1.06,2)
         btw = round(total-price,2)
         print( "the price is "+str(total))
+        input("izettle transaction completed?")
+        print ("transaction succeeded, can pump ")
+        ser.write(b'3')
+
     if msg == b'b':
         print ("printing now: ")
 
@@ -80,12 +81,18 @@ while True:
         hDC.TextOut(25,16*linedistance,"on twitter @nonhumanSAM")
 
         hDC.SelectObject(fontbig)
-        hDC.TextOut(10,18*linedistance,"Thanks for keeping me alive")
+        hDC.TextOut(0,18*linedistance,"Thanks for keeping me alive")
         hDC.TextOut(80,19*linedistance,"and functioning!")
 
         hDC.SelectObject(fontitalic)
         hDC.TextOut(90,22*linedistance,"email: sam@nonhuman.club")
-        hDC.TextOut(95,int(22.5*linedistance),"web: sam.nonhuman.club")
+        hDC.TextOut(100,int(22.5*linedistance),"web: sam.nonhuman.club")
+
+        
+        
+        hDC.TextOut(90,int(23.5*linedistance),"towards a collaborative future")
+        hDC.TextOut(100,int(24*linedistance),"for man and machine")
+
 
         pen = win32ui.CreatePen(0,5, 0)
         hDC.SelectObject(pen)
