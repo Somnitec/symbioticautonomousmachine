@@ -18,7 +18,14 @@ while True:
         input("izettle transaction completed?")
         print ("transaction succeeded, can pump ")
         ser.write(b'3')
-
+        
+        time.sleep(.1)
+        ser.flush()
+        ser.flushInput()
+        ser.flushOutput()
+        time.sleep(.1)
+        print ("flushing")
+        
     if msg == b'b':
         print ("printing now: ")
 
@@ -114,5 +121,12 @@ while True:
 
         ser.write(b'0')#let the arduino know we're done
         print ("printing done: ")
+        
+        time.sleep(.1)
+        ser.flush()
+        ser.flushInput()
+        ser.flushOutput()
+        time.sleep(.1)
+        print ("flushing")
         
 
