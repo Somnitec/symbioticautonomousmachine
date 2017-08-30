@@ -48,7 +48,7 @@ volatile double waterFlow = 0;
 #define blinkBrightness 30
 
 //pumping
-#define liquidAmount 75//ml
+#define liquidAmount 705//ml
 
 //printing
 
