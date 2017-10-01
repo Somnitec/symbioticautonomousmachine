@@ -1,0 +1,9 @@
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharp\SAM0csharp\bin\Debug\SAM0csharp.exe.config
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharp\SAM0csharp\bin\Debug\SAM0csharp.exe
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharp\SAM0csharp\bin\Debug\SAM0csharp.pdb
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharp\SAM0csharp\obj\Debug\SAM0csharp.Form1.resources
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharp\SAM0csharp\obj\Debug\SAM0csharp.Properties.Resources.resources
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharp\SAM0csharp\obj\Debug\SAM0csharp.csproj.GenerateResource.Cache
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharp\SAM0csharp\obj\Debug\SAM0csharp.csproj.CoreCompileInputs.cache
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharp\SAM0csharp\obj\Debug\SAM0csharp.exe
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharp\SAM0csharp\obj\Debug\SAM0csharp.pdb
