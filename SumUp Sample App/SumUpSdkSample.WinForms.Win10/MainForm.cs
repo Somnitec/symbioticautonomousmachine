@@ -4,11 +4,16 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CommandMessenger;
+
 
 namespace SumUpSdkSample.WinForms.Win10
 {
     public partial class MainForm : Form, IPaymentProgress
     {
+
+       
+
         private SumUpService _sumUpService;
         private Tuple<Payment, CancellationTokenSource> _currentPayment;
 

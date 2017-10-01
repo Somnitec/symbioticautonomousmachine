@@ -11,3 +11,5 @@ C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\SumUpSdkSam
 C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.csproj.CoreCompileInputs.cache
 C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.exe
 C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.pdb
+C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\SumUpSdkSample.WinForms.Win10\bin\Debug\CommandMessenger.dll
+C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\SumUpSdkSample.WinForms.Win10\bin\Debug\CommandMessenger.pdb
