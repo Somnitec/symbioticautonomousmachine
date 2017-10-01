@@ -1,0 +1,6 @@
+C:\Users\arvid\Google Drive\code\Arduino\libraries\CmdMessenger\extras\CSharp\CommandMessenger\bin\Debug\CommandMessenger.dll
+C:\Users\arvid\Google Drive\code\Arduino\libraries\CmdMessenger\extras\CSharp\CommandMessenger\bin\Debug\CommandMessenger.pdb
+C:\Users\arvid\Google Drive\code\Arduino\libraries\CmdMessenger\extras\CSharp\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
+C:\Users\arvid\Google Drive\code\Arduino\libraries\CmdMessenger\extras\CSharp\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
+C:\Users\arvid\Google Drive\code\Arduino\libraries\CmdMessenger\extras\CSharp\CommandMessenger\obj\Debug\CommandMessenger.dll
+C:\Users\arvid\Google Drive\code\Arduino\libraries\CmdMessenger\extras\CSharp\CommandMessenger\obj\Debug\CommandMessenger.pdb

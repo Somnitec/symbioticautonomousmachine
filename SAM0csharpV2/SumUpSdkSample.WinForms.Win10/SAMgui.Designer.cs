@@ -1,4 +1,4 @@
-﻿namespace SumUpSdkSample.WinForms.Win10
+﻿namespace SAM0.WinForms.Win10
 {
     partial class SAMgui
     {

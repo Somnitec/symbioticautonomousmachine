@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SumUpSdkSample.WinForms.Win10
+namespace SAM0.WinForms.Win10
 {
     static class Program
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SumUpSdkSample.WinForms.Win10.Properties {
+namespace SAM0.WinForms.Win10.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

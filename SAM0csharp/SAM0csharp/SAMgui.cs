@@ -16,7 +16,7 @@ using SumUp.Sdk.Pay;
 
 namespace SAM0csharp
 {
-    public partial class SAMgui : IPaymentProgress
+    public partial class SAMgui : Form, IPaymentProgress
     {
 
         /// guistuff
@@ -26,9 +26,24 @@ namespace SAM0csharp
         {
             InitializeComponent();
             ArduinoSetup();
-            CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
+            AppendToLog("setup most things...");
         }
 
+        private async void Form_load(object sender, EventArgs e)
+        {
+            AppendToLog("sumup attempting to log in...");
+            try
+            {
+                await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
+
+                AppendToLog("sumup logged in...");
+                logTextBox.Text = "Logged in\r\n\r\n\r\n <--- Start a payment on the right";
+            }
+            catch (Exception ex)
+            {
+                AppendToLog("not logged in");
+            }
+        }
         private void Button_testArduino_click(object sender, EventArgs e)
         {
             Random random = new Random();
@@ -115,7 +130,7 @@ namespace SAM0csharp
         }
 
         // ------------------  CALLBACKS ---------------------
-        void OnTestArduino(ReceivedCommand arguments)
+        async void OnTestArduino(ReceivedCommand arguments)
         {
             //int message = arguments.ReadInt16Arg
             String message = arguments.ReadStringArg();

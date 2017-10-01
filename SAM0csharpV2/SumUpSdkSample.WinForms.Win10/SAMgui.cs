@@ -4,8 +4,12 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CommandMessenger;
+using CommandMessenger.Queue;
+using CommandMessenger.Transport.Serial;
+using CommandMessenger.Transport;
 
-namespace SumUpSdkSample.WinForms.Win10
+namespace SAM0.WinForms.Win10
 {
     public partial class SAMgui : Form, IPaymentProgress
     {
@@ -15,6 +19,7 @@ namespace SumUpSdkSample.WinForms.Win10
         // ======= Authenticate with SumUp system and create SDK instance =======		
         private async Task CreateSumUpService(string clientId, string clientSecret, string email, string password)
         {
+
             // Create SumUp.Sdk.OAuthCredentials which holds:
             //   - Email /Password of existing SumUp Account
             //   - Client ID/Secret from https://me.sumup.com/developers for the account above
@@ -88,7 +93,7 @@ namespace SumUpSdkSample.WinForms.Win10
         {
             InitializeComponent();
             UpdateUI(UIState.NotLoggedIn);
-
+            ArduinoSetup();
 
         }
 
@@ -123,7 +128,7 @@ namespace SumUpSdkSample.WinForms.Win10
 
             UpdateUI(UIState.PaymentInProgress);
 
-            
+
 
             string paymentResultText = "Something went wrong!";
             try
@@ -210,7 +215,7 @@ namespace SumUpSdkSample.WinForms.Win10
             emailTextBox.ReadOnly = !loginControlsEnabled;
             passwordTextBox.ReadOnly = !loginControlsEnabled;
             logInButton.Enabled = loginControlsEnabled;
-            
+
             AmountText.Enabled = paymentControlsEnabled;
             ReferenceText.Enabled = paymentControlsEnabled;
             PayButton.Enabled = paymentControlsEnabled;
@@ -219,13 +224,13 @@ namespace SumUpSdkSample.WinForms.Win10
             CancelPaymentButton.Visible = CancelPaymentButton.Enabled;
         }
 
-       
+
 
 
         private OperatingSystem _osVersion;
         private void PmntMtdConnection_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (_osVersion != null ) return;
+            if (_osVersion != null) return;
 
             _osVersion = System.Environment.OSVersion;
 
@@ -281,21 +286,11 @@ namespace SumUpSdkSample.WinForms.Win10
             {
                 UpdateUI(UIState.NotLoggedIn, ex.ToString());
             }
+
+
+
         }
-    }
 
-    internal enum UIState
-    {
-        NotLoggedIn,
-        LoggingIn,
-        Idle,
-        PaymentInProgress
-    }
 
-    internal enum ConnectionMethod
-    {
-        Audio,
-        Bluetooth,
-        Usb
     }
 }
