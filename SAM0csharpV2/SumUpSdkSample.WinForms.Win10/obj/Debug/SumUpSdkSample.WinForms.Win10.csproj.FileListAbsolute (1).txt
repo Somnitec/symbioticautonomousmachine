@@ -1,0 +1,13 @@
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\bin\Debug\SumUpSdkSample.WinForms.Win10.exe.config
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\bin\Debug\SumUpSdkSample.WinForms.Win10.exe
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\bin\Debug\SumUpSdkSample.WinForms.Win10.pdb
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\bin\Debug\SumUp.Sdk.dll
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\bin\Debug\NAudio.dll
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.csprojResolveAssemblyReference.cache
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.MainForm.resources
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.Properties.Resources.resources
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.csproj.GenerateResource.Cache
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.csproj.CoreCompileInputs.cache
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.exe
+C:\Users\Arvid Jense\Google Drive\Studio MAAR omninaut\SAM1\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.pdb

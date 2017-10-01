@@ -1,0 +1,13 @@
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\bin\Debug\SumUpSdkSample.WinForms.Win10.exe.config
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\bin\Debug\SumUpSdkSample.WinForms.Win10.exe
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\bin\Debug\SumUpSdkSample.WinForms.Win10.pdb
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\bin\Debug\SumUp.Sdk.dll
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\bin\Debug\Newtonsoft.Json.dll
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\bin\Debug\NAudio.dll
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0.csprojResolveAssemblyReference.cache
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.SAMgui.resources
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.Properties.Resources.resources
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0.csproj.GenerateResource.Cache
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0.csproj.CoreCompileInputs.cache
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.exe
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM0csharpV2\SumUpSdkSample.WinForms.Win10\obj\Debug\SumUpSdkSample.WinForms.Win10.pdb

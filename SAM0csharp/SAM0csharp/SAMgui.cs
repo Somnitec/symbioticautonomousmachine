@@ -5,15 +5,18 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CommandMessenger;
 using CommandMessenger.Queue;
 using CommandMessenger.Transport.Serial;
+using SumUp.Sdk;
+using SumUp.Sdk.Pay;
 
 namespace SAM0csharp
 {
-    public partial class SAMgui : Form
+    public partial class SAMgui : IPaymentProgress
     {
 
         /// guistuff
@@ -23,6 +26,7 @@ namespace SAM0csharp
         {
             InitializeComponent();
             ArduinoSetup();
+            CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
         }
 
         private void Button_testArduino_click(object sender, EventArgs e)
@@ -30,7 +34,7 @@ namespace SAM0csharp
             Random random = new Random();
             int randomNumber = random.Next(0, 100);
 
-            AppendToLog("testing Arduino..."+ randomNumber);
+            AppendToLog("testing Arduino..." + randomNumber);
             var command = new SendCommand((int)Command.TestArduino, randomNumber);
 
             cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
@@ -58,20 +62,14 @@ namespace SAM0csharp
         private void AppendToLog(string text)
         {
             string txt = $"\r\n" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + $" - {text}";
-            if (this.InvokeRequired)
-            {
-                this.BeginInvoke((Action)(() =>
-                {
-                    logTextBox.AppendText(txt);
-                }));
-            }
-            else
-            {
-                logTextBox.AppendText(txt);
-            }
+
+            logTextBox.AppendText(txt);
+
         }
 
+        /// 
         /////Serial stuff
+        ///
 
         enum Command
         {
@@ -167,5 +165,72 @@ namespace SAM0csharp
             //AppendToLog(@"Sent > " + e.Command.CommandString());
         }
 
+        ///
+        ////////SUMUP stuff
+        ///
+        private SumUpService _sumUpService;
+        private Tuple<Payment, CancellationTokenSource> _currentPayment;
+
+        private async Task CreateSumUpService(string clientId, string clientSecret, string email, string password)
+        {
+            OAuthCredentials credentials = new OAuthCredentials(clientId, clientSecret, email, password);
+            _sumUpService = await SumUpService.CreateInstanceAsync(credentials);
+        }
+
+        private async Task<PaymentResult> DoSumUpPayment(ulong amountInCents, PaymentMethod method, string reference = null)
+        {
+            if (_sumUpService == null)
+                throw new InvalidOperationException("_sumUpService is not initialized");
+
+            // SumUp.Sdk.PaymentBuilder is used to take in payment info like amount, type of payment (terminal, cash), terminal connection
+            PaymentBuilder paymentBuilder = new PaymentBuilder(amountInCents, method);
+
+            if (!string.IsNullOrWhiteSpace(reference))
+            {
+                // PaymentBuilder.TransactionReference is an optional unique reference of the transaction
+                paymentBuilder.TransactionReference = reference;
+            }
+
+            if (method == PaymentMethod.CardReader)
+            {
+                AppendToLog("-> Setting up reader connection...");
+
+                await paymentBuilder.UseUsbConnectionAsync();
+
+                AppendToLog("   Connection was set up");
+            }
+
+            // Build the actual SumUp.Sdk.Payment object for passing to the SumUpService class
+            Payment payment = paymentBuilder.Build();
+
+            _currentPayment = new Tuple<Payment, CancellationTokenSource>(payment, new CancellationTokenSource());
+
+            // Optionally subscribe for payment progress notifications where:
+            //   - Payment.ReaderNotificationReceived notifies for actions that cardholder needs to take on the terminal (Enter PIN, etc.)
+            //   - Payment.StatusChanged notifies for payent progression (waiting for card, processing, etc.)
+            payment.ReaderNotificationReceived += Payment_ReaderNotificationReceived;
+            payment.StatusChanged += Payment_StatusChanged;
+
+            // SumUpService.PayAsync will do the actual payment. Await its result for final transaction status.
+            // Mandatory parameter is a class implementing interface SumUp.Sdk.Pay.IPaymentProgress which has one method - NeedSignature
+            return await _sumUpService.PayAsync(payment, this, _currentPayment.Item2.Token);
+        }
+
+        public void NeedSignature(Payment sender, IPaymentAction action)
+        {
+            AppendToLog("=== SIGNATURE NOT IMPLEMENTED ===");
+            AppendToLog("Signature was requested for the transaction but is not implemented. Will cancel\r\n");
+            throw new NotImplementedException();
+        }
+
+        private void Payment_ReaderNotificationReceived(object sender, ReaderNotificationReceivedEventArgs e)
+        {
+            AppendToLog($"=== Reader Notification: {e.Notification.ToString()} ===");
+        }
+
+        private void Payment_StatusChanged(object sender, PaymentStatusChangedEventArgs e)
+        {
+            AppendToLog($"=== Payment Status Changed: {e.Status} / {e.StatusMessage} ===");
+        }
     }
 }
