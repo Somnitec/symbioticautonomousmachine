@@ -27,10 +27,16 @@ namespace SAM0csharp
 
         private void Button_testArduino_click(object sender, EventArgs e)
         {
-            AppendToLog("testing Arduino...");
+            Random random = new Random();
+            int randomNumber = random.Next(0, 100);
+
+            AppendToLog("testing Arduino..."+ randomNumber);
+            var command = new SendCommand((int)Command.TestArduino, randomNumber);
+
+            cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
 
-      
+
         private void Button_testPrint_click(object sender, EventArgs e)
         {
             AppendToLog("testing Print...");
@@ -39,6 +45,9 @@ namespace SAM0csharp
         private void Button_testTap_click(object sender, EventArgs e)
         {
             AppendToLog("testing Tap...");
+            var command = new SendCommand((int)Command.TestTap, 2);
+
+            cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
 
         private void Button_testPay_click(object sender, EventArgs e)
@@ -48,7 +57,7 @@ namespace SAM0csharp
 
         private void AppendToLog(string text)
         {
-            string txt = $"\r\n"+ DateTime.Now.ToShortDateString()+ " " + DateTime.Now.ToShortTimeString() + $" - {text}";
+            string txt = $"\r\n" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + $" - {text}";
             if (this.InvokeRequired)
             {
                 this.BeginInvoke((Action)(() =>
@@ -68,9 +77,8 @@ namespace SAM0csharp
         {
             Acknowledge,            // Command to acknowledge a received command
             Error,                  // Command to message that an error has occurred
-            SetLed,                 // Command to turn led ON or OFF
-            SetLedFrequency,        // Command to set led blink frequency
-            Test,
+            TestArduino,
+            TestTap,
         };
         private SerialTransport serialTransport;
         private CmdMessenger cmdMessenger;
@@ -104,17 +112,26 @@ namespace SAM0csharp
             cmdMessenger.Attach(OnUnknownCommand);
             cmdMessenger.Attach((int)Command.Acknowledge, OnAcknowledge);
             cmdMessenger.Attach((int)Command.Error, OnError);
-            cmdMessenger.Attach((int)Command.Test, OnTest);
+            cmdMessenger.Attach((int)Command.TestArduino, OnTestArduino);
+            cmdMessenger.Attach((int)Command.TestTap, OnTestTap);
         }
 
         // ------------------  CALLBACKS ---------------------
-        void OnTest(ReceivedCommand arguments)
+        void OnTestArduino(ReceivedCommand arguments)
         {
-            int message = arguments.ReadInt16Arg();
-            Console.WriteLine(@"TEST Received > " + message);
-            AppendToLog(@"TEST Received > " + message);
+            //int message = arguments.ReadInt16Arg
+            String message = arguments.ReadStringArg();
+            Console.WriteLine(@"TEST Arduino Received > " + message);
+            AppendToLog(@"TEST Arduino Received > " + message);
         }
-  
+
+        void OnTestTap(ReceivedCommand arguments)
+        {
+            String message = arguments.ReadStringArg();
+            Console.WriteLine(@"TEST Tap Received > " + message);
+            AppendToLog(@"TEST Tap Received > " + message);
+        }
+
 
         void OnUnknownCommand(ReceivedCommand arguments)
         {
