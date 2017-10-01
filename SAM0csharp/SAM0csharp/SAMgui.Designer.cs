@@ -1,6 +1,6 @@
 ﻿namespace SAM0csharp
 {
-    partial class Form1
+    partial class SAMgui
     {
         /// <summary>
         /// Required designer variable.
@@ -64,7 +64,7 @@
             this.logTextBox.Multiline = true;
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.logTextBox.Size = new System.Drawing.Size(158, 223);
+            this.logTextBox.Size = new System.Drawing.Size(394, 464);
             this.logTextBox.TabIndex = 2;
             this.logTextBox.Text = "initialized";
             // 
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(520, 489);
             this.Controls.Add(this.logTextBox);
             this.Controls.Add(this.button_testpay);
             this.Controls.Add(this.button_testtap);
