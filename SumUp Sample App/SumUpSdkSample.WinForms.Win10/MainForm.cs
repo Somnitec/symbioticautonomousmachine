@@ -7,7 +7,8 @@ using System.Windows.Forms;
 using CommandMessenger;
 using CommandMessenger.Queue;
 using CommandMessenger.Transport.Serial;
-
+using System.Drawing.Printing;
+using System.Drawing;
 
 namespace SumUpSdkSample.WinForms.Win10
 {
@@ -398,6 +399,8 @@ namespace SumUpSdkSample.WinForms.Win10
             _cmdMessenger.Attach((int)Command.SodaButtonPressed, OnSodaButtonPressed);
             _cmdMessenger.Attach((int)Command.GrainButtonPressed, OnGrainButtonPressed);
             _cmdMessenger.Attach((int)Command.Reset, OnReset);
+            _cmdMessenger.Attach((int)Command.TapSucceeded, OnTapSucceeded);
+            
         }
 
         // ------------------  CALLBACKS ---------------------
@@ -449,6 +452,13 @@ namespace SumUpSdkSample.WinForms.Win10
             else AppendToLog(@"not resetting, because payment is in progress!");
 
 
+        }
+
+        void OnTapSucceeded(ReceivedCommand arguments)
+        {
+            AppendToLog(@"Tap succeeded, printing receipt!");
+            PrintReceipt();
+            Reset();
         }
 
         void OnReset(ReceivedCommand arguments)
@@ -510,8 +520,33 @@ namespace SumUpSdkSample.WinForms.Win10
         private void PrintTest_click(object sender, EventArgs e)
         {
             AppendToLog(@"test printing!");
+            PrintDocument printDocument = new PrintDocument();
+            printDocument.PrintPage += PrintTestOnPrintPage;
+            printDocument.Print();
         }
 
+        private void PrintTestOnPrintPage(object sender, PrintPageEventArgs e)
+        {
+            Font MainFont = new Font("roboto",9);
+            e.Graphics.DrawString("This is a successfull test", MainFont, Brushes.Black, 30, 25);            
+        }
+
+        private void PrintReceipt()
+        {
+            PrintDocument printDocument = new PrintDocument();
+            printDocument.PrintPage += PrintReceiptOnPrintPage;
+            printDocument.Print();
+        }
+
+        private void PrintReceiptOnPrintPage(object sender, PrintPageEventArgs e)
+        {
+            Font MainFont = new Font("roboto", 9);
+            //e.Graphics.RotateTransform(-180.0f);
+            //e.Graphics.TranslateTransform(-100, -100);
+            e.Graphics.DrawString("SAM", MainFont, Brushes.Black, 30, 25);
+            e.Graphics.DrawString("Sybiotic Autonomous Machine", MainFont, Brushes.Black, 10, 40);
+
+        }
         private void TapTest_click(object sender, EventArgs e)
         {
             var command = new SendCommand((int)Command.TestTap, (int)Properties.Settings.Default.TestTapAmount);
