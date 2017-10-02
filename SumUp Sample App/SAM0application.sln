@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumUpSdkSample.WinForms.Win10", "SumUpSdkSample.WinForms.Win10\SumUpSdkSample.WinForms.Win10.csproj", "{5D0F9A6A-580C-4BBE-8DCD-401308332285}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAM0application", "SumUpSdkSample.WinForms.Win10\SAM0application.csproj", "{5D0F9A6A-580C-4BBE-8DCD-401308332285}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandMessenger", "CommandMessenger\CommandMessenger.csproj", "{3CF8F8FC-6F5C-46F8-94DC-C2E4C505ECA4}"
 EndProject

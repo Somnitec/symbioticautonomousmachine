@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5D0F9A6A-580C-4BBE-8DCD-401308332285}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SumUpSdkSample.WinForms.Win10</RootNamespace>
-    <AssemblyName>SumUpSdkSample.WinForms.Win10</AssemblyName>
+    <RootNamespace>SAM0application</RootNamespace>
+    <AssemblyName>SAM0application</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

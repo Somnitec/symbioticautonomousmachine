@@ -10,7 +10,7 @@ using CommandMessenger.Transport.Serial;
 using System.Drawing.Printing;
 using System.Drawing;
 
-namespace SumUpSdkSample.WinForms.Win10
+namespace SAM0application
 {
     public partial class MainForm : Form, IPaymentProgress
     {
@@ -269,7 +269,7 @@ namespace SumUpSdkSample.WinForms.Win10
                     //logTextBox.Text = string.Empty;
                     break;
                 case UIState.Idle:
-                    statusStripText = "Logged in. Try a payment :)";
+                    statusStripText = "Logged in.";
                     paymentControlsEnabled = true;
                     break;
                 default:

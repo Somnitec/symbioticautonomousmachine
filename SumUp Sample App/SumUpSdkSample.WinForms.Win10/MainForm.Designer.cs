@@ -1,4 +1,4 @@
-﻿namespace SumUpSdkSample.WinForms.Win10
+﻿namespace SAM0application
 {
     partial class MainForm
     {
@@ -392,7 +392,7 @@
             // 
             // numericUpDown7
             // 
-            this.numericUpDown7.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "TestTapAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown7.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "TestTapAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown7.Increment = new decimal(new int[] {
             10,
             0,
@@ -407,20 +407,20 @@
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown7.TabIndex = 34;
-            this.numericUpDown7.Value = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.TestTapAmount;
+            this.numericUpDown7.Value = global::SAM0application.Properties.Settings.Default.TestTapAmount;
             // 
             // textBox2
             // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "ArduinoPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM0application.Properties.Settings.Default, "ArduinoPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBox2.Location = new System.Drawing.Point(199, 326);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(43, 20);
             this.textBox2.TabIndex = 32;
-            this.textBox2.Text = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.ArduinoPort;
+            this.textBox2.Text = global::SAM0application.Properties.Settings.Default.ArduinoPort;
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "ReceiptNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown4.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "ReceiptNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown4.Location = new System.Drawing.Point(199, 256);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             9999999,
@@ -431,11 +431,11 @@
             this.numericUpDown4.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown4.TabIndex = 31;
             this.numericUpDown4.ThousandsSeparator = true;
-            this.numericUpDown4.Value = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.ReceiptNo;
+            this.numericUpDown4.Value = global::SAM0application.Properties.Settings.Default.ReceiptNo;
             // 
             // numericUpDown6
             // 
-            this.numericUpDown6.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "LEDspeed", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown6.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "LEDspeed", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown6.Location = new System.Drawing.Point(199, 302);
             this.numericUpDown6.Maximum = new decimal(new int[] {
             200,
@@ -445,11 +445,11 @@
             this.numericUpDown6.Name = "numericUpDown6";
             this.numericUpDown6.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown6.TabIndex = 31;
-            this.numericUpDown6.Value = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.LEDspeed;
+            this.numericUpDown6.Value = global::SAM0application.Properties.Settings.Default.LEDspeed;
             // 
             // numericUpDown5
             // 
-            this.numericUpDown5.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "LEDbrightness", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown5.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "LEDbrightness", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown5.Location = new System.Drawing.Point(199, 281);
             this.numericUpDown5.Maximum = new decimal(new int[] {
             255,
@@ -459,11 +459,11 @@
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown5.TabIndex = 31;
-            this.numericUpDown5.Value = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.LEDbrightness;
+            this.numericUpDown5.Value = global::SAM0application.Properties.Settings.Default.LEDbrightness;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "TapAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown2.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "TapAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown2.Increment = new decimal(new int[] {
             10,
             0,
@@ -478,11 +478,11 @@
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown2.TabIndex = 31;
-            this.numericUpDown2.Value = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.TapAmount;
+            this.numericUpDown2.Value = global::SAM0application.Properties.Settings.Default.TapAmount;
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "MaxPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown3.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "MaxPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown3.DecimalPlaces = 2;
             this.numericUpDown3.Increment = new decimal(new int[] {
             1,
@@ -498,11 +498,11 @@
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown3.TabIndex = 31;
-            this.numericUpDown3.Value = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.MaxPrice;
+            this.numericUpDown3.Value = global::SAM0application.Properties.Settings.Default.MaxPrice;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "MinPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "MinPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown1.DecimalPlaces = 2;
             this.numericUpDown1.Increment = new decimal(new int[] {
             1,
@@ -518,13 +518,13 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown1.TabIndex = 31;
-            this.numericUpDown1.Value = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.MinPrice;
+            this.numericUpDown1.Value = global::SAM0application.Properties.Settings.Default.MinPrice;
             // 
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Checked = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.PrintingShortVersion;
-            this.checkBox6.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "PrintingShortVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox6.Checked = global::SAM0application.Properties.Settings.Default.PrintingShortVersion;
+            this.checkBox6.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM0application.Properties.Settings.Default, "PrintingShortVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBox6.Location = new System.Drawing.Point(199, 233);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(124, 17);
@@ -535,9 +535,9 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Checked = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.PrintingEnabled;
+            this.checkBox5.Checked = global::SAM0application.Properties.Settings.Default.PrintingEnabled;
             this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox5.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "PrintingEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox5.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM0application.Properties.Settings.Default, "PrintingEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBox5.Location = new System.Drawing.Point(199, 214);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(93, 17);
@@ -547,19 +547,19 @@
             // 
             // AmountText
             // 
-            this.AmountText.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "PaymentTestAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.AmountText.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM0application.Properties.Settings.Default, "PaymentTestAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.AmountText.Location = new System.Drawing.Point(118, 150);
             this.AmountText.Name = "AmountText";
             this.AmountText.Size = new System.Drawing.Size(27, 20);
             this.AmountText.TabIndex = 12;
-            this.AmountText.Text = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.PaymentTestAmount;
+            this.AmountText.Text = global::SAM0application.Properties.Settings.Default.PaymentTestAmount;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(598, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 13);
+            this.label3.Size = new System.Drawing.Size(136, 13);
             this.label3.TabIndex = 36;
             this.label3.Text = "SAM0 2017 by Arvid&&Marie";
             // 
@@ -624,7 +624,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(635, 385);
             this.Name = "MainForm";
-            this.Text = "SumUp SDK Sample - Windows Forms / Windows 10";
+            this.Text = "SAM0 application";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
