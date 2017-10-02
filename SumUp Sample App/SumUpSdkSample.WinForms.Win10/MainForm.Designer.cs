@@ -64,10 +64,10 @@
             this.TapTestButton = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.ledTestCheckBox = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.PumpFlavorTestCheckbox = new System.Windows.Forms.CheckBox();
+            this.Pump1stFermTestCheckbox = new System.Windows.Forms.CheckBox();
+            this.Pump2ndFermTestCheckbox = new System.Windows.Forms.CheckBox();
+            this.PumpTapTestCheckbox = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -76,6 +76,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.SaveSettingsButton = new System.Windows.Forms.Button();
             this.helpProvider = new System.Windows.Forms.HelpProvider();
+            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
@@ -86,19 +87,21 @@
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.AmountText = new System.Windows.Forms.TextBox();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
+            this.FakeSodaButton = new System.Windows.Forms.Button();
+            this.FakeGrainButton = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.PaymentMethodGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
@@ -162,7 +165,7 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Location = new System.Drawing.Point(12, 100);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(595, 1);
+            this.panel4.Size = new System.Drawing.Size(913, 1);
             this.panel4.TabIndex = 8;
             // 
             // statusStrip
@@ -172,7 +175,7 @@
             this.statusStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 540);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(619, 22);
+            this.statusStrip.Size = new System.Drawing.Size(937, 22);
             this.statusStrip.TabIndex = 9;
             // 
             // statusStripProgressBar
@@ -185,7 +188,7 @@
             // statusStripStatusLabel
             // 
             this.statusStripStatusLabel.Name = "statusStripStatusLabel";
-            this.statusStripStatusLabel.Size = new System.Drawing.Size(502, 17);
+            this.statusStripStatusLabel.Size = new System.Drawing.Size(820, 17);
             this.statusStripStatusLabel.Spring = true;
             this.statusStripStatusLabel.Text = "Status text";
             this.statusStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -344,7 +347,7 @@
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
             this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.logTextBox.Size = new System.Drawing.Size(263, 390);
+            this.logTextBox.Size = new System.Drawing.Size(581, 390);
             this.logTextBox.TabIndex = 24;
             this.logTextBox.WordWrap = false;
             // 
@@ -362,7 +365,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::SumUpSdkSample.WinForms.Win10.Properties.Resources.index;
-            this.pictureBox1.Location = new System.Drawing.Point(506, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(824, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 36);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -416,7 +419,7 @@
             this.printTestButton.TabIndex = 28;
             this.printTestButton.Text = "PrintTest";
             this.printTestButton.UseVisualStyleBackColor = true;
-            this.printTestButton.Click += new System.EventHandler(this.ArduinoTest_click);
+            this.printTestButton.Click += new System.EventHandler(this.PrintTest_click);
             // 
             // TapTestButton
             // 
@@ -426,7 +429,7 @@
             this.TapTestButton.TabIndex = 28;
             this.TapTestButton.Text = "TapTest";
             this.TapTestButton.UseVisualStyleBackColor = true;
-            this.TapTestButton.Click += new System.EventHandler(this.ArduinoTest_click);
+            this.TapTestButton.Click += new System.EventHandler(this.TapTest_click);
             // 
             // label11
             // 
@@ -436,7 +439,6 @@
             this.label11.Size = new System.Drawing.Size(21, 13);
             this.label11.TabIndex = 16;
             this.label11.Text = "mL";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // ledTestCheckBox
             // 
@@ -447,46 +449,51 @@
             this.ledTestCheckBox.TabIndex = 30;
             this.ledTestCheckBox.Text = "LED Test";
             this.ledTestCheckBox.UseVisualStyleBackColor = true;
+            this.ledTestCheckBox.Click += new System.EventHandler(this.ledTestCheckBox_click);
             // 
-            // checkBox1
+            // PumpFlavorTestCheckbox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(16, 429);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(109, 17);
-            this.checkBox1.TabIndex = 30;
-            this.checkBox1.Text = "Pump Flavor Test";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.PumpFlavorTestCheckbox.AutoSize = true;
+            this.PumpFlavorTestCheckbox.Location = new System.Drawing.Point(16, 429);
+            this.PumpFlavorTestCheckbox.Name = "PumpFlavorTestCheckbox";
+            this.PumpFlavorTestCheckbox.Size = new System.Drawing.Size(109, 17);
+            this.PumpFlavorTestCheckbox.TabIndex = 30;
+            this.PumpFlavorTestCheckbox.Text = "Pump Flavor Test";
+            this.PumpFlavorTestCheckbox.UseVisualStyleBackColor = true;
+            this.PumpFlavorTestCheckbox.Click += new System.EventHandler(this.PumpFlavorTestCheckbox_Click);
             // 
-            // checkBox2
+            // Pump1stFermTestCheckbox
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(16, 446);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(117, 17);
-            this.checkBox2.TabIndex = 30;
-            this.checkBox2.Text = "Pump 1st ferm Test";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.Pump1stFermTestCheckbox.AutoSize = true;
+            this.Pump1stFermTestCheckbox.Location = new System.Drawing.Point(16, 446);
+            this.Pump1stFermTestCheckbox.Name = "Pump1stFermTestCheckbox";
+            this.Pump1stFermTestCheckbox.Size = new System.Drawing.Size(117, 17);
+            this.Pump1stFermTestCheckbox.TabIndex = 30;
+            this.Pump1stFermTestCheckbox.Text = "Pump 1st ferm Test";
+            this.Pump1stFermTestCheckbox.UseVisualStyleBackColor = true;
+            this.Pump1stFermTestCheckbox.Click += new System.EventHandler(this.Pump1stFermTestCheckbox_Click);
             // 
-            // checkBox3
+            // Pump2ndFermTestCheckbox
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(16, 463);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(121, 17);
-            this.checkBox3.TabIndex = 30;
-            this.checkBox3.Text = "Pump 2nd ferm Test";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.Pump2ndFermTestCheckbox.AutoSize = true;
+            this.Pump2ndFermTestCheckbox.Location = new System.Drawing.Point(16, 463);
+            this.Pump2ndFermTestCheckbox.Name = "Pump2ndFermTestCheckbox";
+            this.Pump2ndFermTestCheckbox.Size = new System.Drawing.Size(121, 17);
+            this.Pump2ndFermTestCheckbox.TabIndex = 30;
+            this.Pump2ndFermTestCheckbox.Text = "Pump 2nd ferm Test";
+            this.Pump2ndFermTestCheckbox.UseVisualStyleBackColor = true;
+            this.Pump2ndFermTestCheckbox.Click += new System.EventHandler(this.Pump2ndFermTestCheckbox_Click);
             // 
-            // checkBox4
+            // PumpTapTestCheckbox
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(16, 480);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(99, 17);
-            this.checkBox4.TabIndex = 30;
-            this.checkBox4.Text = "Pump Tap Test";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.PumpTapTestCheckbox.AutoSize = true;
+            this.PumpTapTestCheckbox.Location = new System.Drawing.Point(16, 480);
+            this.PumpTapTestCheckbox.Name = "PumpTapTestCheckbox";
+            this.PumpTapTestCheckbox.Size = new System.Drawing.Size(99, 17);
+            this.PumpTapTestCheckbox.TabIndex = 30;
+            this.PumpTapTestCheckbox.Text = "Pump Tap Test";
+            this.PumpTapTestCheckbox.UseVisualStyleBackColor = true;
+            this.PumpTapTestCheckbox.Click += new System.EventHandler(this.PumpTapTestCheckbox_Click);
             // 
             // label12
             // 
@@ -496,7 +503,6 @@
             this.label12.Size = new System.Drawing.Size(51, 13);
             this.label12.TabIndex = 16;
             this.label12.Text = "mL to tap";
-            this.label12.Click += new System.EventHandler(this.label11_Click);
             // 
             // label13
             // 
@@ -506,7 +512,6 @@
             this.label13.Size = new System.Drawing.Size(32, 13);
             this.label13.TabIndex = 16;
             this.label13.Text = "€ min";
-            this.label13.Click += new System.EventHandler(this.label11_Click);
             // 
             // label14
             // 
@@ -516,7 +521,6 @@
             this.label14.Size = new System.Drawing.Size(54, 13);
             this.label14.TabIndex = 16;
             this.label14.Text = "receipt no";
-            this.label14.Click += new System.EventHandler(this.label11_Click);
             // 
             // label15
             // 
@@ -526,7 +530,6 @@
             this.label15.Size = new System.Drawing.Size(79, 13);
             this.label15.TabIndex = 16;
             this.label15.Text = "LED brightness";
-            this.label15.Click += new System.EventHandler(this.label11_Click);
             // 
             // label16
             // 
@@ -536,7 +539,6 @@
             this.label16.Size = new System.Drawing.Size(84, 13);
             this.label16.TabIndex = 16;
             this.label16.Text = "LED fade speed";
-            this.label16.Click += new System.EventHandler(this.label11_Click);
             // 
             // label17
             // 
@@ -546,7 +548,6 @@
             this.label17.Size = new System.Drawing.Size(65, 13);
             this.label17.TabIndex = 16;
             this.label17.Text = "Arduino Port";
-            this.label17.Click += new System.EventHandler(this.label11_Click);
             // 
             // SaveSettingsButton
             // 
@@ -557,6 +558,25 @@
             this.SaveSettingsButton.Text = "Save Settings";
             this.SaveSettingsButton.UseVisualStyleBackColor = true;
             this.SaveSettingsButton.Click += new System.EventHandler(this.SaveSettingsButton_click);
+            // 
+            // numericUpDown7
+            // 
+            this.numericUpDown7.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "TestTapAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown7.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown7.Location = new System.Drawing.Point(110, 388);
+            this.numericUpDown7.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown7.Name = "numericUpDown7";
+            this.numericUpDown7.Size = new System.Drawing.Size(43, 20);
+            this.numericUpDown7.TabIndex = 34;
+            this.numericUpDown7.Value = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.TestTapAmount;
             // 
             // textBox2
             // 
@@ -648,7 +668,6 @@
             this.numericUpDown3.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown3.TabIndex = 31;
             this.numericUpDown3.Value = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.MaxPrice;
-            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // numericUpDown1
             // 
@@ -669,7 +688,6 @@
             this.numericUpDown1.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown1.TabIndex = 31;
             this.numericUpDown1.Value = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.MinPrice;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // checkBox6
             // 
@@ -705,30 +723,42 @@
             this.AmountText.TabIndex = 12;
             this.AmountText.Text = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.PaymentTestAmount;
             // 
-            // numericUpDown7
+            // label18
             // 
-            this.numericUpDown7.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default, "TestTapAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numericUpDown7.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDown7.Location = new System.Drawing.Point(110, 388);
-            this.numericUpDown7.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(43, 20);
-            this.numericUpDown7.TabIndex = 34;
-            this.numericUpDown7.Value = global::SumUpSdkSample.WinForms.Win10.Properties.Settings.Default.TestTapAmount;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(236, 353);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(35, 13);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "€ max";
+            // 
+            // FakeSodaButton
+            // 
+            this.FakeSodaButton.Location = new System.Drawing.Point(155, 210);
+            this.FakeSodaButton.Name = "FakeSodaButton";
+            this.FakeSodaButton.Size = new System.Drawing.Size(58, 59);
+            this.FakeSodaButton.TabIndex = 35;
+            this.FakeSodaButton.Text = "Fake\r\nSoda\r\nButton";
+            this.FakeSodaButton.UseVisualStyleBackColor = true;
+            this.FakeSodaButton.Click += new System.EventHandler(this.FakeSodaButton_Click);
+            // 
+            // FakeGrainButton
+            // 
+            this.FakeGrainButton.Location = new System.Drawing.Point(219, 210);
+            this.FakeGrainButton.Name = "FakeGrainButton";
+            this.FakeGrainButton.Size = new System.Drawing.Size(58, 59);
+            this.FakeGrainButton.TabIndex = 35;
+            this.FakeGrainButton.Text = "Fake\r\nGrain\nButton";
+            this.FakeGrainButton.UseVisualStyleBackColor = true;
+            this.FakeGrainButton.Click += new System.EventHandler(this.FakeGrainButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 562);
+            this.ClientSize = new System.Drawing.Size(937, 562);
+            this.Controls.Add(this.FakeGrainButton);
+            this.Controls.Add(this.FakeSodaButton);
             this.Controls.Add(this.numericUpDown7);
             this.Controls.Add(this.SaveSettingsButton);
             this.Controls.Add(this.textBox2);
@@ -738,10 +768,10 @@
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.PumpTapTestCheckbox);
+            this.Controls.Add(this.Pump2ndFermTestCheckbox);
+            this.Controls.Add(this.Pump1stFermTestCheckbox);
+            this.Controls.Add(this.PumpFlavorTestCheckbox);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.ledTestCheckBox);
@@ -757,6 +787,7 @@
             this.Controls.Add(this.ReferenceText);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label14);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
@@ -789,13 +820,13 @@
             this.PaymentMethodGroup.ResumeLayout(false);
             this.PaymentMethodGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -838,10 +869,10 @@
         private System.Windows.Forms.Button TapTestButton;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckBox ledTestCheckBox;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox PumpFlavorTestCheckbox;
+        private System.Windows.Forms.CheckBox Pump1stFermTestCheckbox;
+        private System.Windows.Forms.CheckBox Pump2ndFermTestCheckbox;
+        private System.Windows.Forms.CheckBox PumpTapTestCheckbox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
@@ -860,6 +891,9 @@
         private System.Windows.Forms.Button SaveSettingsButton;
         private System.Windows.Forms.HelpProvider helpProvider;
         private System.Windows.Forms.NumericUpDown numericUpDown7;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button FakeSodaButton;
+        private System.Windows.Forms.Button FakeGrainButton;
     }
 }
 

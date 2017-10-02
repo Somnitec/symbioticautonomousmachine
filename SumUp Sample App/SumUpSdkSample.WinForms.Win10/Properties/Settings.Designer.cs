@@ -26,9 +26,9 @@ namespace SumUpSdkSample.WinForms.Win10.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public decimal TapAmount {
+        public int TapAmount {
             get {
-                return ((decimal)(this["TapAmount"]));
+                return ((int)(this["TapAmount"]));
             }
             set {
                 this["TapAmount"] = value;
@@ -37,7 +37,7 @@ namespace SumUpSdkSample.WinForms.Win10.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
         public decimal MinPrice {
             get {
                 return ((decimal)(this["MinPrice"]));
@@ -49,7 +49,7 @@ namespace SumUpSdkSample.WinForms.Win10.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.5")]
         public decimal MaxPrice {
             get {
                 return ((decimal)(this["MaxPrice"]));
@@ -86,9 +86,9 @@ namespace SumUpSdkSample.WinForms.Win10.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public decimal ReceiptNo {
+        public int ReceiptNo {
             get {
-                return ((decimal)(this["ReceiptNo"]));
+                return ((int)(this["ReceiptNo"]));
             }
             set {
                 this["ReceiptNo"] = value;
@@ -98,9 +98,9 @@ namespace SumUpSdkSample.WinForms.Win10.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("255")]
-        public decimal LEDbrightness {
+        public int LEDbrightness {
             get {
-                return ((decimal)(this["LEDbrightness"]));
+                return ((int)(this["LEDbrightness"]));
             }
             set {
                 this["LEDbrightness"] = value;
@@ -110,9 +110,9 @@ namespace SumUpSdkSample.WinForms.Win10.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public decimal LEDspeed {
+        public int LEDspeed {
             get {
-                return ((decimal)(this["LEDspeed"]));
+                return ((int)(this["LEDspeed"]));
             }
             set {
                 this["LEDspeed"] = value;
@@ -146,9 +146,9 @@ namespace SumUpSdkSample.WinForms.Win10.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public decimal TestTapAmount {
+        public int TestTapAmount {
             get {
-                return ((decimal)(this["TestTapAmount"]));
+                return ((int)(this["TestTapAmount"]));
             }
             set {
                 this["TestTapAmount"] = value;

@@ -14,12 +14,13 @@ namespace SumUpSdkSample.WinForms.Win10
     public partial class MainForm : Form, IPaymentProgress
     {
 
-       /// <summary>
-       /// SUMUP STUFFS
-       /// </summary>
-
+        /// <summary>
+        /// SUMUP STUFFS
+        /// </summary>
+        private Random rand = new Random();
         private SumUpService _sumUpService;
         private Tuple<Payment, CancellationTokenSource> _currentPayment;
+        private bool realPaymentHappening = false;
 
         // ======= Authenticate with SumUp system and create SDK instance =======		
         private async Task CreateSumUpService(string clientId, string clientSecret, string email, string password)
@@ -35,7 +36,7 @@ namespace SumUpSdkSample.WinForms.Win10
             _sumUpService = await SumUpService.CreateInstanceAsync(credentials);
         }
 
-		
+
         // ======= Construct and make the payment =======		
         private async Task<PaymentResult> DoSumUpPayment(ulong amountInCents, PaymentMethod method, ConnectionMethod connection, string reference = null)
         {
@@ -44,7 +45,7 @@ namespace SumUpSdkSample.WinForms.Win10
 
             // SumUp.Sdk.PaymentBuilder is used to take in payment info like amount, type of payment (terminal, cash), terminal connection
             PaymentBuilder paymentBuilder = new PaymentBuilder(amountInCents, method);
-            
+
             if (!string.IsNullOrWhiteSpace(reference))
             {
                 // PaymentBuilder.TransactionReference is an optional unique reference of the transaction
@@ -77,13 +78,13 @@ namespace SumUpSdkSample.WinForms.Win10
             Payment payment = paymentBuilder.Build();
 
             _currentPayment = new Tuple<Payment, CancellationTokenSource>(payment, new CancellationTokenSource());
-            
+
             // Optionally subscribe for payment progress notifications where:
             //   - Payment.ReaderNotificationReceived notifies for actions that cardholder needs to take on the terminal (Enter PIN, etc.)
             //   - Payment.StatusChanged notifies for payent progression (waiting for card, processing, etc.)
             payment.ReaderNotificationReceived += Payment_ReaderNotificationReceived;
             payment.StatusChanged += Payment_StatusChanged;
-            
+
             // SumUpService.PayAsync will do the actual payment. Await its result for final transaction status.
             // Mandatory parameter is a class implementing interface SumUp.Sdk.Pay.IPaymentProgress which has one method - NeedSignature
             return await _sumUpService.PayAsync(payment, this, _currentPayment.Item2.Token);
@@ -126,6 +127,8 @@ namespace SumUpSdkSample.WinForms.Win10
         {
             logInButton.PerformClick();
             Console.WriteLine(@"mainform loaded");
+            var command = new SendCommand((int)Command.Acknowledge);
+            _cmdMessenger.SendCommand(new SendCommand((int)Command.Acknowledge));
         }
 
         private async void LogInButton_Click(object sender, EventArgs e)
@@ -135,9 +138,10 @@ namespace SumUpSdkSample.WinForms.Win10
             try
             {
                 await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
+            
                 UpdateUI(UIState.Idle);
 
-                logTextBox.Text = "Logged in\r\n\r\n\r\n <--- Start a payment on the right";
+                AppendToLog("Logged in\r\n\r\n\r\n <--- Start a payment on the right");
             }
             catch (Exception ex)
             {
@@ -148,7 +152,7 @@ namespace SumUpSdkSample.WinForms.Win10
         private async void DoPaymentButton_Click(object sender, EventArgs e)
         {
             if (_sumUpService == null) return;
-            
+
             if (!ulong.TryParse(AmountText.Text, out ulong amount))
             {
                 UpdateUI(UIState.Idle, "Enter valid amount (i.e. \"100\" = 1.00)");
@@ -169,12 +173,13 @@ namespace SumUpSdkSample.WinForms.Win10
                     connection = ConnectionMethod.Audio;
                     break;
             }
-            
+
             string paymentResultText = "Something went wrong!";
+            string paymentResultShort = "Something went wrong";
             try
             {
-                PaymentResult paymentResult = await DoSumUpPayment(amount, method, connection, ReferenceText.Text);
-
+                PaymentResult paymentResult = await DoSumUpPayment(amount, method, connection, "SAM's Kefir Soda at " + DateTime.Now.ToShortTimeString());
+                paymentResultShort = string.Format("{0}",paymentResult.Status);
                 paymentResultText = string.Format(
                     "=== PAYMENT RESULT ===\r\n    Status: {0}\r\n    Transaction code: {1}\r\n    Transaction reference: {2}\r\n    Message: {3}\r\n    Message explanation: {4}",
                     paymentResult.Status,
@@ -182,13 +187,35 @@ namespace SumUpSdkSample.WinForms.Win10
                     paymentResult.TransactionReference,
                     paymentResult.Message,
                     paymentResult.MessageExplanation);
+                
+                if (realPaymentHappening)
+                {
+                    AppendToLog(@"Payment succeeded, now tapping");
+                    realPaymentHappening = false;
+                    var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
+                    _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+                }
+
+                else AppendToLog(@"TestPayment succeeded not tapping");
             }
             catch (Exception ex)
             {
                 paymentResultText = ex.ToString();
+                if (realPaymentHappening)
+                {
+                    AppendToLog(@"Payment failed, reset");
+                    var command = new SendCommand((int)Command.Reset);
+                    _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+                }
+
+                else AppendToLog(@"TestPayment failed, was just a test");
             }
             finally
             {
+                if (realPaymentHappening)
+                {
+
+                }
                 _currentPayment = null;
                 UpdateUI(UIState.Idle, paymentResultText);
             }
@@ -226,12 +253,12 @@ namespace SumUpSdkSample.WinForms.Win10
                 case UIState.LoggingIn:
                     statusStripText = "Authenticating with SumUp...";
                     statusStripProgress = ProgressBarStyle.Marquee;
-                    logTextBox.Text = string.Empty;
+                    //logTextBox.Text = string.Empty;
                     break;
                 case UIState.PaymentInProgress:
                     statusStripText = "Payment in progress...";
                     statusStripProgress = ProgressBarStyle.Marquee;
-                    logTextBox.Text = string.Empty;
+                    //logTextBox.Text = string.Empty;
                     break;
                 case UIState.Idle:
                     statusStripText = "Logged in. Try a payment :)";
@@ -324,7 +351,7 @@ namespace SumUpSdkSample.WinForms.Win10
             // Note that for some boards (e.g. Sparkfun Pro Micro) DtrEnable may need to be true.
             _serialTransport = new SerialTransport
             {
-                CurrentSerialSettings = { PortName = "COM5", BaudRate = 115200, DtrEnable = false } // object initializer
+                CurrentSerialSettings = { PortName = Properties.Settings.Default.ArduinoPort, BaudRate = 115200, DtrEnable = false } // object initializer
             };
 
             // Initialize the command messenger with the Serial Port transport layer
@@ -345,7 +372,7 @@ namespace SumUpSdkSample.WinForms.Win10
 
             // Start listening
             _cmdMessenger.Connect();
-            
+
         }
 
         // Exit function
@@ -369,6 +396,9 @@ namespace SumUpSdkSample.WinForms.Win10
             _cmdMessenger.Attach((int)Command.Error, OnError);
             _cmdMessenger.Attach((int)Command.TestArduino, OnTestArduino);
             _cmdMessenger.Attach((int)Command.TestTap, OnTestTap);
+            _cmdMessenger.Attach((int)Command.SodaButtonPressed, OnSodaButtonPressed);
+            _cmdMessenger.Attach((int)Command.GrainButtonPressed, OnGrainButtonPressed);
+            _cmdMessenger.Attach((int)Command.Reset, OnReset);
         }
 
         // ------------------  CALLBACKS ---------------------
@@ -388,6 +418,51 @@ namespace SumUpSdkSample.WinForms.Win10
             AppendToLog(@"TEST Tap Received > " + message);
 
         }
+
+        void OnSodaButtonPressed(ReceivedCommand arguments)
+        {
+
+            AppendToLog(@"Soda button pressed");
+
+            makePayment();
+        }
+
+        private void makePayment()
+        {
+
+            int price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
+            AppendToLog(@"Starting payment for €" + price / 100.0);
+            AmountText.Text = price.ToString();
+            realPaymentHappening = true;
+            PayButton.PerformClick();
+        }
+
+        void OnGrainButtonPressed(ReceivedCommand arguments)
+        {
+
+            AppendToLog(@"Grain button pressed");
+
+            if (!realPaymentHappening)
+            {
+                var command = new SendCommand((int)Command.Reset);
+                _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            }
+            else AppendToLog(@"not resetting, because payment is in progress!");
+
+
+        }
+
+        void OnReset(ReceivedCommand arguments)
+        {
+            Reset();
+        }
+
+        void Reset()
+        {
+            CancelPaymentButton.PerformClick();
+            realPaymentHappening = false;
+            AppendToLog(@"Resetted");
+        }
         // Called when a received command has no attached function.
         // In a WinForm application, console output gets routed to the output panel of your IDE
 
@@ -395,6 +470,9 @@ namespace SumUpSdkSample.WinForms.Win10
         void OnUnknownCommand(ReceivedCommand arguments)
         {
             Console.WriteLine(@"Command without attached callback received");
+            String message = arguments.ReadStringArg();
+            //Console.WriteLine(@"TEST Tap Received > " + message);
+            AppendToLog(@"Command without attached callback received > " + message);
         }
 
         // Callback function that prints that the Arduino has acknowledged
@@ -423,32 +501,71 @@ namespace SumUpSdkSample.WinForms.Win10
 
         private void ArduinoTest_click(object sender, EventArgs e)
         {
-            Random rand = new Random();
+
             int value = rand.Next(0, 100);
             var command = new SendCommand((int)Command.TestArduino, value);
-            _cmdMessenger.SendCommand(new SendCommand((int)Command.TestArduino, value));
-            AppendToLog(@"TEST Arduino Send > " + value);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            AppendToLog(@"Arduino value send > " + value);
         }
 
-        private void label11_Click(object sender, EventArgs e)
+        private void PrintTest_click(object sender, EventArgs e)
         {
-
+            AppendToLog(@"test printing!");
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void TapTest_click(object sender, EventArgs e)
         {
-
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
+            var command = new SendCommand((int)Command.TestTap, (int)Properties.Settings.Default.TestTapAmount);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            AppendToLog(@"testing tap with " + (int)Properties.Settings.Default.TestTapAmount + "mL");
         }
 
         private void SaveSettingsButton_click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
-            AppendToLog(@"Saving setting?");
+            AppendToLog(@"Saving settings!");
+        }
+
+        private void ledTestCheckBox_click(object sender, EventArgs e)
+        {
+            var command = new SendCommand((int)Command.TestLeds, ledTestCheckBox.Checked);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+        }
+
+        private void PumpFlavorTestCheckbox_Click(object sender, EventArgs e)
+        {
+            var command = new SendCommand((int)Command.PumpFlavor, PumpFlavorTestCheckbox.Checked);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+        }
+
+        private void Pump1stFermTestCheckbox_Click(object sender, EventArgs e)
+        {
+            var command = new SendCommand((int)Command.Pump1stFerm, Pump1stFermTestCheckbox.Checked);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+        }
+
+        private void Pump2ndFermTestCheckbox_Click(object sender, EventArgs e)
+        {
+            var command = new SendCommand((int)Command.Pump2ndFerm, Pump2ndFermTestCheckbox.Checked);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+        }
+
+        private void PumpTapTestCheckbox_Click(object sender, EventArgs e)
+        {
+            var command = new SendCommand((int)Command.PumpTap, PumpTapTestCheckbox.Checked);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+        }
+
+        private void FakeSodaButton_Click(object sender, EventArgs e)
+        {
+            var command = new SendCommand((int)Command.SodaButtonPressed);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+        }
+
+        private void FakeGrainButton_Click(object sender, EventArgs e)
+        {
+            var command = new SendCommand((int)Command.GrainButtonPressed);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
     }
 
@@ -471,8 +588,19 @@ namespace SumUpSdkSample.WinForms.Win10
     {
         Acknowledge,            // Command to acknowledge a received command
         Error,                  // Command to message that an error has occurred
+        Reset,
         TestArduino,
         TestTap,
+        TestLeds,
+        PumpFlavor,
+        Pump1stFerm,
+        Pump2ndFerm,
+        PumpTap,
+        SodaButtonPressed,
+        GrainButtonPressed,
+        TapAmount,
+        TapSucceeded,
+
     };
 
 }
