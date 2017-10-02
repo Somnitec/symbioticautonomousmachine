@@ -37,8 +37,11 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="SumUp.Sdk">
-      <HintPath>..\Lib\Net452_Win10\SumUp.Sdk.dll</HintPath>
+      <HintPath>..\SumUp.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

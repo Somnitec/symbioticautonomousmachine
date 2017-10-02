@@ -14,3 +14,19 @@ C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\SumUpSdkSam
 C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0application.Properties.Resources.resources
 C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0application.exe
 C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0application.pdb
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0application.csprojResolveAssemblyReference.cache
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0application.MainForm.resources
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0application.Properties.Resources.resources
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0application.csproj.GenerateResource.Cache
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0application.csproj.CoreCompileInputs.cache
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\bin\Debug\SAM0application.exe.config
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\bin\Debug\SAM0application.exe
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\bin\Debug\SAM0application.pdb
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\bin\Debug\CommandMessenger.dll
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\bin\Debug\CommandMessenger.Transport.Serial.dll
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\bin\Debug\SumUp.Sdk.dll
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\bin\Debug\CommandMessenger.Transport.Serial.pdb
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\bin\Debug\CommandMessenger.pdb
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0application.exe
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\obj\Debug\SAM0application.pdb
+C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SumUpSdkSample.WinForms.Win10\bin\Debug\Newtonsoft.Json.dll
