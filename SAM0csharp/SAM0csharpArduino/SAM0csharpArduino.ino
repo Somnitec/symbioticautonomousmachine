@@ -102,6 +102,7 @@ void OnSodaButtonPressed()
 void OnGrainButtonPressed()
 {
   cmdMessenger.sendCmd(kGrainButtonPressed);
+  
 }
 
 void OnTapAmount()

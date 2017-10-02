@@ -138,7 +138,7 @@ namespace SumUpSdkSample.WinForms.Win10
             try
             {
                 await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
-            
+
                 UpdateUI(UIState.Idle);
 
                 AppendToLog("Logged in\r\n\r\n\r\n <--- Start a payment on the right");
@@ -178,8 +178,9 @@ namespace SumUpSdkSample.WinForms.Win10
             string paymentResultShort = "Something went wrong";
             try
             {
-                PaymentResult paymentResult = await DoSumUpPayment(amount, method, connection, "SAM's Kefir Soda at " + DateTime.Now.ToShortTimeString());
-                paymentResultShort = string.Format("{0}",paymentResult.Status);
+                PaymentResult paymentResult = await DoSumUpPayment(amount, method, connection); //, "SAM's Kefir Soda at " + DateTime.Now.ToShortTimeString() //can do, but will need to be unique every time
+                paymentResultShort = string.Format("{0}", paymentResult.Status);
+
                 paymentResultText = string.Format(
                     "=== PAYMENT RESULT ===\r\n    Status: {0}\r\n    Transaction code: {1}\r\n    Transaction reference: {2}\r\n    Message: {3}\r\n    Message explanation: {4}",
                     paymentResult.Status,
@@ -187,37 +188,53 @@ namespace SumUpSdkSample.WinForms.Win10
                     paymentResult.TransactionReference,
                     paymentResult.Message,
                     paymentResult.MessageExplanation);
-                
-                if (realPaymentHappening)
-                {
-                    AppendToLog(@"Payment succeeded, now tapping");
-                    realPaymentHappening = false;
-                    var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
-                    _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-                }
 
-                else AppendToLog(@"TestPayment succeeded not tapping");
+                //if (realPaymentHappening)
+                //{
+                //    AppendToLog(@"Payment succeeded, now tapping");
+                //    realPaymentHappening = false;
+                //    var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
+                //    _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+                //}
+
+                //else AppendToLog(@"TestPayment succeeded not tapping");
             }
             catch (Exception ex)
             {
                 paymentResultText = ex.ToString();
-                if (realPaymentHappening)
-                {
-                    AppendToLog(@"Payment failed, reset");
-                    var command = new SendCommand((int)Command.Reset);
-                    _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-                }
+                //if (realPaymentHappening)
+                //{
+                //    AppendToLog(@"Payment failed, reset");
+                //    var command = new SendCommand((int)Command.Reset);
+                //    _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+                //}
 
-                else AppendToLog(@"TestPayment failed, was just a test");
+                //else AppendToLog(@"TestPayment failed, was just a test");
             }
             finally
             {
-                if (realPaymentHappening)
-                {
 
-                }
                 _currentPayment = null;
                 UpdateUI(UIState.Idle, paymentResultText);
+
+                if (realPaymentHappening)
+                {
+                    //AppendToLog(paymentResultShort);
+                    if (paymentResultShort.Equals("Successful"))
+                    {
+                        AppendToLog("payment was successfull, now tapping");
+                        var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
+                        _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+                    }
+                    else
+                    {
+                        AppendToLog("payment was not successfull, resetting");
+                        var command = new SendCommand((int)Command.Reset);
+                        _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+                    }
+
+                    realPaymentHappening = false;
+                }
             }
         }
 
