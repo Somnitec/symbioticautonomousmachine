@@ -58,6 +58,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CancelPaymentButton = new System.Windows.Forms.Button();
+            this.ArduinoTest = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -142,7 +143,7 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusStripProgressBar,
             this.statusStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 324);
+            this.statusStrip.Location = new System.Drawing.Point(0, 455);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(619, 22);
             this.statusStrip.TabIndex = 9;
@@ -336,7 +337,7 @@
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
             this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.logTextBox.Size = new System.Drawing.Size(347, 174);
+            this.logTextBox.Size = new System.Drawing.Size(347, 305);
             this.logTextBox.TabIndex = 24;
             this.logTextBox.WordWrap = false;
             // 
@@ -372,11 +373,22 @@
             this.CancelPaymentButton.UseVisualStyleBackColor = true;
             this.CancelPaymentButton.Click += new System.EventHandler(this.CancelPaymentButton_Click);
             // 
+            // ArduinoTest
+            // 
+            this.ArduinoTest.Location = new System.Drawing.Point(15, 316);
+            this.ArduinoTest.Name = "ArduinoTest";
+            this.ArduinoTest.Size = new System.Drawing.Size(75, 23);
+            this.ArduinoTest.TabIndex = 28;
+            this.ArduinoTest.Text = "ArduinoTest";
+            this.ArduinoTest.UseVisualStyleBackColor = true;
+            this.ArduinoTest.Click += new System.EventHandler(this.ArduinoTest_click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 346);
+            this.ClientSize = new System.Drawing.Size(619, 477);
+            this.Controls.Add(this.ArduinoTest);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logTextBox);
@@ -399,6 +411,7 @@
             this.MinimumSize = new System.Drawing.Size(635, 385);
             this.Name = "MainForm";
             this.Text = "SumUp SDK Sample - Windows Forms / Windows 10";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -444,6 +457,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button CancelPaymentButton;
+        private System.Windows.Forms.Button ArduinoTest;
     }
 }
 

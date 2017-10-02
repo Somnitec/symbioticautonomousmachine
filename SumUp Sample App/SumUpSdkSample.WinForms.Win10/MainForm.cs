@@ -5,6 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CommandMessenger;
+using CommandMessenger.Queue;
+using CommandMessenger.Transport.Serial;
 
 
 namespace SumUpSdkSample.WinForms.Win10
@@ -12,7 +14,9 @@ namespace SumUpSdkSample.WinForms.Win10
     public partial class MainForm : Form, IPaymentProgress
     {
 
-       
+       /// <summary>
+       /// SUMUP STUFFS
+       /// </summary>
 
         private SumUpService _sumUpService;
         private Tuple<Payment, CancellationTokenSource> _currentPayment;
@@ -111,6 +115,17 @@ namespace SumUpSdkSample.WinForms.Win10
             InitializeComponent();
             PmntMtdConnectionCombo.SelectedIndex = 2;
             UpdateUI(UIState.NotLoggedIn);
+            ArduinoSetup(this);
+            //CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
+            Console.WriteLine(@"mainform() finished");
+
+
+        }
+
+        private void MainForm_Load(object sender, System.EventArgs e)
+        {
+            logInButton.PerformClick();
+            Console.WriteLine(@"mainform loaded");
         }
 
         private async void LogInButton_Click(object sender, EventArgs e)
@@ -119,7 +134,7 @@ namespace SumUpSdkSample.WinForms.Win10
 
             try
             {
-                await CreateSumUpService(clientIdTextBox.Text, clientSecretextBox.Text, emailTextBox.Text, passwordTextBox.Text);
+                await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
                 UpdateUI(UIState.Idle);
 
                 logTextBox.Text = "Logged in\r\n\r\n\r\n <--- Start a payment on the right";
@@ -277,7 +292,7 @@ namespace SumUpSdkSample.WinForms.Win10
 
         private void AppendToLog(string text)
         {
-            string txt = $"{text}\r\n";
+            string txt = $"\r\n" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + $" - {text}";
             if (this.InvokeRequired)
             {
                 this.BeginInvoke((Action)(() =>
@@ -291,6 +306,129 @@ namespace SumUpSdkSample.WinForms.Win10
             }
         }
         #endregion
+
+        /// arduinostuffs
+        ///  private SerialTransport   _serialTransport;
+        ///  
+        private SerialTransport _serialTransport;
+        private CmdMessenger _cmdMessenger;
+        private MainForm _controllerForm;
+
+        // Setup function
+        public void ArduinoSetup(MainForm controllerForm)
+        {
+            // storing the controller form for later reference
+            _controllerForm = controllerForm;
+
+            // Create Serial Port object
+            // Note that for some boards (e.g. Sparkfun Pro Micro) DtrEnable may need to be true.
+            _serialTransport = new SerialTransport
+            {
+                CurrentSerialSettings = { PortName = "COM5", BaudRate = 115200, DtrEnable = false } // object initializer
+            };
+
+            // Initialize the command messenger with the Serial Port transport layer
+            // Set if it is communicating with a 16- or 32-bit Arduino board
+            _cmdMessenger = new CmdMessenger(_serialTransport, BoardType.Bit16);
+
+            // Tell CmdMessenger to "Invoke" commands on the thread running the WinForms UI
+            _cmdMessenger.ControlToInvokeOn = _controllerForm;
+
+            // Attach the callbacks to the Command Messenger
+            AttachCommandCallBacks();
+
+            // Attach to NewLinesReceived for logging purposes
+            _cmdMessenger.NewLineReceived += NewLineReceived;
+
+            // Attach to NewLineSent for logging purposes
+            _cmdMessenger.NewLineSent += NewLineSent;
+
+            // Start listening
+            _cmdMessenger.Connect();
+            
+        }
+
+        // Exit function
+        public void Exit()
+        {
+            // Stop listening
+            _cmdMessenger.Disconnect();
+
+            // Dispose Command Messenger
+            _cmdMessenger.Dispose();
+
+            // Dispose Serial Port object
+            _serialTransport.Dispose();
+        }
+
+        /// Attach command call backs. 
+        private void AttachCommandCallBacks()
+        {
+            _cmdMessenger.Attach(OnUnknownCommand);
+            _cmdMessenger.Attach((int)Command.Acknowledge, OnAcknowledge);
+            _cmdMessenger.Attach((int)Command.Error, OnError);
+            _cmdMessenger.Attach((int)Command.TestArduino, OnTestArduino);
+            _cmdMessenger.Attach((int)Command.TestTap, OnTestTap);
+        }
+
+        // ------------------  CALLBACKS ---------------------
+        void OnTestArduino(ReceivedCommand arguments)
+        {
+            //int message = arguments.ReadInt16Arg();
+            String message = arguments.ReadStringArg();
+            //Console.WriteLine(@"TEST Arduino Received > " + message);
+            AppendToLog(@"TEST Arduino Received > " + message);
+        }
+
+        void OnTestTap(ReceivedCommand arguments)
+        {
+            //int message = arguments.ReadInt16Arg();
+            String message = arguments.ReadStringArg();
+            //Console.WriteLine(@"TEST Tap Received > " + message);
+            AppendToLog(@"TEST Tap Received > " + message);
+
+        }
+        // Called when a received command has no attached function.
+        // In a WinForm application, console output gets routed to the output panel of your IDE
+
+
+        void OnUnknownCommand(ReceivedCommand arguments)
+        {
+            Console.WriteLine(@"Command without attached callback received");
+        }
+
+        // Callback function that prints that the Arduino has acknowledged
+        void OnAcknowledge(ReceivedCommand arguments)
+        {
+            Console.WriteLine(@" Arduino is ready");
+        }
+
+        // Callback function that prints that the Arduino has experienced an error
+        void OnError(ReceivedCommand arguments)
+        {
+            Console.WriteLine(@"Arduino has experienced an error");
+        }
+
+        // Log received line to console
+        private void NewLineReceived(object sender, CommandEventArgs e)
+        {
+            Console.WriteLine(@"Received > " + e.Command.CommandString());
+        }
+
+        // Log sent line to console
+        private void NewLineSent(object sender, CommandEventArgs e)
+        {
+            Console.WriteLine(@"Sent > " + e.Command.CommandString());
+        }
+
+        private void ArduinoTest_click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+            int value = rand.Next(0, 100);
+            var command = new SendCommand((int)Command.TestArduino, value);
+            _cmdMessenger.SendCommand(new SendCommand((int)Command.TestArduino, value));
+            AppendToLog(@"TEST Arduino Send > " + value);
+        }
     }
 
     internal enum UIState
@@ -307,4 +445,13 @@ namespace SumUpSdkSample.WinForms.Win10
         Bluetooth,
         Usb
     }
+
+    enum Command
+    {
+        Acknowledge,            // Command to acknowledge a received command
+        Error,                  // Command to message that an error has occurred
+        TestArduino,
+        TestTap,
+    };
+
 }
