@@ -89,9 +89,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\index.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CommandMessenger.Transport.Serial\CommandMessenger.Transport.Serial.csproj">
       <Project>{00d85f0b-00a5-41fa-8a99-428c0199c663}</Project>
       <Name>CommandMessenger.Transport.Serial</Name>
@@ -100,6 +97,9 @@
       <Project>{3cf8f8fc-6f5c-46f8-94dc-c2e4c505eca4}</Project>
       <Name>CommandMessenger</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

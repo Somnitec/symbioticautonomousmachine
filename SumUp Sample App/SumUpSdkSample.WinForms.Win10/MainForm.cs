@@ -114,7 +114,6 @@ namespace SumUpSdkSample.WinForms.Win10
         public MainForm()
         {
             InitializeComponent();
-            PmntMtdConnectionCombo.SelectedIndex = 2;
             UpdateUI(UIState.NotLoggedIn);
             ArduinoSetup(this);
             //CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
@@ -141,7 +140,7 @@ namespace SumUpSdkSample.WinForms.Win10
 
                 UpdateUI(UIState.Idle);
 
-                AppendToLog("Logged in\r\n\r\n\r\n <--- Start a payment on the right");
+                AppendToLog("Logged in");
             }
             catch (Exception ex)
             {
@@ -161,18 +160,9 @@ namespace SumUpSdkSample.WinForms.Win10
 
             UpdateUI(UIState.PaymentInProgress);
 
-            PaymentMethod method = PmntMtdCardReaderRadio.Checked ? PaymentMethod.CardReader : PaymentMethod.Cash;
+            PaymentMethod method = PaymentMethod.CardReader;
 
             ConnectionMethod connection = ConnectionMethod.Usb;
-            switch (PmntMtdConnectionCombo.SelectedIndex)
-            {
-                case 0:
-                    connection = ConnectionMethod.Bluetooth;
-                    break;
-                case 1:
-                    connection = ConnectionMethod.Audio;
-                    break;
-            }
 
             string paymentResultText = "Something went wrong!";
             string paymentResultShort = "Something went wrong";
@@ -294,31 +284,23 @@ namespace SumUpSdkSample.WinForms.Win10
 
             statusStripStatusLabel.Text = statusStripText;
 
-            clientIdTextBox.ReadOnly = !loginControlsEnabled;
-            clientSecretextBox.ReadOnly = !loginControlsEnabled;
-            emailTextBox.ReadOnly = !loginControlsEnabled;
-            passwordTextBox.ReadOnly = !loginControlsEnabled;
-            logInButton.Enabled = loginControlsEnabled;
 
-            PaymentMethodGroup.Enabled = paymentControlsEnabled;
+            logInButton.Enabled = loginControlsEnabled;
+            
             AmountText.Enabled = paymentControlsEnabled;
-            ReferenceText.Enabled = paymentControlsEnabled;
             PayButton.Enabled = paymentControlsEnabled;
             PayButton.Visible = uiState != UIState.PaymentInProgress;
             CancelPaymentButton.Enabled = uiState == UIState.PaymentInProgress;
             CancelPaymentButton.Visible = CancelPaymentButton.Enabled;
         }
 
-        private void PaymentMethod_Changed(object sender, EventArgs e)
-        {
-            PmntMtdConnectionCombo.Enabled = PmntMtdCardReaderRadio.Enabled && PmntMtdCardReaderRadio.Checked;
-        }
+       
 
 
         private OperatingSystem _osVersion;
         private void PmntMtdConnection_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (_osVersion != null || PmntMtdConnectionCombo.SelectedIndex != 0) return;
+            if (_osVersion != null ) return;
 
             _osVersion = System.Environment.OSVersion;
 
@@ -584,6 +566,8 @@ namespace SumUpSdkSample.WinForms.Win10
             var command = new SendCommand((int)Command.GrainButtonPressed);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
+
+
     }
 
     internal enum UIState
