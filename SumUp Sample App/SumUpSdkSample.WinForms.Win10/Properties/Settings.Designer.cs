@@ -12,7 +12,7 @@ namespace SumUpSdkSample.WinForms.Win10.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.1.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.3.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,6 +20,138 @@ namespace SumUpSdkSample.WinForms.Win10.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public decimal TapAmount {
+            get {
+                return ((decimal)(this["TapAmount"]));
+            }
+            set {
+                this["TapAmount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.50")]
+        public decimal MinPrice {
+            get {
+                return ((decimal)(this["MinPrice"]));
+            }
+            set {
+                this["MinPrice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.50")]
+        public decimal MaxPrice {
+            get {
+                return ((decimal)(this["MaxPrice"]));
+            }
+            set {
+                this["MaxPrice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PrintingEnabled {
+            get {
+                return ((bool)(this["PrintingEnabled"]));
+            }
+            set {
+                this["PrintingEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PrintingShortVersion {
+            get {
+                return ((bool)(this["PrintingShortVersion"]));
+            }
+            set {
+                this["PrintingShortVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public decimal ReceiptNo {
+            get {
+                return ((decimal)(this["ReceiptNo"]));
+            }
+            set {
+                this["ReceiptNo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("255")]
+        public decimal LEDbrightness {
+            get {
+                return ((decimal)(this["LEDbrightness"]));
+            }
+            set {
+                this["LEDbrightness"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public decimal LEDspeed {
+            get {
+                return ((decimal)(this["LEDspeed"]));
+            }
+            set {
+                this["LEDspeed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM5")]
+        public string ArduinoPort {
+            get {
+                return ((string)(this["ArduinoPort"]));
+            }
+            set {
+                this["ArduinoPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("101")]
+        public string PaymentTestAmount {
+            get {
+                return ((string)(this["PaymentTestAmount"]));
+            }
+            set {
+                this["PaymentTestAmount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public decimal TestTapAmount {
+            get {
+                return ((decimal)(this["TestTapAmount"]));
+            }
+            set {
+                this["TestTapAmount"] = value;
             }
         }
     }

@@ -429,6 +429,27 @@ namespace SumUpSdkSample.WinForms.Win10
             _cmdMessenger.SendCommand(new SendCommand((int)Command.TestArduino, value));
             AppendToLog(@"TEST Arduino Send > " + value);
         }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveSettingsButton_click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+            AppendToLog(@"Saving setting?");
+        }
     }
 
     internal enum UIState
