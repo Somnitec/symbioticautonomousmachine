@@ -97,22 +97,22 @@ namespace SAM0application.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("255")]
-        public int LEDbrightness {
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int LEDbrightnessMax {
             get {
-                return ((int)(this["LEDbrightness"]));
+                return ((int)(this["LEDbrightnessMax"]));
             }
             set {
-                this["LEDbrightness"] = value;
+                this["LEDbrightnessMax"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public int LEDspeed {
+        [global::System.Configuration.DefaultSettingValueAttribute("0.02")]
+        public decimal LEDspeed {
             get {
-                return ((int)(this["LEDspeed"]));
+                return ((decimal)(this["LEDspeed"]));
             }
             set {
                 this["LEDspeed"] = value;
@@ -152,6 +152,18 @@ namespace SAM0application.Properties {
             }
             set {
                 this["TestTapAmount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int ledBrightnessMin {
+            get {
+                return ((int)(this["ledBrightnessMin"]));
+            }
+            set {
+                this["ledBrightnessMin"] = value;
             }
         }
     }

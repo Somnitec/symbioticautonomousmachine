@@ -52,6 +52,10 @@ void attachCommandCallbacks()
   cmdMessenger.attach(kSodaButtonPressed, OnSodaButtonPressed);
   cmdMessenger.attach(kGrainButtonPressed, OnGrainButtonPressed);
   cmdMessenger.attach(kTapAmount, OnTapAmount);
+  cmdMessenger.attach(kSetLedBreathSpeed, OnSetLedBreathSpeed);
+  cmdMessenger.attach(kSetLedBreathMax, OnSetLedBreathMax);
+  cmdMessenger.attach(kSetLedBreathMin, OnSetLedBreathMin);
+
 }
 
 // Called when a received command has no attached function
@@ -91,10 +95,15 @@ void OnTestLeds()
 void OnPumpTap()
 {
   bool value = cmdMessenger.readBoolArg();
-  cmdMessenger.sendCmd(kPumpTap, value);
-  
-  digitalWrite(statusLedPin,value);
-  digitalWrite(pumpPin,value);
+  if (value == true) {
+    cmdMessenger.sendCmd(kPumpTap, "turning on tap");
+    waterFlow = 0;
+  } else if (value == false) {
+    cmdMessenger.sendCmd(kPumpTap, waterFlow);
+  }
+
+  digitalWrite(statusLedPin, value);
+  digitalWrite(pumpPin, value);
 }
 
 void OnSodaButtonPressed()
@@ -117,3 +126,24 @@ void OnTapAmount()
   cmdMessenger.sendCmd(kTapAmount, "tapping done");
   cmdMessenger.sendCmd(kTapSucceeded, "all done");
 }
+
+void OnSetLedBreathSpeed()
+{
+  float value = cmdMessenger.readFloatArg();
+  cmdMessenger.sendCmd(kSetLedBreathSpeed, value);
+  ledBreathSpeed =value ;
+}
+void OnSetLedBreathMax()
+{
+  int value = cmdMessenger.readInt16Arg();
+  cmdMessenger.sendCmd(kSetLedBreathMax, value);
+  ledBreathMax =value ;
+}
+void OnSetLedBreathMin()
+{
+  int value = cmdMessenger.readInt16Arg();
+  cmdMessenger.sendCmd(kSetLedBreathMin, value);
+  ledBreathMin =value ;
+}
+
+

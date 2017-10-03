@@ -20,11 +20,11 @@
     <Setting Name="ReceiptNo" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
-    <Setting Name="LEDbrightness" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">255</Value>
+    <Setting Name="LEDbrightnessMax" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="LEDspeed" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">100</Value>
+    <Setting Name="LEDspeed" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0.02</Value>
     </Setting>
     <Setting Name="ArduinoPort" Type="System.String" Scope="User">
       <Value Profile="(Default)">COM5</Value>
@@ -34,6 +34,9 @@
     </Setting>
     <Setting Name="TestTapAmount" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="ledBrightnessMin" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -58,24 +58,28 @@
             this.label18 = new System.Windows.Forms.Label();
             this.FakeSodaButton = new System.Windows.Forms.Button();
             this.FakeGrainButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.arduinoConnectCheckBox = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.LedBreathSpeedNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.LedBreathMinNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.LedBreathMaxNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.AmountText = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LedBreathSpeedNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LedBreathMinNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LedBreathMaxNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -107,7 +111,7 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusStripProgressBar,
             this.statusStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 355);
+            this.statusStrip.Location = new System.Drawing.Point(0, 374);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(937, 22);
             this.statusStrip.TabIndex = 9;
@@ -157,7 +161,7 @@
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
             this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.logTextBox.Size = new System.Drawing.Size(581, 216);
+            this.logTextBox.Size = new System.Drawing.Size(581, 235);
             this.logTextBox.TabIndex = 24;
             this.logTextBox.WordWrap = false;
             // 
@@ -293,14 +297,15 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(239, 283);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(79, 13);
+            this.label15.Size = new System.Drawing.Size(101, 13);
             this.label15.TabIndex = 16;
-            this.label15.Text = "LED brightness";
+            this.label15.Text = "LED brightness max";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(239, 304);
+            this.label16.Location = new System.Drawing.Point(251, 329);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(84, 13);
             this.label16.TabIndex = 16;
@@ -309,7 +314,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(241, 329);
+            this.label17.Location = new System.Drawing.Point(241, 351);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(65, 13);
             this.label17.TabIndex = 16;
@@ -354,6 +359,47 @@
             this.FakeGrainButton.UseVisualStyleBackColor = true;
             this.FakeGrainButton.Click += new System.EventHandler(this.FakeGrainButton_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(598, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(136, 13);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "SAM0 2017 by Arvid&&Marie";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(598, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(324, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Based un SumUp SampleApp and CmdMessenge ArduinoController";
+            // 
+            // arduinoConnectCheckBox
+            // 
+            this.arduinoConnectCheckBox.AutoSize = true;
+            this.arduinoConnectCheckBox.Checked = true;
+            this.arduinoConnectCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.arduinoConnectCheckBox.Enabled = false;
+            this.arduinoConnectCheckBox.Location = new System.Drawing.Point(38, 279);
+            this.arduinoConnectCheckBox.Name = "arduinoConnectCheckBox";
+            this.arduinoConnectCheckBox.Size = new System.Drawing.Size(104, 17);
+            this.arduinoConnectCheckBox.TabIndex = 30;
+            this.arduinoConnectCheckBox.Text = "Arduino Enabled";
+            this.arduinoConnectCheckBox.UseVisualStyleBackColor = true;
+            this.arduinoConnectCheckBox.Click += new System.EventHandler(this.arduinoConnectCheckBox_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(239, 307);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(98, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "LED brightness min";
+            // 
             // numericUpDown7
             // 
             this.numericUpDown7.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "TestTapAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -376,7 +422,7 @@
             // textBox2
             // 
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM0application.Properties.Settings.Default, "ArduinoPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBox2.Location = new System.Drawing.Point(199, 326);
+            this.textBox2.Location = new System.Drawing.Point(199, 348);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(43, 20);
             this.textBox2.TabIndex = 32;
@@ -397,33 +443,54 @@
             this.numericUpDown4.ThousandsSeparator = true;
             this.numericUpDown4.Value = global::SAM0application.Properties.Settings.Default.ReceiptNo;
             // 
-            // numericUpDown6
+            // LedBreathSpeedNumericUpDown
             // 
-            this.numericUpDown6.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "LEDspeed", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numericUpDown6.Location = new System.Drawing.Point(199, 302);
-            this.numericUpDown6.Maximum = new decimal(new int[] {
+            this.LedBreathSpeedNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "LEDspeed", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.LedBreathSpeedNumericUpDown.DecimalPlaces = 3;
+            this.LedBreathSpeedNumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+            this.LedBreathSpeedNumericUpDown.Location = new System.Drawing.Point(199, 327);
+            this.LedBreathSpeedNumericUpDown.Maximum = new decimal(new int[] {
             200,
             0,
             0,
             0});
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(43, 20);
-            this.numericUpDown6.TabIndex = 31;
-            this.numericUpDown6.Value = global::SAM0application.Properties.Settings.Default.LEDspeed;
+            this.LedBreathSpeedNumericUpDown.Name = "LedBreathSpeedNumericUpDown";
+            this.LedBreathSpeedNumericUpDown.Size = new System.Drawing.Size(54, 20);
+            this.LedBreathSpeedNumericUpDown.TabIndex = 31;
+            this.LedBreathSpeedNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.LEDspeed;
             // 
-            // numericUpDown5
+            // LedBreathMinNumericUpDown
             // 
-            this.numericUpDown5.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "LEDbrightness", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numericUpDown5.Location = new System.Drawing.Point(199, 281);
-            this.numericUpDown5.Maximum = new decimal(new int[] {
+            this.LedBreathMinNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "ledBrightnessMin", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.LedBreathMinNumericUpDown.Location = new System.Drawing.Point(199, 305);
+            this.LedBreathMinNumericUpDown.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(43, 20);
-            this.numericUpDown5.TabIndex = 31;
-            this.numericUpDown5.Value = global::SAM0application.Properties.Settings.Default.LEDbrightness;
+            this.LedBreathMinNumericUpDown.Name = "LedBreathMinNumericUpDown";
+            this.LedBreathMinNumericUpDown.Size = new System.Drawing.Size(43, 20);
+            this.LedBreathMinNumericUpDown.TabIndex = 31;
+            this.LedBreathMinNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.ledBrightnessMin;
+            // 
+            // LedBreathMaxNumericUpDown
+            // 
+            this.LedBreathMaxNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "LEDbrightnessMax", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.LedBreathMaxNumericUpDown.Location = new System.Drawing.Point(199, 281);
+            this.LedBreathMaxNumericUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.LedBreathMaxNumericUpDown.Name = "LedBreathMaxNumericUpDown";
+            this.LedBreathMaxNumericUpDown.Size = new System.Drawing.Size(43, 20);
+            this.LedBreathMaxNumericUpDown.TabIndex = 31;
+            this.LedBreathMaxNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.LEDbrightnessMax;
+            this.LedBreathMaxNumericUpDown.ValueChanged += new System.EventHandler(this.LedBreathMaxNumericUpDown_ValueChanged);
             // 
             // numericUpDown2
             // 
@@ -489,6 +556,7 @@
             this.checkBox6.AutoSize = true;
             this.checkBox6.Checked = global::SAM0application.Properties.Settings.Default.PrintingShortVersion;
             this.checkBox6.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM0application.Properties.Settings.Default, "PrintingShortVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox6.Enabled = false;
             this.checkBox6.Location = new System.Drawing.Point(199, 233);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(124, 17);
@@ -502,6 +570,7 @@
             this.checkBox5.Checked = global::SAM0application.Properties.Settings.Default.PrintingEnabled;
             this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox5.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM0application.Properties.Settings.Default, "PrintingEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox5.Enabled = false;
             this.checkBox5.Location = new System.Drawing.Point(199, 214);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(93, 17);
@@ -518,29 +587,11 @@
             this.AmountText.TabIndex = 12;
             this.AmountText.Text = global::SAM0application.Properties.Settings.Default.PaymentTestAmount;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(598, 58);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 13);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "SAM0 2017 by Arvid&&Marie";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(598, 71);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(324, 13);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "Based un SumUp SampleApp and CmdMessenge ArduinoController";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(937, 377);
+            this.ClientSize = new System.Drawing.Size(937, 396);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.FakeGrainButton);
@@ -549,11 +600,13 @@
             this.Controls.Add(this.SaveSettingsButton);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.numericUpDown4);
-            this.Controls.Add(this.numericUpDown6);
-            this.Controls.Add(this.numericUpDown5);
+            this.Controls.Add(this.LedBreathSpeedNumericUpDown);
+            this.Controls.Add(this.LedBreathMinNumericUpDown);
+            this.Controls.Add(this.LedBreathMaxNumericUpDown);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.arduinoConnectCheckBox);
             this.Controls.Add(this.PumpTapTestCheckbox);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
@@ -570,6 +623,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.AmountText);
@@ -591,8 +645,9 @@
             this.statusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LedBreathSpeedNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LedBreathMinNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LedBreathMaxNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -631,9 +686,9 @@
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.NumericUpDown LedBreathMaxNumericUpDown;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
+        private System.Windows.Forms.NumericUpDown LedBreathSpeedNumericUpDown;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button SaveSettingsButton;
@@ -644,6 +699,9 @@
         private System.Windows.Forms.Button FakeGrainButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox arduinoConnectCheckBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown LedBreathMinNumericUpDown;
     }
 }
 

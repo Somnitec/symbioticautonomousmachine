@@ -572,6 +572,8 @@ namespace SAM0application
             AppendToLog(@"testing tap with " + (int)Properties.Settings.Default.TestTapAmount + "mL");
         }
 
+     
+
         private void SaveSettingsButton_click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
@@ -580,11 +582,9 @@ namespace SAM0application
 
         private void ledTestCheckBox_click(object sender, EventArgs e)
         {
-            var command = new SendCommand((int)Command.TestLeds, ledTestCheckBox.Checked);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            //var command = new SendCommand((int)Command.PumpTap, PumpTapTestCheckbox.Checked);
+            //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
-
-     
 
         private void PumpTapTestCheckbox_Click(object sender, EventArgs e)
         {
@@ -604,7 +604,21 @@ namespace SAM0application
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
 
+        private void arduinoConnectCheckBox_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LedBreathMaxNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            var command = new SendCommand((int)Command.SetLedBreathMax, LedBreathMaxNumericUpDown.Value.ToString());
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+        }
     }
 
     internal enum UIState
