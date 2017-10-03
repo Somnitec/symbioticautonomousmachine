@@ -46,9 +46,6 @@
             this.TapTestButton = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.ledTestCheckBox = new System.Windows.Forms.CheckBox();
-            this.PumpFlavorTestCheckbox = new System.Windows.Forms.CheckBox();
-            this.Pump1stFermTestCheckbox = new System.Windows.Forms.CheckBox();
-            this.Pump2ndFermTestCheckbox = new System.Windows.Forms.CheckBox();
             this.PumpTapTestCheckbox = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -253,43 +250,10 @@
             this.ledTestCheckBox.UseVisualStyleBackColor = true;
             this.ledTestCheckBox.Click += new System.EventHandler(this.ledTestCheckBox_click);
             // 
-            // PumpFlavorTestCheckbox
-            // 
-            this.PumpFlavorTestCheckbox.AutoSize = true;
-            this.PumpFlavorTestCheckbox.Location = new System.Drawing.Point(22, 236);
-            this.PumpFlavorTestCheckbox.Name = "PumpFlavorTestCheckbox";
-            this.PumpFlavorTestCheckbox.Size = new System.Drawing.Size(109, 17);
-            this.PumpFlavorTestCheckbox.TabIndex = 30;
-            this.PumpFlavorTestCheckbox.Text = "Pump Flavor Test";
-            this.PumpFlavorTestCheckbox.UseVisualStyleBackColor = true;
-            this.PumpFlavorTestCheckbox.Click += new System.EventHandler(this.PumpFlavorTestCheckbox_Click);
-            // 
-            // Pump1stFermTestCheckbox
-            // 
-            this.Pump1stFermTestCheckbox.AutoSize = true;
-            this.Pump1stFermTestCheckbox.Location = new System.Drawing.Point(22, 253);
-            this.Pump1stFermTestCheckbox.Name = "Pump1stFermTestCheckbox";
-            this.Pump1stFermTestCheckbox.Size = new System.Drawing.Size(117, 17);
-            this.Pump1stFermTestCheckbox.TabIndex = 30;
-            this.Pump1stFermTestCheckbox.Text = "Pump 1st ferm Test";
-            this.Pump1stFermTestCheckbox.UseVisualStyleBackColor = true;
-            this.Pump1stFermTestCheckbox.Click += new System.EventHandler(this.Pump1stFermTestCheckbox_Click);
-            // 
-            // Pump2ndFermTestCheckbox
-            // 
-            this.Pump2ndFermTestCheckbox.AutoSize = true;
-            this.Pump2ndFermTestCheckbox.Location = new System.Drawing.Point(22, 270);
-            this.Pump2ndFermTestCheckbox.Name = "Pump2ndFermTestCheckbox";
-            this.Pump2ndFermTestCheckbox.Size = new System.Drawing.Size(121, 17);
-            this.Pump2ndFermTestCheckbox.TabIndex = 30;
-            this.Pump2ndFermTestCheckbox.Text = "Pump 2nd ferm Test";
-            this.Pump2ndFermTestCheckbox.UseVisualStyleBackColor = true;
-            this.Pump2ndFermTestCheckbox.Click += new System.EventHandler(this.Pump2ndFermTestCheckbox_Click);
-            // 
             // PumpTapTestCheckbox
             // 
             this.PumpTapTestCheckbox.AutoSize = true;
-            this.PumpTapTestCheckbox.Location = new System.Drawing.Point(22, 287);
+            this.PumpTapTestCheckbox.Location = new System.Drawing.Point(22, 242);
             this.PumpTapTestCheckbox.Name = "PumpTapTestCheckbox";
             this.PumpTapTestCheckbox.Size = new System.Drawing.Size(99, 17);
             this.PumpTapTestCheckbox.TabIndex = 30;
@@ -591,9 +555,6 @@
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.PumpTapTestCheckbox);
-            this.Controls.Add(this.Pump2ndFermTestCheckbox);
-            this.Controls.Add(this.Pump1stFermTestCheckbox);
-            this.Controls.Add(this.PumpFlavorTestCheckbox);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.ledTestCheckBox);
@@ -659,9 +620,6 @@
         private System.Windows.Forms.Button TapTestButton;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckBox ledTestCheckBox;
-        private System.Windows.Forms.CheckBox PumpFlavorTestCheckbox;
-        private System.Windows.Forms.CheckBox Pump1stFermTestCheckbox;
-        private System.Windows.Forms.CheckBox Pump2ndFermTestCheckbox;
         private System.Windows.Forms.CheckBox PumpTapTestCheckbox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown numericUpDown1;

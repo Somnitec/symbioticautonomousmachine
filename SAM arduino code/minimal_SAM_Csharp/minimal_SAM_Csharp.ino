@@ -1,155 +1,93 @@
+#include <Bounce2.h>
 #include <CmdMessenger.h>  // CmdMessenger
 
 CmdMessenger cmdMessenger = CmdMessenger(Serial);
 
-// This is the list of recognized commands. These can be commands that can either be sent or received.
-// In order to receive, attach a callback function to these events
-enum
-{
-  kAcknowledge,
-  kError,
-  kReset,
-  kTestArduino,
-  kTestTap,
-  kTestLeds,
-  kPumpFlavor,
-  kPump1stFerm,
-  kPump2ndFerm,
-  kPumpTap,
-  kSodaButtonPressed,
-  kGrainButtonPressed,
-  kTapAmount,
-  kTapSucceeded,
-};
+#define statusLedPin 13
+#define ledPinTop 11
+#define ledPinMiddle 10
+#define ledPinBottom 9
+#define grainButtonPin 8
+#define sodaButtonPin 7
+#define grainButtonLedPin 6
+#define sodaButtonLedPin 5
+#define pumpPin 3
+#define flowSensorPin 2// 1L = 5880 pulses
 
-// Callbacks define on which received commands we take action
-void attachCommandCallbacks()
-{
-  // Attach callback methods
-  cmdMessenger.attach(OnUnknownCommand);
-  cmdMessenger.attach(kReset, OnReset);
-  cmdMessenger.attach(kTestArduino, OnTestArduino);
-  cmdMessenger.attach(kTestTap, OnTestTap);
-  cmdMessenger.attach(kTestLeds, OnTestLeds);
-  cmdMessenger.attach(kPumpFlavor, OnPumpFlavor);
-  cmdMessenger.attach(kPump1stFerm, OnPump1stFerm);
-  cmdMessenger.attach(kPump2ndFerm, OnPump2ndFerm);
-  cmdMessenger.attach(kPumpTap, OnPumpTap);
-  cmdMessenger.attach(kSodaButtonPressed, OnSodaButtonPressed);
-  cmdMessenger.attach(kGrainButtonPressed, OnGrainButtonPressed);
-  cmdMessenger.attach(kTapAmount, OnTapAmount);
-}
+volatile double waterFlow = 0;
 
-// Called when a received command has no attached function
-void OnUnknownCommand()
-{
-  cmdMessenger.sendCmd(kError, "Command without attached callback");
-}
+#define  buttonUpdateTime 1//ms
+#define  flowUpdateTime 10//ms
+#define  ledUpdateTime 10//ms
+#define  serialUpdateTime 1//ms
 
-void OnReset()
-{
-  cmdMessenger.sendCmd(kReset);
-  //return the states back to how they were
-  //reset animation
-}
+//idle animation
+float ledBreathSpeed = 0.02;
+int ledBreathMax = 50;
+int ledBreathMin = 20;
 
-void OnTestArduino()
-{
-  cmdMessenger.sendCmd(kTestArduino, String("I was send ").concat(String(cmdMessenger.readInt16Arg())));
-  blinkLed(2);
-}
+//waiting animation
 
 
-void OnTestTap()
-{
+//error
+#define blinkOnTime 100
+#define blinkOffTime 120
+#define amountOfBlinks 2
 
-  cmdMessenger.sendCmd(kTestTap,"tapping now mL->");
-  cmdMessenger.sendCmd(kTestTap,cmdMessenger.readInt16Arg());
-  blinkLed(5);
-  cmdMessenger.sendCmd(kTestTap, "tapping done");
-}
+#define blinkBrightness 30
 
-void OnTestLeds()
-{
-  cmdMessenger.sendCmd(kTestLeds, cmdMessenger.readBoolArg());
-}
+//pumping
+#define liquidAmount 705//ml
 
-void OnPumpFlavor()
-{
-  cmdMessenger.sendCmd(kPumpFlavor, cmdMessenger.readBoolArg());
-}
-
-void OnPump1stFerm()
-{
-  cmdMessenger.sendCmd(kPump1stFerm, cmdMessenger.readBoolArg());
-}
-
-void OnPump2ndFerm()
-{
-  cmdMessenger.sendCmd(kPump2ndFerm, cmdMessenger.readBoolArg());
-}
-
-void OnPumpTap()
-{
-  cmdMessenger.sendCmd(kPumpTap, cmdMessenger.readBoolArg());
-}
-
-void OnSodaButtonPressed()
-{
-  cmdMessenger.sendCmd(kSodaButtonPressed);
-}
-
-void OnGrainButtonPressed()
-{
-  cmdMessenger.sendCmd(kGrainButtonPressed);
-  
-}
-
-void OnTapAmount()
-{
-
-  cmdMessenger.sendCmd(kTapAmount,"tapping now mL->");
-  cmdMessenger.sendCmd(kTapAmount,cmdMessenger.readInt16Arg());
-  blinkLed(7);
-  cmdMessenger.sendCmd(kTapAmount, "tapping done");
-  cmdMessenger.sendCmd(kTapSucceeded, "all done");
-}
+//printing
 
 
+int ledState = 0;
+
+Bounce sodaButton = Bounce(); 
+Bounce grainButton = Bounce(); 
 void setup()
 {
-  Serial.begin(115200);
+  setupSerial();
 
-  // Adds newline to every command
-  //cmdMessenger.printLfCr();
+  pinMode(statusLedPin, OUTPUT);
 
-  // Attach my application's user-defined callback methods
-  attachCommandCallbacks();
+  pinMode(ledPinTop, OUTPUT);
+  pinMode(ledPinMiddle, OUTPUT);
+  pinMode(ledPinBottom, OUTPUT);
 
-  cmdMessenger.sendCmd(kAcknowledge, "Arduino has started!");
+  pinMode(sodaButtonPin, INPUT_PULLUP);
+  pinMode(grainButtonPin, INPUT_PULLUP);
+  pinMode(sodaButtonLedPin, OUTPUT);
+  pinMode(grainButtonLedPin, OUTPUT);
+  sodaButton.attach(sodaButtonPin);
+  sodaButton.interval(10);
+  grainButton.attach(grainButtonPin);
+  grainButton.interval(10);
 
-  pinMode(13, OUTPUT);
+  pinMode(pumpPin, OUTPUT);
+
+  attachInterrupt(0, flowSensor, RISING); //flowsensor setup
+
+
   blinkLed(3);
 }
 
 // Loop function
 void loop()
 {
-  // Process incoming serial data, and perform callbacks
-  cmdMessenger.feedinSerialData();
-  delay(1);
-  //cmdMessenger.sendCmd(kTest,random(100));
+  buttonStuff();
+  flowStuff();
+  ledStuff();
+  serialStuff();
+
+  //delay(1);
 
 }
 
-void blinkLed(int amount) {
-  int blinkTime = 200;
-  for (int i = 0; i < amount; i++ ) {
-    digitalWrite(13, HIGH);
-    delay(blinkTime);
-    digitalWrite(13, LOW);
-    delay(blinkTime);
-  }
-
+float fmap(float x, float in_min, float in_max, float out_min, float out_max)
+{
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
+
 

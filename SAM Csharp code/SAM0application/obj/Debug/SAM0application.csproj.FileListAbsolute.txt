@@ -46,3 +46,19 @@ C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\S
 C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SAM0application\obj\Debug\SAM0application.csproj.CoreCompileInputs.cache
 C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SAM0application\obj\Debug\SAM0application.exe
 C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\SAM0application\obj\Debug\SAM0application.pdb
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\bin\Debug\SAM0application.exe.config
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\bin\Debug\SAM0application.exe
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\bin\Debug\SAM0application.pdb
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\bin\Debug\CommandMessenger.dll
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\bin\Debug\CommandMessenger.Transport.Serial.dll
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\bin\Debug\SumUp.Sdk.dll
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\bin\Debug\CommandMessenger.Transport.Serial.pdb
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\bin\Debug\CommandMessenger.pdb
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\obj\Debug\SAM0application.csprojResolveAssemblyReference.cache
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\obj\Debug\SAM0application.MainForm.resources
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\obj\Debug\SAM0application.Properties.Resources.resources
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\obj\Debug\SAM0application.csproj.GenerateResource.Cache
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\obj\Debug\SAM0application.csproj.CoreCompileInputs.cache
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\obj\Debug\SAM0application.exe
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\obj\Debug\SAM0application.pdb

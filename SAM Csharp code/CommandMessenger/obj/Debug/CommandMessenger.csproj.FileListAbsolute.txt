@@ -16,3 +16,9 @@ C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\S
 C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
 C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
 C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb

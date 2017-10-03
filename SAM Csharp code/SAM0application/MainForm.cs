@@ -127,6 +127,12 @@ namespace SAM0application
         {
             logInButton.PerformClick();
             Console.WriteLine(@"mainform loaded");
+            ArduinoSetup();
+        }
+
+        private void ArduinoSetup()
+        {
+            //add all the setting
             var command = new SendCommand((int)Command.Acknowledge);
             _cmdMessenger.SendCommand(new SendCommand((int)Command.Acknowledge));
         }
@@ -400,7 +406,10 @@ namespace SAM0application
             _cmdMessenger.Attach((int)Command.GrainButtonPressed, OnGrainButtonPressed);
             _cmdMessenger.Attach((int)Command.Reset, OnReset);
             _cmdMessenger.Attach((int)Command.TapSucceeded, OnTapSucceeded);
+            _cmdMessenger.Attach((int)Command.PumpTap, OnPumpTap);
             
+
+
         }
 
         // ------------------  CALLBACKS ---------------------
@@ -417,7 +426,16 @@ namespace SAM0application
             //int message = arguments.ReadInt16Arg();
             String message = arguments.ReadStringArg();
             //Console.WriteLine(@"TEST Tap Received > " + message);
-            AppendToLog(@"TEST Tap Received > " + message);
+            AppendToLog(@"TEST Tap for mL > " + message);
+
+        }
+
+        void OnPumpTap(ReceivedCommand arguments)
+        {
+            //int message = arguments.ReadInt16Arg();
+            String message = arguments.ReadStringArg();
+            //Console.WriteLine(@"TEST Tap Received > " + message);
+            AppendToLog(@"Tap turned to > " + message);
 
         }
 
@@ -566,23 +584,7 @@ namespace SAM0application
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
 
-        private void PumpFlavorTestCheckbox_Click(object sender, EventArgs e)
-        {
-            var command = new SendCommand((int)Command.PumpFlavor, PumpFlavorTestCheckbox.Checked);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-        }
-
-        private void Pump1stFermTestCheckbox_Click(object sender, EventArgs e)
-        {
-            var command = new SendCommand((int)Command.Pump1stFerm, Pump1stFermTestCheckbox.Checked);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-        }
-
-        private void Pump2ndFermTestCheckbox_Click(object sender, EventArgs e)
-        {
-            var command = new SendCommand((int)Command.Pump2ndFerm, Pump2ndFermTestCheckbox.Checked);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-        }
+     
 
         private void PumpTapTestCheckbox_Click(object sender, EventArgs e)
         {
@@ -628,15 +630,15 @@ namespace SAM0application
         TestArduino,
         TestTap,
         TestLeds,
-        PumpFlavor,
-        Pump1stFerm,
-        Pump2ndFerm,
         PumpTap,
         SodaButtonPressed,
         GrainButtonPressed,
         TapAmount,
         TapSucceeded,
-
+        SetLedState,
+        SetLedBreathSpeed,
+        SetLedBreathMax,
+        SetLedBreathMin,
     };
 
 }
