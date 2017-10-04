@@ -3,12 +3,12 @@
 
 CmdMessenger cmdMessenger = CmdMessenger(Serial);
 
-#define statusLedPin 13
-#define ledPinTop 11
-#define ledPinMiddle 10
-#define ledPinBottom 9
-#define grainButtonPin 8
-#define sodaButtonPin 7
+#define statusLedPin 13 
+#define ledPinTop 11 //timer2
+#define ledPinMiddle 10 //timer1
+#define ledPinBottom 9 //timer1
+#define grainButtonPin 8 
+#define sodaButtonPin 7 
 #define grainButtonLedPin 6
 #define sodaButtonLedPin 5
 #define pumpPin 3
@@ -47,6 +47,16 @@ Bounce sodaButton = Bounce();
 Bounce grainButton = Bounce();
 void setup()
 {
+  //improving PWM speed
+  //ideal speed is = 
+
+  //timer 2 = pin 11 = top vat
+  TCCR2B = TCCR2B & 0b11111000 | 0x02; //=3921 Hz instead of 490 Hz
+  //timer 1 = pins 10 & 9 = middle and bottom vat
+  TCCR1B = TCCR1B & 0b11111000 | 0x02;//=3921 Hz instead of 490 Hz
+  //timer ?? = pins 8 & 7 = buttons  
+  //TCCR4B = TCCR4B & 0b11111000 | 0x01;  
+  
   setupSerial();
 
   pinMode(statusLedPin, OUTPUT);
