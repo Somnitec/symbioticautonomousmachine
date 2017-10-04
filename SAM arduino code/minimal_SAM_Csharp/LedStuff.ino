@@ -12,44 +12,38 @@ void ledStuff() {
     ledTimer = currentMillis;
     ledPos += ledBreathSpeed;
     if (ledPos > TWO_PI)ledPos -= TWO_PI;
+    breath();
 
     //idle state
     if (ledState == 0) {
-      breath();
+
       analogWrite(grainButtonLedPin, fmap(sin(ledPos + (3 * PI) / 3), -1, 1, 100, 255));
       analogWrite(sodaButtonLedPin, fmap(sin(ledPos + (4 * PI) / 3), -1, 1, 100, 255));
 
     }//waiting for payment state
     else if (ledState == 1) {
-      breath();
+
       analogWrite(sodaButtonLedPin, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
     }//error state
     else if (ledState == 2) {
       for (int i = 0; i < amountOfBlinks; i++) {
-        //analogWrite(ledPinTop, blinkBrightness);
-        //analogWrite(ledPinMiddle, blinkBrightness);
-        //analogWrite(ledPinBottom, blinkBrightness);
         analogWrite(sodaButtonLedPin, 0);
         analogWrite(grainButtonLedPin, 255);
         delay(blinkOnTime);
-        //analogWrite(ledPinTop, 0);
-        //analogWrite(ledPinMiddle, 0);
-        //analogWrite(ledPinBottom, 0);
         analogWrite(grainButtonLedPin, 0);
         delay(blinkOffTime);
       }
-      ledState = 0;
+      //ledState = 0;
     }//pumping state
     else if (ledState == 3) {
-      breath();
 
-      analogWrite(sodaButtonLedPin, 10);
+      analogWrite(sodaButtonLedPin, fmap(sin(ledPos * 10 + (6 * PI) / 3), -1, 1, 50, 255));
+      
       analogWrite(grainButtonLedPin, 0);
     }//printing state
     else if (ledState == 4) {
-      breath();
 
-      analogWrite(sodaButtonLedPin, fmap(sin(ledPos * 10 + (6 * PI) / 3), -1, 1, 50, 255));
+      analogWrite(sodaButtonLedPin, fmap(sin(ledPos * 10 + (6 * PI) / 5), -1, 1, 50, 255));
       analogWrite(grainButtonLedPin, 0);
     }//test state
     else if (ledState == 5) {

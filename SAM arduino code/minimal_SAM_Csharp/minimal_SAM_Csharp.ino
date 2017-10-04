@@ -17,7 +17,7 @@ CmdMessenger cmdMessenger = CmdMessenger(Serial);
 volatile double waterFlow = 0;
 
 #define  buttonUpdateTime 1//ms
-#define  flowUpdateTime 10//ms
+#define  flowUpdateTime 1//ms
 #define  ledUpdateTime 10//ms
 #define  serialUpdateTime 1//ms
 
@@ -37,7 +37,8 @@ int ledBreathMin = 20;
 #define blinkBrightness 30
 
 //pumping
-#define liquidAmount 705//ml
+boolean nowTapping = false;
+int tapAmount=0;
 
 //printing
 

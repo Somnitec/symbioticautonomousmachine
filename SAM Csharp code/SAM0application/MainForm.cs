@@ -22,6 +22,7 @@ namespace SAM0application
         private SumUpService _sumUpService;
         private Tuple<Payment, CancellationTokenSource> _currentPayment;
         private bool realPaymentHappening = false;
+        private int price = 111;
 
         // ======= Authenticate with SumUp system and create SDK instance =======		
         private async Task CreateSumUpService(string clientId, string clientSecret, string email, string password)
@@ -191,7 +192,10 @@ namespace SAM0application
             string paymentResultShort = "Something went wrong";
             try
             {
-                PaymentResult paymentResult = await DoSumUpPayment(amount, method, connection); //, "SAM's Kefir Soda at " + DateTime.Now.ToShortTimeString() //can do, but will need to be unique every time
+                Properties.Settings.Default.ReceiptNo++;
+                ReceiptNoNumericUpDown.Update();
+                Properties.Settings.Default.Save();
+                PaymentResult paymentResult = await DoSumUpPayment(amount, method, connection,"SAM's Kefir Soda No "+ Properties.Settings.Default.ReceiptNo + " at "+ DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString()); //, "SAM's Kefir Soda at " + DateTime.Now.ToShortTimeString() //can do, but will need to be unique every time
                 paymentResultShort = string.Format("{0}", paymentResult.Status);
 
                 paymentResultText = string.Format(
@@ -238,6 +242,7 @@ namespace SAM0application
                         AppendToLog("payment was successfull, now tapping");
                         var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
                     }
                     else
                     {
@@ -466,8 +471,11 @@ namespace SAM0application
         private void makePayment()
         {
 
-            int price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
-            AppendToLog(@"Starting payment for €" + price / 100.0);
+            price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
+            Properties.Settings.Default.ReceiptNo++;
+            ReceiptNoNumericUpDown.Update();
+            
+            AppendToLog(@"Starting payment for €" + price / 100f+" and receipt no "+ Properties.Settings.Default.ReceiptNo);
             AmountText.Text = price.ToString();
             realPaymentHappening = true;
             PayButton.PerformClick();
@@ -477,14 +485,19 @@ namespace SAM0application
         {
 
             AppendToLog(@"Grain button pressed");
-
+            var command = new SendCommand((int)Command.SetLedState,2);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+             command = new SendCommand((int)Command.SetLedState,0);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            
+            /*
             if (!realPaymentHappening)
             {
                 var command = new SendCommand((int)Command.Reset);
                 _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
             }
             else AppendToLog(@"not resetting, because payment is in progress!");
-
+            */
 
         }
 
@@ -553,32 +566,78 @@ namespace SAM0application
 
         private void PrintTest_click(object sender, EventArgs e)
         {
-            AppendToLog(@"test printing!");
-            PrintDocument printDocument = new PrintDocument();
-            printDocument.PrintPage += PrintTestOnPrintPage;
-            printDocument.Print();
+            
+            AppendToLog(@"test printing receipt "+ Properties.Settings.Default.ReceiptNo);
+
+            PrintReceipt();
         }
 
-        private void PrintTestOnPrintPage(object sender, PrintPageEventArgs e)
-        {
-            Font MainFont = new Font("roboto", 9);
-            e.Graphics.DrawString("This is a successfull test", MainFont, Brushes.Black, 30, 25);
-        }
+  
 
         private void PrintReceipt()
         {
-            PrintDocument printDocument = new PrintDocument();
-            printDocument.PrintPage += PrintReceiptOnPrintPage;
-            printDocument.Print();
+            if (PrintingCheckBox.Checked) {
+                PrintDocument printDocument = new PrintDocument();
+                printDocument.PrintPage += PrintReceiptOnPrintPage;
+                printDocument.Print();
+            }
+            
         }
 
         private void PrintReceiptOnPrintPage(object sender, PrintPageEventArgs e)
         {
-            Font MainFont = new Font("roboto", 9);
-            //e.Graphics.RotateTransform(-180.0f);
-            //e.Graphics.TranslateTransform(-100, -100);
-            e.Graphics.DrawString("SAM", MainFont, Brushes.Black, 30, 25);
-            e.Graphics.DrawString("Sybiotic Autonomous Machine", MainFont, Brushes.Black, 10, 40);
+            int rightpoint = 185;
+            int centerpoint = (int)rightpoint / 2;
+
+            int fontsize = 9;
+            int linedistance = (int)(2.1 * fontsize);
+            Font MainFont = new Font("roboto", fontsize);
+            Font ItalicFont = new Font("roboto", (int)(fontsize * 0.6),FontStyle.Italic);
+            Font BigFont = new Font("roboto", fontsize, FontStyle.Bold);
+            Pen linePen = new Pen(Brushes.Black, 1);
+            StringFormat formatCenter = new StringFormat();
+            formatCenter.Alignment = StringAlignment.Center;
+            StringFormat formatRight = new StringFormat();
+            formatRight.Alignment = StringAlignment.Far;
+
+            e.Graphics.RotateTransform(-180.0f);
+            e.Graphics.TranslateTransform(-rightpoint, -400);
+
+            e.Graphics.DrawString("SAM", BigFont, Brushes.Black, centerpoint, linedistance * 1, formatCenter);
+            e.Graphics.DrawString("Sybiotic Autonomous Machine", BigFont, Brushes.Black, centerpoint, linedistance * 2, formatCenter);
+
+            e.Graphics.DrawLine(linePen, 0, (int)(linedistance * 3.5), 185, (int)(linedistance * 3.5));
+
+            var rect = new RectangleF(0, linedistance * 4, rightpoint, linedistance);
+            e.Graphics.DrawString("receipt No " + Properties.Settings.Default.ReceiptNo, ItalicFont, Brushes.Black, rect);
+            
+            //save also, though maybe place this in the SumUp reference
+            e.Graphics.DrawString(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString(), ItalicFont, Brushes.Black, rect, formatRight);
+
+            float realPrice = price / 100f;
+            float taxPrice = realPrice * 0.06f;
+            float exclPrice = realPrice - taxPrice;
+            AppendToLog(@"printing receipt " + exclPrice.ToString("€0.## + ") + taxPrice.ToString("€0.## =") + realPrice.ToString("€0.##"));
+            rect = new RectangleF(0, linedistance * 6, rightpoint, linedistance);
+            e.Graphics.DrawString("1 cup SAM's kefir soda", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString(exclPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
+            rect = new RectangleF(0, linedistance * 7, rightpoint, linedistance);
+            e.Graphics.DrawString("BTW 6%", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString(taxPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
+            rect = new RectangleF(0, linedistance * 9, rightpoint, linedistance);
+            e.Graphics.DrawString("Total", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString(realPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
+
+            e.Graphics.DrawLine(linePen, 0, (int)(linedistance * 11), 185, (int)(linedistance * 11));
+            
+            e.Graphics.DrawString("Rate your soda out of 5", MainFont, Brushes.Black, centerpoint, linedistance * 12, formatCenter);
+            e.Graphics.DrawString("on twitter @nonhumanSAM", MainFont, Brushes.Black, centerpoint, linedistance * 13, formatCenter);
+            e.Graphics.DrawString("Thanks for keeping me alive", BigFont, Brushes.Black, centerpoint, linedistance * 15, formatCenter);
+            e.Graphics.DrawString("and functioning!", BigFont, Brushes.Black, centerpoint, linedistance * 16, formatCenter);
+            e.Graphics.DrawString("web: sam.nonhuman.club", ItalicFont, Brushes.Black, centerpoint, linedistance * 18, formatCenter);
+            e.Graphics.DrawString("email: sam@nonhuman.club", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 18.5), formatCenter);
+            e.Graphics.DrawString("towards a collaborative future", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 19.5), formatCenter);
+            e.Graphics.DrawString("for man and machine", ItalicFont, Brushes.Black, centerpoint, linedistance * 20, formatCenter);
 
         }
         private void TapTest_click(object sender, EventArgs e)

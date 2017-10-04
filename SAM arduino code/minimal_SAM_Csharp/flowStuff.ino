@@ -3,22 +3,34 @@ void flowStuff() {
   unsigned long currentMillis = millis();
   if (currentMillis - flowTimer >= flowUpdateTime) {
     flowTimer = currentMillis;
-/*
-    if (ledState == 3) {
-      digitalWrite(pumpPin, !digitalRead(pumpPin));
-      if (waterFlow < liquidAmount)digitalWrite(pumpPin, HIGH);
-      else {
-        digitalWrite(pumpPin, LOW);
-        ledState = 4;
-        Serial.println("b");
+    if (nowTapping) {
+      if (waterFlow < tapAmount) {
+        digitalWrite(pumpPin,HIGH);
+        //cmdMessenger.sendCmd(kTapAmount, waterFlow);
+      }else {
+        digitalWrite(pumpPin,LOW);
+        nowTapping = false;
+        cmdMessenger.sendCmd(kTapSucceeded, "all done");
       }
-
-
-      //Serial.print("waterFlow: ");
-      //Serial.print(waterFlow, 3);
-      //Serial.println(" mL");
     }
-    else digitalWrite(pumpPin, LOW);
+
+
+    /*
+        if (ledState == 3) {
+          digitalWrite(pumpPin, !digitalRead(pumpPin));
+          if (waterFlow < liquidAmount)digitalWrite(pumpPin, HIGH);
+          else {
+            digitalWrite(pumpPin, LOW);
+            ledState = 4;
+            Serial.println("b");
+          }
+
+
+          //Serial.print("waterFlow: ");
+          //Serial.print(waterFlow, 3);
+          //Serial.println(" mL");
+        }
+        else digitalWrite(pumpPin, LOW);
     */
   }
 }

@@ -54,7 +54,8 @@ void attachCommandCallbacks()
   cmdMessenger.attach(kTapAmount, OnTapAmount);
   cmdMessenger.attach(kSetLedBreathSpeed, OnSetLedBreathSpeed);
   cmdMessenger.attach(kSetLedBreathMax, OnSetLedBreathMax);
-  cmdMessenger.attach(kSetLedBreathMin, OnSetLedBreathMin);
+  cmdMessenger.attach(kSetLedBreathMin, OnSetLedBreathMin);  
+  cmdMessenger.attach(kSetLedState, OnLedState);
 
 }
 
@@ -95,7 +96,7 @@ void OnTestLeds()
     ledState = 5;
   } else if (value == false) {
     cmdMessenger.sendCmd(kTestLeds, "led stest stopped");
-  ledState = 1;
+    ledState = 0;
   }
 
 }
@@ -127,12 +128,11 @@ void OnGrainButtonPressed()
 
 void OnTapAmount()
 {
-
+  waterFlow =0;
+  nowTapping=true;
+  tapAmount = cmdMessenger.readInt16Arg();  
   cmdMessenger.sendCmd(kTapAmount, "tapping now mL->");
-  cmdMessenger.sendCmd(kTapAmount, cmdMessenger.readInt16Arg());
-  blinkLed(7);
-  cmdMessenger.sendCmd(kTapAmount, "tapping done");
-  cmdMessenger.sendCmd(kTapSucceeded, "all done");
+  cmdMessenger.sendCmd(kTapAmount, tapAmount);
 }
 
 void OnSetLedBreathSpeed()
@@ -141,19 +141,24 @@ void OnSetLedBreathSpeed()
   //float value = stringValue.toFloat();
   float value = cmdMessenger.readFloatArg();
   cmdMessenger.sendCmd(kSetLedBreathSpeed, value);
-  ledBreathSpeed =value ;
+  ledBreathSpeed = value ;
 }
 void OnSetLedBreathMax()
 {
   int value = cmdMessenger.readInt16Arg();
   cmdMessenger.sendCmd(kSetLedBreathMax, value);
-  ledBreathMax =value ;
+  ledBreathMax = value ;
 }
 void OnSetLedBreathMin()
 {
   int value = cmdMessenger.readInt16Arg();
   cmdMessenger.sendCmd(kSetLedBreathMin, value);
-  ledBreathMin =value ;
+  ledBreathMin = value ;
 }
-
+void OnLedState()
+{
+  int value = cmdMessenger.readInt16Arg();
+  cmdMessenger.sendCmd(kSetLedState, value);
+  ledState = value ;
+}
 

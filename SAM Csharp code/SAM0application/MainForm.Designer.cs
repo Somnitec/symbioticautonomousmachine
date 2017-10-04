@@ -64,7 +64,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.ReceiptNoNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LedBreathSpeedNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LedBreathMinNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LedBreathMaxNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -72,11 +72,11 @@
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.PrintingCheckBox = new System.Windows.Forms.CheckBox();
             this.AmountText = new System.Windows.Forms.TextBox();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceiptNoNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathSpeedNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathMinNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathMaxNumericUpDown)).BeginInit();
@@ -427,20 +427,20 @@
             this.textBox2.TabIndex = 32;
             this.textBox2.Text = global::SAM0application.Properties.Settings.Default.ArduinoPort;
             // 
-            // numericUpDown4
+            // ReceiptNoNumericUpDown
             // 
-            this.numericUpDown4.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "ReceiptNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numericUpDown4.Location = new System.Drawing.Point(199, 256);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.ReceiptNoNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "ReceiptNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ReceiptNoNumericUpDown.Location = new System.Drawing.Point(199, 256);
+            this.ReceiptNoNumericUpDown.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(43, 20);
-            this.numericUpDown4.TabIndex = 31;
-            this.numericUpDown4.ThousandsSeparator = true;
-            this.numericUpDown4.Value = global::SAM0application.Properties.Settings.Default.ReceiptNo;
+            this.ReceiptNoNumericUpDown.Name = "ReceiptNoNumericUpDown";
+            this.ReceiptNoNumericUpDown.Size = new System.Drawing.Size(43, 20);
+            this.ReceiptNoNumericUpDown.TabIndex = 31;
+            this.ReceiptNoNumericUpDown.ThousandsSeparator = true;
+            this.ReceiptNoNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.ReceiptNo;
             // 
             // LedBreathSpeedNumericUpDown
             // 
@@ -565,19 +565,18 @@
             this.checkBox6.Text = "Printing short version";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // PrintingCheckBox
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Checked = global::SAM0application.Properties.Settings.Default.PrintingEnabled;
-            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox5.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM0application.Properties.Settings.Default, "PrintingEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBox5.Enabled = false;
-            this.checkBox5.Location = new System.Drawing.Point(199, 214);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(93, 17);
-            this.checkBox5.TabIndex = 30;
-            this.checkBox5.Text = "Printing on/off";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.PrintingCheckBox.AutoSize = true;
+            this.PrintingCheckBox.Checked = global::SAM0application.Properties.Settings.Default.PrintingEnabled;
+            this.PrintingCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.PrintingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM0application.Properties.Settings.Default, "PrintingEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.PrintingCheckBox.Location = new System.Drawing.Point(199, 214);
+            this.PrintingCheckBox.Name = "PrintingCheckBox";
+            this.PrintingCheckBox.Size = new System.Drawing.Size(93, 17);
+            this.PrintingCheckBox.TabIndex = 30;
+            this.PrintingCheckBox.Text = "Printing on/off";
+            this.PrintingCheckBox.UseVisualStyleBackColor = true;
             // 
             // AmountText
             // 
@@ -600,7 +599,7 @@
             this.Controls.Add(this.numericUpDown7);
             this.Controls.Add(this.SaveSettingsButton);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.numericUpDown4);
+            this.Controls.Add(this.ReceiptNoNumericUpDown);
             this.Controls.Add(this.LedBreathSpeedNumericUpDown);
             this.Controls.Add(this.LedBreathMinNumericUpDown);
             this.Controls.Add(this.LedBreathMaxNumericUpDown);
@@ -610,7 +609,7 @@
             this.Controls.Add(this.arduinoConnectCheckBox);
             this.Controls.Add(this.PumpTapTestCheckbox);
             this.Controls.Add(this.checkBox6);
-            this.Controls.Add(this.checkBox5);
+            this.Controls.Add(this.PrintingCheckBox);
             this.Controls.Add(this.ledTestCheckBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -645,7 +644,7 @@
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceiptNoNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathSpeedNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathMinNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathMaxNumericUpDown)).EndInit();
@@ -683,9 +682,9 @@
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox PrintingCheckBox;
         private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown ReceiptNoNumericUpDown;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.NumericUpDown LedBreathMaxNumericUpDown;
         private System.Windows.Forms.Label label16;
