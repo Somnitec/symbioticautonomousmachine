@@ -382,7 +382,6 @@
             this.arduinoConnectCheckBox.AutoSize = true;
             this.arduinoConnectCheckBox.Checked = true;
             this.arduinoConnectCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.arduinoConnectCheckBox.Enabled = false;
             this.arduinoConnectCheckBox.Location = new System.Drawing.Point(38, 279);
             this.arduinoConnectCheckBox.Name = "arduinoConnectCheckBox";
             this.arduinoConnectCheckBox.Size = new System.Drawing.Size(104, 17);
@@ -462,6 +461,7 @@
             this.LedBreathSpeedNumericUpDown.Size = new System.Drawing.Size(54, 20);
             this.LedBreathSpeedNumericUpDown.TabIndex = 31;
             this.LedBreathSpeedNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.LEDspeed;
+            this.LedBreathSpeedNumericUpDown.ValueChanged += new System.EventHandler(this.LedBreathSpeedNumericUpDown_ValueChanged);
             // 
             // LedBreathMinNumericUpDown
             // 
@@ -476,6 +476,7 @@
             this.LedBreathMinNumericUpDown.Size = new System.Drawing.Size(43, 20);
             this.LedBreathMinNumericUpDown.TabIndex = 31;
             this.LedBreathMinNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.ledBrightnessMin;
+            this.LedBreathMinNumericUpDown.ValueChanged += new System.EventHandler(this.LedBreathMinNumericUpDown_ValueChanged);
             // 
             // LedBreathMaxNumericUpDown
             // 

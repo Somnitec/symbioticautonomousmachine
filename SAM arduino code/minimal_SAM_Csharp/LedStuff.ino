@@ -5,24 +5,24 @@
 //4=cup full, printing note, sends back '0' to ack
 
 unsigned long ledTimer = 0;
-float ledstate = 0;
+float ledPos = 0;
 void ledStuff() {
   unsigned long currentMillis = millis();
   if (currentMillis - ledTimer >= ledUpdateTime) {
     ledTimer = currentMillis;
-    ledstate += ledBreathSpeed;
-    if (ledstate > TWO_PI)ledstate -= TWO_PI;
+    ledPos += ledBreathSpeed;
+    if (ledPos > TWO_PI)ledPos -= TWO_PI;
 
     //idle state
     if (ledState == 0) {
       breath();
-      analogWrite(grainButtonLedPin, fmap(sin(ledstate + (3 * PI) / 3), -1, 1, 100, 255));
-      analogWrite(sodaButtonLedPin, fmap(sin(ledstate + (4 * PI) / 3), -1, 1, 100, 255));
+      analogWrite(grainButtonLedPin, fmap(sin(ledPos + (3 * PI) / 3), -1, 1, 100, 255));
+      analogWrite(sodaButtonLedPin, fmap(sin(ledPos + (4 * PI) / 3), -1, 1, 100, 255));
 
     }//waiting for payment state
     else if (ledState == 1) {
       breath();
-      analogWrite(sodaButtonLedPin, fmap(sin(ledstate * 4 + (6 * PI) / 3), -1, 1, 50, 255));
+      analogWrite(sodaButtonLedPin, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
     }//error state
     else if (ledState == 2) {
       for (int i = 0; i < amountOfBlinks; i++) {
@@ -49,16 +49,24 @@ void ledStuff() {
     else if (ledState == 4) {
       breath();
 
-      analogWrite(sodaButtonLedPin, fmap(sin(ledstate * 10 + (6 * PI) / 3), -1, 1, 50, 255));
+      analogWrite(sodaButtonLedPin, fmap(sin(ledPos * 10 + (6 * PI) / 3), -1, 1, 50, 255));
       analogWrite(grainButtonLedPin, 0);
+    }//test state
+    else if (ledState == 5) {
+      int pins[] = {ledPinTop, ledPinMiddle, ledPinBottom, sodaButtonLedPin, grainButtonLedPin};
+      for (int i = 0; i < 5; i++) {
+        digitalWrite(pins[i], HIGH);
+        delay(100);
+        digitalWrite(pins[i], LOW);
+      }
     }
   }
 }
 
 void breath() {
-  analogWrite(ledPinTop, fmap(sin(ledstate), -1, 1, ledBreathMin, ledBreathMax));
-  analogWrite(ledPinMiddle, fmap(sin(ledstate + PI / 3), -1, 1, ledBreathMin, ledBreathMax));
-  analogWrite(ledPinBottom, fmap(sin(ledstate + (2 * PI) / 3), -1, 1, ledBreathMin, ledBreathMax));
+  analogWrite(ledPinTop, fmap(sin(ledPos), -1, 1, ledBreathMin, ledBreathMax));
+  analogWrite(ledPinMiddle, fmap(sin(ledPos + PI / 3), -1, 1, ledBreathMin, ledBreathMax));
+  analogWrite(ledPinBottom, fmap(sin(ledPos + (2 * PI) / 3), -1, 1, ledBreathMin, ledBreathMax));
 }
 
 void blinkLed(int amount) {

@@ -132,9 +132,25 @@ namespace SAM0application
 
         private void ArduinoSetup()
         {
-            //add all the setting
+            //for some reason the first command does not get picked up
             var command = new SendCommand((int)Command.Acknowledge);
             _cmdMessenger.SendCommand(new SendCommand((int)Command.Acknowledge));
+
+            command = new SendCommand((int)Command.Acknowledge);
+            _cmdMessenger.SendCommand(new SendCommand((int)Command.Acknowledge));
+
+
+            //the led settings
+            command = new SendCommand((int)Command.SetLedBreathMax, LedBreathMaxNumericUpDown.Value.ToString());
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+            command = new SendCommand((int)Command.SetLedBreathMin, LedBreathMinNumericUpDown.Value.ToString());
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+            float value = float.Parse(LedBreathSpeedNumericUpDown.Value.ToString());
+            command = new SendCommand((int)Command.SetLedBreathSpeed, value);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            AppendToLog($"led settings set if there is three lines below here ");
         }
 
         private async void LogInButton_Click(object sender, EventArgs e)
@@ -293,7 +309,7 @@ namespace SAM0application
 
 
             logInButton.Enabled = loginControlsEnabled;
-            
+
             AmountText.Enabled = paymentControlsEnabled;
             PayButton.Enabled = paymentControlsEnabled;
             PayButton.Visible = uiState != UIState.PaymentInProgress;
@@ -301,13 +317,13 @@ namespace SAM0application
             CancelPaymentButton.Visible = CancelPaymentButton.Enabled;
         }
 
-       
+
 
 
         private OperatingSystem _osVersion;
         private void PmntMtdConnection_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (_osVersion != null ) return;
+            if (_osVersion != null) return;
 
             _osVersion = System.Environment.OSVersion;
 
@@ -407,7 +423,7 @@ namespace SAM0application
             _cmdMessenger.Attach((int)Command.Reset, OnReset);
             _cmdMessenger.Attach((int)Command.TapSucceeded, OnTapSucceeded);
             _cmdMessenger.Attach((int)Command.PumpTap, OnPumpTap);
-            
+
 
 
         }
@@ -545,8 +561,8 @@ namespace SAM0application
 
         private void PrintTestOnPrintPage(object sender, PrintPageEventArgs e)
         {
-            Font MainFont = new Font("roboto",9);
-            e.Graphics.DrawString("This is a successfull test", MainFont, Brushes.Black, 30, 25);            
+            Font MainFont = new Font("roboto", 9);
+            e.Graphics.DrawString("This is a successfull test", MainFont, Brushes.Black, 30, 25);
         }
 
         private void PrintReceipt()
@@ -572,7 +588,7 @@ namespace SAM0application
             AppendToLog(@"testing tap with " + (int)Properties.Settings.Default.TestTapAmount + "mL");
         }
 
-     
+
 
         private void SaveSettingsButton_click(object sender, EventArgs e)
         {
@@ -582,8 +598,8 @@ namespace SAM0application
 
         private void ledTestCheckBox_click(object sender, EventArgs e)
         {
-            //var command = new SendCommand((int)Command.PumpTap, PumpTapTestCheckbox.Checked);
-            //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            var command = new SendCommand((int)Command.TestLeds, ledTestCheckBox.Checked);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
 
         private void PumpTapTestCheckbox_Click(object sender, EventArgs e)
@@ -607,6 +623,17 @@ namespace SAM0application
         private void arduinoConnectCheckBox_Click(object sender, EventArgs e)
         {
 
+            if (arduinoConnectCheckBox.Checked == true)
+            {
+                _cmdMessenger.Connect();
+
+                AppendToLog(@"connecting Arduino");
+            }
+            else
+            {
+                _cmdMessenger.Disconnect();
+                AppendToLog(@"disconnecting Arduino");
+            }
         }
 
         private void label15_Click(object sender, EventArgs e)
@@ -617,6 +644,19 @@ namespace SAM0application
         private void LedBreathMaxNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             var command = new SendCommand((int)Command.SetLedBreathMax, LedBreathMaxNumericUpDown.Value.ToString());
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+        }
+
+        private void LedBreathMinNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            var command = new SendCommand((int)Command.SetLedBreathMin, LedBreathMinNumericUpDown.Value.ToString());
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+        }
+
+        private void LedBreathSpeedNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            float value = float.Parse(LedBreathSpeedNumericUpDown.Value.ToString());
+            var command = new SendCommand((int)Command.SetLedBreathSpeed, value);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
     }

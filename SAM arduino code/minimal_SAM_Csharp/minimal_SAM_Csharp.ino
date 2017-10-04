@@ -70,7 +70,7 @@ void setup()
   attachInterrupt(0, flowSensor, RISING); //flowsensor setup
 
 
-  blinkLed(3);
+  //blinkLed(3);
 }
 
 // Loop function

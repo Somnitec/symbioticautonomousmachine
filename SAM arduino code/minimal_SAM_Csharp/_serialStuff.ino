@@ -89,7 +89,15 @@ void OnTestTap()
 
 void OnTestLeds()
 {
-  cmdMessenger.sendCmd(kTestLeds, cmdMessenger.readBoolArg());
+  bool value = cmdMessenger.readBoolArg();
+  if (value == true) {
+    cmdMessenger.sendCmd(kTestLeds, "led stest starting");
+    ledState = 5;
+  } else if (value == false) {
+    cmdMessenger.sendCmd(kTestLeds, "led stest stopped");
+  ledState = 1;
+  }
+
 }
 
 void OnPumpTap()
@@ -129,6 +137,8 @@ void OnTapAmount()
 
 void OnSetLedBreathSpeed()
 {
+  //String stringValue = cmdMessenger.readStringArg();
+  //float value = stringValue.toFloat();
   float value = cmdMessenger.readFloatArg();
   cmdMessenger.sendCmd(kSetLedBreathSpeed, value);
   ledBreathSpeed =value ;
