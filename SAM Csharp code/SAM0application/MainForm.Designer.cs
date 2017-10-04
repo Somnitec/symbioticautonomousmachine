@@ -74,6 +74,8 @@
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.PrintingCheckBox = new System.Windows.Forms.CheckBox();
             this.AmountText = new System.Windows.Forms.TextBox();
+            this.ledStateNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReceiptNoNumericUpDown)).BeginInit();
@@ -83,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // logInButton
@@ -587,11 +590,30 @@
             this.AmountText.TabIndex = 12;
             this.AmountText.Text = global::SAM0application.Properties.Settings.Default.PaymentTestAmount;
             // 
+            // ledStateNumericUpDown
+            // 
+            this.ledStateNumericUpDown.Location = new System.Drawing.Point(20, 307);
+            this.ledStateNumericUpDown.Name = "ledStateNumericUpDown";
+            this.ledStateNumericUpDown.Size = new System.Drawing.Size(51, 20);
+            this.ledStateNumericUpDown.TabIndex = 37;
+            this.ledStateNumericUpDown.ValueChanged += new System.EventHandler(this.ledStateNumericUpDown_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(73, 309);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 38;
+            this.label6.Text = "ledState";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 396);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.ledStateNumericUpDown);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.FakeGrainButton);
@@ -651,6 +673,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -702,6 +725,8 @@
         private System.Windows.Forms.CheckBox arduinoConnectCheckBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown LedBreathMinNumericUpDown;
+        private System.Windows.Forms.NumericUpDown ledStateNumericUpDown;
+        private System.Windows.Forms.Label label6;
     }
 }
 
