@@ -23,6 +23,7 @@ namespace SAM0application
         private Tuple<Payment, CancellationTokenSource> _currentPayment;
         private bool realPaymentHappening = false;
         private int price = 111;
+        int SAMstate = (int)SAMstates.idle;
 
         // ======= Authenticate with SumUp system and create SDK instance =======		
         private async Task CreateSumUpService(string clientId, string clientSecret, string email, string password)
@@ -152,6 +153,10 @@ namespace SAM0application
             command = new SendCommand((int)Command.SetLedBreathSpeed, value);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
             AppendToLog($"led settings set if there is three lines below here ");
+
+            SAMstate = (int)SAMstates.idle;
+            command = new SendCommand((int)Command.SetLedState, SAMstate);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
 
         private async void LogInButton_Click(object sender, EventArgs e)
@@ -160,7 +165,8 @@ namespace SAM0application
 
             try
             {
-                await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
+                //await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
+                await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c", "arvidj@gmail.com", "***REMOVED***");
 
                 UpdateUI(UIState.Idle);
 
@@ -243,12 +249,18 @@ namespace SAM0application
                         var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
 
+                        SAMstate = (int)SAMstates.waitingForTapping;
+                        command = new SendCommand((int)Command.SetLedState, SAMstate);
+                        _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
                     }
                     else
                     {
                         AppendToLog("payment was not successfull, resetting");
-                        var command = new SendCommand((int)Command.Reset);
+                        
+                        SAMstate = (int)SAMstates.error;
+                        var command = new SendCommand((int)Command.SetLedState, SAMstate);
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+                        Reset();
                     }
 
                     realPaymentHappening = false;
@@ -464,7 +476,9 @@ namespace SAM0application
         {
 
             AppendToLog(@"Soda button pressed");
-
+            SAMstate = (int)SAMstates.waitingForPayment;
+            var command = new SendCommand((int)Command.SetLedState, SAMstate);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
             makePayment();
         }
 
@@ -484,11 +498,11 @@ namespace SAM0application
         void OnGrainButtonPressed(ReceivedCommand arguments)
         {
 
-            AppendToLog(@"Grain button pressed");
-            var command = new SendCommand((int)Command.SetLedState,2);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-             command = new SendCommand((int)Command.SetLedState,0);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            AppendToLog(@"Grain button pressed");//now only blinks itself
+            //var command = new SendCommand((int)Command.SetLedState,2);
+            //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            // command = new SendCommand((int)Command.SetLedState,0);
+            //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
             
             /*
             if (!realPaymentHappening)
@@ -505,6 +519,7 @@ namespace SAM0application
         {
             AppendToLog(@"Tap succeeded, printing receipt!");
             PrintReceipt();
+            AppendToLog(@"finished printing");
             Reset();
         }
 
@@ -515,9 +530,13 @@ namespace SAM0application
 
         void Reset()
         {
-            CancelPaymentButton.PerformClick();
+            //CancelPaymentButton.PerformClick();
             realPaymentHappening = false;
             AppendToLog(@"Resetted");
+            
+            SAMstate = (int)SAMstates.idle;
+            var command = new SendCommand((int)Command.SetLedState, SAMstate);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
         // Called when a received command has no attached function.
         // In a WinForm application, console output gets routed to the output panel of your IDE
@@ -718,6 +737,13 @@ namespace SAM0application
             var command = new SendCommand((int)Command.SetLedBreathSpeed, value);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
+
+        private void ledStateNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            
+            var command = new SendCommand((int)Command.SetLedState, ledStateNumericUpDown.Value.ToString());
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+        }
     }
 
     internal enum UIState
@@ -753,5 +779,15 @@ namespace SAM0application
         SetLedBreathMax,
         SetLedBreathMin,
     };
+
+    internal enum SAMstates
+    {
+        idle,
+        waitingForPayment,
+        waitingForTapping,
+        error,
+        testing,
+    };
+
 
 }

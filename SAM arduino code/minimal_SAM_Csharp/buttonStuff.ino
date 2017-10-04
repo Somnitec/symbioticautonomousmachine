@@ -9,12 +9,12 @@ void buttonStuff() {
     sodaButton.update();
     grainButton.update();
 
-    if(sodaButton.fell()){
-      cmdMessenger.sendCmd(kSodaButtonPressed);
-      //digitalWrite(sodaButtonLedPin,LOW);
+    if (sodaButton.fell()) {
+      sodaButtonPress();
     }
-    if(grainButton.fell()){
-      cmdMessenger.sendCmd(kGrainButtonPressed);
+    if (grainButton.fell()) {
+      grainButtonPress();
+
     }
 
     /*
@@ -33,5 +33,15 @@ void buttonStuff() {
       }
     */
   }
+}
+
+void sodaButtonPress() {
+  cmdMessenger.sendCmd(kSodaButtonPressed);
+}
+
+
+void grainButtonPress() {
+  cmdMessenger.sendCmd(kGrainButtonPressed);
+  blinkGrain();
 }
 

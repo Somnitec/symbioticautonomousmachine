@@ -38,15 +38,13 @@ int ledBreathMin = 20;
 
 //pumping
 boolean nowTapping = false;
-int tapAmount=0;
+int tapAmount = 0;
 
 //printing
 
 
-int ledState = 0;
-
-Bounce sodaButton = Bounce(); 
-Bounce grainButton = Bounce(); 
+Bounce sodaButton = Bounce();
+Bounce grainButton = Bounce();
 void setup()
 {
   setupSerial();
