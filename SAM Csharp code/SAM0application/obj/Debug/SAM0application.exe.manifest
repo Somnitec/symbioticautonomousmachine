@@ -54,7 +54,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>a3Dhay6EjNt2tO1/jffvKb79qDKGSh3jSUCCC33lNW8=</dsig:DigestValue>
+        <dsig:DigestValue>DgzjBFIQuEqw49eXPe7zrssuYNm4gR02FDr2tCCAURM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -66,7 +66,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eaIh2I3OaU8ASq2XS8OBgz+SZyGLT5IDdj9f0HCWsds=</dsig:DigestValue>
+        <dsig:DigestValue>0IO9+8FC8UZ729p7v0ZOEsMcboLvUs87kg+cfoSIvFQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -83,14 +83,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SAM0application.exe" size="59840">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SAM0application.exe" size="60864">
       <assemblyIdentity name="SAM0application" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5gkf9YvIUAsCfVNM2ofHTOICtmlJbMzyVFUdeNP774Y=</dsig:DigestValue>
+        <dsig:DigestValue>YdR0hQ3Klg2RwX9JIThY8yKB0yx+jX9q8q0HfjdfCKU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

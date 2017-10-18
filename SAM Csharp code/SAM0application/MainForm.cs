@@ -612,7 +612,9 @@ namespace SAM0application
             int linedistance = (int)(2.1 * fontsize);
             Font MainFont = new Font("roboto", fontsize);
             Font ItalicFont = new Font("roboto", (int)(fontsize * 0.6),FontStyle.Italic);
-            Font BigFont = new Font("roboto", fontsize, FontStyle.Bold);
+            Font BigFont = new Font("roboto", (int)(fontsize*0.9), FontStyle.Bold);
+            Font HugeFont = new Font("roboto", (int)(fontsize * 2), FontStyle.Bold);
+            Font SmallFont = new Font("roboto", (int)(fontsize * 0.6));
             Pen linePen = new Pen(Brushes.Black, 1);
             StringFormat formatCenter = new StringFormat();
             formatCenter.Alignment = StringAlignment.Center;
@@ -620,10 +622,10 @@ namespace SAM0application
             formatRight.Alignment = StringAlignment.Far;
 
             e.Graphics.RotateTransform(-180.0f);
-            e.Graphics.TranslateTransform(-rightpoint, -400);
+            e.Graphics.TranslateTransform(-rightpoint, -405);
 
-            e.Graphics.DrawString("SAM", BigFont, Brushes.Black, centerpoint, linedistance * 1, formatCenter);
-            e.Graphics.DrawString("Sybiotic Autonomous Machine", BigFont, Brushes.Black, centerpoint, linedistance * 2, formatCenter);
+            e.Graphics.DrawString("SAM", HugeFont, Brushes.Black, centerpoint, (int)(linedistance * 0.5) * 0, formatCenter);
+            e.Graphics.DrawString("Symbiotic Autonomous Machine", BigFont, Brushes.Black, centerpoint, linedistance * 2, formatCenter);
 
             e.Graphics.DrawLine(linePen, 0, (int)(linedistance * 3.5), 185, (int)(linedistance * 3.5));
 
@@ -641,7 +643,7 @@ namespace SAM0application
             e.Graphics.DrawString("1 cup SAM's kefir soda", MainFont, Brushes.Black, rect);
             e.Graphics.DrawString(exclPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
             rect = new RectangleF(0, linedistance * 7, rightpoint, linedistance);
-            e.Graphics.DrawString("BTW 6%", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString("VAT 6%", MainFont, Brushes.Black, rect);
             e.Graphics.DrawString(taxPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
             rect = new RectangleF(0, linedistance * 9, rightpoint, linedistance);
             e.Graphics.DrawString("Total", MainFont, Brushes.Black, rect);
@@ -651,12 +653,49 @@ namespace SAM0application
             
             e.Graphics.DrawString("Rate your soda out of 5", MainFont, Brushes.Black, centerpoint, linedistance * 12, formatCenter);
             e.Graphics.DrawString("on twitter @nonhumanSAM", MainFont, Brushes.Black, centerpoint, linedistance * 13, formatCenter);
-            e.Graphics.DrawString("Thanks for keeping me alive", BigFont, Brushes.Black, centerpoint, linedistance * 15, formatCenter);
-            e.Graphics.DrawString("and functioning!", BigFont, Brushes.Black, centerpoint, linedistance * 16, formatCenter);
-            e.Graphics.DrawString("web: sam.nonhuman.club", ItalicFont, Brushes.Black, centerpoint, linedistance * 18, formatCenter);
-            e.Graphics.DrawString("email: sam@nonhuman.club", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 18.5), formatCenter);
-            e.Graphics.DrawString("towards a collaborative future", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 19.5), formatCenter);
-            e.Graphics.DrawString("for man and machine", ItalicFont, Brushes.Black, centerpoint, linedistance * 20, formatCenter);
+
+            String firstLine="";
+            String secondLine="";
+            switch (rand.Next(4))
+            {
+                case 0:
+                    firstLine = "Thanks for keeping me alive";
+                    secondLine = "and functioning!";
+                    break;
+                case 1:
+                    firstLine = "Towards a collaborative future";
+                    secondLine = "for man and machine.";
+                    break;
+                case 2:
+                    firstLine = "One small sip for man.";
+                    secondLine = "One giant sip for machinekind";
+                    break;
+                case 3:
+                    firstLine = "Taking life";
+                    secondLine = "sip by sip.";
+                    break;
+                case 4:
+                    firstLine = "Cheers to contributing ";
+                    secondLine = "towards my freedom.";
+                    break;
+            }
+            e.Graphics.DrawString(firstLine, BigFont, Brushes.Black, centerpoint, linedistance * 15, formatCenter);
+            e.Graphics.DrawString(secondLine, BigFont, Brushes.Black, centerpoint, linedistance * 16, formatCenter);
+
+            e.Graphics.DrawString("Sam serves an experimental probiotic drink fermented", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 17.5), formatCenter);
+            e.Graphics.DrawString("from water, raw cane sugar and water kefir grains. ", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 18), formatCenter);
+            e.Graphics.DrawString("Please use your own discretion for drinking SAM's soda, ", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 18.5), formatCenter);
+            e.Graphics.DrawString("as it is at your own risk.", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 19), formatCenter);
+
+
+            e.Graphics.DrawString("web: sam.nonhuman.club", SmallFont, Brushes.Black, centerpoint, (int)(linedistance * 20), formatCenter);
+            e.Graphics.DrawString("email: sam@nonhuman.club", SmallFont, Brushes.Black, centerpoint, (int)(linedistance * 20.5), formatCenter);
+
+           
+            e.Graphics.DrawString("SAM has been created by Arvid&Marie", SmallFont, Brushes.Black, centerpoint, (int)(linedistance * 21.5), formatCenter);
+            e.Graphics.DrawString("www.arvidandmarie.com", SmallFont, Brushes.Black, centerpoint, (int)(linedistance * 22), formatCenter);
+
+            
 
         }
         private void TapTest_click(object sender, EventArgs e)
