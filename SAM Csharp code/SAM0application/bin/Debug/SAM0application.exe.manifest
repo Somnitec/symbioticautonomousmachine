@@ -83,14 +83,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SAM0application.exe" size="59840">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SAM0application.exe" size="60864">
       <assemblyIdentity name="SAM0application" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9KTFA/QKrPUClmUYXMU1fc0iExmw3enp/7SwKvdVmRI=</dsig:DigestValue>
+        <dsig:DigestValue>/rmMkuFgtUGiz7oEQaE2yBD7J7f+bQ1qb9VuNC9I2ik=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
