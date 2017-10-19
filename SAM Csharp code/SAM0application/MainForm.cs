@@ -24,9 +24,9 @@ namespace SAM0application
         private bool realPaymentHappening = false;
         private int price = 111;
         int SAMstate = (int)SAMstates.idle;
-
+        
         UserInterface userInterface = new UserInterface();
-        int interfaceState = 0;
+        
 
         // ======= Authenticate with SumUp system and create SDK instance =======		
         private async Task CreateSumUpService(string clientId, string clientSecret, string email, string password)
@@ -166,6 +166,7 @@ namespace SAM0application
             SAMstate = (int)SAMstates.idle;
             command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            userInterface._changeInterface = (int)SAMstate;
         }
 
         private async void LogInButton_Click(object sender, EventArgs e)
@@ -261,6 +262,7 @@ namespace SAM0application
                         SAMstate = (int)SAMstates.waitingForTapping;
                         command = new SendCommand((int)Command.SetLedState, SAMstate);
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+                        userInterface._changeInterface = (int)SAMstate;
                     }
                     else
                     {
@@ -269,6 +271,7 @@ namespace SAM0application
                         SAMstate = (int)SAMstates.error;
                         var command = new SendCommand((int)Command.SetLedState, SAMstate);
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+                        userInterface._changeInterface = (int)SAMstate;
                         Reset();
                     }
 
@@ -488,6 +491,7 @@ namespace SAM0application
             SAMstate = (int)SAMstates.waitingForPayment;
             var command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            userInterface._changeInterface = (int)SAMstate;
             makePayment();
         }
 
@@ -546,6 +550,7 @@ namespace SAM0application
             SAMstate = (int)SAMstates.idle;
             var command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            userInterface._changeInterface = (int)SAMstate;
         }
         // Called when a received command has no attached function.
         // In a WinForm application, console output gets routed to the output panel of your IDE
@@ -757,7 +762,7 @@ namespace SAM0application
         private void interfaceStateNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             
-            userInterface._changeIterface = (int)interfaceStateNumericUpDown.Value;
+            userInterface._changeInterface = (int)interfaceStateNumericUpDown.Value;
         }
     }
 
