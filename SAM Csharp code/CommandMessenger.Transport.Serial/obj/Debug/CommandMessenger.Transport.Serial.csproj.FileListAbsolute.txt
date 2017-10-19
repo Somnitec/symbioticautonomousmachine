@@ -42,3 +42,11 @@ C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.
 C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csproj.CoreCompileInputs.cache
 C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.dll
 C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.pdb
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.Transport.Serial.dll
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.Transport.Serial.pdb
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.dll
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.pdb
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csprojResolveAssemblyReference.cache
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csproj.CoreCompileInputs.cache
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.dll
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.pdb
