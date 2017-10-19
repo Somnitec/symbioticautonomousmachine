@@ -3,19 +3,15 @@ void buttonStuff() {
   unsigned long currentMillis = millis();
   if (currentMillis - buttonTimer >= buttonUpdateTime) {
     buttonTimer = currentMillis;
-    //digitalWrite(sodaButtonLedPin, digitalRead(sodaButtonPin));//to test function
+    //digitalWrite(buttonledpin, digitalRead(buttonpin));//to test function
     //digitalWrite(grainButtonLedPin, digitalRead(grainButtonPin));//to test function
 
     sodaButton.update();
-    grainButton.update();
 
     if (sodaButton.fell()) {
       sodaButtonPress();
     }
-    if (grainButton.fell()) {
-      grainButtonPress();
 
-    }
 
     /*
 
@@ -39,9 +35,4 @@ void sodaButtonPress() {
   cmdMessenger.sendCmd(kSodaButtonPressed);
 }
 
-
-void grainButtonPress() {
-  cmdMessenger.sendCmd(kGrainButtonPressed);
-  blinkGrain();
-}
 

@@ -50,7 +50,6 @@ void attachCommandCallbacks()
   cmdMessenger.attach(kTestLeds, OnTestLeds);
   cmdMessenger.attach(kPumpTap, OnPumpTap);
   cmdMessenger.attach(kSodaButtonPressed, OnSodaButtonPressed);
-  cmdMessenger.attach(kGrainButtonPressed, OnGrainButtonPressed);
   cmdMessenger.attach(kTapAmount, OnTapAmount);
   cmdMessenger.attach(kSetLedBreathSpeed, OnSetLedBreathSpeed);
   cmdMessenger.attach(kSetLedBreathMax, OnSetLedBreathMax);
@@ -112,7 +111,7 @@ void OnPumpTap()
   }
 
   digitalWrite(statusLedPin, value);
-  digitalWrite(pumpPin, value);
+  digitalWrite(pump1pin, value);
 }
 
 void OnSodaButtonPressed()
@@ -120,11 +119,6 @@ void OnSodaButtonPressed()
   sodaButtonPress();
 }
 
-void OnGrainButtonPressed()
-{
-  grainButtonPress();
-
-}
 
 void OnTapAmount()
 {
