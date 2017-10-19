@@ -12,7 +12,7 @@ CmdMessenger cmdMessenger = CmdMessenger(Serial);
 #define stirmotorpin 9
 #define sugarmotorpin 10
 #define buttonpin 26
-#define buttonledpin16
+#define buttonledpin 16
 #define flowsensor1pin 14
 #define flowsensor2pin 15
 #define weightclock 5
@@ -30,18 +30,8 @@ CmdMessenger cmdMessenger = CmdMessenger(Serial);
 #define cuppin 25
 #define gaspin 24
 
-
-#define statusLedPin 13 
-#define ledPinTop 11 //timer2
-#define ledPinMiddle 10 //timer1
-#define ledPinBottom 9 //timer1
-#define grainButtonPin 8 
-#define sodaButtonPin 7 
-#define grainButtonLedPin 6
-#define sodaButtonLedPin 5
-#define pumpPin 3
-#define flowSensorPin 2// 1L = 5880 pulses
-
+#define statusLedPin 13
+ 
 volatile double waterFlow = 0;
 
 #define  buttonUpdateTime 1//ms
@@ -72,37 +62,26 @@ int tapAmount = 0;
 
 
 Bounce sodaButton = Bounce();
-Bounce grainButton = Bounce();
 void setup()
 {
   //improving PWM speed
-  //ideal speed is = 
+  //ideal speed is = ??
 
-  //timer 2 = pin 11 = top vat
-  TCCR2B = TCCR2B & 0b11111000 | 0x02; //=3921 Hz instead of 490 Hz
-  //timer 1 = pins 10 & 9 = middle and bottom vat
-  TCCR1B = TCCR1B & 0b11111000 | 0x02;//=3921 Hz instead of 490 Hz
-  //timer ?? = pins 8 & 7 = buttons  
-  //TCCR4B = TCCR4B & 0b11111000 | 0x01;  
-  
+
   setupSerial();
 
   pinMode(statusLedPin, OUTPUT);
 
-  pinMode(ledPinTop, OUTPUT);
-  pinMode(ledPinMiddle, OUTPUT);
-  pinMode(ledPinBottom, OUTPUT);
+  pinMode(led1pin, OUTPUT);
+  pinMode(led2pin, OUTPUT);
+  pinMode(led3pin, OUTPUT);
 
-  pinMode(sodaButtonPin, INPUT_PULLUP);
-  pinMode(grainButtonPin, INPUT_PULLUP);
-  pinMode(sodaButtonLedPin, OUTPUT);
-  pinMode(grainButtonLedPin, OUTPUT);
-  sodaButton.attach(sodaButtonPin);
+  pinMode(buttonpin, INPUT_PULLUP);
+  pinMode(buttonledpin, OUTPUT);
+  sodaButton.attach(buttonpin);
   sodaButton.interval(10);
-  grainButton.attach(grainButtonPin);
-  grainButton.interval(10);
 
-  pinMode(pumpPin, OUTPUT);
+  pinMode(pump1pin, OUTPUT);
 
   attachInterrupt(0, flowSensor, RISING); //flowsensor setup
 
