@@ -3,6 +3,34 @@
 
 CmdMessenger cmdMessenger = CmdMessenger(Serial);
 
+#define pump1pin 0
+#define pump2pin 1
+#define pump3pin 2
+#define led1pin 3
+#define led2pin 4
+#define led3pin 6
+#define stirmotorpin 9
+#define sugarmotorpin 10
+#define buttonpin 26
+#define buttonledpin16
+#define flowsensor1pin 14
+#define flowsensor2pin 15
+#define weightclock 5
+#define weight1pin 7
+#define weight2pin 8
+#define weight3pin 11
+#define weight4pin 12
+#define servo1pin 23
+#define servo2pin 22
+#define servo3pin 20
+#define servo4pin 17
+#define temp1pin 18
+#define temp2pin 19
+#define pHpin 21
+#define cuppin 25
+#define gaspin 24
+
+
 #define statusLedPin 13 
 #define ledPinTop 11 //timer2
 #define ledPinMiddle 10 //timer1
