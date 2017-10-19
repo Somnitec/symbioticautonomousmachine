@@ -139,6 +139,8 @@ namespace SAM0application
             userInterface.WindowState = FormWindowState.Maximized;
             userInterface.Activate();
 
+            Cursor.Hide();
+
         }
 
         private void ArduinoSetup()
@@ -211,7 +213,7 @@ namespace SAM0application
                 Properties.Settings.Default.ReceiptNo++;
                 ReceiptNoNumericUpDown.Update();
                 Properties.Settings.Default.Save();
-                PaymentResult paymentResult = await DoSumUpPayment(amount, method, connection,"SAM's Kefir Soda No "+ Properties.Settings.Default.ReceiptNo + " at "+ DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString()); //, "SAM's Kefir Soda at " + DateTime.Now.ToShortTimeString() //can do, but will need to be unique every time
+                PaymentResult paymentResult = await DoSumUpPayment(amount, method, connection,"SAM's Komboucha Soda No "+ Properties.Settings.Default.ReceiptNo + " at "+ DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString()); //, "SAM's Kefir Soda at " + DateTime.Now.ToShortTimeString() //can do, but will need to be unique every time
                 paymentResultShort = string.Format("{0}", paymentResult.Status);
 
                 paymentResultText = string.Format(
@@ -652,7 +654,7 @@ namespace SAM0application
             float exclPrice = realPrice - taxPrice;
             AppendToLog(@"printing receipt " + exclPrice.ToString("€0.## + ") + taxPrice.ToString("€0.## =") + realPrice.ToString("€0.##"));
             rect = new RectangleF(0, linedistance * 6, rightpoint, linedistance);
-            e.Graphics.DrawString("1 cup SAM's kefir soda", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString("1 cup SAM's komboucha soda", MainFont, Brushes.Black, rect);
             e.Graphics.DrawString(exclPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
             rect = new RectangleF(0, linedistance * 7, rightpoint, linedistance);
             e.Graphics.DrawString("BTW 6%", MainFont, Brushes.Black, rect);

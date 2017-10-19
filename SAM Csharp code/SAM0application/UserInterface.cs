@@ -8,11 +8,11 @@ namespace SAM0application
     public partial class UserInterface : Form
     {
         String[] text = {
-            "Hello, my name is SAM the Symbiotic Autonomous Machine.I am a machine business owner!\nPress this button to try the komboucha tea I make.",
-            "Thank you for your order. Pease place a cup under the tap and follow the instructions on the payment terminal",
+            "Hello, my name is SAM the\nSymbiotic Autonomous Machine.\nI am a machine business owner!\n\nPress the button to try\nthe komboucha tea I make.",
+            "Thank you for your order.\nPlease place a cup under the tap\nand follow the instructions on the payment terminal.",
             "Payment is being processed, your komboucha tea will be served in a few seconds.",
-            "Something went wrong please try again",
-            "just testing",
+            "Something went wrong.\nPlease try again.",
+            "just testing.",
         };
 
 
