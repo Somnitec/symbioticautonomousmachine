@@ -25,6 +25,8 @@ namespace SAM0application
         private int price = 111;
         int SAMstate = (int)SAMstates.idle;
 
+        UserInterface userInterface = new UserInterface();
+
         // ======= Authenticate with SumUp system and create SDK instance =======		
         private async Task CreateSumUpService(string clientId, string clientSecret, string email, string password)
         {
@@ -130,6 +132,12 @@ namespace SAM0application
             logInButton.PerformClick();
             Console.WriteLine(@"mainform loaded");
             ArduinoSetup();
+
+            userInterface.Show();
+            userInterface.FormBorderStyle = FormBorderStyle.None;
+            userInterface.WindowState = FormWindowState.Maximized;
+            userInterface.Activate();
+
         }
 
         private void ArduinoSetup()

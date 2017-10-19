@@ -86,3 +86,4 @@ C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\SAM0application\o
 C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.application
 C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.exe
 C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.pdb
+C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.UserInterface.resources
