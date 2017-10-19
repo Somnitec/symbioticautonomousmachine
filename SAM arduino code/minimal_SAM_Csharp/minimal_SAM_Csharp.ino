@@ -13,8 +13,8 @@ CmdMessenger cmdMessenger = CmdMessenger(Serial);
 #define sugarmotorpin 10
 #define buttonpin 26
 #define buttonledpin 16
-#define flowsensor1pin 14
-#define flowsensor2pin 15
+#define flowsensor1pin 15
+#define flowsensor2pin 14
 #define weightclock 5
 #define weight1pin 7
 #define weight2pin 8
@@ -83,7 +83,7 @@ void setup()
 
   pinMode(pump1pin, OUTPUT);
 
-  attachInterrupt(0, flowSensor, RISING); //flowsensor setup
+  attachInterrupt(flowsensor1pin, flowSensor, RISING); //flowsensor setup
 
 
   //blinkLed(3);
