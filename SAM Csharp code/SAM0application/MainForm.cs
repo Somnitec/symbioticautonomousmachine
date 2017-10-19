@@ -26,6 +26,7 @@ namespace SAM0application
         int SAMstate = (int)SAMstates.idle;
 
         UserInterface userInterface = new UserInterface();
+        int interfaceState = 0;
 
         // ======= Authenticate with SumUp system and create SDK instance =======		
         private async Task CreateSumUpService(string clientId, string clientSecret, string email, string password)
@@ -751,6 +752,12 @@ namespace SAM0application
             
             var command = new SendCommand((int)Command.SetLedState, ledStateNumericUpDown.Value.ToString());
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+        }
+
+        private void interfaceStateNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            
+            userInterface._changeIterface = (int)interfaceStateNumericUpDown.Value;
         }
     }
 

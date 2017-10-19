@@ -28,27 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.interfaceText = new System.Windows.Forms.Label();
+            this.arrowBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.arrowBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // interfaceText
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(121, 88);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.interfaceText.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.interfaceText.AutoSize = true;
+            this.interfaceText.Font = new System.Drawing.Font("Roboto", 30F, System.Drawing.FontStyle.Bold);
+            this.interfaceText.Location = new System.Drawing.Point(-26, 0);
+            this.interfaceText.MaximumSize = new System.Drawing.Size(800, 1280);
+            this.interfaceText.MinimumSize = new System.Drawing.Size(800, 1280);
+            this.interfaceText.Name = "interfaceText";
+            this.interfaceText.Size = new System.Drawing.Size(800, 1280);
+            this.interfaceText.TabIndex = 0;
+            this.interfaceText.Text = "starting";
+            this.interfaceText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // arrowBox
+            // 
+            this.arrowBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.arrowBox.BackColor = System.Drawing.Color.Transparent;
+            this.arrowBox.Image = global::SAM0application.Properties.Resources.arrow;
+            this.arrowBox.InitialImage = global::SAM0application.Properties.Resources.arrow;
+            this.arrowBox.Location = new System.Drawing.Point(324, 300);
+            this.arrowBox.MaximumSize = new System.Drawing.Size(100, 100);
+            this.arrowBox.Name = "arrowBox";
+            this.arrowBox.Size = new System.Drawing.Size(100, 100);
+            this.arrowBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.arrowBox.TabIndex = 1;
+            this.arrowBox.TabStop = false;
             // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(784, 1053);
+            this.Controls.Add(this.arrowBox);
+            this.Controls.Add(this.interfaceText);
             this.Name = "UserInterface";
             this.Text = "UserInterface";
+            ((System.ComponentModel.ISupportInitialize)(this.arrowBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -56,6 +81,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label interfaceText;
+        private System.Windows.Forms.PictureBox arrowBox;
     }
 }

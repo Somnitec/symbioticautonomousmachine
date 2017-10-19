@@ -77,7 +77,7 @@
             this.ledStateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.interfaceStateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReceiptNoNumericUpDown)).BeginInit();
@@ -88,7 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // logInButton
@@ -619,12 +619,13 @@
             this.label7.TabIndex = 40;
             this.label7.Text = "interfaceState";
             // 
-            // numericUpDown4
+            // interfaceStateNumericUpDown
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(20, 333);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(51, 20);
-            this.numericUpDown4.TabIndex = 39;
+            this.interfaceStateNumericUpDown.Location = new System.Drawing.Point(20, 333);
+            this.interfaceStateNumericUpDown.Name = "interfaceStateNumericUpDown";
+            this.interfaceStateNumericUpDown.Size = new System.Drawing.Size(51, 20);
+            this.interfaceStateNumericUpDown.TabIndex = 39;
+            this.interfaceStateNumericUpDown.ValueChanged += new System.EventHandler(this.interfaceStateNumericUpDown_ValueChanged);
             // 
             // MainForm
             // 
@@ -632,7 +633,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 396);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.numericUpDown4);
+            this.Controls.Add(this.interfaceStateNumericUpDown);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.ledStateNumericUpDown);
             this.Controls.Add(this.label4);
@@ -695,7 +696,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -750,7 +751,7 @@
         private System.Windows.Forms.NumericUpDown ledStateNumericUpDown;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown interfaceStateNumericUpDown;
     }
 }
 
