@@ -109,7 +109,7 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Location = new System.Drawing.Point(12, 100);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(913, 1);
+            this.panel4.Size = new System.Drawing.Size(772, 1);
             this.panel4.TabIndex = 8;
             // 
             // statusStrip
@@ -119,7 +119,7 @@
             this.statusStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 374);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(937, 22);
+            this.statusStrip.Size = new System.Drawing.Size(796, 22);
             this.statusStrip.TabIndex = 9;
             // 
             // statusStripProgressBar
@@ -132,7 +132,7 @@
             // statusStripStatusLabel
             // 
             this.statusStripStatusLabel.Name = "statusStripStatusLabel";
-            this.statusStripStatusLabel.Size = new System.Drawing.Size(820, 17);
+            this.statusStripStatusLabel.Size = new System.Drawing.Size(679, 17);
             this.statusStripStatusLabel.Spring = true;
             this.statusStripStatusLabel.Text = "Status text";
             this.statusStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -167,7 +167,7 @@
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
             this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.logTextBox.Size = new System.Drawing.Size(581, 235);
+            this.logTextBox.Size = new System.Drawing.Size(440, 235);
             this.logTextBox.TabIndex = 24;
             this.logTextBox.WordWrap = false;
             // 
@@ -631,7 +631,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(937, 396);
+            this.ClientSize = new System.Drawing.Size(796, 396);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.interfaceStateNumericUpDown);
             this.Controls.Add(this.label6);
