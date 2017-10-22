@@ -37,12 +37,13 @@
             // 
             this.interfaceText.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.interfaceText.AutoSize = true;
-            this.interfaceText.Font = new System.Drawing.Font("Roboto", 30F, System.Drawing.FontStyle.Bold);
-            this.interfaceText.Location = new System.Drawing.Point(-26, 0);
-            this.interfaceText.MaximumSize = new System.Drawing.Size(800, 1280);
-            this.interfaceText.MinimumSize = new System.Drawing.Size(800, 1280);
+            this.interfaceText.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold);
+            this.interfaceText.Location = new System.Drawing.Point(50, 0);
+            this.interfaceText.Margin = new System.Windows.Forms.Padding(0);
+            this.interfaceText.MaximumSize = new System.Drawing.Size(700, 1280);
+            this.interfaceText.MinimumSize = new System.Drawing.Size(700, 1280);
             this.interfaceText.Name = "interfaceText";
-            this.interfaceText.Size = new System.Drawing.Size(800, 1280);
+            this.interfaceText.Size = new System.Drawing.Size(700, 1280);
             this.interfaceText.TabIndex = 0;
             this.interfaceText.Text = "starting";
             this.interfaceText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -53,7 +54,7 @@
             this.arrowBox.BackColor = System.Drawing.Color.Transparent;
             this.arrowBox.Image = global::SAM0application.Properties.Resources.arrow;
             this.arrowBox.InitialImage = global::SAM0application.Properties.Resources.arrow;
-            this.arrowBox.Location = new System.Drawing.Point(324, 300);
+            this.arrowBox.Location = new System.Drawing.Point(350, 300);
             this.arrowBox.MaximumSize = new System.Drawing.Size(100, 100);
             this.arrowBox.Name = "arrowBox";
             this.arrowBox.Size = new System.Drawing.Size(100, 100);
