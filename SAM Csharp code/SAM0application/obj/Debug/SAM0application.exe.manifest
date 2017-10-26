@@ -54,7 +54,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>1choxKDGa46Hq7HfdWH6kJvEE10xIm5WhVsky26HYhE=</dsig:DigestValue>
+        <dsig:DigestValue>H03rO8H0bFekH/bNa+1sP46QSS0P+4pm5byJrTpCpQY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -66,7 +66,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+/M5NQSdG2WYtD3n6oxJs5IzGXisFlP8FFc/m8+pzgc=</dsig:DigestValue>
+        <dsig:DigestValue>4KEEUzvahXC+pNRPlPD11zb1ZcCYaIXAe5VyRTtZ1bk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -83,14 +83,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SAM0application.exe" size="124864">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SAM0application.exe" size="125888">
       <assemblyIdentity name="SAM0application" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9FLkhGgT6Gt6RruwM73out3YZlRyH+QyKA/dVE3QM+Y=</dsig:DigestValue>
+        <dsig:DigestValue>GfO286mMMAAkoMr0iTvV/aAznB0GQVihJjsCzqR0LPc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -106,13 +106,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="SAM0application.exe.config" size="2314">
+  <file name="SAM0application.exe.config" size="2442">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>eRV6amXemnrUVpVAXn2Fl4DikcRV8tIGvay8r3C7oag=</dsig:DigestValue>
+      <dsig:DigestValue>6JXsxFbQjOXyGs0M342nVN7bxgJHBUQ8XfVL3aAJHBQ=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
