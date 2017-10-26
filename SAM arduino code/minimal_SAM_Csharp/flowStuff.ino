@@ -5,10 +5,10 @@ void flowStuff() {
     flowTimer = currentMillis;
     if (nowTapping) {
       if (waterFlow < tapAmount) {
-        digitalWrite(pumpPin,HIGH);
+        digitalWrite(pump1pin,HIGH);
         //cmdMessenger.sendCmd(kTapAmount, waterFlow);
       }else {
-        digitalWrite(pumpPin,LOW);
+        digitalWrite(pump1pin,LOW);
         nowTapping = false;
         cmdMessenger.sendCmd(kTapSucceeded, "all done");
       }
@@ -17,10 +17,10 @@ void flowStuff() {
 
     /*
         if (ledState == 3) {
-          digitalWrite(pumpPin, !digitalRead(pumpPin));
-          if (waterFlow < liquidAmount)digitalWrite(pumpPin, HIGH);
+          digitalWrite(pump1pin, !digitalRead(pump1pin));
+          if (waterFlow < liquidAmount)digitalWrite(pump1pin, HIGH);
           else {
-            digitalWrite(pumpPin, LOW);
+            digitalWrite(pump1pin, LOW);
             ledState = 4;
             Serial.println("b");
           }
@@ -30,7 +30,7 @@ void flowStuff() {
           //Serial.print(waterFlow, 3);
           //Serial.println(" mL");
         }
-        else digitalWrite(pumpPin, LOW);
+        else digitalWrite(pump1pin, LOW);
     */
   }
 }

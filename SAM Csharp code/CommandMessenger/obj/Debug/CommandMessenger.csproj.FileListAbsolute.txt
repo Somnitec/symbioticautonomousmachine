@@ -22,3 +22,9 @@ C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\obj\De
 C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
 C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
 C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
+C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
+C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
+C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
+C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
+C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
+C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb

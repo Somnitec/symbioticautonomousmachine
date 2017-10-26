@@ -76,6 +76,8 @@
             this.AmountText = new System.Windows.Forms.TextBox();
             this.ledStateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.interfaceStateNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReceiptNoNumericUpDown)).BeginInit();
@@ -86,6 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // logInButton
@@ -106,7 +109,7 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Location = new System.Drawing.Point(12, 100);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(913, 1);
+            this.panel4.Size = new System.Drawing.Size(772, 1);
             this.panel4.TabIndex = 8;
             // 
             // statusStrip
@@ -116,7 +119,7 @@
             this.statusStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 374);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(937, 22);
+            this.statusStrip.Size = new System.Drawing.Size(796, 22);
             this.statusStrip.TabIndex = 9;
             // 
             // statusStripProgressBar
@@ -129,7 +132,7 @@
             // statusStripStatusLabel
             // 
             this.statusStripStatusLabel.Name = "statusStripStatusLabel";
-            this.statusStripStatusLabel.Size = new System.Drawing.Size(820, 17);
+            this.statusStripStatusLabel.Size = new System.Drawing.Size(679, 17);
             this.statusStripStatusLabel.Spring = true;
             this.statusStripStatusLabel.Text = "Status text";
             this.statusStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -164,7 +167,7 @@
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
             this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.logTextBox.Size = new System.Drawing.Size(581, 235);
+            this.logTextBox.Size = new System.Drawing.Size(440, 235);
             this.logTextBox.TabIndex = 24;
             this.logTextBox.WordWrap = false;
             // 
@@ -607,11 +610,30 @@
             this.label6.TabIndex = 38;
             this.label6.Text = "ledState";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(73, 335);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 13);
+            this.label7.TabIndex = 40;
+            this.label7.Text = "interfaceState";
+            // 
+            // interfaceStateNumericUpDown
+            // 
+            this.interfaceStateNumericUpDown.Location = new System.Drawing.Point(20, 333);
+            this.interfaceStateNumericUpDown.Name = "interfaceStateNumericUpDown";
+            this.interfaceStateNumericUpDown.Size = new System.Drawing.Size(51, 20);
+            this.interfaceStateNumericUpDown.TabIndex = 39;
+            this.interfaceStateNumericUpDown.ValueChanged += new System.EventHandler(this.interfaceStateNumericUpDown_ValueChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(937, 396);
+            this.ClientSize = new System.Drawing.Size(796, 396);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.interfaceStateNumericUpDown);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.ledStateNumericUpDown);
             this.Controls.Add(this.label4);
@@ -674,6 +696,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -727,6 +750,8 @@
         private System.Windows.Forms.NumericUpDown LedBreathMinNumericUpDown;
         private System.Windows.Forms.NumericUpDown ledStateNumericUpDown;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown interfaceStateNumericUpDown;
     }
 }
 
