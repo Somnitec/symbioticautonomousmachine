@@ -258,7 +258,9 @@ namespace SAM0application
                     if (paymentResultShort.Equals("Successful"))
                     {
                         AppendToLog("payment was successfull, now tapping");
-                        var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
+                        // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
+                        var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
+
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
 
                         SAMstate = (int)SAMstates.waitingForTapping;
@@ -766,6 +768,19 @@ namespace SAM0application
             
             userInterface._changeInterface = (int)interfaceStateNumericUpDown.Value;
         }
+
+        private void tapMillisecondsNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void testTapMsButton_Click(object sender, EventArgs e)
+        {
+            var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
+
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+        }
     }
 
     internal enum UIState
@@ -800,6 +815,7 @@ namespace SAM0application
         SetLedBreathSpeed,
         SetLedBreathMax,
         SetLedBreathMin,
+        PumpTapMilliseconds,
     };
 
     internal enum SAMstates

@@ -16,7 +16,8 @@ enum
   kSetLedState,
   kSetLedBreathSpeed,
   kSetLedBreathMax,
-  kSetLedBreathMin,
+  kSetLedBreathMin,  
+  kPumpTapMilliseconds,
 };
 
 
@@ -55,6 +56,7 @@ void attachCommandCallbacks()
   cmdMessenger.attach(kSetLedBreathMax, OnSetLedBreathMax);
   cmdMessenger.attach(kSetLedBreathMin, OnSetLedBreathMin);
   cmdMessenger.attach(kSetLedState, OnSetLedState);
+  cmdMessenger.attach(kPumpTapMilliseconds,OnPumpTapMilliseconds);
 
 }
 
@@ -106,8 +108,11 @@ void OnPumpTap()
   if (value == true) {
     cmdMessenger.sendCmd(kPumpTap, "turning on tap");
     waterFlow = 0;
+    tapTimer = 0;
   } else if (value == false) {
     cmdMessenger.sendCmd(kPumpTap, waterFlow);
+    cmdMessenger.sendCmd(kPumpTap, tapTimer);
+    
   }
 
   digitalWrite(statusLedPin, value);
@@ -154,5 +159,14 @@ void OnSetLedState()
   int value = cmdMessenger.readInt16Arg();
   cmdMessenger.sendCmd(kSetLedState, value);
   stateNow = value ;
+}
+
+void OnPumpTapMilliseconds(){
+  waterFlow = 0;
+  nowTappingMilliseconds = true;
+  tapAmountMilliseconds = cmdMessenger.readInt16Arg();
+  tapTimer=0;
+  cmdMessenger.sendCmd(kPumpTapMilliseconds, "tapping now ms->");
+  cmdMessenger.sendCmd(kPumpTapMilliseconds, tapAmount);
 }
 

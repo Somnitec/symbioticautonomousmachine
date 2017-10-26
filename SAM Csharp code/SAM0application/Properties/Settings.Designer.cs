@@ -166,5 +166,17 @@ namespace SAM0application.Properties {
                 this["ledBrightnessMin"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public decimal tapMilliseconds {
+            get {
+                return ((decimal)(this["tapMilliseconds"]));
+            }
+            set {
+                this["tapMilliseconds"] = value;
+            }
+        }
     }
 }

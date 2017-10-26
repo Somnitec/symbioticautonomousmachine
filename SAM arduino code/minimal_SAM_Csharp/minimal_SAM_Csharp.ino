@@ -58,6 +58,10 @@ int ledBreathMin = 20;
 boolean nowTapping = false;
 int tapAmount = 0;
 
+boolean nowTappingMilliseconds = false;
+int tapAmountMilliseconds = 0;
+elapsedMillis tapTimer =0;
+
 //printing
 
 
@@ -71,6 +75,7 @@ void setup()
   setupSerial();
 
   pinMode(statusLedPin, OUTPUT);
+  digitalWrite(statusLedPin,HIGH);
 
   pinMode(led1pin, OUTPUT);
   pinMode(led2pin, OUTPUT);
@@ -85,6 +90,14 @@ void setup()
 
   attachInterrupt(flowsensor1pin, flowSensor, RISING); //flowsensor setup
 
+ pinMode(servo1pin, OUTPUT);
+ pinMode( servo2pin, OUTPUT);
+ pinMode( servo3pin, OUTPUT);
+ pinMode( servo4pin, OUTPUT);
+  digitalWrite(servo1pin, LOW);
+ digitalWrite( servo2pin, LOW);
+ digitalWrite( servo3pin, LOW);
+ digitalWrite( servo4pin, LOW);
 
   //blinkLed(3);
 }
