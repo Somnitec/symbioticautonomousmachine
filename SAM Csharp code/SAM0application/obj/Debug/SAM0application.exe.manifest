@@ -54,7 +54,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>yonwYrsESjFJuvezEjQxNGMyT+UpQK8j+ptikhw1BUI=</dsig:DigestValue>
+        <dsig:DigestValue>1choxKDGa46Hq7HfdWH6kJvEE10xIm5WhVsky26HYhE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -66,7 +66,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4Yztxhfu690kBP8qOxjlmR0W//KX7W/yH3/o0pPsY4o=</dsig:DigestValue>
+        <dsig:DigestValue>+/M5NQSdG2WYtD3n6oxJs5IzGXisFlP8FFc/m8+pzgc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -90,19 +90,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>g/Gl9D23LKFsfYHaobv10Q97JLGEBr3fnI0FXCldVqE=</dsig:DigestValue>
+        <dsig:DigestValue>9FLkhGgT6Gt6RruwM73out3YZlRyH+QyKA/dVE3QM+Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SumUp.Sdk.dll" size="164864">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SumUp.Sdk.dll" size="165376">
       <assemblyIdentity name="SumUp.Sdk" version="0.8.0.0" publicKeyToken="13679E900CD58C2D" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+7MnGjpX5mEI4r2JHsZSXSIFS3ToM/2bevsxj3yIdtw=</dsig:DigestValue>
+        <dsig:DigestValue>xNBrKHhFVtozb9qgmmxByXl5nORY+MCXR9bCv3ZsoKc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
