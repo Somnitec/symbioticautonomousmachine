@@ -71,6 +71,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NAudio.dll" size="474624">
+      <assemblyIdentity name="NAudio" version="1.8.0.0" publicKeyToken="13679E900CD58C2D" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>nGhH1WVCOHChvtDHg3plaferHWp1ICsTPU2mr5Gu2aI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="653824">
       <assemblyIdentity name="Newtonsoft.Json" version="10.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -90,7 +102,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aw3CF65G+ZDAdUND1upk5+rF3Z+/kuoQdDa3bxC1MLs=</dsig:DigestValue>
+        <dsig:DigestValue>eV4FSyYlKMu+M4o/g6RlTGLrXisO2ccai8ac+Aa5Bm4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

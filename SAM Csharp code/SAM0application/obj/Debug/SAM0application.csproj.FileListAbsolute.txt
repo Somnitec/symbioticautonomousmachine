@@ -66,3 +66,4 @@ C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\bin\Deb
 C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\bin\Debug\SAM0application.application
 C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\obj\Debug\SAM0application.exe.manifest
 C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\obj\Debug\SAM0application.application
+C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\SAM0application\bin\Debug\NAudio.dll

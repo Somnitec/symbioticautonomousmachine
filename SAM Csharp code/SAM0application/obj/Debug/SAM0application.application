@@ -7,14 +7,14 @@
     <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="SAM0application.exe.manifest" size="7454">
+    <dependentAssembly dependencyType="install" codebase="SAM0application.exe.manifest" size="8119">
       <assemblyIdentity name="SAM0application.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>o+D0XnZmSDM6JLuhRB8FCZ1U4HGqV1Ocfu/hEBk3wSU=</dsig:DigestValue>
+        <dsig:DigestValue>T9ReCwO4KxM4hxKCeZJtfOXNKCdGlqKMxVHnr15hGho=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
