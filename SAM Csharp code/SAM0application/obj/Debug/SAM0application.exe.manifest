@@ -66,7 +66,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4KEEUzvahXC+pNRPlPD11zb1ZcCYaIXAe5VyRTtZ1bk=</dsig:DigestValue>
+        <dsig:DigestValue>3AbTN4ZntDd8HzANdf2St9eaP5sgVONiKeIdRVMlXyk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -90,7 +90,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GfO286mMMAAkoMr0iTvV/aAznB0GQVihJjsCzqR0LPc=</dsig:DigestValue>
+        <dsig:DigestValue>fIMTHQadLA32mtALr5KQbG5Imed+Tugdzo9Mw2PeveI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -102,17 +102,17 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xNBrKHhFVtozb9qgmmxByXl5nORY+MCXR9bCv3ZsoKc=</dsig:DigestValue>
+        <dsig:DigestValue>vqKGOFpPzTJI4YEFDaeCdpISchsI1ij6Kz31AtIVHHQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="SAM0application.exe.config" size="2442">
+  <file name="SAM0application.exe.config" size="2438">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>6JXsxFbQjOXyGs0M342nVN7bxgJHBUQ8XfVL3aAJHBQ=</dsig:DigestValue>
+      <dsig:DigestValue>lOtr0lPXn4QxVxjrSkeC9t191JjimsbH1sIcBE7RTNg=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
