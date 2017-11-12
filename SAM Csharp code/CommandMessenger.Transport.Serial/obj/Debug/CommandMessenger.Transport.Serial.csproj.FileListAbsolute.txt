@@ -34,3 +34,11 @@ C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger.Transp
 C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csproj.CoreCompileInputs.cache
 C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.dll
 C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.pdb
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.Transport.Serial.dll
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.Transport.Serial.pdb
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.dll
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.pdb
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csprojResolveAssemblyReference.cache
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csproj.CoreCompileInputs.cache
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.dll
+D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.pdb

@@ -54,7 +54,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DgzjBFIQuEqw49eXPe7zrssuYNm4gR02FDr2tCCAURM=</dsig:DigestValue>
+        <dsig:DigestValue>3mlo7q6jaGKm9ueRs1dui2mMN5QuXibvk9KROSYOZeA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -66,19 +66,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0IO9+8FC8UZ729p7v0ZOEsMcboLvUs87kg+cfoSIvFQ=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NAudio.dll" size="474624">
-      <assemblyIdentity name="NAudio" version="1.8.0.0" publicKeyToken="13679E900CD58C2D" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nGhH1WVCOHChvtDHg3plaferHWp1ICsTPU2mr5Gu2aI=</dsig:DigestValue>
+        <dsig:DigestValue>Ke78b8oqaPnjsxCQqa48JkGug9y42JI7r13k2jB5tlw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -102,29 +90,29 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eV4FSyYlKMu+M4o/g6RlTGLrXisO2ccai8ac+Aa5Bm4=</dsig:DigestValue>
+        <dsig:DigestValue>erNtnfgs4f2do2a8pIuknMA5FHAOkYRDSn/SdK92C68=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SumUp.Sdk.dll" size="164864">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SumUp.Sdk.dll" size="165376">
       <assemblyIdentity name="SumUp.Sdk" version="0.8.0.0" publicKeyToken="13679E900CD58C2D" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+7MnGjpX5mEI4r2JHsZSXSIFS3ToM/2bevsxj3yIdtw=</dsig:DigestValue>
+        <dsig:DigestValue>vqKGOFpPzTJI4YEFDaeCdpISchsI1ij6Kz31AtIVHHQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="SAM0application.exe.config" size="2314">
+  <file name="SAM0application.exe.config" size="2310">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>eRV6amXemnrUVpVAXn2Fl4DikcRV8tIGvay8r3C7oag=</dsig:DigestValue>
+      <dsig:DigestValue>WCjcu9XqL7BI+4x+lw1iZJVaoMJ/UmwEyHQu6UdiGE4=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
