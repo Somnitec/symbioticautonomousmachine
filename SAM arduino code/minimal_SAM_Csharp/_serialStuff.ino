@@ -102,6 +102,7 @@ void OnTestLeds()
 
 void OnPumpTap()
 {
+  /*
   bool value = cmdMessenger.readBoolArg();
   if (value == true) {
     cmdMessenger.sendCmd(kPumpTap, "turning on tap");
@@ -112,6 +113,7 @@ void OnPumpTap()
 
   digitalWrite(statusLedPin, value);
   digitalWrite(pump1pin, value);
+  */
 }
 
 void OnSodaButtonPressed()
@@ -122,11 +124,13 @@ void OnSodaButtonPressed()
 
 void OnTapAmount()
 {
+  /*
   waterFlow = 0;
   nowTapping = true;
   tapAmount = cmdMessenger.readInt16Arg();
   cmdMessenger.sendCmd(kTapAmount, "tapping now mL->");
   cmdMessenger.sendCmd(kTapAmount, tapAmount);
+  */
 }
 
 void OnSetLedBreathSpeed()

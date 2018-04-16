@@ -28,3 +28,9 @@ C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\
 C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
 C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
 C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
+C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
+C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
+C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
+C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
+C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
+C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb

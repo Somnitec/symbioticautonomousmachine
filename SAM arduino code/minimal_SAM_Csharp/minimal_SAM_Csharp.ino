@@ -3,39 +3,19 @@
 
 CmdMessenger cmdMessenger = CmdMessenger(Serial);
 
-#define pump1pin 0
-#define pump2pin 1
-#define pump3pin 2
-#define led1pin 3
-#define led2pin 4
-#define led3pin 6
-#define stirmotorpin 9
-#define sugarmotorpin 10
-#define buttonpin 26
-#define buttonledpin 16
-#define flowsensor1pin 15
-#define flowsensor2pin 14
-#define weightclock 5
-#define weight1pin 7
-#define weight2pin 8
-#define weight3pin 11
-#define weight4pin 12
-#define servo1pin 23
-#define servo2pin 22
-#define servo3pin 20
-#define servo4pin 17
-#define temp1pin 18
-#define temp2pin 19
-#define pHpin 21
-#define cuppin 25
-#define gaspin 24
+#define pump1pin 7
+#define led1pin 5
+#define led2pin 10
+//#define mosfet3pin 11
+//#define mosfet4pin 12
+#define buttonpin 3
+#define buttonledpin 6
+#define buttonledvcc 4
+#define cuppin 2
 
 #define statusLedPin 13
- 
-volatile double waterFlow = 0;
 
 #define  buttonUpdateTime 1//ms
-#define  flowUpdateTime 1//ms
 #define  ledUpdateTime 10//ms
 #define  serialUpdateTime 1//ms
 
@@ -74,26 +54,23 @@ void setup()
 
   pinMode(led1pin, OUTPUT);
   pinMode(led2pin, OUTPUT);
-  pinMode(led3pin, OUTPUT);
+  //pinMode(led3pin, OUTPUT);
+  //pinMode(led4pin, OUTPUT);
 
   pinMode(buttonpin, INPUT_PULLUP);
-  pinMode(buttonledpin, OUTPUT);
   sodaButton.attach(buttonpin);
   sodaButton.interval(10);
 
+  pinMode(buttonledvcc, OUTPUT);
+  digitalWrite(buttonledvcc,HIGH);
+  
   pinMode(pump1pin, OUTPUT);
-
-  attachInterrupt(flowsensor1pin, flowSensor, RISING); //flowsensor setup
-
-
-  //blinkLed(3);
 }
 
 // Loop function
 void loop()
 {
   buttonStuff();
-  flowStuff();
   ledStuff();
   serialStuff();
 

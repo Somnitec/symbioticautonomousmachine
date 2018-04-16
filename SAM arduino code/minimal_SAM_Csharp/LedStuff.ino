@@ -28,12 +28,12 @@ void ledStuff() {
     //idle state
     if (stateNow == idle) {
 
-       analogWrite(buttonledpin, fmap(sin(ledPos + (4 * PI) / 3), -1, 1, 100, 255));
+       //analogWrite(buttonledpin, fmap(sin(ledPos + (4 * PI) / 3), -1, 1, 100, 255));
 
     }//waiting for payment state
     else if (stateNow == waitingForPayment) {
 
-      analogWrite(buttonledpin, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
+      //analogWrite(buttonledpin, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
 
     }//pumping state
     else if (stateNow == waitingForTapping) {
@@ -42,16 +42,16 @@ void ledStuff() {
 
     }//error state
     else if (stateNow == error) {
-      analogWrite(buttonledpin, 255);
+      //analogWrite(buttonledpin, 255);
       delay(blinkOnTime);
-      analogWrite(buttonledpin, 0);
+      //analogWrite(buttonledpin, 0);
        delay(blinkOffTime);
       //ledState = 0;
     }
     //test state
     else if (stateNow == testing) {
-      int pins[] = {led1pin, led2pin, led3pin, buttonledpin};
-      for (int i = 0; i < 4; i++) {
+      int pins[] = {led1pin, led2pin};
+      for (int i = 0; i < 2; i++) {
         digitalWrite(pins[i], HIGH);
         delay(100);
         digitalWrite(pins[i], LOW);
@@ -63,7 +63,7 @@ void ledStuff() {
 void breath() {
   analogWrite(led1pin, fmap(sin(ledPos), -1, 1, ledBreathMin, ledBreathMax));
   analogWrite(led2pin, fmap(sin(ledPos + PI / 3), -1, 1, ledBreathMin, ledBreathMax));
-  analogWrite(led3pin, fmap(sin(ledPos + (2 * PI) / 3), -1, 1, ledBreathMin, ledBreathMax));
+  //analogWrite(led3pin, fmap(sin(ledPos + (2 * PI) / 3), -1, 1, ledBreathMin, ledBreathMax));
 }
 
 void blinkLed(int amount) {
