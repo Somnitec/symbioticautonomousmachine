@@ -133,13 +133,13 @@ namespace SAM0application
             logInButton.PerformClick();
             Console.WriteLine(@"mainform loaded");
             ArduinoSetup();
-
+            /*
             userInterface.Show();
             userInterface.FormBorderStyle = FormBorderStyle.None;
             userInterface.WindowState = FormWindowState.Maximized;
             userInterface.Activate();
-
-            Cursor.Hide();
+            */
+            //Cursor.Hide();
 
         }
 
