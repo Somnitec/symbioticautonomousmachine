@@ -107,16 +107,16 @@ void OnPumpTap()
   bool value = cmdMessenger.readBoolArg();
   if (value == true) {
     cmdMessenger.sendCmd(kPumpTap, "turning on tap");
-    waterFlow = 0;
+    //waterFlow = 0;
     tapTimer = 0;
   } else if (value == false) {
-    cmdMessenger.sendCmd(kPumpTap, waterFlow);
+    //cmdMessenger.sendCmd(kPumpTap, waterFlow);
     cmdMessenger.sendCmd(kPumpTap, tapTimer);
     
   }
 
   digitalWrite(statusLedPin, value);
-  digitalWrite(pump1pin, value);
+  digitalWrite(pumppin, value);
 }
 
 void OnSodaButtonPressed()
@@ -127,7 +127,7 @@ void OnSodaButtonPressed()
 
 void OnTapAmount()
 {
-  waterFlow = 0;
+
   nowTapping = true;
   tapAmount = cmdMessenger.readInt16Arg();
   cmdMessenger.sendCmd(kTapAmount, "tapping now mL->");
@@ -162,7 +162,7 @@ void OnSetLedState()
 }
 
 void OnPumpTapMilliseconds(){
-  waterFlow = 0;
+  //waterFlow = 0;
   nowTappingMilliseconds = true;
   tapAmountMilliseconds = cmdMessenger.readInt16Arg();
   tapTimer=0;
