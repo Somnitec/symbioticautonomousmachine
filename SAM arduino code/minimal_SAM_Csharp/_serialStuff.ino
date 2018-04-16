@@ -102,18 +102,19 @@ void OnTestLeds()
 
 void OnPumpTap()
 {
-  /*
+  
   bool value = cmdMessenger.readBoolArg();
   if (value == true) {
     cmdMessenger.sendCmd(kPumpTap, "turning on tap");
-    waterFlow = 0;
+    //waterFlow = 0;
   } else if (value == false) {
-    cmdMessenger.sendCmd(kPumpTap, waterFlow);
+    //cmdMessenger.sendCmd(kPumpTap, waterFlow);
+    cmdMessenger.sendCmd(kPumpTap, "turning off tap");
   }
 
   digitalWrite(statusLedPin, value);
   digitalWrite(pump1pin, value);
-  */
+  
 }
 
 void OnSodaButtonPressed()

@@ -1,5 +1,6 @@
 #include <Bounce2.h>
 #include <CmdMessenger.h>  // CmdMessenger
+#include "FastLED.h"
 
 CmdMessenger cmdMessenger = CmdMessenger(Serial);
 
@@ -42,6 +43,8 @@ int tapAmount = 0;
 
 
 Bounce sodaButton = Bounce();
+
+CRGB buttonled[1];
 void setup()
 {
   //improving PWM speed
@@ -63,6 +66,8 @@ void setup()
 
   pinMode(buttonledvcc, OUTPUT);
   digitalWrite(buttonledvcc,HIGH);
+
+  FastLED.addLeds<NEOPIXEL, buttonledpin>(buttonled, 1);
   
   pinMode(pump1pin, OUTPUT);
 }
