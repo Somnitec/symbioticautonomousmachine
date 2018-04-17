@@ -42,6 +42,11 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="System.Runtime.WindowsRuntime" version="4.0.0.0" publicKeyToken="B77A5C561934E089" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommandMessenger.dll" size="48640">
       <assemblyIdentity name="CommandMessenger" version="3.7.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -49,7 +54,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TnYqK3kR44B3Rk4Dv/RTvC1bT1e1fayPXNrZ2UncG18=</dsig:DigestValue>
+        <dsig:DigestValue>b5zoA9zCO8FVrV1NggVIyL8JJmNB9rH4cL/XVs/CZYA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +66,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SxGWc1d8QiS9obFGqP/CRCV+Q1MKU0UgV5HtlihODFo=</dsig:DigestValue>
+        <dsig:DigestValue>bfkC1/M7HFXJURCTZWSDb0ps4L2KQIr8G5ZCbrQf6vg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -85,7 +90,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Py9GQ8vGWwdRquWFmX9KifhSrKfBYmL3WAH1z/7tD8I=</dsig:DigestValue>
+        <dsig:DigestValue>Jts3vhfhPzeDecuWwst3fQbs3FbLq8jSjwM3+2kTlmw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -98,18 +103,6 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>vqKGOFpPzTJI4YEFDaeCdpISchsI1ij6Kz31AtIVHHQ=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Runtime.WindowsRuntime.dll" size="160528">
-      <assemblyIdentity name="System.Runtime.WindowsRuntime" version="4.0.0.0" publicKeyToken="B77A5C561934E089" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UE9qqTqkVHNpgF2XjkSSnMLtlv6AINm+RcOI42QExG4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

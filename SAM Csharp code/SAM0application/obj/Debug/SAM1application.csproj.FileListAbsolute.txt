@@ -64,3 +64,24 @@ C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0appl
 C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.pdb
 C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\System.Runtime.WindowsRuntime.dll
 C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\Newtonsoft.Json.xml
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\bin\Debug\SAM0application.exe.config
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\bin\Debug\SAM0application.exe.manifest
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\bin\Debug\SAM0application.application
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\bin\Debug\SAM0application.exe
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\bin\Debug\SAM0application.pdb
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\bin\Debug\CommandMessenger.dll
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\bin\Debug\CommandMessenger.Transport.Serial.dll
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\bin\Debug\Newtonsoft.Json.dll
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\bin\Debug\SumUp.Sdk.dll
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\bin\Debug\CommandMessenger.Transport.Serial.pdb
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\bin\Debug\CommandMessenger.pdb
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\obj\Debug\SAM1application.csprojResolveAssemblyReference.cache
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.MainForm.resources
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.Properties.Resources.resources
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.UserInterface.resources
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\obj\Debug\SAM1application.csproj.GenerateResource.Cache
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\obj\Debug\SAM1application.csproj.CoreCompileInputs.cache
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.exe.manifest
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.application
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.exe
+D:\code\Symbiotic Autonomous Machine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.pdb

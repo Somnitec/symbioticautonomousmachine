@@ -16,7 +16,7 @@ enum
   kSetLedState,
   kSetLedBreathSpeed,
   kSetLedBreathMax,
-  kSetLedBreathMin,  
+  kSetLedBreathMin,
   kPumpTapMilliseconds,
 };
 
@@ -56,7 +56,7 @@ void attachCommandCallbacks()
   cmdMessenger.attach(kSetLedBreathMax, OnSetLedBreathMax);
   cmdMessenger.attach(kSetLedBreathMin, OnSetLedBreathMin);
   cmdMessenger.attach(kSetLedState, OnSetLedState);
-  cmdMessenger.attach(kPumpTapMilliseconds,OnPumpTapMilliseconds);
+  cmdMessenger.attach(kPumpTapMilliseconds, OnPumpTapMilliseconds);
 
 }
 
@@ -112,7 +112,7 @@ void OnPumpTap()
   } else if (value == false) {
     //cmdMessenger.sendCmd(kPumpTap, waterFlow);
     cmdMessenger.sendCmd(kPumpTap, tapTimer);
-    
+
   }
 
   digitalWrite(statusLedPin, value);
@@ -161,12 +161,26 @@ void OnSetLedState()
   stateNow = value ;
 }
 
-void OnPumpTapMilliseconds(){
+void OnPumpTapMilliseconds() {
+  buttonled[0] = CRGB::Blue;
+  FastLED.show();
   //waterFlow = 0;
   nowTappingMilliseconds = true;
   tapAmountMilliseconds = cmdMessenger.readInt16Arg();
-  tapTimer=0;
+
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "tapping now ms->");
-  cmdMessenger.sendCmd(kPumpTapMilliseconds, tapAmount);
+  cmdMessenger.sendCmd(kPumpTapMilliseconds, tapAmountMilliseconds);
+  cmdMessenger.sendCmd(kPumpTapMilliseconds, "waiting for cup");
+  cupSwitch.update();
+  while (cupSwitch.read() == false) {
+    cupSwitch.update();
+  }
+  cmdMessenger.sendCmd(kPumpTapMilliseconds, "cup placed, waiting a short moment");
+  delay(300);
+  cmdMessenger.sendCmd(kPumpTapMilliseconds, "pumping");
+  analogWrite(pumppin, 255);
+  delay(tapAmountMilliseconds);
+  analogWrite(pumppin, 0);
+  cmdMessenger.sendCmd(kPumpTapMilliseconds, "done tapping");
 }
 
