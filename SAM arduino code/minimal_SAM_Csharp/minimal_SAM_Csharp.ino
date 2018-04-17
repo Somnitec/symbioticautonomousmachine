@@ -69,7 +69,7 @@ void setup()
   pinMode(cuppin, INPUT_PULLUP);
 
   cupSwitch.attach(cuppin);
-  cupSwitch.interval(100);
+  cupSwitch.interval(300);
 
   pinMode(buttonledvcc, OUTPUT);
   digitalWrite(buttonledvcc, HIGH);
