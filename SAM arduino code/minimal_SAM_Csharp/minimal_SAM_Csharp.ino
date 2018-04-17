@@ -15,7 +15,7 @@ CmdMessenger cmdMessenger = CmdMessenger(Serial);
 #define cuppin 2
 
 #define statusLedPin 13
- 
+
 #define  buttonUpdateTime 1//ms
 #define  ledUpdateTime 10//ms
 #define  serialUpdateTime 1//ms
@@ -40,12 +40,13 @@ boolean nowTapping = false;
 boolean nowTappingMilliseconds = false;
 int tapAmount = 0;
 int tapAmountMilliseconds = 0;
-unsigned long tapTimer =0;
+unsigned long tapTimer = 0;
 
 //printing
 
 
 Bounce sodaButton = Bounce();
+Bounce cupSwitch = Bounce();
 void setup()
 {
   //improving PWM speed
@@ -55,24 +56,29 @@ void setup()
   setupSerial();
 
   pinMode(statusLedPin, OUTPUT);
-  digitalWrite(statusLedPin,HIGH);
+  digitalWrite(statusLedPin, HIGH);
 
   pinMode(led1pin, OUTPUT);
   pinMode(led2pin, OUTPUT);
 
   pinMode(buttonpin, INPUT_PULLUP);
- 
+
   sodaButton.attach(buttonpin);
   sodaButton.interval(10);
 
+  pinMode(cuppin, INPUT_PULLUP);
+
+  cupSwitch.attach(cuppin);
+  cupSwitch.interval(100);
+
   pinMode(buttonledvcc, OUTPUT);
-  digitalWrite(buttonledvcc,HIGH);
+  digitalWrite(buttonledvcc, HIGH);
 
   FastLED.addLeds<NEOPIXEL, buttonledpin>(buttonled, 1).setCorrection(0xD4EBFF);
 
   pinMode(pumppin, OUTPUT);
 
- blinkLed(3);
+  blinkLed(3);
 }
 
 // Loop function

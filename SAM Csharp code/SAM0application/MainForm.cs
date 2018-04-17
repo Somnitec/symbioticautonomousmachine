@@ -103,7 +103,7 @@ namespace SAM0application
             AppendToLog("=== SIGNATURE NOT IMPLEMENTED ===");
             AppendToLog("Signature was requested for the transaction but is not implemented. Will cancel\r\n");
 
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void Payment_ReaderNotificationReceived(object sender, ReaderNotificationReceivedEventArgs e)
@@ -778,7 +778,7 @@ namespace SAM0application
         private void testTapMsButton_Click(object sender, EventArgs e)
         {
             var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
-
+            AppendToLog(@"tapping now for ms-> "+ (int)Properties.Settings.Default.tapMilliseconds);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
 
         }

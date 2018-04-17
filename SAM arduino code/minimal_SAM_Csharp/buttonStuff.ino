@@ -8,7 +8,7 @@ void buttonStuff() {
 
     sodaButton.update();
 
-    if (sodaButton.fell()) {
+    if (sodaButton.rose()) {
       sodaButtonPress();
     }
 
