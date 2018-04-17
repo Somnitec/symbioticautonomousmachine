@@ -34,7 +34,7 @@ void ledStuff() {
     else if (stateNow == waitingForPayment) {
 
       //analogWrite(buttonledpin, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
-      buttonled[0] = CHSV(255, 255, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
+      buttonled[0] = CHSV(255, 0, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
       FastLED.show();
     }//pumping state
     else if (stateNow == waitingForTapping) {
@@ -73,7 +73,7 @@ void ledStuff() {
 void breath() {
   analogWrite(led1pin, fmap(sin(ledPos), -1, 1, ledBreathMin, ledBreathMax));
   analogWrite(led2pin, fmap(sin(ledPos + PI / 3), -1, 1, ledBreathMin, ledBreathMax));
-  buttonled[0] = CHSV(255, 255, fmap(sin(ledPos + (2 * PI) / 3), -1, 1, ledBreathMin, ledBreathMax));
+  buttonled[0] = CHSV(255, 0, fmap(sin(ledPos + (2 * PI) / 3), -1, 1, ledBreathMin, 255));
   FastLED.show();
 }
 

@@ -68,7 +68,7 @@ void setup()
   pinMode(buttonledvcc, OUTPUT);
   digitalWrite(buttonledvcc,HIGH);
 
-  FastLED.addLeds<NEOPIXEL, buttonledpin>(buttonled, 1);
+  FastLED.addLeds<NEOPIXEL, buttonledpin>(buttonled, 1).setCorrection(0xD4EBFF);
 
   pinMode(pumppin, OUTPUT);
 
