@@ -62,3 +62,5 @@ C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0appl
 C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM1application.csproj.CopyComplete
 C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.exe
 C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.pdb
+C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\System.Runtime.WindowsRuntime.dll
+C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\Newtonsoft.Json.xml
