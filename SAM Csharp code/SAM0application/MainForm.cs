@@ -258,7 +258,10 @@ namespace SAM0application
                     //AppendToLog(paymentResultShort);
                     if (paymentResultShort.Equals("Successful"))
                     {
-                        AppendToLog("payment was successfull, now tapping");
+                        AppendToLog("payment was successfull, printing receipt!");
+                        PrintReceipt();
+                        AppendToLog(@"finished printing, now tapping");
+
                         // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
                         var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
 
@@ -535,9 +538,7 @@ namespace SAM0application
 
         void OnTapSucceeded(ReceivedCommand arguments)
         {
-            AppendToLog(@"Tap succeeded, printing receipt!");
-            PrintReceipt();
-            AppendToLog(@"finished printing");
+            AppendToLog(@"Tap succeeded");
             Reset();
         }
 
@@ -704,6 +705,9 @@ namespace SAM0application
             e.Graphics.DrawString("email: sam@nonhuman.club", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 18.5), formatCenter);
             e.Graphics.DrawString("towards a collaborative future", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 19.5), formatCenter);
             e.Graphics.DrawString("for man and machine", ItalicFont, Brushes.Black, centerpoint, linedistance * 20, formatCenter);
+
+            e.Graphics.DrawString("a project by", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 21.5), formatCenter);
+            e.Graphics.DrawString("www.arvidandmarie.com", ItalicFont, Brushes.Black, centerpoint, linedistance * 22, formatCenter);
 
         }
         private void TapTest_click(object sender, EventArgs e)

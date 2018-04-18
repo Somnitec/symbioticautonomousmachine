@@ -172,9 +172,13 @@ void OnPumpTapMilliseconds() {
   cmdMessenger.sendCmd(kPumpTapMilliseconds, tapAmountMilliseconds);
   
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "waiting for cup");
-  cupSwitch.update();
-  while (cupSwitch.read() == false) {
-    cupSwitch.update();
+  //cupSwitch.update();
+  //while (cupSwitch.read() == false) {
+  while (digitalRead(cuppin) == false) {
+    //cupSwitch.update();
+    //cmdMessenger.sendCmd(kPumpTapMilliseconds, cupSwitch.read());
+    cmdMessenger.sendCmd(kPumpTapMilliseconds, digitalRead(cuppin));
+    delay(100);
   }
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "cup placed, waiting a short moment");
   
