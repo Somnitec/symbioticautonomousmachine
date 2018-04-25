@@ -641,7 +641,7 @@ namespace SAM0application
             formatRight.Alignment = StringAlignment.Far;
 
             e.Graphics.RotateTransform(-180.0f);
-            e.Graphics.TranslateTransform(-rightpoint, -400);
+            e.Graphics.TranslateTransform(-rightpoint, -450);
 
             e.Graphics.DrawString("SAM", BigFont, Brushes.Black, centerpoint, linedistance * 1, formatCenter);
             e.Graphics.DrawString("Symbiotic Autonomous Machine", BigFont, Brushes.Black, centerpoint, linedistance * 2, formatCenter);
@@ -656,13 +656,13 @@ namespace SAM0application
             float exclPrice = realPrice - taxPrice;
             AppendToLog(@"printing receipt " + exclPrice.ToString("€0.## + ") + taxPrice.ToString("€0.## =") + realPrice.ToString("€0.##"));
             rect = new RectangleF(0+leftpoint, linedistance * 6, rightpoint, linedistance);
-            e.Graphics.DrawString(exclPrice.ToString("€0.##")+ " Cup SAM's kombucha", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString(exclPrice.ToString("€0.##")+ "     Cup SAM's kombucha", MainFont, Brushes.Black, rect);
             //e.Graphics.DrawString(exclPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
             rect = new RectangleF(0 + leftpoint, linedistance * 7, rightpoint, linedistance);
-            e.Graphics.DrawString(taxPrice.ToString("€0.##")+" BTW 6%", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString(taxPrice.ToString("€0.##")+"     VAT 6% (NL)", MainFont, Brushes.Black, rect);
             //e.Graphics.DrawString(taxPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
             rect = new RectangleF(0 + leftpoint, linedistance * 9, rightpoint, linedistance);
-            e.Graphics.DrawString(realPrice.ToString("€0.##")+" Total", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString(realPrice.ToString("€0.##")+"     Total", MainFont, Brushes.Black, rect);
             //e.Graphics.DrawString(realPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
 
             e.Graphics.DrawLine(linePen, 0, (int)(linedistance * 11), 500, (int)(linedistance * 11));
@@ -706,8 +706,8 @@ namespace SAM0application
             e.Graphics.DrawString("towards a collaborative future", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 19.5), formatCenter);
             e.Graphics.DrawString("for man and machine", ItalicFont, Brushes.Black, centerpoint, linedistance * 20, formatCenter);
 
-            e.Graphics.DrawString("a project by", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 21.5), formatCenter);
-            e.Graphics.DrawString("www.arvidandmarie.com", ItalicFont, Brushes.Black, centerpoint, linedistance * 22, formatCenter);
+            e.Graphics.DrawString("a project by", MainFont, Brushes.Black, centerpoint, (int)(linedistance * 21.5), formatCenter);
+            e.Graphics.DrawString("www.arvidandmarie.com", MainFont, Brushes.Black, centerpoint, (int)(linedistance * 22.5), formatCenter);
 
         }
         private void TapTest_click(object sender, EventArgs e)
