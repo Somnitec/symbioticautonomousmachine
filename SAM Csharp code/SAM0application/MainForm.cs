@@ -656,7 +656,7 @@ namespace SAM0application
             float exclPrice = realPrice - taxPrice;
             AppendToLog(@"printing receipt " + exclPrice.ToString("€0.## + ") + taxPrice.ToString("€0.## =") + realPrice.ToString("€0.##"));
             rect = new RectangleF(0, linedistance * 6, rightpoint, linedistance);
-            e.Graphics.DrawString("1 cup SAM's komboucha soda", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString("1 cup SAM's komboucha", MainFont, Brushes.Black, rect);
             e.Graphics.DrawString(exclPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
             rect = new RectangleF(0, linedistance * 7, rightpoint, linedistance);
             e.Graphics.DrawString("BTW 6%", MainFont, Brushes.Black, rect);
