@@ -50,3 +50,12 @@ D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMesse
 D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csproj.CoreCompileInputs.cache
 D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.dll
 D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.pdb
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.Transport.Serial.dll
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.Transport.Serial.pdb
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.dll
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.pdb
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csprojResolveAssemblyReference.cache
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csproj.CoreCompileInputs.cache
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csproj.CopyComplete
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.dll
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.pdb

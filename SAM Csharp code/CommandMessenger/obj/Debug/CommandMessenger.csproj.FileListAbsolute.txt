@@ -34,3 +34,9 @@ D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMesse
 D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
 D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
 D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb

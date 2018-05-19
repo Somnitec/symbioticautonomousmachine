@@ -40,3 +40,25 @@ C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\SAM0application\o
 C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.application
 C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.exe
 C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.pdb
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\SAM0application.exe.config
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\SAM0application.exe.manifest
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\SAM0application.application
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\SAM0application.exe
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\SAM0application.pdb
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\CommandMessenger.dll
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\CommandMessenger.Transport.Serial.dll
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\SumUp.Sdk.dll
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\CommandMessenger.Transport.Serial.pdb
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\bin\Debug\CommandMessenger.pdb
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM1application.csprojResolveAssemblyReference.cache
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.MainForm.resources
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.Properties.Resources.resources
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.UserInterface.resources
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM1application.csproj.GenerateResource.cache
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM1application.csproj.CoreCompileInputs.cache
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.exe.manifest
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.application
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM1application.csproj.CopyComplete
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.exe
+C:\Users\Human Industries\Documents\symbioticautonomousmachine\SAM Csharp code\SAM0application\obj\Debug\SAM0application.pdb

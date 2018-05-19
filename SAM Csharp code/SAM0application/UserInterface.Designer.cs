@@ -69,7 +69,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 1053);
+            this.ClientSize = new System.Drawing.Size(801, 749);
             this.Controls.Add(this.arrowBox);
             this.Controls.Add(this.interfaceText);
             this.Name = "UserInterface";
