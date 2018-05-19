@@ -178,7 +178,7 @@ namespace SAM0application
             try
             {
                 //await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
-                await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c", "arvidj@gmail.com", "13374zzIP");
+                await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c", "arvidj@gmail.com", "***REMOVED***");
 
                 UpdateUI(UIState.Idle);
 
@@ -656,7 +656,7 @@ namespace SAM0application
             float exclPrice = realPrice - taxPrice;
             AppendToLog(@"printing receipt " + exclPrice.ToString("€0.## + ") + taxPrice.ToString("€0.## =") + realPrice.ToString("€0.##"));
             rect = new RectangleF(0, linedistance * 6, rightpoint, linedistance);
-            e.Graphics.DrawString("1 cup SAM's komboucha soda", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString("1 cup SAM's komboucha", MainFont, Brushes.Black, rect);
             e.Graphics.DrawString(exclPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
             rect = new RectangleF(0, linedistance * 7, rightpoint, linedistance);
             e.Graphics.DrawString("BTW 6%", MainFont, Brushes.Black, rect);
