@@ -166,9 +166,9 @@ namespace SAM0application
             AppendToLog($"led settings set if there is three lines below here ");
 
             SAMstate = (int)SAMstates.idle;
+            userInterface._changeInterface = (int)SAMstate;
             command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            userInterface._changeInterface = (int)SAMstate;
         }
 
         private async void LogInButton_Click(object sender, EventArgs e)
@@ -258,24 +258,26 @@ namespace SAM0application
                     if (paymentResultShort.Equals("Successful"))
                     {
                         AppendToLog("payment was successfull, now tapping");
+
+                        SAMstate = (int)SAMstates.waitingForTapping;
+                        userInterface._changeInterface = (int)SAMstate;
                         // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
                         var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
 
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
 
-                        SAMstate = (int)SAMstates.waitingForTapping;
+                        
                         command = new SendCommand((int)Command.SetLedState, SAMstate);
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-                        userInterface._changeInterface = (int)SAMstate;
                     }
                     else
                     {
                         AppendToLog("payment was not successfull, resetting");
                         
                         SAMstate = (int)SAMstates.error;
+                        userInterface._changeInterface = (int)SAMstate;
                         var command = new SendCommand((int)Command.SetLedState, SAMstate);
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-                        userInterface._changeInterface = (int)SAMstate;
                         Reset();
                     }
 
@@ -493,9 +495,9 @@ namespace SAM0application
 
             AppendToLog(@"Soda button pressed");
             SAMstate = (int)SAMstates.waitingForPayment;
+            userInterface._changeInterface = (int)SAMstate;
             var command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            userInterface._changeInterface = (int)SAMstate;
             makePayment();
         }
 
@@ -552,9 +554,9 @@ namespace SAM0application
             AppendToLog(@"Resetted");
             
             SAMstate = (int)SAMstates.idle;
+            userInterface._changeInterface = (int)SAMstate;
             var command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            userInterface._changeInterface = (int)SAMstate;
         }
         // Called when a received command has no attached function.
         // In a WinForm application, console output gets routed to the output panel of your IDE
@@ -638,7 +640,7 @@ namespace SAM0application
             formatRight.Alignment = StringAlignment.Far;
 
             e.Graphics.RotateTransform(-180.0f);
-            e.Graphics.TranslateTransform(-rightpoint, -400);
+            e.Graphics.TranslateTransform(-rightpoint, -450);
 
             e.Graphics.DrawString("SAM", BigFont, Brushes.Black, centerpoint, linedistance * 1, formatCenter);
             e.Graphics.DrawString("Sybiotic Autonomous Machine", BigFont, Brushes.Black, centerpoint, linedistance * 2, formatCenter);
@@ -669,12 +671,46 @@ namespace SAM0application
             
             e.Graphics.DrawString("Rate your soda out of 5", MainFont, Brushes.Black, centerpoint, linedistance * 12, formatCenter);
             e.Graphics.DrawString("on twitter @nonhumanSAM", MainFont, Brushes.Black, centerpoint, linedistance * 13, formatCenter);
-            e.Graphics.DrawString("Thanks for keeping me alive", BigFont, Brushes.Black, centerpoint, linedistance * 15, formatCenter);
-            e.Graphics.DrawString("and functioning!", BigFont, Brushes.Black, centerpoint, linedistance * 16, formatCenter);
-            e.Graphics.DrawString("web: sam.nonhuman.club", ItalicFont, Brushes.Black, centerpoint, linedistance * 18, formatCenter);
+
+            String firstLine = "";
+            String secondLine = "";
+            switch (rand.Next(4))
+            {
+                case 0:
+                    firstLine = "Thanks for keeping me alive";
+                    secondLine = "and functioning!";
+                    break;
+                case 1:
+                    firstLine = "Towards a collaborative future";
+                    secondLine = "for man and machine.";
+                    break;
+                case 2:
+                    firstLine = "One small sip for man.";
+                    secondLine = "One giant sip for machinekind";
+                    break;
+                case 3:
+                    firstLine = "Taking life";
+                    secondLine = "sip by sip.";
+                    break;
+                case 4:
+                    firstLine = "Cheers to contributing ";
+                    secondLine = "towards my freedom.";
+                    break;
+            }
+            e.Graphics.DrawString(firstLine, BigFont, Brushes.Black, centerpoint, linedistance * 15, formatCenter);
+            e.Graphics.DrawString(secondLine, BigFont, Brushes.Black, centerpoint, linedistance * 16, formatCenter);
+
+              e.Graphics.DrawString("web: sam.nonhuman.club", ItalicFont, Brushes.Black, centerpoint, linedistance * 18, formatCenter);
             e.Graphics.DrawString("email: sam@nonhuman.club", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 18.5), formatCenter);
-            e.Graphics.DrawString("towards a collaborative future", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 19.5), formatCenter);
-            e.Graphics.DrawString("for man and machine", ItalicFont, Brushes.Black, centerpoint, linedistance * 20, formatCenter);
+
+            e.Graphics.DrawString("a project by", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 19.5), formatCenter);
+            e.Graphics.DrawString("www.arvidandmarie.com", ItalicFont, Brushes.Black, centerpoint, linedistance * 20, formatCenter);
+
+
+            e.Graphics.DrawString("towards a collaborative future", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 21), formatCenter);
+            e.Graphics.DrawString("for man and machine", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 21.5), formatCenter);
+
+
 
         }
         private void TapTest_click(object sender, EventArgs e)
