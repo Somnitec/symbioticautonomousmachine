@@ -8,13 +8,13 @@ namespace SAM0application
     public partial class UserInterface : Form
     {
         String[] text = {
-            "PL:\nDzień dobry, nazywam się SAM, Symbiotyczna Autonomiczna Maszyna. Jestem właścicielem firmy komputerowej! Naciśnij przycisk powyżej, aby wypróbować herbatę kombucha, którą wykonuję.\n\n" +
-                "EN:\nHello, my name is SAM, the\nSymbiotic Autonomous Machine.\nI am a machine business owner!\n\nPress the button to try\nthe komboucha tea I make.",
-            "PL:\nDziękuję za Twoje zamówienie.\nUmieść filiżankę pod kranem i postępuj zgodnie z instrukcjami na terminalu płatniczym po prawej stronie. Przetworzenie płatności może chwilę potrwać.\n\n" +
-                "EN:\nThank you for your order.\nPlease place a cup under the tap\nand follow the instructions on the payment terminal.",
-            "PL:\nPłatność jest akceptowana, Twoja herbata kombucha będzie serwowana od razu.\n\n" +
-                "EN:\nPayment is being processed, your komboucha tea will be served in a few seconds.",
-            "PL:\nCoś poszło nie tak.\nProszę spróbuj ponownie.\n\n" +
+            "PL:\nDzień dobry, nazywam się SAM, Symbiotyczna Autonomiczna Maszyna. Jestem właścicielem firmy komputerowej! Naciśnij przycisk powyżej, aby wypróbować herbatę kombucha, którą wykonuję.\n\n\n" +
+                "EN:\nHello, my name is SAM, the\nSymbiotic Autonomous Machine.\nI am a machine business owner!\nPress the button to try the kombucha tea I make.",
+            "PL:\nDziękuję za Twoje zamówienie.\nUmieść filiżankę pod kranem i postępuj zgodnie z instrukcjami na terminalu płatniczym po prawej stronie. Przetworzenie płatności może chwilę potrwać.\n\n\n" +
+                "EN:\nThank you for your order. Please place a cup under the tap and follow the instructions on the payment terminal on the right. It can take a few moments to process the payment.",
+            "PL:\nPłatność jest akceptowana, Twoja herbata kombucha będzie serwowana od razu.\n\n\n" +
+                "EN:\nPayment is being processed, your kombucha tea will be served right away.",
+            "PL:\nCoś poszło nie tak.\nProszę spróbuj ponownie.\n\n\n" +
                 "EN:\nSomething went wrong.\nPlease try again.",
             "just testing.",
         };
@@ -24,8 +24,8 @@ namespace SAM0application
         {//y position,rotation (default left)
   
             {150,90 },
-            {200 ,180},
-            {800 ,0},            
+            {150 ,180},
+            {900 ,0},            
             {-100,0},
             {-100,0},
         };

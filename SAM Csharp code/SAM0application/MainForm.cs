@@ -640,7 +640,7 @@ namespace SAM0application
             formatRight.Alignment = StringAlignment.Far;
 
             e.Graphics.RotateTransform(-180.0f);
-            e.Graphics.TranslateTransform(-rightpoint, -450);
+            e.Graphics.TranslateTransform(-rightpoint, -400);
 
             e.Graphics.DrawString("SAM", BigFont, Brushes.Black, centerpoint, linedistance * 1, formatCenter);
             e.Graphics.DrawString("Sybiotic Autonomous Machine", BigFont, Brushes.Black, centerpoint, linedistance * 2, formatCenter);
