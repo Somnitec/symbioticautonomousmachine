@@ -34,7 +34,7 @@ void ledStuff() {
     else if (stateNow == waitingForPayment) {
 
       //analogWrite(buttonledpin, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
-      buttonled[0] = CHSV(255, 0, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
+      buttonled[0] = CHSV(100, 255, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
       FastLED.show();
     }//pumping state
     else if (stateNow == waitingForTapping) {
@@ -44,7 +44,7 @@ void ledStuff() {
     }//error state
     else if (stateNow == error) {
       //analogWrite(buttonledpin, 255);
-      buttonled[0] = CRGB::White;
+      buttonled[0] = CRGB::Red;
       FastLED.show();
       delay(blinkOnTime);
       //analogWrite(buttonledpin, 0);
@@ -57,7 +57,7 @@ void ledStuff() {
     else if (stateNow == testing) {
       int pins[] = {led1pin, led2pin};
       for (int i = 0; i < 2; i++) {
-        buttonled[0] = CRGB::White;
+        buttonled[0] = CHSV(random(255), 255,255);
         FastLED.show();
         digitalWrite(pins[i], HIGH);
         delay(100);
