@@ -278,6 +278,8 @@ namespace SAM0application
                         userInterface._changeInterface = (int)SAMstate;
                         var command = new SendCommand((int)Command.SetLedState, SAMstate);
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+                        System.Threading.Thread.Sleep(4000);
                         Reset();
                     }
 
