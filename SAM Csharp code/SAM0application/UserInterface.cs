@@ -8,13 +8,13 @@ namespace SAM0application
     public partial class UserInterface : Form
     {
         String[] text = {
-            "PL:\nDzień dobry, nazywam się SAM, Symbiotyczna Autonomiczna Maszyna. Jestem właścicielem firmy komputerowej! Naciśnij przycisk powyżej, aby wypróbować herbatę kombucha, którą wykonuję.\n\n\n" +
+            "NL:\nHallo, mijn naam is SAM, Symbiotic Autonomous Machine. Ik ben een machine-ondernemer! Druk op de knop hierboven om de Kombucha-thee te proberen die ik maak.\n\n\n" +
                 "EN:\nHello, my name is SAM, the\nSymbiotic Autonomous Machine.\nI am a machine business owner!\nPress the button to try the kombucha tea I make.",
-            "PL:\nDziękuję za Twoje zamówienie.\nUmieść filiżankę pod kranem i postępuj zgodnie z instrukcjami na terminalu płatniczym po prawej stronie. Przetworzenie płatności może chwilę potrwać.\n\n\n" +
+            "NL:\nBedankt voor je bestelling. \nPlaats de beker onder de kraan en volg de instructies op de betaalterminal aan de rechterkant. Het kan een tijdje duren om uw betaling te verwerken.\n\n\n" +
                 "EN:\nThank you for your order. Please place a cup under the tap and follow the instructions on the payment terminal on the right. It can take a few moments to process the payment.",
-            "PL:\nPłatność jest akceptowana, Twoja herbata kombucha będzie serwowana od razu.\n\n\n" +
+            "NL:\nDe betaling is geaccepteerd, uw Kombucha-thee wordt meteen geserveerd.\n\n\n" +
                 "EN:\nPayment is being processed, your kombucha tea will be served right away.",
-            "PL:\nCoś poszło nie tak.\nProszę spróbuj ponownie.\n\n\n" +
+            "NL:\nEr is iets misgegaan.\nProbeer het opnieuw.\n\n\n" +
                 "EN:\nSomething went wrong.\nPlease try again.",
             "just testing.",
         };
