@@ -625,8 +625,8 @@ namespace SAM0application
 
         private void PrintReceiptOnPrintPage(object sender, PrintPageEventArgs e)
         {
-            int rightpoint = 320;
-            int leftpoint = 50;
+            int rightpoint = 220;
+            int leftpoint = 10;
             int centerpoint = (int)rightpoint / 2;
 
             int fontsize = 9;
@@ -635,6 +635,7 @@ namespace SAM0application
             Font ItalicFont = new Font("roboto", (int)(fontsize * 0.6),FontStyle.Italic);
             Font BigFont = new Font("roboto", fontsize, FontStyle.Bold);
             Pen linePen = new Pen(Brushes.Black, 1);
+            Pen noPen = new Pen(Brushes.White, 1);
             StringFormat formatCenter = new StringFormat();
             formatCenter.Alignment = StringAlignment.Center;
             StringFormat formatRight = new StringFormat();
@@ -642,6 +643,8 @@ namespace SAM0application
 
             e.Graphics.RotateTransform(-180.0f);
             e.Graphics.TranslateTransform(-rightpoint, -450);
+
+            e.Graphics.DrawLine(linePen, 0, (int)(linedistance * -1), 500, (int)(linedistance * -1));
 
             e.Graphics.DrawString("SAM", BigFont, Brushes.Black, centerpoint, linedistance * 1, formatCenter);
             e.Graphics.DrawString("Symbiotic Autonomous Machine", BigFont, Brushes.Black, centerpoint, linedistance * 2, formatCenter);
