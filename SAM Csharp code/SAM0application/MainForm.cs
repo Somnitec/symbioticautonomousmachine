@@ -640,8 +640,8 @@ namespace SAM0application
 
         private void PrintReceiptOnPrintPage(object sender, PrintPageEventArgs e)
         {
-            int rightpoint = 220;
-            int leftpoint = 10;
+            int rightpoint = 330;
+            int leftpoint = 80;
             int centerpoint = (int)rightpoint / 2;
 
             int fontsize = 9;
