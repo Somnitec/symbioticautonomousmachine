@@ -58,10 +58,10 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E4C24736DA4907F0CB96CD775A1C9E8BEFC109E3</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>0400F220517C28E0C0696E4FA3DCDD6F77703213</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>SAM0application_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>SAM1application_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -130,6 +130,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="SAM0application_TemporaryKey.pfx" />
+    <None Include="SAM1application_1_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
