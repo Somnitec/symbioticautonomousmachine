@@ -135,7 +135,7 @@ namespace SAM0application
         {
             
             Console.WriteLine(IsAvailable);
-            logInButton.PerformClick();
+            //logInButton.PerformClick();
             Console.WriteLine(@"mainform loaded");
             ArduinoSetup();
             /*
@@ -208,6 +208,8 @@ namespace SAM0application
 
         private async void DoPaymentButton_Click(object sender, EventArgs e)
         {
+            AppendToLog("doing payment thing");
+            /* //disabeled this to work without sumup
             if (_sumUpService == null) return;
 
             if (!ulong.TryParse(AmountText.Text, out ulong amount))
@@ -301,6 +303,21 @@ namespace SAM0application
                     realPaymentHappening = false;
                 }
             }
+            */
+
+            AppendToLog("although sumup is not connected, payment was successfull, printing receipt!");
+            PrintReceipt();
+            AppendToLog(@"finished printing, now tapping");
+
+            // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
+            var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
+
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+            SAMstate = (int)SAMstates.waitingForTapping;
+            command = new SendCommand((int)Command.SetLedState, SAMstate);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            userInterface._changeInterface = (int)SAMstate;
         }
 
         private void CancelPaymentButton_Click(object sender, EventArgs e)
@@ -322,7 +339,7 @@ namespace SAM0application
         private void UpdateUI(UIState uiState, string statusText = null)
         {
             bool loginControlsEnabled = false;
-            bool paymentControlsEnabled = false;
+            bool paymentControlsEnabled = true;//used to be false
             string statusStripText = string.Empty;
             ProgressBarStyle statusStripProgress = ProgressBarStyle.Blocks;
 
@@ -661,7 +678,7 @@ namespace SAM0application
 
             e.Graphics.DrawLine(linePen, 0, (int)(linedistance * -1), 500, (int)(linedistance * -1));
 
-            e.Graphics.DrawString("SAM", BigFont, Brushes.Black, centerpoint, linedistance * 1, formatCenter);
+            e.Graphics.DrawString("SAM 萨米", BigFont, Brushes.Black, centerpoint, linedistance * 1, formatCenter);
             e.Graphics.DrawString("Symbiotic Autonomous Machine", BigFont, Brushes.Black, centerpoint, linedistance * 2, formatCenter);
 
             e.Graphics.DrawLine(linePen, 0, (int)(linedistance * 3.5), 500, (int)(linedistance * 3.5));
