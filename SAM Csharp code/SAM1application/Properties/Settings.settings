@@ -6,10 +6,10 @@
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="MinPrice" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">0.5</Value>
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="MaxPrice" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">1.5</Value>
+      <Value Profile="(Default)">4</Value>
     </Setting>
     <Setting Name="PrintingEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

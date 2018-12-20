@@ -81,6 +81,7 @@
             this.PrintingCheckBox = new System.Windows.Forms.CheckBox();
             this.AmountText = new System.Windows.Forms.TextBox();
             this.testTapMsButton = new System.Windows.Forms.Button();
+            this.coinTestButton = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).BeginInit();
@@ -144,7 +145,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(142, 154);
+            this.label2.Location = new System.Drawing.Point(513, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 16;
@@ -153,11 +154,11 @@
             // PayButton
             // 
             this.PayButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.PayButton.Location = new System.Drawing.Point(20, 148);
+            this.PayButton.Location = new System.Drawing.Point(19, 173);
             this.PayButton.Name = "PayButton";
             this.PayButton.Size = new System.Drawing.Size(100, 23);
             this.PayButton.TabIndex = 14;
-            this.PayButton.Text = "Payment Test";
+            this.PayButton.Text = "PaymentButton";
             this.PayButton.UseVisualStyleBackColor = true;
             this.PayButton.Click += new System.EventHandler(this.DoPaymentButton_Click);
             // 
@@ -188,7 +189,7 @@
             // CancelPaymentButton
             // 
             this.CancelPaymentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.CancelPaymentButton.Location = new System.Drawing.Point(20, 149);
+            this.CancelPaymentButton.Location = new System.Drawing.Point(391, 8);
             this.CancelPaymentButton.Name = "CancelPaymentButton";
             this.CancelPaymentButton.Size = new System.Drawing.Size(99, 23);
             this.CancelPaymentButton.TabIndex = 27;
@@ -226,7 +227,7 @@
             // 
             // printTestButton
             // 
-            this.printTestButton.Location = new System.Drawing.Point(20, 171);
+            this.printTestButton.Location = new System.Drawing.Point(391, 30);
             this.printTestButton.Name = "printTestButton";
             this.printTestButton.Size = new System.Drawing.Size(99, 23);
             this.printTestButton.TabIndex = 28;
@@ -236,7 +237,7 @@
             // 
             // TapTestButton
             // 
-            this.TapTestButton.Location = new System.Drawing.Point(20, 194);
+            this.TapTestButton.Location = new System.Drawing.Point(391, 53);
             this.TapTestButton.Name = "TapTestButton";
             this.TapTestButton.Size = new System.Drawing.Size(99, 23);
             this.TapTestButton.TabIndex = 28;
@@ -247,7 +248,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(159, 198);
+            this.label11.Location = new System.Drawing.Point(530, 57);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(21, 13);
             this.label11.TabIndex = 16;
@@ -278,7 +279,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(241, 173);
+            this.label12.Location = new System.Drawing.Point(323, 63);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(51, 13);
             this.label12.TabIndex = 16;
@@ -287,11 +288,11 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(241, 198);
+            this.label13.Location = new System.Drawing.Point(245, 198);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(32, 13);
+            this.label13.Size = new System.Drawing.Size(38, 13);
             this.label13.TabIndex = 16;
-            this.label13.Text = "€ min";
+            this.label13.Text = "元 min";
             // 
             // label14
             // 
@@ -343,11 +344,11 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(242, 223);
+            this.label18.Location = new System.Drawing.Point(246, 223);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(35, 13);
+            this.label18.Size = new System.Drawing.Size(41, 13);
             this.label18.TabIndex = 16;
-            this.label18.Text = "€ max";
+            this.label18.Text = "元 max";
             // 
             // FakeSodaButton
             // 
@@ -361,7 +362,7 @@
             // 
             // FakeGrainButton
             // 
-            this.FakeGrainButton.Location = new System.Drawing.Point(79, 12);
+            this.FakeGrainButton.Location = new System.Drawing.Point(316, -5);
             this.FakeGrainButton.Name = "FakeGrainButton";
             this.FakeGrainButton.Size = new System.Drawing.Size(58, 59);
             this.FakeGrainButton.TabIndex = 35;
@@ -376,7 +377,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(136, 13);
             this.label3.TabIndex = 36;
-            this.label3.Text = "SAM0 2017 by Arvid&&Marie";
+            this.label3.Text = "SAM2 2018 by Arvid&&Marie";
             // 
             // label4
             // 
@@ -446,7 +447,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(253, 139);
+            this.label8.Location = new System.Drawing.Point(260, 142);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 13);
             this.label8.TabIndex = 16;
@@ -460,7 +461,7 @@
             0,
             0,
             0});
-            this.numericUpDown7.Location = new System.Drawing.Point(117, 196);
+            this.numericUpDown7.Location = new System.Drawing.Point(488, 55);
             this.numericUpDown7.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -554,7 +555,7 @@
             0,
             0,
             0});
-            this.tapMillisecondsNumericUpDown.Location = new System.Drawing.Point(201, 137);
+            this.tapMillisecondsNumericUpDown.Location = new System.Drawing.Point(200, 140);
             this.tapMillisecondsNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -575,7 +576,7 @@
             0,
             0,
             0});
-            this.numericUpDown2.Location = new System.Drawing.Point(201, 171);
+            this.numericUpDown2.Location = new System.Drawing.Point(283, 61);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -588,13 +589,8 @@
             // 
             // numericUpDown3
             // 
+            this.numericUpDown3.Cursor = System.Windows.Forms.Cursors.Default;
             this.numericUpDown3.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "MaxPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numericUpDown3.DecimalPlaces = 2;
-            this.numericUpDown3.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
             this.numericUpDown3.Location = new System.Drawing.Point(201, 221);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             10,
@@ -609,12 +605,6 @@
             // numericUpDown1
             // 
             this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "MinPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
             this.numericUpDown1.Location = new System.Drawing.Point(201, 195);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
@@ -632,7 +622,7 @@
             this.checkBox6.Checked = global::SAM1application.Properties.Settings.Default.PrintingShortVersion;
             this.checkBox6.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM1application.Properties.Settings.Default, "PrintingShortVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBox6.Enabled = false;
-            this.checkBox6.Location = new System.Drawing.Point(201, 266);
+            this.checkBox6.Location = new System.Drawing.Point(186, 30);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(124, 17);
             this.checkBox6.TabIndex = 30;
@@ -645,7 +635,7 @@
             this.PrintingCheckBox.Checked = global::SAM1application.Properties.Settings.Default.PrintingEnabled;
             this.PrintingCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.PrintingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM1application.Properties.Settings.Default, "PrintingEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.PrintingCheckBox.Location = new System.Drawing.Point(201, 247);
+            this.PrintingCheckBox.Location = new System.Drawing.Point(186, 11);
             this.PrintingCheckBox.Name = "PrintingCheckBox";
             this.PrintingCheckBox.Size = new System.Drawing.Size(93, 17);
             this.PrintingCheckBox.TabIndex = 30;
@@ -655,15 +645,15 @@
             // AmountText
             // 
             this.AmountText.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM1application.Properties.Settings.Default, "PaymentTestAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.AmountText.Location = new System.Drawing.Point(118, 150);
+            this.AmountText.Location = new System.Drawing.Point(125, 176);
             this.AmountText.Name = "AmountText";
-            this.AmountText.Size = new System.Drawing.Size(27, 20);
+            this.AmountText.Size = new System.Drawing.Size(38, 20);
             this.AmountText.TabIndex = 12;
             this.AmountText.Text = global::SAM1application.Properties.Settings.Default.PaymentTestAmount;
             // 
             // testTapMsButton
             // 
-            this.testTapMsButton.Location = new System.Drawing.Point(135, 121);
+            this.testTapMsButton.Location = new System.Drawing.Point(125, 136);
             this.testTapMsButton.Name = "testTapMsButton";
             this.testTapMsButton.Size = new System.Drawing.Size(69, 23);
             this.testTapMsButton.TabIndex = 41;
@@ -671,11 +661,22 @@
             this.testTapMsButton.UseVisualStyleBackColor = true;
             this.testTapMsButton.Click += new System.EventHandler(this.testTapMsButton_Click);
             // 
+            // coinTestButton
+            // 
+            this.coinTestButton.Location = new System.Drawing.Point(125, 206);
+            this.coinTestButton.Name = "coinTestButton";
+            this.coinTestButton.Size = new System.Drawing.Size(69, 23);
+            this.coinTestButton.TabIndex = 42;
+            this.coinTestButton.Text = "coinTest";
+            this.coinTestButton.UseVisualStyleBackColor = true;
+            this.coinTestButton.Click += new System.EventHandler(this.coinTestButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 428);
+            this.Controls.Add(this.coinTestButton);
             this.Controls.Add(this.testTapMsButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.interfaceStateNumericUpDown);
@@ -730,7 +731,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(598, 385);
             this.Name = "MainForm";
-            this.Text = "SAM0 application";
+            this.Text = "SAM1 application";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
@@ -803,6 +804,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown tapMillisecondsNumericUpDown;
         private System.Windows.Forms.Button testTapMsButton;
+        private System.Windows.Forms.Button coinTestButton;
     }
 }
 

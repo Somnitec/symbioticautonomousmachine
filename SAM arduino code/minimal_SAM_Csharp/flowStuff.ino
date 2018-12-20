@@ -3,7 +3,8 @@ void flowStuff() {
   unsigned long currentMillis = millis();
   if (currentMillis - flowTimer >= flowUpdateTime) {
     flowTimer = currentMillis;
-    if (nowTapping) {
+    /*
+      if (nowTapping) {
       if (waterFlow < tapAmount) {
         digitalWrite(pump1pin,HIGH);
         //cmdMessenger.sendCmd(kTapAmount, waterFlow);
@@ -12,16 +13,24 @@ void flowStuff() {
         nowTapping = false;
         cmdMessenger.sendCmd(kTapSucceeded, "all done");
       }
-    }
-
+      }
+    */
     if (nowTappingMilliseconds) {
       if (tapTimer < tapAmountMilliseconds) {
-        digitalWrite(pump1pin,HIGH);
+        digitalWrite(pump1pin, HIGH);
         //cmdMessenger.sendCmd(kTapAmount, waterFlow);
-      }else {
-        digitalWrite(pump1pin,LOW);
+      } else {
+        digitalWrite(pump1pin, LOW);
+        delay(100);//maybe to allow the power to stabilize
         nowTappingMilliseconds = false;
+
+        Serial.begin(115200);
         cmdMessenger.sendCmd(kTapSucceeded, "all done");
+        cmdMessenger.sendCmd(kTestArduino, String("DONE!with this tapping"));
+
+        coinValue = 0;
+        attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
+
       }
     }
 

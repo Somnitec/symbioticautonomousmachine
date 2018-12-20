@@ -119,7 +119,7 @@ void loop()
 {
   buttonStuff();
   coinStuff();
-  flowStuff();
+  //flowStuff();
   ledStuff();
   serialStuff();
 

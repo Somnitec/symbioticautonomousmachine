@@ -36,6 +36,14 @@ namespace SAM1application
             
         }
 
+        public String _setPrice
+        {
+            set
+            {
+                currentAmount.Text = value.ToString() + " 元";
+            }
+        }
+
         public int _changeInterface
         {
             set {

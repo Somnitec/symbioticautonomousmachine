@@ -293,12 +293,11 @@ namespace SAM1application
             userInterface._changeInterface = (int)SAMstate;
             // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
             var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
-
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-
-
-            command = new SendCommand((int)Command.SetLedState, SAMstate);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            //Reset();
+            //SAMstate = (int)SAMstates.idle;
+            //command = new SendCommand((int)Command.SetLedState, SAMstate);
+            //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
 
         }
 
@@ -474,9 +473,27 @@ namespace SAM1application
             _cmdMessenger.Attach((int)Command.Reset, OnReset);
             _cmdMessenger.Attach((int)Command.TapSucceeded, OnTapSucceeded);
             _cmdMessenger.Attach((int)Command.PumpTap, OnPumpTap);
+            _cmdMessenger.Attach((int)Command.CoinWait, OnCoinWait);
+            _cmdMessenger.Attach((int)Command.CoinAmount,OnCoinAmount);
 
 
+            
 
+        }
+
+        void OnCoinAmount(ReceivedCommand arguments)
+        {
+            String message = arguments.ReadStringArg();
+            AppendToLog(@"actual coin state: " + message);
+            userInterface._setPrice = message;
+        }
+
+        void OnCoinWait(ReceivedCommand arguments)
+        {
+            String message = arguments.ReadStringArg();
+            AppendToLog(@"got coins: " + message);
+            //makePayment();
+            PayButton.PerformClick();
         }
 
         // ------------------  CALLBACKS ---------------------
@@ -519,15 +536,21 @@ namespace SAM1application
 
         private void makePayment()
         {
+            AppendToLog((int)(Properties.Settings.Default.MinPrice+1)+ " - "+ (int)(Properties.Settings.Default.MaxPrice + 1));
 
-            price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
+            price = rand.Next((int)(Properties.Settings.Default.MinPrice ), (int)(Properties.Settings.Default.MaxPrice +1))+1;
             Properties.Settings.Default.ReceiptNo++;
             ReceiptNoNumericUpDown.Update();
             
-            AppendToLog(@"Starting payment for €" + price / 100f+" and receipt no "+ Properties.Settings.Default.ReceiptNo);
+            AppendToLog(@"Starting payment for RMB " + price +" and receipt no "+ Properties.Settings.Default.ReceiptNo);
             AmountText.Text = price.ToString();
             realPaymentHappening = true;
-            PayButton.PerformClick();
+
+            var command = new SendCommand((int)Command.CoinWait, price);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+
+            //PayButton.PerformClick();
         }
 
         void OnGrainButtonPressed(ReceivedCommand arguments)
@@ -833,6 +856,11 @@ namespace SAM1application
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
 
         }
+
+        private void coinTestButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     internal enum UIState
@@ -868,6 +896,8 @@ namespace SAM1application
         SetLedBreathMax,
         SetLedBreathMin,
         PumpTapMilliseconds,
+        CoinWait,
+        CoinAmount
     };
 
     internal enum SAMstates

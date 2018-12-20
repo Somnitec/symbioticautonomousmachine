@@ -37,7 +37,7 @@ namespace SAM1application.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public decimal MinPrice {
             get {
                 return ((decimal)(this["MinPrice"]));
@@ -49,7 +49,7 @@ namespace SAM1application.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
         public decimal MaxPrice {
             get {
                 return ((decimal)(this["MaxPrice"]));

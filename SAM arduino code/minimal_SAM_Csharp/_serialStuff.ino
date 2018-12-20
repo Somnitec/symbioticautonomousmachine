@@ -19,6 +19,7 @@ enum
   kSetLedBreathMin,
   kPumpTapMilliseconds,
   kCoinWait,
+  kCoinAmount,
 };
 
 
@@ -59,6 +60,7 @@ void attachCommandCallbacks()
   cmdMessenger.attach(kSetLedState, OnSetLedState);
   cmdMessenger.attach(kPumpTapMilliseconds, OnPumpTapMilliseconds);
   cmdMessenger.attach(kCoinWait, OnCoinWait);
+  //cmdMessenger.attach(kCoinAmount, OnCoinAmount);
 }
 
 // Called when a received command has no attached function
@@ -72,6 +74,7 @@ void OnReset()
   cmdMessenger.sendCmd(kReset);
   //return the states back to how they were
   //reset animation
+
 }
 
 void OnTestArduino()
@@ -167,24 +170,46 @@ void OnPumpTapMilliseconds() {
   nowTappingMilliseconds = true;
   tapAmountMilliseconds = cmdMessenger.readInt16Arg();
   tapTimer = 0;
-  cmdMessenger.sendCmd(kPumpTapMilliseconds, "tapping now ms->");
-  cmdMessenger.sendCmd(kPumpTapMilliseconds, tapAmount);
+  cmdMessenger.sendCmd(kPumpTapMilliseconds, String("tapping now ms->").concat(tapAmountMilliseconds));
+  Serial.end();
+
+  digitalWrite(pump1pin, HIGH);
+  delay(tapAmountMilliseconds);//simplfied the shit
+  digitalWrite(pump1pin, LOW);
+  delay(1000);//maybe to allow the power to stabilize
+  nowTappingMilliseconds = false;
+
+  Serial.begin(115200);
+  cmdMessenger.sendCmd(kTapSucceeded, "all done");
+  cmdMessenger.sendCmd(kTestArduino, String("DONE!with this tapping"));
+
+  coinValue = 0;
+  attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
+
+
 }
 
 void OnCoinWait() {
-  coinValue = 0;
+  //coinValue = 0;
   int requestedValue = cmdMessenger.readInt16Arg();
-  cmdMessenger.sendCmd(kTestArduino, String("I wait for coins : ").concat(String(cmdMessenger.readInt16Arg())));
+  cmdMessenger.sendCmd(kTestArduino, String("I wait for coins : ").concat(requestedValue));
   while (coinValue < requestedValue) {
-    if (!coinEnabled) {
-      if (coinTimer > coinDebounce) {
-        coinEnabled = true;
-        attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
-      }
-    }
-  }
-  cmdMessenger.sendCmd(kTestArduino, String("DONE! received coins : ").concat(coinValue));
+    //if (!coinEnabled) {
+    //if (coinTimer > coinDebounce) {
 
+    //coinEnabled = true;
+    //attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
+
+    //}
+    //}
+    delay(1);
+  }
+  detachInterrupt(digitalPinToInterrupt(11));
+  cmdMessenger.sendCmd(kTestArduino, String("DONE! received coins : ").concat(coinValue));
+  cmdMessenger.sendCmd(kCoinWait, coinValue);
+
+  //coinValue = 0;
+  //coinEnabled = true;
   //Serial.println(digitalRead(19));
   //delay(10);
 
