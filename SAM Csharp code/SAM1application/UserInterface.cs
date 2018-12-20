@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 
-namespace SAM0application
+namespace SAM1application
 {
     public partial class UserInterface : Form
     {

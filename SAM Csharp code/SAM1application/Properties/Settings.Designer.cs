@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SAM0application.Properties {
+namespace SAM1application.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

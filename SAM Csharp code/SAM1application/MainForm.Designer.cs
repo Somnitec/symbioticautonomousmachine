@@ -1,4 +1,4 @@
-﻿namespace SAM0application
+﻿namespace SAM1application
 {
     partial class MainForm
     {
@@ -113,7 +113,7 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Location = new System.Drawing.Point(12, 100);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(772, 1);
+            this.panel4.Size = new System.Drawing.Size(564, 1);
             this.panel4.TabIndex = 8;
             // 
             // statusStrip
@@ -123,7 +123,7 @@
             this.statusStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 406);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(796, 22);
+            this.statusStrip.Size = new System.Drawing.Size(588, 22);
             this.statusStrip.TabIndex = 9;
             // 
             // statusStripProgressBar
@@ -136,7 +136,7 @@
             // statusStripStatusLabel
             // 
             this.statusStripStatusLabel.Name = "statusStripStatusLabel";
-            this.statusStripStatusLabel.Size = new System.Drawing.Size(679, 17);
+            this.statusStripStatusLabel.Size = new System.Drawing.Size(471, 17);
             this.statusStripStatusLabel.Spring = true;
             this.statusStripStatusLabel.Text = "Status text";
             this.statusStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -171,7 +171,7 @@
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
             this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.logTextBox.Size = new System.Drawing.Size(440, 267);
+            this.logTextBox.Size = new System.Drawing.Size(232, 267);
             this.logTextBox.TabIndex = 24;
             this.logTextBox.WordWrap = false;
             // 
@@ -454,7 +454,7 @@
             // 
             // numericUpDown7
             // 
-            this.numericUpDown7.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "TestTapAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown7.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "TestTapAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown7.Increment = new decimal(new int[] {
             10,
             0,
@@ -469,20 +469,20 @@
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown7.TabIndex = 34;
-            this.numericUpDown7.Value = global::SAM0application.Properties.Settings.Default.TestTapAmount;
+            this.numericUpDown7.Value = global::SAM1application.Properties.Settings.Default.TestTapAmount;
             // 
             // textBox2
             // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM0application.Properties.Settings.Default, "ArduinoPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM1application.Properties.Settings.Default, "ArduinoPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBox2.Location = new System.Drawing.Point(201, 381);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(43, 20);
             this.textBox2.TabIndex = 32;
-            this.textBox2.Text = global::SAM0application.Properties.Settings.Default.ArduinoPort;
+            this.textBox2.Text = global::SAM1application.Properties.Settings.Default.ArduinoPort;
             // 
             // ReceiptNoNumericUpDown
             // 
-            this.ReceiptNoNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "ReceiptNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ReceiptNoNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "ReceiptNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ReceiptNoNumericUpDown.Location = new System.Drawing.Point(201, 289);
             this.ReceiptNoNumericUpDown.Maximum = new decimal(new int[] {
             9999999,
@@ -493,11 +493,11 @@
             this.ReceiptNoNumericUpDown.Size = new System.Drawing.Size(43, 20);
             this.ReceiptNoNumericUpDown.TabIndex = 31;
             this.ReceiptNoNumericUpDown.ThousandsSeparator = true;
-            this.ReceiptNoNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.ReceiptNo;
+            this.ReceiptNoNumericUpDown.Value = global::SAM1application.Properties.Settings.Default.ReceiptNo;
             // 
             // LedBreathSpeedNumericUpDown
             // 
-            this.LedBreathSpeedNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "LEDspeed", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.LedBreathSpeedNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "LEDspeed", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.LedBreathSpeedNumericUpDown.DecimalPlaces = 3;
             this.LedBreathSpeedNumericUpDown.Increment = new decimal(new int[] {
             1,
@@ -513,12 +513,12 @@
             this.LedBreathSpeedNumericUpDown.Name = "LedBreathSpeedNumericUpDown";
             this.LedBreathSpeedNumericUpDown.Size = new System.Drawing.Size(54, 20);
             this.LedBreathSpeedNumericUpDown.TabIndex = 31;
-            this.LedBreathSpeedNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.LEDspeed;
+            this.LedBreathSpeedNumericUpDown.Value = global::SAM1application.Properties.Settings.Default.LEDspeed;
             this.LedBreathSpeedNumericUpDown.ValueChanged += new System.EventHandler(this.LedBreathSpeedNumericUpDown_ValueChanged);
             // 
             // LedBreathMinNumericUpDown
             // 
-            this.LedBreathMinNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "ledBrightnessMin", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.LedBreathMinNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "ledBrightnessMin", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.LedBreathMinNumericUpDown.Location = new System.Drawing.Point(201, 338);
             this.LedBreathMinNumericUpDown.Maximum = new decimal(new int[] {
             255,
@@ -528,12 +528,12 @@
             this.LedBreathMinNumericUpDown.Name = "LedBreathMinNumericUpDown";
             this.LedBreathMinNumericUpDown.Size = new System.Drawing.Size(43, 20);
             this.LedBreathMinNumericUpDown.TabIndex = 31;
-            this.LedBreathMinNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.ledBrightnessMin;
+            this.LedBreathMinNumericUpDown.Value = global::SAM1application.Properties.Settings.Default.ledBrightnessMin;
             this.LedBreathMinNumericUpDown.ValueChanged += new System.EventHandler(this.LedBreathMinNumericUpDown_ValueChanged);
             // 
             // LedBreathMaxNumericUpDown
             // 
-            this.LedBreathMaxNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "LEDbrightnessMax", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.LedBreathMaxNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "LEDbrightnessMax", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.LedBreathMaxNumericUpDown.Location = new System.Drawing.Point(201, 314);
             this.LedBreathMaxNumericUpDown.Maximum = new decimal(new int[] {
             255,
@@ -543,12 +543,12 @@
             this.LedBreathMaxNumericUpDown.Name = "LedBreathMaxNumericUpDown";
             this.LedBreathMaxNumericUpDown.Size = new System.Drawing.Size(43, 20);
             this.LedBreathMaxNumericUpDown.TabIndex = 31;
-            this.LedBreathMaxNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.LEDbrightnessMax;
+            this.LedBreathMaxNumericUpDown.Value = global::SAM1application.Properties.Settings.Default.LEDbrightnessMax;
             this.LedBreathMaxNumericUpDown.ValueChanged += new System.EventHandler(this.LedBreathMaxNumericUpDown_ValueChanged);
             // 
             // tapMillisecondsNumericUpDown
             // 
-            this.tapMillisecondsNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "tapMilliseconds", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tapMillisecondsNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "tapMilliseconds", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tapMillisecondsNumericUpDown.Increment = new decimal(new int[] {
             10,
             0,
@@ -564,12 +564,12 @@
             this.tapMillisecondsNumericUpDown.Size = new System.Drawing.Size(54, 20);
             this.tapMillisecondsNumericUpDown.TabIndex = 31;
             this.tapMillisecondsNumericUpDown.ThousandsSeparator = true;
-            this.tapMillisecondsNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.tapMilliseconds;
+            this.tapMillisecondsNumericUpDown.Value = global::SAM1application.Properties.Settings.Default.tapMilliseconds;
             this.tapMillisecondsNumericUpDown.ValueChanged += new System.EventHandler(this.tapMillisecondsNumericUpDown_ValueChanged);
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "TapAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown2.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "TapAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown2.Increment = new decimal(new int[] {
             10,
             0,
@@ -584,11 +584,11 @@
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown2.TabIndex = 31;
-            this.numericUpDown2.Value = global::SAM0application.Properties.Settings.Default.TapAmount;
+            this.numericUpDown2.Value = global::SAM1application.Properties.Settings.Default.TapAmount;
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "MaxPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown3.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "MaxPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown3.DecimalPlaces = 2;
             this.numericUpDown3.Increment = new decimal(new int[] {
             1,
@@ -604,11 +604,11 @@
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown3.TabIndex = 31;
-            this.numericUpDown3.Value = global::SAM0application.Properties.Settings.Default.MaxPrice;
+            this.numericUpDown3.Value = global::SAM1application.Properties.Settings.Default.MaxPrice;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "MinPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "MinPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown1.DecimalPlaces = 2;
             this.numericUpDown1.Increment = new decimal(new int[] {
             1,
@@ -624,13 +624,13 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown1.TabIndex = 31;
-            this.numericUpDown1.Value = global::SAM0application.Properties.Settings.Default.MinPrice;
+            this.numericUpDown1.Value = global::SAM1application.Properties.Settings.Default.MinPrice;
             // 
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Checked = global::SAM0application.Properties.Settings.Default.PrintingShortVersion;
-            this.checkBox6.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM0application.Properties.Settings.Default, "PrintingShortVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox6.Checked = global::SAM1application.Properties.Settings.Default.PrintingShortVersion;
+            this.checkBox6.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM1application.Properties.Settings.Default, "PrintingShortVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBox6.Enabled = false;
             this.checkBox6.Location = new System.Drawing.Point(201, 266);
             this.checkBox6.Name = "checkBox6";
@@ -642,9 +642,9 @@
             // PrintingCheckBox
             // 
             this.PrintingCheckBox.AutoSize = true;
-            this.PrintingCheckBox.Checked = global::SAM0application.Properties.Settings.Default.PrintingEnabled;
+            this.PrintingCheckBox.Checked = global::SAM1application.Properties.Settings.Default.PrintingEnabled;
             this.PrintingCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.PrintingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM0application.Properties.Settings.Default, "PrintingEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.PrintingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM1application.Properties.Settings.Default, "PrintingEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PrintingCheckBox.Location = new System.Drawing.Point(201, 247);
             this.PrintingCheckBox.Name = "PrintingCheckBox";
             this.PrintingCheckBox.Size = new System.Drawing.Size(93, 17);
@@ -654,12 +654,12 @@
             // 
             // AmountText
             // 
-            this.AmountText.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM0application.Properties.Settings.Default, "PaymentTestAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.AmountText.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM1application.Properties.Settings.Default, "PaymentTestAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.AmountText.Location = new System.Drawing.Point(118, 150);
             this.AmountText.Name = "AmountText";
             this.AmountText.Size = new System.Drawing.Size(27, 20);
             this.AmountText.TabIndex = 12;
-            this.AmountText.Text = global::SAM0application.Properties.Settings.Default.PaymentTestAmount;
+            this.AmountText.Text = global::SAM1application.Properties.Settings.Default.PaymentTestAmount;
             // 
             // testTapMsButton
             // 
@@ -675,7 +675,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 428);
+            this.ClientSize = new System.Drawing.Size(588, 428);
             this.Controls.Add(this.testTapMsButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.interfaceStateNumericUpDown);
@@ -728,7 +728,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(635, 385);
+            this.MinimumSize = new System.Drawing.Size(598, 385);
             this.Name = "MainForm";
             this.Text = "SAM0 application";
             this.Load += new System.EventHandler(this.MainForm_Load);

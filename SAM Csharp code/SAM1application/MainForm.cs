@@ -10,7 +10,7 @@ using CommandMessenger.Transport.Serial;
 using System.Drawing.Printing;
 using System.Drawing;
 
-namespace SAM0application
+namespace SAM1application
 {
     public partial class MainForm : Form, IPaymentProgress
     {
@@ -130,7 +130,7 @@ namespace SAM0application
 
         private void MainForm_Load(object sender, System.EventArgs e)
         {
-            logInButton.PerformClick();
+            //logInButton.PerformClick();
             Console.WriteLine(@"mainform loaded");
             ArduinoSetup();
 
@@ -139,7 +139,7 @@ namespace SAM0application
             userInterface.WindowState = FormWindowState.Maximized;
             userInterface.Activate();
 
-            Cursor.Hide();
+            //Cursor.Hide();
 
         }
 
@@ -192,7 +192,7 @@ namespace SAM0application
 
         private async void DoPaymentButton_Click(object sender, EventArgs e)
         {
-            if (_sumUpService == null) return;
+            /*if (_sumUpService == null) return;
 
             if (!ulong.TryParse(AmountText.Text, out ulong amount))
             {
@@ -286,6 +286,20 @@ namespace SAM0application
                     realPaymentHappening = false;
                 }
             }
+            */
+            AppendToLog("no payment used, now tapping");
+
+            SAMstate = (int)SAMstates.waitingForTapping;
+            userInterface._changeInterface = (int)SAMstate;
+            // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
+            var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
+
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+
+            command = new SendCommand((int)Command.SetLedState, SAMstate);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
         }
 
         private void CancelPaymentButton_Click(object sender, EventArgs e)
@@ -307,7 +321,7 @@ namespace SAM0application
         private void UpdateUI(UIState uiState, string statusText = null)
         {
             bool loginControlsEnabled = false;
-            bool paymentControlsEnabled = false;
+            bool paymentControlsEnabled = true;
             string statusStripText = string.Empty;
             ProgressBarStyle statusStripProgress = ProgressBarStyle.Blocks;
 
