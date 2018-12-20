@@ -143,7 +143,10 @@
       <Name>CommandMessenger</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\YVv7VNrzYSxwPSZOr9uIrs2c0F8tASgU.gif" />
+    <None Include="Resources\YVv7VNrzYSxwPSZOr9uIrs2c0F8tASgU1.gif" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>

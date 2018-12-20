@@ -69,5 +69,15 @@ namespace SAM1application.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap YVv7VNrzYSxwPSZOr9uIrs2c0F8tASgU {
+            get {
+                object obj = ResourceManager.GetObject("YVv7VNrzYSxwPSZOr9uIrs2c0F8tASgU", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

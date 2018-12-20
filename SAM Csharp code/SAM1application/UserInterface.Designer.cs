@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.interfaceText = new System.Windows.Forms.Label();
-            this.arrowBox = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.currentAmount = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.arrowBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +51,25 @@
             this.interfaceText.Text = "starting";
             this.interfaceText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // currentAmount
+            // 
+            this.currentAmount.AutoSize = true;
+            this.currentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 80F);
+            this.currentAmount.Location = new System.Drawing.Point(97, 30);
+            this.currentAmount.Name = "currentAmount";
+            this.currentAmount.Size = new System.Drawing.Size(273, 120);
+            this.currentAmount.TabIndex = 3;
+            this.currentAmount.Text = "0 元 ";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SAM1application.Properties.Resources.YVv7VNrzYSxwPSZOr9uIrs2c0F8tASgU;
+            this.pictureBox1.Location = new System.Drawing.Point(213, 107);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(274, 236);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // arrowBox
             // 
             this.arrowBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -64,25 +84,6 @@
             this.arrowBox.TabIndex = 1;
             this.arrowBox.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(207, 308);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
-            // 
-            // currentAmount
-            // 
-            this.currentAmount.AutoSize = true;
-            this.currentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 80F);
-            this.currentAmount.Location = new System.Drawing.Point(97, 30);
-            this.currentAmount.Name = "currentAmount";
-            this.currentAmount.Size = new System.Drawing.Size(338, 120);
-            this.currentAmount.TabIndex = 3;
-            this.currentAmount.Text = "label2";
-            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,13 +91,14 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(588, 749);
+            this.ClientSize = new System.Drawing.Size(605, 749);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.currentAmount);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.arrowBox);
             this.Controls.Add(this.interfaceText);
             this.Name = "UserInterface";
             this.Text = "UserInterface";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -107,7 +109,7 @@
 
         private System.Windows.Forms.Label interfaceText;
         private System.Windows.Forms.PictureBox arrowBox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label currentAmount;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

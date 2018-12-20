@@ -140,7 +140,9 @@ namespace SAM1application
             userInterface.Activate();
 
             //Cursor.Hide();
-
+            this.WindowState = FormWindowState.Minimized;
+            this.Cursor = new Cursor(Cursor.Current.Handle);
+            Cursor.Position = new Point(0, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height);
         }
 
         private void ArduinoSetup()
