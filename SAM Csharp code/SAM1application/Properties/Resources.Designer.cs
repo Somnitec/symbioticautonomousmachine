@@ -73,6 +73,36 @@ namespace SAM1application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sam2gif {
+            get {
+                object obj = ResourceManager.GetObject("sam2gif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sam2p1 {
+            get {
+                object obj = ResourceManager.GetObject("sam2p1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap samp2 {
+            get {
+                object obj = ResourceManager.GetObject("samp2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap YVv7VNrzYSxwPSZOr9uIrs2c0F8tASgU {
             get {
                 object obj = ResourceManager.GetObject("YVv7VNrzYSxwPSZOr9uIrs2c0F8tASgU", resourceCulture);

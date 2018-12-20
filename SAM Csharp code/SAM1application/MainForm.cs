@@ -485,9 +485,9 @@ namespace SAM1application
 
         void OnCoinAmount(ReceivedCommand arguments)
         {
-            String message = arguments.ReadStringArg();
+            int message = arguments.ReadInt16Arg();
             AppendToLog(@"actual coin state: " + message);
-            userInterface._setPrice = message;
+            userInterface._setAmount = message;
         }
 
         void OnCoinWait(ReceivedCommand arguments)
@@ -541,6 +541,7 @@ namespace SAM1application
             AppendToLog((int)(Properties.Settings.Default.MinPrice+1)+ " - "+ (int)(Properties.Settings.Default.MaxPrice + 1));
 
             price = rand.Next((int)(Properties.Settings.Default.MinPrice ), (int)(Properties.Settings.Default.MaxPrice +1))+1;
+            userInterface._setPrice = price;
             Properties.Settings.Default.ReceiptNo++;
             ReceiptNoNumericUpDown.Update();
             

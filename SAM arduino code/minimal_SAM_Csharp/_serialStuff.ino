@@ -184,6 +184,8 @@ void OnPumpTapMilliseconds() {
   cmdMessenger.sendCmd(kTestArduino, String("DONE!with this tapping"));
 
   coinValue = 0;
+  cmdMessenger.sendCmd(kCoinAmount, coinValue);
+  
   attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
 
 
