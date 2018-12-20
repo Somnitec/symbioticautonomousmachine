@@ -18,7 +18,7 @@ CmdMessenger cmdMessenger = CmdMessenger(Serial);
 #define weightclock 5
 #define weight1pin 7
 #define weight2pin 8
-#define weight3pin 11
+#define coinPin 11 //last minute hack change
 #define weight4pin 12
 #define servo1pin 23
 #define servo2pin 22
@@ -31,7 +31,7 @@ CmdMessenger cmdMessenger = CmdMessenger(Serial);
 #define gaspin 24
 
 #define statusLedPin 13
- 
+
 volatile double waterFlow = 0;
 
 #define  buttonUpdateTime 1//ms
@@ -60,7 +60,13 @@ int tapAmount = 0;
 
 boolean nowTappingMilliseconds = false;
 int tapAmountMilliseconds = 0;
-elapsedMillis tapTimer =0;
+elapsedMillis tapTimer = 0;
+
+
+int coinDebounce = 100;
+elapsedMillis coinTimer;
+bool coinEnabled = true;
+int coinValue = 0;
 
 //printing
 
@@ -72,10 +78,16 @@ void setup()
   //ideal speed is = ??
 
 
+
+
   setupSerial();
 
   pinMode(statusLedPin, OUTPUT);
-  digitalWrite(statusLedPin,HIGH);
+  digitalWrite(statusLedPin, HIGH);
+
+  pinMode(coinPin, INPUT_PULLUP);
+   attachInterrupt(digitalPinToInterrupt(coinPin), coinInterrupt, FALLING);
+
 
   pinMode(led1pin, OUTPUT);
   pinMode(led2pin, OUTPUT);
@@ -90,14 +102,14 @@ void setup()
 
   attachInterrupt(flowsensor1pin, flowSensor, RISING); //flowsensor setup
 
- pinMode(servo1pin, OUTPUT);
- pinMode( servo2pin, OUTPUT);
- pinMode( servo3pin, OUTPUT);
- pinMode( servo4pin, OUTPUT);
+  pinMode(servo1pin, OUTPUT);
+  pinMode( servo2pin, OUTPUT);
+  pinMode( servo3pin, OUTPUT);
+  pinMode( servo4pin, OUTPUT);
   digitalWrite(servo1pin, LOW);
- digitalWrite( servo2pin, LOW);
- digitalWrite( servo3pin, LOW);
- digitalWrite( servo4pin, LOW);
+  digitalWrite( servo2pin, LOW);
+  digitalWrite( servo3pin, LOW);
+  digitalWrite( servo4pin, LOW);
 
   //blinkLed(3);
 }
@@ -106,6 +118,7 @@ void setup()
 void loop()
 {
   buttonStuff();
+  coinStuff();
   flowStuff();
   ledStuff();
   serialStuff();

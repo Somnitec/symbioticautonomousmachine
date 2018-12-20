@@ -16,8 +16,9 @@ enum
   kSetLedState,
   kSetLedBreathSpeed,
   kSetLedBreathMax,
-  kSetLedBreathMin,  
+  kSetLedBreathMin,
   kPumpTapMilliseconds,
+  kCoinWait,
 };
 
 
@@ -56,8 +57,8 @@ void attachCommandCallbacks()
   cmdMessenger.attach(kSetLedBreathMax, OnSetLedBreathMax);
   cmdMessenger.attach(kSetLedBreathMin, OnSetLedBreathMin);
   cmdMessenger.attach(kSetLedState, OnSetLedState);
-  cmdMessenger.attach(kPumpTapMilliseconds,OnPumpTapMilliseconds);
-
+  cmdMessenger.attach(kPumpTapMilliseconds, OnPumpTapMilliseconds);
+  cmdMessenger.attach(kCoinWait, OnCoinWait);
 }
 
 // Called when a received command has no attached function
@@ -112,7 +113,7 @@ void OnPumpTap()
   } else if (value == false) {
     cmdMessenger.sendCmd(kPumpTap, waterFlow);
     cmdMessenger.sendCmd(kPumpTap, tapTimer);
-    
+
   }
 
   digitalWrite(statusLedPin, value);
@@ -161,12 +162,31 @@ void OnSetLedState()
   stateNow = value ;
 }
 
-void OnPumpTapMilliseconds(){
+void OnPumpTapMilliseconds() {
   waterFlow = 0;
   nowTappingMilliseconds = true;
   tapAmountMilliseconds = cmdMessenger.readInt16Arg();
-  tapTimer=0;
+  tapTimer = 0;
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "tapping now ms->");
   cmdMessenger.sendCmd(kPumpTapMilliseconds, tapAmount);
+}
+
+void OnCoinWait() {
+  coinValue = 0;
+  int requestedValue = cmdMessenger.readInt16Arg();
+  cmdMessenger.sendCmd(kTestArduino, String("I wait for coins : ").concat(String(cmdMessenger.readInt16Arg())));
+  while (coinValue < requestedValue) {
+    if (!coinEnabled) {
+      if (coinTimer > coinDebounce) {
+        coinEnabled = true;
+        attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
+      }
+    }
+  }
+  cmdMessenger.sendCmd(kTestArduino, String("DONE! received coins : ").concat(coinValue));
+
+  //Serial.println(digitalRead(19));
+  //delay(10);
+
 }
 
