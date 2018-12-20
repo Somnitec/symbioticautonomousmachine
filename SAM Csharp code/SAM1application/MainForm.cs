@@ -533,7 +533,12 @@ namespace SAM1application
             userInterface._changeInterface = (int)SAMstate;
             var command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            makePayment();
+
+            PrintReceipt();
+            AppendToLog(@"finished printing");
+            Reset();
+
+            //makePayment();
         }
 
         private void makePayment()
