@@ -73,6 +73,26 @@ namespace SAM1application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap receipt {
+            get {
+                object obj = ResourceManager.GetObject("receipt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap receipttest1 {
+            get {
+                object obj = ResourceManager.GetObject("receipttest1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sam2gif {
             get {
                 object obj = ResourceManager.GetObject("sam2gif", resourceCulture);
@@ -86,6 +106,26 @@ namespace SAM1application.Properties {
         internal static System.Drawing.Bitmap sam2p1 {
             get {
                 object obj = ResourceManager.GetObject("sam2p1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sam3gif {
+            get {
+                object obj = ResourceManager.GetObject("sam3gif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sam3p1 {
+            get {
+                object obj = ResourceManager.GetObject("sam3p1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

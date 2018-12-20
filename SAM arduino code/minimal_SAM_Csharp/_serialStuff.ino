@@ -18,6 +18,8 @@ enum
   kSetLedBreathMax,
   kSetLedBreathMin,
   kPumpTapMilliseconds,
+  kCoinWait,
+  kCoinAmount,
 };
 
 
@@ -57,6 +59,8 @@ void attachCommandCallbacks()
   cmdMessenger.attach(kSetLedBreathMin, OnSetLedBreathMin);
   cmdMessenger.attach(kSetLedState, OnSetLedState);
   cmdMessenger.attach(kPumpTapMilliseconds, OnPumpTapMilliseconds);
+  cmdMessenger.attach(kCoinAmount, OnCoinAmount);
+
 
 }
 
@@ -68,9 +72,12 @@ void OnUnknownCommand()
 
 void OnReset()
 {
-  cmdMessenger.sendCmd(kReset);
+  //cmdMessenger.sendCmd(kReset);
   //return the states back to how they were
   //reset animation
+  coinValue=0;
+  //delay(5000);
+  //attachInterrupt(digitalPinToInterrupt(coinPin), coinInterrupt , FALLING);
 }
 
 void OnTestArduino()
@@ -170,18 +177,18 @@ void OnPumpTapMilliseconds() {
 
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "tapping now ms->");
   cmdMessenger.sendCmd(kPumpTapMilliseconds, tapAmountMilliseconds);
-  
+
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "waiting for cup");
   //cupSwitch.update();
   //while (cupSwitch.read() == false) {
   /*
-  while (digitalRead(cuppin) == false) {
+    while (digitalRead(cuppin) == false) {
     //cupSwitch.update();
     //cmdMessenger.sendCmd(kPumpTapMilliseconds, cupSwitch.read());
     cmdMessenger.sendCmd(kPumpTapMilliseconds, digitalRead(cuppin));
     delay(100);
-  }
-  cmdMessenger.sendCmd(kPumpTapMilliseconds, "cup placed, waiting a short moment");
+    }
+    cmdMessenger.sendCmd(kPumpTapMilliseconds, "cup placed, waiting a short moment");
   */
   delay(2000);
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "pumping");
@@ -189,5 +196,9 @@ void OnPumpTapMilliseconds() {
   delay(tapAmountMilliseconds);
   analogWrite(pumppin, 0);
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "done tapping");
+}
+
+void OnCoinAmount(){
+  
 }
 
