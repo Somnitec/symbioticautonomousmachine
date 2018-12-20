@@ -147,6 +147,10 @@
     <None Include="Resources\samp2.jpg" />
     <None Include="Resources\sam2p1.gif" />
     <None Include="Resources\sam2gif.gif" />
+    <None Include="Resources\receipttest1.jpg" />
+    <None Include="Resources\receipt.png" />
+    <None Include="Resources\sam3gif.gif" />
+    <None Include="Resources\sam3p1.gif" />
     <Content Include="Resources\YVv7VNrzYSxwPSZOr9uIrs2c0F8tASgU.gif" />
     <None Include="Resources\YVv7VNrzYSxwPSZOr9uIrs2c0F8tASgU1.gif" />
   </ItemGroup>

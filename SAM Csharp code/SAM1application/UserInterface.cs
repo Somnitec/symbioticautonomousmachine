@@ -8,8 +8,8 @@ namespace SAM1application
     public partial class UserInterface : Form
     {
         
-        Image image1 = new Bitmap(Properties.Resources.sam2gif);
-        Image image2 = new Bitmap(Properties.Resources.sam2p1);
+        Image image1 = new Bitmap(Properties.Resources.sam3gif);
+        Image image2 = new Bitmap(Properties.Resources.sam3p1);
         Image image3 = new Bitmap(Properties.Resources.samp2);
 
 
@@ -41,6 +41,7 @@ namespace SAM1application
         {
             InitializeComponent();
             priceLabel.Hide();
+            currentAmount.Hide();
 
 
         }
@@ -86,10 +87,10 @@ namespace SAM1application
                 //arrowBox.Image = RotateImage(image, arrowPos[value % text.Length, 1]);
                 //arrowBox.Top = arrowPos[value % text.Length, 0];
 
-                interfaceText.Text = text[value % text.Length];
+                //interfaceText.Text = text[value % text.Length];
 
-                if(value % text.Length == 1) priceLabel.Show();
-                else priceLabel.Hide();
+                //if(value % text.Length == 1) priceLabel.Show();
+                //else priceLabel.Hide();
                 
             }
         }

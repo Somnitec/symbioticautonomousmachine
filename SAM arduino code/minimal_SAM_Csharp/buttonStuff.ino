@@ -7,11 +7,14 @@ void buttonStuff() {
     //digitalWrite(grainButtonLedPin, digitalRead(grainButtonPin));//to test function
 
     sodaButton.update();
+    coinSwitch.update();
 
     if (sodaButton.rose()) {
       sodaButtonPress();
     }
-
+    if (coinSwitch.fell()) {
+      coin();
+    }
 
     /*
 

@@ -1,4 +1,4 @@
-int coinValue =0;
+//int coinValue =0;
 
 
 void coinStuff() {
@@ -25,13 +25,19 @@ void coinStuff() {
 void coinInterrupt() {
   coinValue++;
   //Serial.println(coinValue);
-  //cmdMessenger.sendCmd(kCoinAmount, coinValue);
-  detachInterrupt(digitalPinToInterrupt(11));
+  cmdMessenger.sendCmd(kCoinAmount, coinValue);
+  detachInterrupt(digitalPinToInterrupt(coinPin));
   //delay(coinDebounce);
-  attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
+  //attachInterrupt(digitalPinToInterrupt(coinPin), coinInterrupt , FALLING);
 
   //
   //coinEnabled = false;
   //coinTimer = 0;
 }
+
+void coin(){
+  coinValue++;
+  //Serial.println(coinValue);
+  cmdMessenger.sendCmd(kCoinAmount, coinValue);
+ }
 

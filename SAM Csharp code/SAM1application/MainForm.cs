@@ -12,9 +12,11 @@ using System.Drawing;
 
 namespace SAM1application
 {
+       
+
     public partial class MainForm : Form, IPaymentProgress
     {
-
+        //Image receipt1 = new Bitmap(Properties.Resources.receipttest1);
         /// <summary>
         /// SUMUP STUFFS
         /// </summary>
@@ -485,9 +487,16 @@ namespace SAM1application
 
         void OnCoinAmount(ReceivedCommand arguments)
         {
+            
+            userInterface._changeInterface = 2;
+
             int message = arguments.ReadInt16Arg();
             AppendToLog(@"actual coin state: " + message);
             userInterface._setAmount = message;
+            PrintReceipt();
+            AppendToLog(@"finished printing");
+            Reset();
+            //print
         }
 
         void OnCoinWait(ReceivedCommand arguments)
@@ -534,9 +543,7 @@ namespace SAM1application
             var command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
 
-            PrintReceipt();
-            AppendToLog(@"finished printing");
-            Reset();
+            
 
             //makePayment();
         }
@@ -584,7 +591,7 @@ namespace SAM1application
         void OnTapSucceeded(ReceivedCommand arguments)
         {
             AppendToLog(@"Tap succeeded, printing receipt!");
-            PrintReceipt();
+            //PrintReceipt();
             AppendToLog(@"finished printing");
             Reset();
         }
@@ -604,6 +611,8 @@ namespace SAM1application
             userInterface._changeInterface = (int)SAMstate;
             var command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+             command = new SendCommand((int)Command.Reset);
+             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
         // Called when a received command has no attached function.
         // In a WinForm application, console output gets routed to the output panel of your IDE
@@ -663,11 +672,23 @@ namespace SAM1application
         private void PrintReceipt()
         {
             if (PrintingCheckBox.Checked) {
+                /*
                 PrintDocument printDocument = new PrintDocument();
                 printDocument.PrintPage += PrintReceiptOnPrintPage;
                 printDocument.Print();
+                */
+                PrintDocument pd = new PrintDocument();
+                pd.PrintPage += PrintPage;
+                pd.Print();
             }
             
+        }
+
+        private void PrintPage(object o, PrintPageEventArgs e)
+        {
+            Image img = Properties.Resources.receipt;
+            Point loc = new Point(50, 0);
+            e.Graphics.DrawImage(img, loc);
         }
 
         private void PrintReceiptOnPrintPage(object sender, PrintPageEventArgs e)
