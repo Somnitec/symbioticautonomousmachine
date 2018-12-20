@@ -11,6 +11,8 @@ using System.Drawing.Printing;
 using System.Drawing;
 using System.Net.NetworkInformation;
 
+//this change is just a tribute
+
 namespace SAM0application
 {
     public partial class MainForm : Form, IPaymentProgress
