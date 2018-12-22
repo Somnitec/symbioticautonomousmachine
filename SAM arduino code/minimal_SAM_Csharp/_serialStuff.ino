@@ -20,6 +20,14 @@ enum
   kPumpTapMilliseconds,
   kCoinWait,
   kCoinAmount,
+  kNEWtest,
+  kNEWreset,
+  kNEWbuttonPress,
+  kNEWcoinWait,
+  kNEWcoinAdd,
+  kNEWpaymentCompleted,
+  kNEWtappingMS,
+  kNEWtesttap,
 };
 
 
@@ -61,6 +69,68 @@ void attachCommandCallbacks()
   cmdMessenger.attach(kPumpTapMilliseconds, OnPumpTapMilliseconds);
   cmdMessenger.attach(kCoinWait, OnCoinWait);
   //cmdMessenger.attach(kCoinAmount, OnCoinAmount);
+
+  cmdMessenger.attach(kNEWtest, OnNEWtest);
+  cmdMessenger.attach(kNEWreset, OnNEWreset);
+  cmdMessenger.attach(kNEWbuttonPress, OnNEWbuttonPress);
+  cmdMessenger.attach(kNEWcoinWait, OnNEWcoinWait);
+  cmdMessenger.attach(kNEWcoinAdd, OnNEWcoinAdd);
+  cmdMessenger.attach(kNEWpaymentCompleted, OnNEWpaymentCompleted);
+  cmdMessenger.attach(kNEWtappingMS, OnNEWtappingMS);
+  cmdMessenger.attach(kNEWtesttap, OnNEWtesttap);
+
+}
+
+void OnNEWtest() {
+
+}
+void OnNEWreset() {
+
+}
+void OnNEWbuttonPress() {
+//send buttonpress
+//1    waitingforpaymentstate
+
+  cmdMessenger.sendCmd(kNEWbuttonPress);
+  stateNow = 1;
+}
+void OnNEWcoinWait() {
+
+  int coindDesired = cmdMessenger.readInt16Arg();
+  coinValue = 0;
+  cmdMessenger.sendCmd(kCoinAmount, coinValue);
+  attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
+  while (coinValue < coindDesired) {}
+  cmdMessenger.sendCmd(kNEWpaymentCompleted);
+
+  //receive coinwait
+  //count x coins
+  //send paymentcompleted
+}
+void OnNEWcoinAdd() {
+
+}
+void OnNEWpaymentCompleted() {
+
+}
+void OnNEWtappingMS() {
+  //receive tap x ms
+  //2   tapping state
+  // wait 1000ms
+  // start tapping for x ms
+  // reset
+
+  int value = cmdMessenger.readInt16Arg();
+  stateNow = 2;
+  delay(500);//?
+  digitalWrite(pump1pin, HIGH);
+  delay(value );
+  digitalWrite(pump1pin, LOW);
+  delay(500);//?
+  _softRestart;
+}
+void OnNEWtesttap() {
+
 }
 
 // Called when a received command has no attached function
@@ -181,7 +251,7 @@ void OnPumpTapMilliseconds() {
   delay(tapAmountMilliseconds ); //simplfied the shit
   //CPU_RESTART;
   digitalWrite(pump1pin, LOW);
-  
+
   //  for (int fadeValue = 255 ; fadeValue >= 255; fadeValue -= 1) {
   //    analogWrite(pump1pin, fadeValue);
   //    delay(1000 / 255);
@@ -190,14 +260,14 @@ void OnPumpTapMilliseconds() {
   nowTappingMilliseconds = false;
   //Serial.end();
   //Serial.begin(115200);
-  cmdMessenger.sendCmd(kTapSucceeded, "all done");
+  //cmdMessenger.sendCmd(kTapSucceeded, "all done");
   cmdMessenger.sendCmd(kTestArduino, String("DONE!with this tapping"));
-
+/*
   coinValue = 0;
   cmdMessenger.sendCmd(kCoinAmount, coinValue);
 
   attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
-
+*/
 
 }
 

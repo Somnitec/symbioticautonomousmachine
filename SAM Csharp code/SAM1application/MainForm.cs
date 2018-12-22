@@ -24,9 +24,9 @@ namespace SAM1application
         private bool realPaymentHappening = false;
         private int price = 111;
         int SAMstate = (int)SAMstates.idle;
-        
+
         UserInterface userInterface = new UserInterface();
-        
+
 
         // ======= Authenticate with SumUp system and create SDK instance =======		
         private async Task CreateSumUpService(string clientId, string clientSecret, string email, string password)
@@ -483,11 +483,90 @@ namespace SAM1application
             _cmdMessenger.Attach((int)Command.TapSucceeded, OnTapSucceeded);
             _cmdMessenger.Attach((int)Command.PumpTap, OnPumpTap);
             _cmdMessenger.Attach((int)Command.CoinWait, OnCoinWait);
-            _cmdMessenger.Attach((int)Command.CoinAmount,OnCoinAmount);
+            _cmdMessenger.Attach((int)Command.CoinAmount, OnCoinAmount);
 
 
-            
+            _cmdMessenger.Attach((int)Command.NEWtest, OnNEWtest);
+            _cmdMessenger.Attach((int)Command.NEWreset, OnNEWreset);
+            _cmdMessenger.Attach((int)Command.NEWbuttonPress, OnNEWbuttonPress);
+            _cmdMessenger.Attach((int)Command.NEWcoinWait, OnNEWcoinWait);
+            _cmdMessenger.Attach((int)Command.NEWcoinAdd, OnNEWcoinAdd);
+            _cmdMessenger.Attach((int)Command.NEWpaymentCompleted, OnNEWpaymentCompleted);
+            _cmdMessenger.Attach((int)Command.NEWtappingMS, OnNEWtappingMS);
 
+
+
+        }
+
+        private void OnNEWtappingMS(ReceivedCommand receivedCommand)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OnNEWpaymentCompleted(ReceivedCommand receivedCommand)
+        {
+            //receive paymentcompleted
+            //thank you screen
+            //send tap x ms
+            //disconnect serial
+            // wait x + 1000ms
+            //wait for arduino reconnect
+            //idlescreen
+
+
+            userInterface._changeInterface = 2;
+
+            var command = new SendCommand((int)Command.NEWtappingMS, (int)Properties.Settings.Default.tapMilliseconds);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+            _cmdMessenger.Disconnect();
+            AppendToLog(@"disconnecting Arduino");
+
+            Thread.Sleep((int)Properties.Settings.Default.tapMilliseconds+2000);
+            while(!_cmdMessenger.Connect())            AppendToLog(@"trying to connect Arduino");
+            AppendToLog(@"connected Arduino");
+
+                                    userInterface._changeInterface = 0;
+
+        }
+
+        private void OnNEWcoinAdd(ReceivedCommand receivedCommand)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OnNEWcoinWait(ReceivedCommand receivedCommand)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OnNEWbuttonPress(ReceivedCommand receivedCommand)
+        {
+            //receive buttonpress
+            //calculate price
+            //paymentscreen
+            //send coinwait
+            price = rand.Next((int)(Properties.Settings.Default.MinPrice), (int)(Properties.Settings.Default.MaxPrice + 1)) + 1;
+            userInterface._setPrice = price;
+            AppendToLog(@"Starting payment for RMB " + price);
+
+            userInterface._changeInterface = 1;
+
+
+            var command = new SendCommand((int)Command.NEWcoinWait, price);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+
+        }
+
+        private void OnNEWreset(ReceivedCommand receivedCommand)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OnNEWtest(ReceivedCommand receivedCommand)
+        {
+            throw new NotImplementedException();
         }
 
         void OnCoinAmount(ReceivedCommand arguments)
@@ -545,14 +624,14 @@ namespace SAM1application
 
         private void makePayment()
         {
-            AppendToLog((int)(Properties.Settings.Default.MinPrice+1)+ " - "+ (int)(Properties.Settings.Default.MaxPrice + 1));
+            AppendToLog((int)(Properties.Settings.Default.MinPrice + 1) + " - " + (int)(Properties.Settings.Default.MaxPrice + 1));
 
-            price = rand.Next((int)(Properties.Settings.Default.MinPrice ), (int)(Properties.Settings.Default.MaxPrice +1))+1;
+            price = rand.Next((int)(Properties.Settings.Default.MinPrice), (int)(Properties.Settings.Default.MaxPrice + 1)) + 1;
             userInterface._setPrice = price;
             Properties.Settings.Default.ReceiptNo++;
             ReceiptNoNumericUpDown.Update();
-            
-            AppendToLog(@"Starting payment for RMB " + price +" and receipt no "+ Properties.Settings.Default.ReceiptNo);
+
+            AppendToLog(@"Starting payment for RMB " + price + " and receipt no " + Properties.Settings.Default.ReceiptNo);
             AmountText.Text = price.ToString();
             realPaymentHappening = true;
 
@@ -567,11 +646,11 @@ namespace SAM1application
         {
 
             AppendToLog(@"Grain button pressed");//now only blinks itself
-            //var command = new SendCommand((int)Command.SetLedState,2);
-            //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            // command = new SendCommand((int)Command.SetLedState,0);
-            //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            
+                                                 //var command = new SendCommand((int)Command.SetLedState,2);
+                                                 //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+                                                 // command = new SendCommand((int)Command.SetLedState,0);
+                                                 //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
             /*
             if (!realPaymentHappening)
             {
@@ -601,7 +680,7 @@ namespace SAM1application
             //CancelPaymentButton.PerformClick();
             realPaymentHappening = false;
             AppendToLog(@"Resetted");
-            
+
             SAMstate = (int)SAMstates.idle;
             userInterface._changeInterface = (int)SAMstate;
             var command = new SendCommand((int)Command.SetLedState, SAMstate);
@@ -654,22 +733,23 @@ namespace SAM1application
 
         private void PrintTest_click(object sender, EventArgs e)
         {
-            
-            AppendToLog(@"test printing receipt "+ Properties.Settings.Default.ReceiptNo);
+
+            AppendToLog(@"test printing receipt " + Properties.Settings.Default.ReceiptNo);
 
             PrintReceipt();
         }
 
-  
+
 
         private void PrintReceipt()
         {
-            if (PrintingCheckBox.Checked) {
+            if (PrintingCheckBox.Checked)
+            {
                 PrintDocument printDocument = new PrintDocument();
                 printDocument.PrintPage += PrintReceiptOnPrintPage;
                 printDocument.Print();
             }
-            
+
         }
 
         private void PrintReceiptOnPrintPage(object sender, PrintPageEventArgs e)
@@ -680,7 +760,7 @@ namespace SAM1application
             int fontsize = 9;
             int linedistance = (int)(2.1 * fontsize);
             Font MainFont = new Font("roboto", fontsize);
-            Font ItalicFont = new Font("roboto", (int)(fontsize * 0.6),FontStyle.Italic);
+            Font ItalicFont = new Font("roboto", (int)(fontsize * 0.6), FontStyle.Italic);
             Font BigFont = new Font("roboto", fontsize, FontStyle.Bold);
             Pen linePen = new Pen(Brushes.Black, 1);
             StringFormat formatCenter = new StringFormat();
@@ -698,7 +778,7 @@ namespace SAM1application
 
             var rect = new RectangleF(0, linedistance * 4, rightpoint, linedistance);
             e.Graphics.DrawString("receipt No " + Properties.Settings.Default.ReceiptNo, ItalicFont, Brushes.Black, rect);
-            
+
             //save also, though maybe place this in the SumUp reference
             e.Graphics.DrawString(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString(), ItalicFont, Brushes.Black, rect, formatRight);
 
@@ -717,7 +797,7 @@ namespace SAM1application
             e.Graphics.DrawString(realPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
 
             e.Graphics.DrawLine(linePen, 0, (int)(linedistance * 11), 185, (int)(linedistance * 11));
-            
+
             e.Graphics.DrawString("Rate your soda out of 5", MainFont, Brushes.Black, centerpoint, linedistance * 12, formatCenter);
             e.Graphics.DrawString("on twitter @nonhumanSAM", MainFont, Brushes.Black, centerpoint, linedistance * 13, formatCenter);
 
@@ -749,7 +829,7 @@ namespace SAM1application
             e.Graphics.DrawString(firstLine, BigFont, Brushes.Black, centerpoint, linedistance * 15, formatCenter);
             e.Graphics.DrawString(secondLine, BigFont, Brushes.Black, centerpoint, linedistance * 16, formatCenter);
 
-              e.Graphics.DrawString("web: sam.nonhuman.club", ItalicFont, Brushes.Black, centerpoint, linedistance * 18, formatCenter);
+            e.Graphics.DrawString("web: sam.nonhuman.club", ItalicFont, Brushes.Black, centerpoint, linedistance * 18, formatCenter);
             e.Graphics.DrawString("email: sam@nonhuman.club", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 18.5), formatCenter);
 
             e.Graphics.DrawString("a project by", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 19.5), formatCenter);
@@ -843,14 +923,14 @@ namespace SAM1application
 
         private void ledStateNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            
+
             var command = new SendCommand((int)Command.SetLedState, ledStateNumericUpDown.Value.ToString());
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
 
         private void interfaceStateNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            
+
             userInterface._changeInterface = (int)interfaceStateNumericUpDown.Value;
         }
 
@@ -907,7 +987,14 @@ namespace SAM1application
         SetLedBreathMin,
         PumpTapMilliseconds,
         CoinWait,
-        CoinAmount
+        CoinAmount,
+        NEWtest,
+        NEWreset,
+        NEWbuttonPress,
+        NEWcoinWait,
+        NEWcoinAdd,
+        NEWpaymentCompleted,
+        NEWtappingMS,
     };
 
     internal enum SAMstates

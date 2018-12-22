@@ -15,7 +15,6 @@
 unsigned long ledTimer = 0;
 float ledPos = 0;
 
-int stateNow = idle;
 
 void ledStuff() {
   unsigned long currentMillis = millis();

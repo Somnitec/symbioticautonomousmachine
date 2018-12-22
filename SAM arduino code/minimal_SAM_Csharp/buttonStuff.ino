@@ -9,7 +9,8 @@ void buttonStuff() {
     sodaButton.update();
 
     if (sodaButton.fell()) {
-      sodaButtonPress();
+      //sodaButtonPress();
+      OnNEWbuttonPress();
     }
 
 

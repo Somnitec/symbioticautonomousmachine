@@ -1,6 +1,4 @@
-#define CPU_RESTART_ADDR (uint32_t *)0xE000ED0C
-#define CPU_RESTART_VAL 0x5FA0004
-#define CPU_RESTART (*CPU_RESTART_ADDR = CPU_RESTART_VAL);
+#define SCB_AIRCR (*(volatile uint32_t *)0xE000ED0C) // Application Interrupt and Reset Control location
 
 
 #include <Bounce2.h>
@@ -64,7 +62,7 @@ boolean nowTapping = false;
 int tapAmount = 0;
 
 boolean nowTappingMilliseconds = false;
-int tapAmountMilliseconds = 0;
+unsigned int tapAmountMilliseconds = 0;
 elapsedMillis tapTimer = 0;
 
 
@@ -75,10 +73,12 @@ int coinValue = 0;
 
 //printing
 
+int stateNow;
 
 Bounce sodaButton = Bounce();
 void setup()
 {
+  stateNow = 0;
   //improving PWM speed
   //ideal speed is = ??
 
@@ -91,7 +91,7 @@ void setup()
   digitalWrite(statusLedPin, HIGH);
 
   pinMode(coinPin, INPUT_PULLUP);
-   attachInterrupt(digitalPinToInterrupt(coinPin), coinInterrupt, FALLING);
+  //attachInterrupt(digitalPinToInterrupt(coinPin), coinInterrupt, FALLING);
 
 
   pinMode(led1pin, OUTPUT);
@@ -105,7 +105,7 @@ void setup()
 
   pinMode(pump1pin, OUTPUT);
 
-  attachInterrupt(flowsensor1pin, flowSensor, RISING); //flowsensor setup
+  //attachInterrupt(flowsensor1pin, flowSensor, RISING); //flowsensor setup
 
   pinMode(servo1pin, OUTPUT);
   pinMode( servo2pin, OUTPUT);
@@ -136,5 +136,10 @@ float fmap(float x, float in_min, float in_max, float out_min, float out_max)
 {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
-
+\
+void _softRestart()
+{
+  Serial.end();  //clears the serial monitor  if used
+  SCB_AIRCR = 0x05FA0004;  //write value for restart
+}
 
