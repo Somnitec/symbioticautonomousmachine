@@ -296,6 +296,13 @@ namespace SAM1application
             // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
             var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            _cmdMessenger.Disconnect();
+            AppendToLog(@"disconnecting Arduino");
+            System.Threading.Thread.Sleep(10000);
+            _cmdMessenger.Connect();
+            AppendToLog(@"connecting Arduino");
+            SAMstate = (int)SAMstates.idle;
+            userInterface._changeInterface = (int)SAMstate;
             //Reset();
             //SAMstate = (int)SAMstates.idle;
             //command = new SendCommand((int)Command.SetLedState, SAMstate);

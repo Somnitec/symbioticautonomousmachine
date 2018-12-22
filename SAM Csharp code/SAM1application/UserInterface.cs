@@ -41,7 +41,8 @@ namespace SAM1application
         {
             InitializeComponent();
             priceLabel.Hide();
-
+            priceLabelChinese.Hide();
+            currentAmount.Hide();
 
         }
 
@@ -58,6 +59,8 @@ namespace SAM1application
             set
             {
                 priceLabel.Text = "the price is "+ value.ToString() + " 元";
+                priceLabelChinese.Text = "价格 " + value.ToString() + " 元";
+                
             }
         }
 
@@ -70,9 +73,11 @@ namespace SAM1application
 
 
                 if (value % text.Length == 0)
-                    {
+                {
                     interfaceImage.Image = image1;
-                    }
+                    gif.Show();
+                }
+                else gif.Hide();
                  if (value % text.Length == 1)
                 {
                     interfaceImage.Image = image2;
@@ -88,9 +93,20 @@ namespace SAM1application
 
                 interfaceText.Text = text[value % text.Length];
 
-                if(value % text.Length == 1) priceLabel.Show();
-                else priceLabel.Hide();
-                
+                if(value % text.Length == 1)
+                {
+                    priceLabel.Show();
+                    priceLabelChinese.Show();
+                    currentAmount.Show();
+                    _setAmount = 0;
+                }
+                       
+                else {
+                    priceLabel.Hide();
+                    priceLabelChinese.Hide();
+                    currentAmount.Hide();
+                }
+
             }
         }
 

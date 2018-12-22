@@ -171,21 +171,31 @@ void OnPumpTapMilliseconds() {
   tapAmountMilliseconds = cmdMessenger.readInt16Arg();
   tapTimer = 0;
   cmdMessenger.sendCmd(kPumpTapMilliseconds, String("tapping now ms->").concat(tapAmountMilliseconds));
-  Serial.end();
+  //Serial.end();
 
+  //  for (int fadeValue = 0 ; fadeValue <= 255; fadeValue += 1) {
+  //    analogWrite(pump1pin, fadeValue);
+  //    delay(1000 / 255);
+  //  }
   digitalWrite(pump1pin, HIGH);
-  delay(tapAmountMilliseconds);//simplfied the shit
+  delay(tapAmountMilliseconds ); //simplfied the shit
+  //CPU_RESTART;
   digitalWrite(pump1pin, LOW);
+  
+  //  for (int fadeValue = 255 ; fadeValue >= 255; fadeValue -= 1) {
+  //    analogWrite(pump1pin, fadeValue);
+  //    delay(1000 / 255);
+  //  }
   delay(1000);//maybe to allow the power to stabilize
   nowTappingMilliseconds = false;
-
-  Serial.begin(115200);
+  //Serial.end();
+  //Serial.begin(115200);
   cmdMessenger.sendCmd(kTapSucceeded, "all done");
   cmdMessenger.sendCmd(kTestArduino, String("DONE!with this tapping"));
 
   coinValue = 0;
   cmdMessenger.sendCmd(kCoinAmount, coinValue);
-  
+
   attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
 
 
@@ -207,7 +217,7 @@ void OnCoinWait() {
     delay(1);
   }
   detachInterrupt(digitalPinToInterrupt(11));
-  cmdMessenger.sendCmd(kTestArduino, String("DONE! received coins : ").concat(coinValue));
+  //cmdMessenger.sendCmd(kTestArduino, String("DONE! received coins : ").concat(coinValue));
   cmdMessenger.sendCmd(kCoinWait, coinValue);
 
   //coinValue = 0;

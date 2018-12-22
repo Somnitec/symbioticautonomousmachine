@@ -144,11 +144,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\giffy.gif" />
     <None Include="Resources\samp2.jpg" />
     <None Include="Resources\sam2p1.gif" />
     <None Include="Resources\sam2gif.gif" />
-    <Content Include="Resources\YVv7VNrzYSxwPSZOr9uIrs2c0F8tASgU.gif" />
-    <None Include="Resources\YVv7VNrzYSxwPSZOr9uIrs2c0F8tASgU1.gif" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
