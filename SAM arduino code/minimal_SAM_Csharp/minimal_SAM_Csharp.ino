@@ -73,7 +73,7 @@ int coinValue = 0;
 
 //printing
 
-int stateNow;
+int stateNow =0;;
 
 Bounce sodaButton = Bounce();
 void setup()

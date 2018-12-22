@@ -100,7 +100,10 @@ void OnNEWcoinWait() {
   coinValue = 0;
   cmdMessenger.sendCmd(kCoinAmount, coinValue);
   attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
-  while (coinValue < coindDesired) {}
+  while (coinValue < coindDesired) {
+    cmdMessenger.sendCmd(kTestArduino, String("now ").concat(coinValue).concat(String(" desired")).concat(coindDesired));
+    delay(100);
+    }
   cmdMessenger.sendCmd(kNEWpaymentCompleted);
 
   //receive coinwait
@@ -120,13 +123,16 @@ void OnNEWtappingMS() {
   // start tapping for x ms
   // reset
 
-  int value = cmdMessenger.readInt16Arg();
+  int waittime = cmdMessenger.readInt16Arg();
+  cmdMessenger.sendCmd(kTestArduino, String("waiting  ").concat(waittime).concat(String(" ms")));
+    
   stateNow = 2;
   delay(500);//?
   digitalWrite(pump1pin, HIGH);
-  delay(value );
+  delay(waittime );
   digitalWrite(pump1pin, LOW);
   delay(500);//?
+  stateNow = 0;
   _softRestart;
 }
 void OnNEWtesttap() {

@@ -7,7 +7,7 @@ namespace SAM1application
 {
     public partial class UserInterface : Form
     {
-        
+
         Image image1 = new Bitmap(Properties.Resources.sam2gif);
         Image image2 = new Bitmap(Properties.Resources.sam2p1);
         Image image3 = new Bitmap(Properties.Resources.samp2);
@@ -32,7 +32,7 @@ namespace SAM1application
   
             {150,90 },
             {150 ,180},
-            {900 ,0},            
+            {900 ,0},
             {-100,0},
             {-100,0},
         };
@@ -58,15 +58,16 @@ namespace SAM1application
         {
             set
             {
-                priceLabel.Text = "the price is "+ value.ToString() + " 元";
+                priceLabel.Text = "the price is " + value.ToString() + " 元";
                 priceLabelChinese.Text = "价格 " + value.ToString() + " 元";
-                
+
             }
         }
 
         public int _changeInterface
         {
-            set {
+            set
+            {
 
                 //Image oldImage = interfaceImage.Image;
                 //if (oldImage != null) oldImage.Dispose();
@@ -78,39 +79,39 @@ namespace SAM1application
                     gif.Show();
                 }
                 else gif.Hide();
-                 if (value % text.Length == 1)
+                if (value % text.Length == 1)
                 {
                     interfaceImage.Image = image2;
-                }
-                   if (value % text.Length == 2)
-                {
-                    interfaceImage.Image = image3;
-                }
-                
-                
-                //arrowBox.Image = RotateImage(image, arrowPos[value % text.Length, 1]);
-                //arrowBox.Top = arrowPos[value % text.Length, 0];
-
-                interfaceText.Text = text[value % text.Length];
-
-                if(value % text.Length == 1)
-                {
                     priceLabel.Show();
                     priceLabelChinese.Show();
                     currentAmount.Show();
                     _setAmount = 0;
                 }
-                       
-                else {
+                else
+                {
+                    priceLabel.Hide();
+                    priceLabelChinese.Hide();
+                    currentAmount.Hide();
+                }
+                if (value % text.Length == 2)
+                {
+                    interfaceImage.Image = image3;
                     priceLabel.Hide();
                     priceLabelChinese.Hide();
                     currentAmount.Hide();
                 }
 
+
+                //arrowBox.Image = RotateImage(image, arrowPos[value % text.Length, 1]);
+                //arrowBox.Top = arrowPos[value % text.Length, 0];
+
+                //interfaceText.Text = text[value % text.Length];
+
+
             }
         }
 
-        public static Bitmap RotateImage(Image image,  float angle)
+        public static Bitmap RotateImage(Image image, float angle)
         {
             if (image == null)
                 throw new ArgumentNullException("image");
@@ -123,7 +124,7 @@ namespace SAM1application
             Graphics g = Graphics.FromImage(rotatedBmp);
 
             //Put the rotation point in the center of the image
-            g.TranslateTransform(image.Width/2, image.Height/2);
+            g.TranslateTransform(image.Width / 2, image.Height / 2);
 
             //rotate the image
             g.RotateTransform(angle);
@@ -137,8 +138,8 @@ namespace SAM1application
             return rotatedBmp;
         }
 
-   
+
     }
 
-    
+
 }

@@ -519,14 +519,16 @@ namespace SAM1application
             var command = new SendCommand((int)Command.NEWtappingMS, (int)Properties.Settings.Default.tapMilliseconds);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
 
+            Thread.Sleep(1000);
+
             _cmdMessenger.Disconnect();
             AppendToLog(@"disconnecting Arduino");
 
-            Thread.Sleep((int)Properties.Settings.Default.tapMilliseconds+2000);
-            while(!_cmdMessenger.Connect())            AppendToLog(@"trying to connect Arduino");
+            Thread.Sleep((int)Properties.Settings.Default.tapMilliseconds + 2000);
+            while (!_cmdMessenger.Connect()) AppendToLog(@"trying to connect Arduino");
             AppendToLog(@"connected Arduino");
 
-                                    userInterface._changeInterface = 0;
+            userInterface._changeInterface = 0;
 
         }
 
