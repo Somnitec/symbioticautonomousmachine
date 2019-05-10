@@ -98,10 +98,9 @@
             // logInButton
             // 
             this.logInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.logInButton.Location = new System.Drawing.Point(1318, 18);
-            this.logInButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.logInButton.Location = new System.Drawing.Point(879, 12);
             this.logInButton.Name = "logInButton";
-            this.logInButton.Size = new System.Drawing.Size(68, 66);
+            this.logInButton.Size = new System.Drawing.Size(45, 43);
             this.logInButton.TabIndex = 8;
             this.logInButton.Text = "Log in";
             this.logInButton.UseVisualStyleBackColor = true;
@@ -112,10 +111,9 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Location = new System.Drawing.Point(18, 154);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel4.Location = new System.Drawing.Point(12, 100);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1157, 0);
+            this.panel4.Size = new System.Drawing.Size(772, 1);
             this.panel4.TabIndex = 8;
             // 
             // statusStrip
@@ -124,23 +122,22 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusStripProgressBar,
             this.statusStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 627);
+            this.statusStrip.Location = new System.Drawing.Point(0, 356);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-            this.statusStrip.Size = new System.Drawing.Size(1194, 31);
+            this.statusStrip.Size = new System.Drawing.Size(685, 22);
             this.statusStrip.TabIndex = 9;
             // 
             // statusStripProgressBar
             // 
             this.statusStripProgressBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.statusStripProgressBar.Name = "statusStripProgressBar";
-            this.statusStripProgressBar.Size = new System.Drawing.Size(150, 25);
+            this.statusStripProgressBar.Size = new System.Drawing.Size(100, 16);
             this.statusStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             // 
             // statusStripStatusLabel
             // 
             this.statusStripStatusLabel.Name = "statusStripStatusLabel";
-            this.statusStripStatusLabel.Size = new System.Drawing.Size(1019, 26);
+            this.statusStripStatusLabel.Size = new System.Drawing.Size(568, 17);
             this.statusStripStatusLabel.Spring = true;
             this.statusStripStatusLabel.Text = "Status text";
             this.statusStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -148,20 +145,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(213, 237);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(142, 154);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
+            this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 16;
             this.label2.Text = "€ cents";
             // 
             // PayButton
             // 
             this.PayButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.PayButton.Location = new System.Drawing.Point(30, 228);
-            this.PayButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PayButton.Location = new System.Drawing.Point(20, 148);
             this.PayButton.Name = "PayButton";
-            this.PayButton.Size = new System.Drawing.Size(150, 35);
+            this.PayButton.Size = new System.Drawing.Size(100, 23);
             this.PayButton.TabIndex = 14;
             this.PayButton.Text = "Payment Test";
             this.PayButton.UseVisualStyleBackColor = true;
@@ -172,13 +167,12 @@
             this.logTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.logTextBox.Location = new System.Drawing.Point(514, 209);
-            this.logTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.logTextBox.Location = new System.Drawing.Point(343, 136);
             this.logTextBox.Multiline = true;
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
             this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.logTextBox.Size = new System.Drawing.Size(658, 409);
+            this.logTextBox.Size = new System.Drawing.Size(440, 267);
             this.logTextBox.TabIndex = 24;
             this.logTextBox.WordWrap = false;
             // 
@@ -186,20 +180,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(510, 160);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(340, 104);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 24);
+            this.label1.Size = new System.Drawing.Size(34, 16);
             this.label1.TabIndex = 25;
             this.label1.Text = "Log";
             // 
             // CancelPaymentButton
             // 
             this.CancelPaymentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.CancelPaymentButton.Location = new System.Drawing.Point(30, 229);
-            this.CancelPaymentButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CancelPaymentButton.Location = new System.Drawing.Point(20, 149);
             this.CancelPaymentButton.Name = "CancelPaymentButton";
-            this.CancelPaymentButton.Size = new System.Drawing.Size(148, 35);
+            this.CancelPaymentButton.Size = new System.Drawing.Size(99, 23);
             this.CancelPaymentButton.TabIndex = 27;
             this.CancelPaymentButton.Text = "Cancel payment";
             this.CancelPaymentButton.UseVisualStyleBackColor = true;
@@ -207,10 +199,9 @@
             // 
             // ArduinoTestButton
             // 
-            this.ArduinoTestButton.Location = new System.Drawing.Point(30, 192);
-            this.ArduinoTestButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ArduinoTestButton.Location = new System.Drawing.Point(20, 125);
             this.ArduinoTestButton.Name = "ArduinoTestButton";
-            this.ArduinoTestButton.Size = new System.Drawing.Size(148, 35);
+            this.ArduinoTestButton.Size = new System.Drawing.Size(99, 23);
             this.ArduinoTestButton.TabIndex = 28;
             this.ArduinoTestButton.Text = "ArduinoTest";
             this.ArduinoTestButton.UseVisualStyleBackColor = true;
@@ -219,29 +210,26 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(30, 172);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(20, 112);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 20);
+            this.label9.Size = new System.Drawing.Size(33, 13);
             this.label9.TabIndex = 29;
             this.label9.Text = "Tests";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(298, 172);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(199, 112);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 20);
+            this.label10.Size = new System.Drawing.Size(45, 13);
             this.label10.TabIndex = 29;
             this.label10.Text = "Settings";
             // 
             // printTestButton
             // 
-            this.printTestButton.Location = new System.Drawing.Point(30, 263);
-            this.printTestButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.printTestButton.Location = new System.Drawing.Point(20, 171);
             this.printTestButton.Name = "printTestButton";
-            this.printTestButton.Size = new System.Drawing.Size(148, 35);
+            this.printTestButton.Size = new System.Drawing.Size(99, 23);
             this.printTestButton.TabIndex = 28;
             this.printTestButton.Text = "PrintTest";
             this.printTestButton.UseVisualStyleBackColor = true;
@@ -249,10 +237,9 @@
             // 
             // TapTestButton
             // 
-            this.TapTestButton.Location = new System.Drawing.Point(30, 298);
-            this.TapTestButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TapTestButton.Location = new System.Drawing.Point(20, 194);
             this.TapTestButton.Name = "TapTestButton";
-            this.TapTestButton.Size = new System.Drawing.Size(148, 35);
+            this.TapTestButton.Size = new System.Drawing.Size(99, 23);
             this.TapTestButton.TabIndex = 28;
             this.TapTestButton.Text = "TapTest";
             this.TapTestButton.UseVisualStyleBackColor = true;
@@ -261,20 +248,18 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(238, 305);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(159, 198);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 20);
+            this.label11.Size = new System.Drawing.Size(21, 13);
             this.label11.TabIndex = 16;
             this.label11.Text = "mL";
             // 
             // ledTestCheckBox
             // 
             this.ledTestCheckBox.AutoSize = true;
-            this.ledTestCheckBox.Location = new System.Drawing.Point(33, 337);
-            this.ledTestCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ledTestCheckBox.Location = new System.Drawing.Point(22, 219);
             this.ledTestCheckBox.Name = "ledTestCheckBox";
-            this.ledTestCheckBox.Size = new System.Drawing.Size(102, 24);
+            this.ledTestCheckBox.Size = new System.Drawing.Size(71, 17);
             this.ledTestCheckBox.TabIndex = 30;
             this.ledTestCheckBox.Text = "LED Test";
             this.ledTestCheckBox.UseVisualStyleBackColor = true;
@@ -283,10 +268,9 @@
             // PumpTapTestCheckbox
             // 
             this.PumpTapTestCheckbox.AutoSize = true;
-            this.PumpTapTestCheckbox.Location = new System.Drawing.Point(33, 372);
-            this.PumpTapTestCheckbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PumpTapTestCheckbox.Location = new System.Drawing.Point(22, 242);
             this.PumpTapTestCheckbox.Name = "PumpTapTestCheckbox";
-            this.PumpTapTestCheckbox.Size = new System.Drawing.Size(142, 24);
+            this.PumpTapTestCheckbox.Size = new System.Drawing.Size(99, 17);
             this.PumpTapTestCheckbox.TabIndex = 30;
             this.PumpTapTestCheckbox.Text = "Pump Tap Test";
             this.PumpTapTestCheckbox.UseVisualStyleBackColor = true;
@@ -295,69 +279,62 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(362, 266);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(241, 173);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 20);
+            this.label12.Size = new System.Drawing.Size(51, 13);
             this.label12.TabIndex = 16;
             this.label12.Text = "mL to tap";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(362, 305);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(241, 198);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(47, 20);
+            this.label13.Size = new System.Drawing.Size(32, 13);
             this.label13.TabIndex = 16;
             this.label13.Text = "€ min";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(364, 448);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(243, 291);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(79, 20);
+            this.label14.Size = new System.Drawing.Size(54, 13);
             this.label14.TabIndex = 16;
             this.label14.Text = "receipt no";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(362, 486);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(241, 316);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(152, 20);
+            this.label15.Size = new System.Drawing.Size(101, 13);
             this.label15.TabIndex = 16;
             this.label15.Text = "LED brightness max";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(380, 557);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(253, 362);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(125, 20);
+            this.label16.Size = new System.Drawing.Size(84, 13);
             this.label16.TabIndex = 16;
             this.label16.Text = "LED fade speed";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(364, 591);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(243, 384);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(97, 20);
+            this.label17.Size = new System.Drawing.Size(65, 13);
             this.label17.TabIndex = 16;
             this.label17.Text = "Arduino Port";
             // 
             // SaveSettingsButton
             // 
-            this.SaveSettingsButton.Location = new System.Drawing.Point(394, 165);
-            this.SaveSettingsButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SaveSettingsButton.Location = new System.Drawing.Point(263, 107);
             this.SaveSettingsButton.Name = "SaveSettingsButton";
-            this.SaveSettingsButton.Size = new System.Drawing.Size(90, 35);
+            this.SaveSettingsButton.Size = new System.Drawing.Size(60, 23);
             this.SaveSettingsButton.TabIndex = 33;
             this.SaveSettingsButton.Text = "Save Settings";
             this.SaveSettingsButton.UseVisualStyleBackColor = true;
@@ -366,19 +343,17 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(363, 343);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Location = new System.Drawing.Point(242, 223);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(51, 20);
+            this.label18.Size = new System.Drawing.Size(35, 13);
             this.label18.TabIndex = 16;
             this.label18.Text = "€ max";
             // 
             // FakeSodaButton
             // 
-            this.FakeSodaButton.Location = new System.Drawing.Point(20, 18);
-            this.FakeSodaButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.FakeSodaButton.Location = new System.Drawing.Point(13, 12);
             this.FakeSodaButton.Name = "FakeSodaButton";
-            this.FakeSodaButton.Size = new System.Drawing.Size(87, 91);
+            this.FakeSodaButton.Size = new System.Drawing.Size(58, 59);
             this.FakeSodaButton.TabIndex = 35;
             this.FakeSodaButton.Text = "Fake\r\nSoda\r\nButton";
             this.FakeSodaButton.UseVisualStyleBackColor = true;
@@ -386,10 +361,9 @@
             // 
             // FakeGrainButton
             // 
-            this.FakeGrainButton.Location = new System.Drawing.Point(118, 18);
-            this.FakeGrainButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.FakeGrainButton.Location = new System.Drawing.Point(79, 12);
             this.FakeGrainButton.Name = "FakeGrainButton";
-            this.FakeGrainButton.Size = new System.Drawing.Size(87, 91);
+            this.FakeGrainButton.Size = new System.Drawing.Size(58, 59);
             this.FakeGrainButton.TabIndex = 35;
             this.FakeGrainButton.Text = "Fake\r\nGrain\nButton";
             this.FakeGrainButton.UseVisualStyleBackColor = true;
@@ -398,20 +372,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(897, 89);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(598, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(202, 20);
+            this.label3.Size = new System.Drawing.Size(136, 13);
             this.label3.TabIndex = 36;
             this.label3.Text = "SAM3 2018 by Arvid&&Marie";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(897, 109);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(598, 71);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(491, 20);
+            this.label4.Size = new System.Drawing.Size(324, 13);
             this.label4.TabIndex = 36;
             this.label4.Text = "Based un SumUp SampleApp and CmdMessenge ArduinoController";
             // 
@@ -420,10 +392,9 @@
             this.arduinoConnectCheckBox.AutoSize = true;
             this.arduinoConnectCheckBox.Checked = true;
             this.arduinoConnectCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.arduinoConnectCheckBox.Location = new System.Drawing.Point(57, 429);
-            this.arduinoConnectCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.arduinoConnectCheckBox.Location = new System.Drawing.Point(38, 279);
             this.arduinoConnectCheckBox.Name = "arduinoConnectCheckBox";
-            this.arduinoConnectCheckBox.Size = new System.Drawing.Size(153, 24);
+            this.arduinoConnectCheckBox.Size = new System.Drawing.Size(104, 17);
             this.arduinoConnectCheckBox.TabIndex = 30;
             this.arduinoConnectCheckBox.Text = "Arduino Enabled";
             this.arduinoConnectCheckBox.UseVisualStyleBackColor = true;
@@ -432,58 +403,52 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(362, 523);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(241, 340);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(148, 20);
+            this.label5.Size = new System.Drawing.Size(98, 13);
             this.label5.TabIndex = 16;
             this.label5.Text = "LED brightness min";
             // 
             // ledStateNumericUpDown
             // 
-            this.ledStateNumericUpDown.Location = new System.Drawing.Point(30, 472);
-            this.ledStateNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ledStateNumericUpDown.Location = new System.Drawing.Point(20, 307);
             this.ledStateNumericUpDown.Name = "ledStateNumericUpDown";
-            this.ledStateNumericUpDown.Size = new System.Drawing.Size(76, 26);
+            this.ledStateNumericUpDown.Size = new System.Drawing.Size(51, 20);
             this.ledStateNumericUpDown.TabIndex = 37;
             this.ledStateNumericUpDown.ValueChanged += new System.EventHandler(this.ledStateNumericUpDown_ValueChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(110, 475);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(73, 309);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 20);
+            this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 38;
             this.label6.Text = "ledState";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(110, 515);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(73, 335);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(110, 20);
+            this.label7.Size = new System.Drawing.Size(73, 13);
             this.label7.TabIndex = 40;
             this.label7.Text = "interfaceState";
             // 
             // interfaceStateNumericUpDown
             // 
-            this.interfaceStateNumericUpDown.Location = new System.Drawing.Point(30, 512);
-            this.interfaceStateNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.interfaceStateNumericUpDown.Location = new System.Drawing.Point(20, 333);
             this.interfaceStateNumericUpDown.Name = "interfaceStateNumericUpDown";
-            this.interfaceStateNumericUpDown.Size = new System.Drawing.Size(76, 26);
+            this.interfaceStateNumericUpDown.Size = new System.Drawing.Size(51, 20);
             this.interfaceStateNumericUpDown.TabIndex = 39;
             this.interfaceStateNumericUpDown.ValueChanged += new System.EventHandler(this.interfaceStateNumericUpDown_ValueChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(380, 214);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(253, 139);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 20);
+            this.label8.Size = new System.Drawing.Size(50, 13);
             this.label8.TabIndex = 16;
             this.label8.Text = "ms to tap";
             // 
@@ -495,40 +460,37 @@
             0,
             0,
             0});
-            this.numericUpDown7.Location = new System.Drawing.Point(176, 302);
-            this.numericUpDown7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numericUpDown7.Location = new System.Drawing.Point(117, 196);
             this.numericUpDown7.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(64, 26);
+            this.numericUpDown7.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown7.TabIndex = 34;
             this.numericUpDown7.Value = global::SAM0application.Properties.Settings.Default.TestTapAmount;
             // 
             // textBox2
             // 
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM0application.Properties.Settings.Default, "ArduinoPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBox2.Location = new System.Drawing.Point(302, 586);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox2.Location = new System.Drawing.Point(201, 381);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(62, 26);
+            this.textBox2.Size = new System.Drawing.Size(43, 20);
             this.textBox2.TabIndex = 32;
             this.textBox2.Text = global::SAM0application.Properties.Settings.Default.ArduinoPort;
             // 
             // ReceiptNoNumericUpDown
             // 
             this.ReceiptNoNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "ReceiptNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ReceiptNoNumericUpDown.Location = new System.Drawing.Point(302, 445);
-            this.ReceiptNoNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ReceiptNoNumericUpDown.Location = new System.Drawing.Point(201, 289);
             this.ReceiptNoNumericUpDown.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
             this.ReceiptNoNumericUpDown.Name = "ReceiptNoNumericUpDown";
-            this.ReceiptNoNumericUpDown.Size = new System.Drawing.Size(64, 26);
+            this.ReceiptNoNumericUpDown.Size = new System.Drawing.Size(43, 20);
             this.ReceiptNoNumericUpDown.TabIndex = 31;
             this.ReceiptNoNumericUpDown.ThousandsSeparator = true;
             this.ReceiptNoNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.ReceiptNo;
@@ -542,15 +504,14 @@
             0,
             0,
             196608});
-            this.LedBreathSpeedNumericUpDown.Location = new System.Drawing.Point(302, 554);
-            this.LedBreathSpeedNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.LedBreathSpeedNumericUpDown.Location = new System.Drawing.Point(201, 360);
             this.LedBreathSpeedNumericUpDown.Maximum = new decimal(new int[] {
             200,
             0,
             0,
             0});
             this.LedBreathSpeedNumericUpDown.Name = "LedBreathSpeedNumericUpDown";
-            this.LedBreathSpeedNumericUpDown.Size = new System.Drawing.Size(81, 26);
+            this.LedBreathSpeedNumericUpDown.Size = new System.Drawing.Size(54, 20);
             this.LedBreathSpeedNumericUpDown.TabIndex = 31;
             this.LedBreathSpeedNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.LEDspeed;
             this.LedBreathSpeedNumericUpDown.ValueChanged += new System.EventHandler(this.LedBreathSpeedNumericUpDown_ValueChanged);
@@ -558,15 +519,14 @@
             // LedBreathMinNumericUpDown
             // 
             this.LedBreathMinNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "ledBrightnessMin", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.LedBreathMinNumericUpDown.Location = new System.Drawing.Point(302, 520);
-            this.LedBreathMinNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.LedBreathMinNumericUpDown.Location = new System.Drawing.Point(201, 338);
             this.LedBreathMinNumericUpDown.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.LedBreathMinNumericUpDown.Name = "LedBreathMinNumericUpDown";
-            this.LedBreathMinNumericUpDown.Size = new System.Drawing.Size(64, 26);
+            this.LedBreathMinNumericUpDown.Size = new System.Drawing.Size(43, 20);
             this.LedBreathMinNumericUpDown.TabIndex = 31;
             this.LedBreathMinNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.ledBrightnessMin;
             this.LedBreathMinNumericUpDown.ValueChanged += new System.EventHandler(this.LedBreathMinNumericUpDown_ValueChanged);
@@ -574,15 +534,14 @@
             // LedBreathMaxNumericUpDown
             // 
             this.LedBreathMaxNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "LEDbrightnessMax", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.LedBreathMaxNumericUpDown.Location = new System.Drawing.Point(302, 483);
-            this.LedBreathMaxNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.LedBreathMaxNumericUpDown.Location = new System.Drawing.Point(201, 314);
             this.LedBreathMaxNumericUpDown.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.LedBreathMaxNumericUpDown.Name = "LedBreathMaxNumericUpDown";
-            this.LedBreathMaxNumericUpDown.Size = new System.Drawing.Size(64, 26);
+            this.LedBreathMaxNumericUpDown.Size = new System.Drawing.Size(43, 20);
             this.LedBreathMaxNumericUpDown.TabIndex = 31;
             this.LedBreathMaxNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.LEDbrightnessMax;
             this.LedBreathMaxNumericUpDown.ValueChanged += new System.EventHandler(this.LedBreathMaxNumericUpDown_ValueChanged);
@@ -595,15 +554,14 @@
             0,
             0,
             0});
-            this.tapMillisecondsNumericUpDown.Location = new System.Drawing.Point(302, 211);
-            this.tapMillisecondsNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tapMillisecondsNumericUpDown.Location = new System.Drawing.Point(201, 137);
             this.tapMillisecondsNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.tapMillisecondsNumericUpDown.Name = "tapMillisecondsNumericUpDown";
-            this.tapMillisecondsNumericUpDown.Size = new System.Drawing.Size(81, 26);
+            this.tapMillisecondsNumericUpDown.Size = new System.Drawing.Size(54, 20);
             this.tapMillisecondsNumericUpDown.TabIndex = 31;
             this.tapMillisecondsNumericUpDown.ThousandsSeparator = true;
             this.tapMillisecondsNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.tapMilliseconds;
@@ -617,15 +575,14 @@
             0,
             0,
             0});
-            this.numericUpDown2.Location = new System.Drawing.Point(302, 263);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numericUpDown2.Location = new System.Drawing.Point(201, 171);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(64, 26);
+            this.numericUpDown2.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown2.TabIndex = 31;
             this.numericUpDown2.Value = global::SAM0application.Properties.Settings.Default.TapAmount;
             // 
@@ -638,15 +595,14 @@
             0,
             0,
             131072});
-            this.numericUpDown3.Location = new System.Drawing.Point(302, 340);
-            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numericUpDown3.Location = new System.Drawing.Point(201, 221);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(64, 26);
+            this.numericUpDown3.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown3.TabIndex = 31;
             this.numericUpDown3.Value = global::SAM0application.Properties.Settings.Default.MaxPrice;
             // 
@@ -659,15 +615,14 @@
             0,
             0,
             131072});
-            this.numericUpDown1.Location = new System.Drawing.Point(302, 300);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numericUpDown1.Location = new System.Drawing.Point(201, 195);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(64, 26);
+            this.numericUpDown1.Size = new System.Drawing.Size(43, 20);
             this.numericUpDown1.TabIndex = 31;
             this.numericUpDown1.Value = global::SAM0application.Properties.Settings.Default.MinPrice;
             // 
@@ -677,10 +632,9 @@
             this.checkBox6.Checked = global::SAM0application.Properties.Settings.Default.PrintingShortVersion;
             this.checkBox6.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM0application.Properties.Settings.Default, "PrintingShortVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBox6.Enabled = false;
-            this.checkBox6.Location = new System.Drawing.Point(302, 409);
-            this.checkBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBox6.Location = new System.Drawing.Point(201, 266);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(182, 24);
+            this.checkBox6.Size = new System.Drawing.Size(124, 17);
             this.checkBox6.TabIndex = 30;
             this.checkBox6.Text = "Printing short version";
             this.checkBox6.UseVisualStyleBackColor = true;
@@ -691,10 +645,9 @@
             this.PrintingCheckBox.Checked = global::SAM0application.Properties.Settings.Default.PrintingEnabled;
             this.PrintingCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.PrintingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM0application.Properties.Settings.Default, "PrintingEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.PrintingCheckBox.Location = new System.Drawing.Point(302, 380);
-            this.PrintingCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PrintingCheckBox.Location = new System.Drawing.Point(201, 247);
             this.PrintingCheckBox.Name = "PrintingCheckBox";
-            this.PrintingCheckBox.Size = new System.Drawing.Size(133, 24);
+            this.PrintingCheckBox.Size = new System.Drawing.Size(93, 17);
             this.PrintingCheckBox.TabIndex = 30;
             this.PrintingCheckBox.Text = "Printing on/off";
             this.PrintingCheckBox.UseVisualStyleBackColor = true;
@@ -702,19 +655,17 @@
             // AmountText
             // 
             this.AmountText.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM0application.Properties.Settings.Default, "PaymentTestAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.AmountText.Location = new System.Drawing.Point(177, 231);
-            this.AmountText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.AmountText.Location = new System.Drawing.Point(118, 150);
             this.AmountText.Name = "AmountText";
-            this.AmountText.Size = new System.Drawing.Size(38, 26);
+            this.AmountText.Size = new System.Drawing.Size(27, 20);
             this.AmountText.TabIndex = 12;
             this.AmountText.Text = global::SAM0application.Properties.Settings.Default.PaymentTestAmount;
             // 
             // testTapMsButton
             // 
-            this.testTapMsButton.Location = new System.Drawing.Point(202, 186);
-            this.testTapMsButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.testTapMsButton.Location = new System.Drawing.Point(135, 121);
             this.testTapMsButton.Name = "testTapMsButton";
-            this.testTapMsButton.Size = new System.Drawing.Size(104, 35);
+            this.testTapMsButton.Size = new System.Drawing.Size(69, 23);
             this.testTapMsButton.TabIndex = 41;
             this.testTapMsButton.Text = "testTapMs";
             this.testTapMsButton.UseVisualStyleBackColor = true;
@@ -722,9 +673,9 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1194, 658);
+            this.ClientSize = new System.Drawing.Size(685, 378);
             this.Controls.Add(this.testTapMsButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.interfaceStateNumericUpDown);
@@ -775,10 +726,9 @@
             this.Controls.Add(this.PayButton);
             this.Controls.Add(this.CancelPaymentButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(942, 562);
+            this.MinimumSize = new System.Drawing.Size(633, 376);
             this.Name = "MainForm";
             this.Text = "SAM0 application";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -839,7 +789,6 @@
         private System.Windows.Forms.HelpProvider helpProvider;
         private System.Windows.Forms.NumericUpDown numericUpDown7;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button FakeSodaButton;
         private System.Windows.Forms.Button FakeGrainButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -853,6 +802,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown tapMillisecondsNumericUpDown;
         private System.Windows.Forms.Button testTapMsButton;
+        internal System.Windows.Forms.Button FakeSodaButton;
     }
 }
 

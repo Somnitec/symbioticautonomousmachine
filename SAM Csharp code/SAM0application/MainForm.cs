@@ -25,9 +25,9 @@ namespace SAM0application
         private bool realPaymentHappening = false;
         private int price = 111;
         int SAMstate = (int)SAMstates.idle;
-        
+
         UserInterface userInterface = new UserInterface();
-        
+
         public bool IsAvailable { get; set; }
 
         // ======= Authenticate with SumUp system and create SDK instance =======		
@@ -133,25 +133,25 @@ namespace SAM0application
 
         private void MainForm_Load(object sender, System.EventArgs e)
         {
-            
+
             Console.WriteLine(IsAvailable);
             logInButton.PerformClick();
             Console.WriteLine(@"mainform loaded");
             ArduinoSetup();
-            
+
             userInterface.Show();
             userInterface.FormBorderStyle = FormBorderStyle.None;
             userInterface.WindowState = FormWindowState.Maximized;
             userInterface.Activate();
 
             Cursor.Hide();
-            
+
 
         }
 
         private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
         {
-            IsAvailable=e.IsAvailable;
+            IsAvailable = e.IsAvailable;
         }
 
         private void ArduinoSetup()
@@ -199,7 +199,7 @@ namespace SAM0application
             }
             catch (Exception ex)
             {
-                
+
                 UpdateUI(UIState.NotLoggedIn, ex.ToString());
                 AppendToLog("not Logged in");
                 logInButton.PerformClick();
@@ -229,7 +229,7 @@ namespace SAM0application
                 Properties.Settings.Default.ReceiptNo++;
                 ReceiptNoNumericUpDown.Update();
                 Properties.Settings.Default.Save();
-                PaymentResult paymentResult = await DoSumUpPayment(amount, method, connection,"SAM's Komboucha Soda No "+ Properties.Settings.Default.ReceiptNo + " at "+ DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString()); //, "SAM's Kefir Soda at " + DateTime.Now.ToShortTimeString() //can do, but will need to be unique every time
+                PaymentResult paymentResult = await DoSumUpPayment(amount, method, connection, "SAM's Komboucha Soda No " + Properties.Settings.Default.ReceiptNo + " at " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString()); //, "SAM's Kefir Soda at " + DateTime.Now.ToShortTimeString() //can do, but will need to be unique every time
                 paymentResultShort = string.Format("{0}", paymentResult.Status);
 
                 paymentResultText = string.Format(
@@ -290,7 +290,7 @@ namespace SAM0application
                     else
                     {
                         AppendToLog("payment was not successfull, resetting");
-                        
+
                         SAMstate = (int)SAMstates.error;
                         var command = new SendCommand((int)Command.SetLedState, SAMstate);
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
@@ -507,15 +507,19 @@ namespace SAM0application
 
         }
 
-        void OnSodaButtonPressed(ReceivedCommand arguments)
+        public void startClick(){
+            FakeSodaButton.PerformClick();
+            }
+
+       public static void     pumpClick()
         {
 
-            AppendToLog(@"Soda button pressed");
-            SAMstate = (int)SAMstates.waitingForPayment;
-            var command = new SendCommand((int)Command.SetLedState, SAMstate);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            userInterface._changeInterface = (int)SAMstate;
-            makePayment();
+        }
+
+        public void OnSodaButtonPressed(ReceivedCommand arguments)
+        {
+
+            
         }
 
         private void makePayment()
@@ -524,7 +528,7 @@ namespace SAM0application
             price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
             Properties.Settings.Default.ReceiptNo++;
             ReceiptNoNumericUpDown.Update();
-            
+            userInterface._setPrice = price;
             AppendToLog(@"Starting payment for €" + price / 100f+" and receipt no "+ Properties.Settings.Default.ReceiptNo);
             AmountText.Text = price.ToString();
             realPaymentHappening = true;
@@ -641,8 +645,8 @@ namespace SAM0application
         private void PrintReceiptOnPrintPage(object sender, PrintPageEventArgs e)
         {
             int rightpoint = 330;
-            int leftpoint = 80;
-            int centerpoint = (int)rightpoint / 2;
+            int leftpoint = 250;
+            int centerpoint = 250;
 
             int fontsize = 9;
             int linedistance = (int)(2.1 * fontsize);
@@ -677,7 +681,7 @@ namespace SAM0application
             e.Graphics.DrawString(exclPrice.ToString("€0.##")+ "     Cup SAM's kombucha", MainFont, Brushes.Black, rect);
             //e.Graphics.DrawString(exclPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
             rect = new RectangleF(0 + leftpoint, linedistance * 7, rightpoint, linedistance);
-            e.Graphics.DrawString(taxPrice.ToString("€0.##")+"     VAT 6% (NL)", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString(taxPrice.ToString("€0.##")+"     VAT 9% (NL)", MainFont, Brushes.Black, rect);
             //e.Graphics.DrawString(taxPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
             rect = new RectangleF(0 + leftpoint, linedistance * 9, rightpoint, linedistance);
             e.Graphics.DrawString(realPrice.ToString("€0.##")+"     Total", MainFont, Brushes.Black, rect);
@@ -757,8 +761,12 @@ namespace SAM0application
 
         private void FakeSodaButton_Click(object sender, EventArgs e)
         {
-            var command = new SendCommand((int)Command.SodaButtonPressed);
+            AppendToLog(@"Soda button pressed");
+            SAMstate = (int)SAMstates.waitingForPayment;
+            var command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            userInterface._changeInterface = (int)SAMstate;
+            makePayment();
         }
 
         private void FakeGrainButton_Click(object sender, EventArgs e)

@@ -144,7 +144,9 @@
       <Name>CommandMessenger</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\thankyou-80.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
@@ -159,6 +161,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\waitingtotap-80.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idle-80.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\price-80.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

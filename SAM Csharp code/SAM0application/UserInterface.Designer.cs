@@ -28,39 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.interfaceText = new System.Windows.Forms.Label();
-            this.arrowBox = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.arrowBox)).BeginInit();
+            this.priceLabel = new System.Windows.Forms.Label();
+            this.interfaceImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // interfaceText
+            // priceLabel
             // 
-            this.interfaceText.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.interfaceText.AutoSize = true;
-            this.interfaceText.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold);
-            this.interfaceText.Location = new System.Drawing.Point(41, 0);
-            this.interfaceText.Margin = new System.Windows.Forms.Padding(0);
-            this.interfaceText.MaximumSize = new System.Drawing.Size(700, 1280);
-            this.interfaceText.MinimumSize = new System.Drawing.Size(700, 1280);
-            this.interfaceText.Name = "interfaceText";
-            this.interfaceText.Size = new System.Drawing.Size(700, 1280);
-            this.interfaceText.TabIndex = 0;
-            this.interfaceText.Text = "starting";
-            this.interfaceText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.priceLabel.AutoSize = true;
+            this.priceLabel.Font = new System.Drawing.Font("Segoe MDL2 Assets", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceLabel.Location = new System.Drawing.Point(201, 552);
+            this.priceLabel.Name = "priceLabel";
+            this.priceLabel.Size = new System.Drawing.Size(204, 27);
+            this.priceLabel.TabIndex = 0;
+            this.priceLabel.Text = "1 EUR ≈ 7.50 DKK ";
             // 
-            // arrowBox
+            // interfaceImage
             // 
-            this.arrowBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.arrowBox.BackColor = System.Drawing.Color.Transparent;
-            this.arrowBox.Image = global::SAM0application.Properties.Resources.arrow;
-            this.arrowBox.InitialImage = global::SAM0application.Properties.Resources.arrow;
-            this.arrowBox.Location = new System.Drawing.Point(341, 300);
-            this.arrowBox.MaximumSize = new System.Drawing.Size(100, 100);
-            this.arrowBox.Name = "arrowBox";
-            this.arrowBox.Size = new System.Drawing.Size(100, 100);
-            this.arrowBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.arrowBox.TabIndex = 1;
-            this.arrowBox.TabStop = false;
+            this.interfaceImage.Location = new System.Drawing.Point(0, 0);
+            this.interfaceImage.Name = "interfaceImage";
+            this.interfaceImage.Size = new System.Drawing.Size(600, 1024);
+            this.interfaceImage.TabIndex = 1;
+            this.interfaceImage.TabStop = false;
+            this.interfaceImage.Click += new System.EventHandler(this.InterfaceImage_Click);
             // 
             // UserInterface
             // 
@@ -70,11 +60,11 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 581);
-            this.Controls.Add(this.arrowBox);
-            this.Controls.Add(this.interfaceText);
+            this.Controls.Add(this.priceLabel);
+            this.Controls.Add(this.interfaceImage);
             this.Name = "UserInterface";
             this.Text = "UserInterface";
-            ((System.ComponentModel.ISupportInitialize)(this.arrowBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,7 +72,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label interfaceText;
-        private System.Windows.Forms.PictureBox arrowBox;
+        private System.Windows.Forms.Label priceLabel;
+        private System.Windows.Forms.PictureBox interfaceImage;
     }
 }
