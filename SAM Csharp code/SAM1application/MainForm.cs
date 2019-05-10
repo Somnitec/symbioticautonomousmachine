@@ -23,7 +23,6 @@ namespace SAM1application
         private Random rand = new Random();
         private SumUpService _sumUpService;
         private Tuple<Payment, CancellationTokenSource> _currentPayment;
-        private bool realPaymentHappening = false;
         private int price = 111;
         int SAMstate = (int)SAMstates.idle;
         
@@ -132,7 +131,7 @@ namespace SAM1application
 
         private void MainForm_Load(object sender, System.EventArgs e)
         {
-            //logInButton.PerformClick();
+            //LogInButton.PerformClick();
             Console.WriteLine(@"mainform loaded");
             ArduinoSetup();
 
@@ -181,8 +180,8 @@ namespace SAM1application
 
             try
             {
-                //await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
-                await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c", "arvidj@gmail.com", "***REMOVED***");
+                await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
+                //await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c", "arvidj@gmail.com", "***REMOVED***");
 
                 UpdateUI(UIState.Idle);
 
@@ -559,7 +558,6 @@ namespace SAM1application
             
             AppendToLog(@"Starting payment for RMB " + price +" and receipt no "+ Properties.Settings.Default.ReceiptNo);
             AmountText.Text = price.ToString();
-            realPaymentHappening = true;
 
             var command = new SendCommand((int)Command.CoinWait, price);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));

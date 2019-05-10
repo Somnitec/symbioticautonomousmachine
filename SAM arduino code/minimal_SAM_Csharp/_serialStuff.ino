@@ -3,23 +3,16 @@
 enum
 {
   kAcknowledge,
-  kError,
   kReset,
   kTestArduino,
   kTestTap,
   kTestLeds,
-  kPumpTap,
-  kSodaButtonPressed,
-  kGrainButtonPressed,
-  kTapAmount,
-  kTapSucceeded,
   kSetLedState,
   kSetLedBreathSpeed,
   kSetLedBreathMax,
   kSetLedBreathMin,
   kPumpTapMilliseconds,
-  kCoinWait,
-  kCoinAmount,
+  kTapSucceeded,
 };
 
 
@@ -51,31 +44,27 @@ void attachCommandCallbacks()
   cmdMessenger.attach(kTestArduino, OnTestArduino);
   cmdMessenger.attach(kTestTap, OnTestTap);
   cmdMessenger.attach(kTestLeds, OnTestLeds);
-  cmdMessenger.attach(kPumpTap, OnPumpTap);
-  cmdMessenger.attach(kSodaButtonPressed, OnSodaButtonPressed);
-  cmdMessenger.attach(kTapAmount, OnTapAmount);
   cmdMessenger.attach(kSetLedBreathSpeed, OnSetLedBreathSpeed);
   cmdMessenger.attach(kSetLedBreathMax, OnSetLedBreathMax);
   cmdMessenger.attach(kSetLedBreathMin, OnSetLedBreathMin);
   cmdMessenger.attach(kSetLedState, OnSetLedState);
   cmdMessenger.attach(kPumpTapMilliseconds, OnPumpTapMilliseconds);
-  cmdMessenger.attach(kCoinAmount, OnCoinAmount);
-
-
 }
 
 // Called when a received command has no attached function
 void OnUnknownCommand()
 {
-  cmdMessenger.sendCmd(kError, "Command without attached callback");
+  cmdMessenger.sendCmd(kAcknowledge, "Command without attached callback");
 }
 
 void OnReset()
 {
+//might be needed if things are instable
+  
   //cmdMessenger.sendCmd(kReset);
   //return the states back to how they were
   //reset animation
-  coinValue=0;
+
   //delay(5000);
   //attachInterrupt(digitalPinToInterrupt(coinPin), coinInterrupt , FALLING);
 }
@@ -113,12 +102,11 @@ void OnPumpTap()
 {
   bool value = cmdMessenger.readBoolArg();
   if (value == true) {
-    cmdMessenger.sendCmd(kPumpTap, "turning on tap");
-    //waterFlow = 0;
+    cmdMessenger.sendCmd(kAcknowledge, "turning on tap");
     tapTimer = 0;
   } else if (value == false) {
-    //cmdMessenger.sendCmd(kPumpTap, waterFlow);
-    cmdMessenger.sendCmd(kPumpTap, tapTimer);
+    cmdMessenger.sendCmd(kAcknowledge, "turned off tap");
+
 
   }
 
@@ -126,20 +114,7 @@ void OnPumpTap()
   digitalWrite(pumppin, value);
 }
 
-void OnSodaButtonPressed()
-{
-  sodaButtonPress();
-}
 
-
-void OnTapAmount()
-{
-
-  nowTapping = true;
-  tapAmount = cmdMessenger.readInt16Arg();
-  cmdMessenger.sendCmd(kTapAmount, "tapping now mL->");
-  cmdMessenger.sendCmd(kTapAmount, tapAmount);
-}
 
 void OnSetLedBreathSpeed()
 {
@@ -169,36 +144,14 @@ void OnSetLedState()
 }
 
 void OnPumpTapMilliseconds() {
-  buttonled[0] = CRGB::Blue;
-  FastLED.show();
-  //waterFlow = 0;
+
   nowTappingMilliseconds = true;
   tapAmountMilliseconds = cmdMessenger.readInt16Arg();
 
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "tapping now ms->");
   cmdMessenger.sendCmd(kPumpTapMilliseconds, tapAmountMilliseconds);
-
-  cmdMessenger.sendCmd(kPumpTapMilliseconds, "waiting for cup");
-  //cupSwitch.update();
-  //while (cupSwitch.read() == false) {
-  /*
-    while (digitalRead(cuppin) == false) {
-    //cupSwitch.update();
-    //cmdMessenger.sendCmd(kPumpTapMilliseconds, cupSwitch.read());
-    cmdMessenger.sendCmd(kPumpTapMilliseconds, digitalRead(cuppin));
-    delay(100);
-    }
-    cmdMessenger.sendCmd(kPumpTapMilliseconds, "cup placed, waiting a short moment");
-  */
-  delay(2000);
-  cmdMessenger.sendCmd(kPumpTapMilliseconds, "pumping");
-  analogWrite(pumppin, 255);
+  digitalWrite(pumppin, HIGH);
   delay(tapAmountMilliseconds);
   analogWrite(pumppin, 0);
-  cmdMessenger.sendCmd(kPumpTapMilliseconds, "done tapping");
+  cmdMessenger.sendCmd(kTapSucceeded, "done tapping");
 }
-
-void OnCoinAmount(){
-  
-}
-

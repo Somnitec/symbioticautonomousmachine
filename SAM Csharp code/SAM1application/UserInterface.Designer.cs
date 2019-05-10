@@ -42,10 +42,9 @@
             this.currentAmount.AutoSize = true;
             this.currentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 80F);
             this.currentAmount.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.currentAmount.Location = new System.Drawing.Point(412, 1030);
-            this.currentAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.currentAmount.Location = new System.Drawing.Point(309, 837);
             this.currentAmount.Name = "currentAmount";
-            this.currentAmount.Size = new System.Drawing.Size(346, 153);
+            this.currentAmount.Size = new System.Drawing.Size(273, 120);
             this.currentAmount.TabIndex = 3;
             this.currentAmount.Text = "0 元 ";
             // 
@@ -54,10 +53,9 @@
             this.priceLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.priceLabel.AutoSize = true;
             this.priceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F);
-            this.priceLabel.Location = new System.Drawing.Point(-44, 649);
-            this.priceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.priceLabel.Location = new System.Drawing.Point(-42, 527);
             this.priceLabel.Name = "priceLabel";
-            this.priceLabel.Size = new System.Drawing.Size(770, 113);
+            this.priceLabel.Size = new System.Drawing.Size(607, 91);
             this.priceLabel.TabIndex = 5;
             this.priceLabel.Text = "the price is 0 元 ";
             this.priceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -67,12 +65,12 @@
             this.interfaceText.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.interfaceText.AutoSize = true;
             this.interfaceText.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold);
-            this.interfaceText.Location = new System.Drawing.Point(-210, 0);
+            this.interfaceText.Location = new System.Drawing.Point(-167, 0);
             this.interfaceText.Margin = new System.Windows.Forms.Padding(0);
-            this.interfaceText.MaximumSize = new System.Drawing.Size(933, 1575);
-            this.interfaceText.MinimumSize = new System.Drawing.Size(933, 1575);
+            this.interfaceText.MaximumSize = new System.Drawing.Size(700, 1280);
+            this.interfaceText.MinimumSize = new System.Drawing.Size(700, 1280);
             this.interfaceText.Name = "interfaceText";
-            this.interfaceText.Size = new System.Drawing.Size(933, 1575);
+            this.interfaceText.Size = new System.Drawing.Size(700, 1280);
             this.interfaceText.TabIndex = 0;
             this.interfaceText.Text = "starting";
             this.interfaceText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -82,10 +80,9 @@
             // 
             this.interfaceImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.interfaceImage.Image = global::SAM1application.Properties.Resources.sam2p1;
-            this.interfaceImage.Location = new System.Drawing.Point(0, 0);
-            this.interfaceImage.Margin = new System.Windows.Forms.Padding(4);
+            this.interfaceImage.Location = new System.Drawing.Point(-9, 0);
             this.interfaceImage.Name = "interfaceImage";
-            this.interfaceImage.Size = new System.Drawing.Size(750, 1488);
+            this.interfaceImage.Size = new System.Drawing.Size(562, 1209);
             this.interfaceImage.TabIndex = 6;
             this.interfaceImage.TabStop = false;
             // 
@@ -95,29 +92,27 @@
             this.arrowBox.BackColor = System.Drawing.Color.Transparent;
             this.arrowBox.Image = global::SAM1application.Properties.Resources.arrow;
             this.arrowBox.InitialImage = global::SAM1application.Properties.Resources.arrow;
-            this.arrowBox.Location = new System.Drawing.Point(164, 310);
-            this.arrowBox.Margin = new System.Windows.Forms.Padding(4);
-            this.arrowBox.MaximumSize = new System.Drawing.Size(133, 123);
+            this.arrowBox.Location = new System.Drawing.Point(114, 252);
+            this.arrowBox.MaximumSize = new System.Drawing.Size(100, 100);
             this.arrowBox.Name = "arrowBox";
-            this.arrowBox.Size = new System.Drawing.Size(133, 123);
+            this.arrowBox.Size = new System.Drawing.Size(100, 100);
             this.arrowBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.arrowBox.TabIndex = 1;
             this.arrowBox.TabStop = false;
             // 
             // UserInterface
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(842, 1055);
+            this.ClientSize = new System.Drawing.Size(632, 472);
             this.Controls.Add(this.interfaceImage);
             this.Controls.Add(this.interfaceText);
             this.Controls.Add(this.currentAmount);
             this.Controls.Add(this.priceLabel);
             this.Controls.Add(this.arrowBox);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserInterface";
             this.Text = "UserInterface";
             ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).EndInit();
