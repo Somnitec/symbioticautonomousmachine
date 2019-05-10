@@ -23,6 +23,9 @@ enum
 
 void setupSerial() {
   Serial.begin(115200);
+   while (!Serial) {
+    ; // leonardo fix
+   }
 
   // Adds newline to every command
   //cmdMessenger.printLfCr();
@@ -121,17 +124,15 @@ void OnPumpTap()
 
 void OnSodaButtonPressed()
 {
-  sodaButtonPress();
+
 }
 
 
 void OnTapAmount()
 {
 
-  nowTapping = true;
-  tapAmount = cmdMessenger.readInt16Arg();
   cmdMessenger.sendCmd(kTapAmount, "tapping now mL->");
-  cmdMessenger.sendCmd(kTapAmount, tapAmount);
+ 
 }
 
 void OnSetLedBreathSpeed()
@@ -162,8 +163,6 @@ void OnSetLedState()
 }
 
 void OnPumpTapMilliseconds() {
-  buttonled[0] = CRGB::Blue;
-  FastLED.show();
   //waterFlow = 0;
   nowTappingMilliseconds = true;
   tapAmountMilliseconds = cmdMessenger.readInt16Arg();
@@ -171,7 +170,7 @@ void OnPumpTapMilliseconds() {
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "tapping now ms->");
   cmdMessenger.sendCmd(kPumpTapMilliseconds, tapAmountMilliseconds);
   
-  cmdMessenger.sendCmd(kPumpTapMilliseconds, "waiting for cup");
+  //cmdMessenger.sendCmd(kPumpTapMilliseconds, "waiting for cup");
   //cupSwitch.update();
   //while (cupSwitch.read() == false) {
   /*
@@ -183,11 +182,10 @@ void OnPumpTapMilliseconds() {
   }
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "cup placed, waiting a short moment");
   */
-  delay(2000);
-  cmdMessenger.sendCmd(kPumpTapMilliseconds, "pumping");
+  //delay(2000);
+  //cmdMessenger.sendCmd(kPumpTapMilliseconds, "pumping");
   analogWrite(pumppin, 255);
   delay(tapAmountMilliseconds);
   analogWrite(pumppin, 0);
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "done tapping");
 }
-

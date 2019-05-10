@@ -138,14 +138,14 @@ namespace SAM0application
             logInButton.PerformClick();
             Console.WriteLine(@"mainform loaded");
             ArduinoSetup();
-            /*
+            
             userInterface.Show();
             userInterface.FormBorderStyle = FormBorderStyle.None;
             userInterface.WindowState = FormWindowState.Maximized;
             userInterface.Activate();
 
             Cursor.Hide();
-            */
+            
 
         }
 
@@ -425,7 +425,7 @@ namespace SAM0application
             // Note that for some boards (e.g. Sparkfun Pro Micro) DtrEnable may need to be true.
             _serialTransport = new SerialTransport
             {
-                CurrentSerialSettings = { PortName = Properties.Settings.Default.ArduinoPort, BaudRate = 115200, DtrEnable = false } // object initializer
+                CurrentSerialSettings = { PortName = Properties.Settings.Default.ArduinoPort, BaudRate = 115200, DtrEnable = true } // object initializer
             };
 
             // Initialize the command messenger with the Serial Port transport layer

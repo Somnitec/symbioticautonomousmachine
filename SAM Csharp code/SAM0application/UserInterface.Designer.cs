@@ -38,7 +38,7 @@
             this.interfaceText.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.interfaceText.AutoSize = true;
             this.interfaceText.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold);
-            this.interfaceText.Location = new System.Drawing.Point(50, 0);
+            this.interfaceText.Location = new System.Drawing.Point(41, 0);
             this.interfaceText.Margin = new System.Windows.Forms.Padding(0);
             this.interfaceText.MaximumSize = new System.Drawing.Size(700, 1280);
             this.interfaceText.MinimumSize = new System.Drawing.Size(700, 1280);
@@ -54,7 +54,7 @@
             this.arrowBox.BackColor = System.Drawing.Color.Transparent;
             this.arrowBox.Image = global::SAM0application.Properties.Resources.arrow;
             this.arrowBox.InitialImage = global::SAM0application.Properties.Resources.arrow;
-            this.arrowBox.Location = new System.Drawing.Point(350, 300);
+            this.arrowBox.Location = new System.Drawing.Point(341, 300);
             this.arrowBox.MaximumSize = new System.Drawing.Size(100, 100);
             this.arrowBox.Name = "arrowBox";
             this.arrowBox.Size = new System.Drawing.Size(100, 100);
@@ -69,7 +69,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 1053);
+            this.ClientSize = new System.Drawing.Size(784, 581);
             this.Controls.Add(this.arrowBox);
             this.Controls.Add(this.interfaceText);
             this.Name = "UserInterface";
