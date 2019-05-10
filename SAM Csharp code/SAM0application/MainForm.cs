@@ -189,9 +189,9 @@ namespace SAM0application
             try
             {
                 //devmode (fake paayments)
-                //await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
+                await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
                 //real payments
-                await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c", "arvidj@gmail.com", "***REMOVED***");
+                //await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c", "arvidj@gmail.com", "***REMOVED***");
 
                 UpdateUI(UIState.Idle);
 
