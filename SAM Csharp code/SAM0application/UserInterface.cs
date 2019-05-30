@@ -56,7 +56,7 @@ namespace SAM0application
                 if (value == 1)
                 {
                     interfaceImage.Image = priceimage;
-                    priceLabel.Show();
+                    //priceLabel.Show();
                 }
                 if (value == 2)
                 {
