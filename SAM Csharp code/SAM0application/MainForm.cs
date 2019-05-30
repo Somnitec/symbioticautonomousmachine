@@ -28,7 +28,14 @@ namespace SAM4application
         private int price = 111;
         int SAMstate = (int)SAMstates.idle;
 
-        UserInterface userInterface = new UserInterface();
+
+        //interface stuff
+        Image idleimage = new Bitmap(Properties.Resources.idle);
+        Image priceimage = new Bitmap(Properties.Resources.price);
+        Image waitingtotapimage = new Bitmap(Properties.Resources.waitingtotap);
+        Image thankyouimage = new Bitmap(Properties.Resources.thankyou);
+
+        int interfaceState = 0;
 
         //password storage stuff, method by https://weblogs.asp.net/jongalloway/encrypting-passwords-in-a-net-app-config-file
         static byte[] entropy = System.Text.Encoding.Unicode.GetBytes("This is the future");
@@ -196,17 +203,95 @@ namespace SAM4application
             Console.WriteLine(@"mainform loaded");
             ArduinoSetup();
 
-            userInterface.Show();
-            userInterface.FormBorderStyle = FormBorderStyle.None;
-            userInterface.WindowState = FormWindowState.Maximized;
-            userInterface.Activate();
+            
+            FormBorderStyle = FormBorderStyle.None;
+            //WindowState = FormWindowState.Maximized;
+           
 
             Cursor.Hide();
 
             //encrypt password easily like this
             Console.WriteLine(EncryptString(ToSecureString("password")));
             Console.WriteLine(ToInsecureString(DecryptString(  EncryptString(ToSecureString("password"))    )));
-            
+            interfacePanel.Hide();
+            priceLabel.Hide();
+
+        }
+
+        public int _setPrice
+        {
+            set
+            {
+                float amount = value / 100;
+                priceLabel.Text = "€ " + (amount).ToString("0.00") + " ≈  kr " + (amount * 7.5).ToString("0.00");
+            }
+        }
+
+
+
+
+        public int _changeInterface
+        {
+            set
+            {
+                if (value == 2) value = 3;
+                //Image oldImage = interfaceImage.Image;
+                //if (oldImage != null) oldImage.Dispose();
+                interfaceState = value;
+
+                priceLabel.Hide();
+                if (value == 0)
+                {
+                    interfaceImage.Image = idleimage;
+
+                }
+                if (value == 1)
+                {
+                    interfaceImage.Image = priceimage;
+                    //priceLabel.Show();
+                }
+                if (value == 2)
+                {
+                    interfaceImage.Image = waitingtotapimage;
+                }
+                if (value == 3)
+                {
+                    interfaceImage.Image = thankyouimage;
+                    System.Threading.Thread.Sleep(5000);
+                    interfaceState = 0;
+                    interfaceImage.Image = idleimage;
+                }
+
+            }
+        }
+
+
+        private void InterfaceImage_Click(object sender, EventArgs e)
+        {
+            if (interfaceState == 0)
+            {
+
+                MainForm master = (MainForm)Application.OpenForms["MainForm"];
+                master.drinkButton.PerformClick();
+
+
+                //MainForm.startClick();
+                //click sodabutton
+            }
+
+            if (interfaceState == 1)
+            {
+                //wait for payment
+            }
+            if (interfaceState == 2)
+            {
+                MainForm.pumpClick();
+                //wait for tapping
+            }
+            if (interfaceState == 3)
+            {
+                //thank you
+            }
         }
 
         private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
@@ -234,12 +319,12 @@ namespace SAM4application
             float value = float.Parse(LedBreathSpeedNumericUpDown.Value.ToString());
             command = new SendCommand((int)Command.SetLedBreathSpeed, value);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            AppendToLog($"led settings set if there is three lines below here ");
+            AppendToLog($"Arduino functional if there is three lines below here ");
 
             SAMstate = (int)SAMstates.idle;
             command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            userInterface._changeInterface = (int)SAMstate;
+            _changeInterface = (int)SAMstate;
         }
 
         private async void LogInButton_Click(object sender, EventArgs e)
@@ -261,13 +346,13 @@ namespace SAM4application
 
                 UpdateUI(UIState.Idle);
 
-                AppendToLog("Logged in");
+                AppendToLog("Cardreader Logged in");
             }
             catch (Exception ex)
             {
 
                 UpdateUI(UIState.NotLoggedIn, ex.ToString());
-                AppendToLog("not Logged in");
+                AppendToLog("Cardreader not Logged in");
                 logInButton.PerformClick();
             }
         }
@@ -351,7 +436,7 @@ namespace SAM4application
                         SAMstate = (int)SAMstates.waitingForTapping;
                         command = new SendCommand((int)Command.SetLedState, SAMstate);
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-                        userInterface._changeInterface = (int)SAMstate;
+                        _changeInterface = (int)SAMstate;
                     }
                     else
                     {
@@ -360,7 +445,7 @@ namespace SAM4application
                         SAMstate = (int)SAMstates.error;
                         var command = new SendCommand((int)Command.SetLedState, SAMstate);
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-                        userInterface._changeInterface = (int)SAMstate;
+                        _changeInterface = (int)SAMstate;
                         Reset();
                     }
 
@@ -421,9 +506,9 @@ namespace SAM4application
                 AppendToLog(statusText);
             }
 
-            statusStripProgressBar.Style = statusStripProgress;
+            progressBar.Style = statusStripProgress;
 
-            statusStripStatusLabel.Text = statusStripText;
+            statusLabel.Text = statusStripText;
 
 
             logInButton.Enabled = loginControlsEnabled;
@@ -574,7 +659,7 @@ namespace SAM4application
         }
 
         public void startClick(){
-            FakeSodaButton.PerformClick();
+            drinkButton.PerformClick();
             }
 
        public static void     pumpClick()
@@ -594,7 +679,7 @@ namespace SAM4application
             price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
             Properties.Settings.Default.ReceiptNo++;
             ReceiptNoNumericUpDown.Update();
-            userInterface._setPrice = price;
+            _setPrice = price;
             AppendToLog(@"Starting payment for €" + price / 100f+" and receipt no "+ Properties.Settings.Default.ReceiptNo);
             AmountText.Text = price.ToString();
             realPaymentHappening = true;
@@ -641,7 +726,7 @@ namespace SAM4application
             SAMstate = (int)SAMstates.idle;
             var command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            userInterface._changeInterface = (int)SAMstate;
+            _changeInterface = (int)SAMstate;
         }
         // Called when a received command has no attached function.
         // In a WinForm application, console output gets routed to the output panel of your IDE
@@ -831,7 +916,7 @@ namespace SAM4application
             SAMstate = (int)SAMstates.waitingForPayment;
             var command = new SendCommand((int)Command.SetLedState, SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            userInterface._changeInterface = (int)SAMstate;
+            _changeInterface = (int)SAMstate;
             makePayment();
         }
 
@@ -888,7 +973,7 @@ namespace SAM4application
         private void interfaceStateNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             
-            userInterface._changeInterface = (int)interfaceStateNumericUpDown.Value;
+            _changeInterface = (int)interfaceStateNumericUpDown.Value;
         }
 
         private void tapMillisecondsNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -907,6 +992,25 @@ namespace SAM4application
         private void InternetButton_Click(object sender, EventArgs e)
         {
             AppendToLog(@"internet " + IsAvailable);
+        }
+
+        private void SwitchInterface_Click(object sender, EventArgs e)
+        {
+            if (interfacePanel.Visible)
+            {
+                interfacePanel.Hide();
+                Cursor.Hide();
+            }
+            else
+            {
+                interfacePanel.Show();
+                Cursor.Show();
+            }
+        }
+
+        private void CloseProgramButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 
