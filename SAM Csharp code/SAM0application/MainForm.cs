@@ -10,8 +10,10 @@ using CommandMessenger.Transport.Serial;
 using System.Drawing.Printing;
 using System.Drawing;
 using System.Net.NetworkInformation;
+using System.Security;
 
-namespace SAM0application
+
+namespace SAM4application
 {
     public partial class MainForm : Form, IPaymentProgress
     {
@@ -27,6 +29,61 @@ namespace SAM0application
         int SAMstate = (int)SAMstates.idle;
 
         UserInterface userInterface = new UserInterface();
+
+        //password storage stuff, method by https://weblogs.asp.net/jongalloway/encrypting-passwords-in-a-net-app-config-file
+        static byte[] entropy = System.Text.Encoding.Unicode.GetBytes("This is the future");
+
+        public static string EncryptString(System.Security.SecureString input)
+        {
+            byte[] encryptedData = System.Security.Cryptography.ProtectedData.Protect(
+                System.Text.Encoding.Unicode.GetBytes(ToInsecureString(input)),
+                entropy,
+                System.Security.Cryptography.DataProtectionScope.CurrentUser);
+            return Convert.ToBase64String(encryptedData);
+        }
+
+        public static SecureString DecryptString(string encryptedData)
+        {
+            try
+            {
+                byte[] decryptedData = System.Security.Cryptography.ProtectedData.Unprotect(
+                    Convert.FromBase64String(encryptedData),
+                    entropy,
+                    System.Security.Cryptography.DataProtectionScope.CurrentUser);
+                return ToSecureString(System.Text.Encoding.Unicode.GetString(decryptedData));
+            }
+            catch
+            {
+                return new SecureString();
+            }
+        }
+
+        public static SecureString ToSecureString(string input)
+        {
+            SecureString secure = new SecureString();
+            foreach (char c in input)
+            {
+                secure.AppendChar(c);
+            }
+            secure.MakeReadOnly();
+            return secure;
+        }
+
+        public static string ToInsecureString(SecureString input)
+        {
+            string returnValue = string.Empty;
+            IntPtr ptr = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(input);
+            try
+            {
+                returnValue = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(ptr);
+            }
+            finally
+            {
+                System.Runtime.InteropServices.Marshal.ZeroFreeBSTR(ptr);
+            }
+            return returnValue;
+        }
+
 
         public bool IsAvailable { get; set; }
 
@@ -146,7 +203,10 @@ namespace SAM0application
 
             Cursor.Hide();
 
-
+            //encrypt password easily like this
+            Console.WriteLine(EncryptString(ToSecureString("password")));
+            Console.WriteLine(ToInsecureString(DecryptString(  EncryptString(ToSecureString("password"))    )));
+            
         }
 
         private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
@@ -189,9 +249,15 @@ namespace SAM0application
             try
             {
                 //devmode (fake paayments)
-                //await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
+                /*
+                await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98",
+                ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAADfHdR7AXIoy61QYYZgS/vUxtsMylaJCrz7zjhfzPZSewAAAAAOgAAAAAIAACAAAACzdb7Z09j6/lcACCsfLKecuukIf2BtcZhJXeOVS3Np/zAAAACQNqDp7BM/+CrfP1wwUjhf1MNOKZt9G73OdJ+2iJNyjSA1M27WeKutZzHPonLlkKpAAAAAnGi4r7tWgT/6w/85THgT1hIYhfdZ2mBMr1FE9OCa9/VrGRSJ27uAth9R0UnFIW4FZzop2appggHFnhc4lCimyw==")),//user
+                    ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAADrz0sHMLzW88jn+YB4ehhxe5izenGL9IS2PSQck1BClgAAAAAOgAAAAAIAACAAAAARZjKTXKIG1qs11gwtSqLh70oMEng2usIx0uR0Qf3zdxAAAACoHPhj3jSwIek8xIDR7kejQAAAANOWaFbr1M58mcigk3488mSbjgQAZyyuaf5fyaKr0BouWt6RbVErtTBpLxEvDWAoXsenBafZRKr7xJcfg2pfz1c=")));//password
+                    */
                 //real payments
-                await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c", "arvidj@gmail.com", "13374zzIP");
+                await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c",
+                    ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAABxPGQ6Pv1tUtDb3cnlrsaaADQkSsPP56uKVmHFCgYqWwAAAAAOgAAAAAIAACAAAACbFgpJSyp+aGjsWIiZuDQlqoYx2DglM6wvC+AhL3YrMDAAAADS5CwMUjJeBL50wdXgpyfxqVGZzGHZJ5mcbRgZ+mvOs9B3YtahV4b9p3JBGrkt6uFAAAAAA2/dznMs9zah0OpIv90RhUCtLlOaajpsBVvmbOC0SckfJ/DBkaWECYXmeHBh7eejE1bFHEEhyxv+vxL5edE98w==")), //user
+                    ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAAD4drCESJd3sTf2jyMP4daSlhbPt9vzJOcb69bxMLujDwAAAAAOgAAAAAIAACAAAADQYzqelqZaDbAxSxp7EGP1ixwOSgWI7m/cZ+55ZpRLuSAAAABDBp5t8/AzC/8FLIrPY46+fyyLd3Rmn9UzSuaiP4dtk0AAAAAqorYe1rLdCHuPlyi8CcgYANYVHwPFS8rXQ2kBrk2TGYPGmppNvlp7YU5Bhrm9JHwkpw9kYkwzwgihKiT7+smJ")));//password
 
                 UpdateUI(UIState.Idle);
 

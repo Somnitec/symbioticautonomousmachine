@@ -49,3 +49,9 @@ D:\code\Symbiotic Autonomous Machine\SAM Csharp code\CommandMessenger\obj\Debug\
 D:\code\Symbiotic Autonomous Machine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
 D:\code\Symbiotic Autonomous Machine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
 >>>>>>> 86a4547a3d9f8879026b3f41f46e6468a133739b
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojAssemblyReference.cache
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
+C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb

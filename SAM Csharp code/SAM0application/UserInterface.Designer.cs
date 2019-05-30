@@ -1,4 +1,4 @@
-﻿namespace SAM0application
+﻿namespace SAM4application
 {
     partial class UserInterface
     {

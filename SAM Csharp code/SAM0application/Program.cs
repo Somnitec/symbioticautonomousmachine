@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SAM0application
+namespace SAM4application
 {
     static class Program
     {
