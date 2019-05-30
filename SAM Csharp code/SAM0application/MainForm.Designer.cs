@@ -59,8 +59,10 @@
             this.testTapMsButton = new System.Windows.Forms.Button();
             this.switchInterface = new System.Windows.Forms.Button();
             this.interfacePanel = new System.Windows.Forms.Panel();
+            this.CloseProgramButton = new System.Windows.Forms.Button();
             this.statusLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.fakePayment = new System.Windows.Forms.Button();
             this.AmountText = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.ReceiptNoNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -70,11 +72,11 @@
             this.tapMillisecondsNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.PaymentOnOffCheckbox = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.PrintingCheckBox = new System.Windows.Forms.CheckBox();
             this.priceLabel = new System.Windows.Forms.Label();
             this.interfaceImage = new System.Windows.Forms.PictureBox();
-            this.CloseProgramButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).BeginInit();
             this.interfacePanel.SuspendLayout();
@@ -92,7 +94,7 @@
             // 
             this.logInButton.BackColor = System.Drawing.Color.White;
             this.logInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.logInButton.Location = new System.Drawing.Point(226, 81);
+            this.logInButton.Location = new System.Drawing.Point(347, 51);
             this.logInButton.Name = "logInButton";
             this.logInButton.Size = new System.Drawing.Size(45, 43);
             this.logInButton.TabIndex = 8;
@@ -392,6 +394,7 @@
             this.interfacePanel.Controls.Add(this.interfaceStateNumericUpDown);
             this.interfacePanel.Controls.Add(this.CancelPaymentButton);
             this.interfacePanel.Controls.Add(this.label6);
+            this.interfacePanel.Controls.Add(this.fakePayment);
             this.interfacePanel.Controls.Add(this.PayButton);
             this.interfacePanel.Controls.Add(this.ledStateNumericUpDown);
             this.interfacePanel.Controls.Add(this.label2);
@@ -415,6 +418,7 @@
             this.interfacePanel.Controls.Add(this.label14);
             this.interfacePanel.Controls.Add(this.arduinoConnectCheckBox);
             this.interfacePanel.Controls.Add(this.printTestButton);
+            this.interfacePanel.Controls.Add(this.PaymentOnOffCheckbox);
             this.interfacePanel.Controls.Add(this.PumpTapTestCheckbox);
             this.interfacePanel.Controls.Add(this.checkBox6);
             this.interfacePanel.Controls.Add(this.PrintingCheckBox);
@@ -423,6 +427,17 @@
             this.interfacePanel.Name = "interfacePanel";
             this.interfacePanel.Size = new System.Drawing.Size(577, 455);
             this.interfacePanel.TabIndex = 43;
+            // 
+            // CloseProgramButton
+            // 
+            this.CloseProgramButton.BackColor = System.Drawing.Color.White;
+            this.CloseProgramButton.Location = new System.Drawing.Point(211, 224);
+            this.CloseProgramButton.Name = "CloseProgramButton";
+            this.CloseProgramButton.Size = new System.Drawing.Size(60, 60);
+            this.CloseProgramButton.TabIndex = 44;
+            this.CloseProgramButton.Text = "Close Program";
+            this.CloseProgramButton.UseVisualStyleBackColor = false;
+            this.CloseProgramButton.Click += new System.EventHandler(this.CloseProgramButton_Click);
             // 
             // statusLabel
             // 
@@ -439,6 +454,17 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(131, 23);
             this.progressBar.TabIndex = 42;
+            // 
+            // fakePayment
+            // 
+            this.fakePayment.BackColor = System.Drawing.Color.White;
+            this.fakePayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.fakePayment.Location = new System.Drawing.Point(211, 73);
+            this.fakePayment.Name = "fakePayment";
+            this.fakePayment.Size = new System.Drawing.Size(57, 39);
+            this.fakePayment.TabIndex = 14;
+            this.fakePayment.Text = "Fake Payment";
+            this.fakePayment.UseVisualStyleBackColor = false;
             // 
             // AmountText
             // 
@@ -585,6 +611,16 @@
             this.numericUpDown1.TabIndex = 31;
             this.numericUpDown1.Value = global::SAM4application.Properties.Settings.Default.MinPrice;
             // 
+            // PaymentOnOffCheckbox
+            // 
+            this.PaymentOnOffCheckbox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.PaymentOnOffCheckbox.Location = new System.Drawing.Point(211, 110);
+            this.PaymentOnOffCheckbox.Name = "PaymentOnOffCheckbox";
+            this.PaymentOnOffCheckbox.Size = new System.Drawing.Size(68, 33);
+            this.PaymentOnOffCheckbox.TabIndex = 30;
+            this.PaymentOnOffCheckbox.Text = "Payment On/Off";
+            this.PaymentOnOffCheckbox.UseVisualStyleBackColor = false;
+            // 
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
@@ -629,21 +665,11 @@
             this.interfaceImage.TabStop = false;
             this.interfaceImage.Click += new System.EventHandler(this.InterfaceImage_Click);
             // 
-            // CloseProgramButton
-            // 
-            this.CloseProgramButton.BackColor = System.Drawing.Color.White;
-            this.CloseProgramButton.Location = new System.Drawing.Point(211, 224);
-            this.CloseProgramButton.Name = "CloseProgramButton";
-            this.CloseProgramButton.Size = new System.Drawing.Size(60, 60);
-            this.CloseProgramButton.TabIndex = 44;
-            this.CloseProgramButton.Text = "Close Program";
-            this.CloseProgramButton.UseVisualStyleBackColor = false;
-            this.CloseProgramButton.Click += new System.EventHandler(this.CloseProgramButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(617, 985);
             this.Controls.Add(this.priceLabel);
             this.Controls.Add(this.interfacePanel);
@@ -720,6 +746,8 @@
         private System.Windows.Forms.Label priceLabel;
         private System.Windows.Forms.PictureBox interfaceImage;
         private System.Windows.Forms.Button CloseProgramButton;
+        private System.Windows.Forms.Button fakePayment;
+        private System.Windows.Forms.CheckBox PaymentOnOffCheckbox;
     }
 }
 

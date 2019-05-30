@@ -17,14 +17,10 @@ namespace SAM4application
 {
     public partial class MainForm : Form, IPaymentProgress
     {
-
-        /// <summary>
-        /// SUMUP STUFFS
-        /// </summary>
+    
         private Random rand = new Random();
         private SumUpService _sumUpService;
         private Tuple<Payment, CancellationTokenSource> _currentPayment;
-        private bool realPaymentHappening = false;
         private int price = 111;
         int SAMstate = (int)SAMstates.idle;
 
@@ -37,7 +33,8 @@ namespace SAM4application
 
         int interfaceState = 0;
 
-        //password storage stuff, method by https://weblogs.asp.net/jongalloway/encrypting-passwords-in-a-net-app-config-file
+        #region password storage code
+        //method by https://weblogs.asp.net/jongalloway/encrypting-passwords-in-a-net-app-config-file
         static byte[] entropy = System.Text.Encoding.Unicode.GetBytes("This is the future");
 
         public static string EncryptString(System.Security.SecureString input)
@@ -90,8 +87,9 @@ namespace SAM4application
             }
             return returnValue;
         }
+        #endregion
 
-
+        #region sumup code
         public bool IsAvailable { get; set; }
 
         // ======= Authenticate with SumUp system and create SDK instance =======		
@@ -182,42 +180,66 @@ namespace SAM4application
             AppendToLog($"=== Payment Status Changed: {e.Status} / {e.StatusMessage} ===");
         }
 
-        #region UI Wiring
+
+        private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
+        {
+            IsAvailable = e.IsAvailable;
+        }
+
+        private OperatingSystem _osVersion;
+        private void PmntMtdConnection_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (_osVersion != null) return;
+
+            _osVersion = System.Environment.OSVersion;
+
+            if (_osVersion.Version.Major == 10
+                && _osVersion.Version.Minor == 0
+                && _osVersion.Version.Build == 15063)
+            {
+                string warningText = "It seems that you are running Windows 10 Creators Update.";
+                warningText += "Note, that this version has severe issue with Bluetooth LE devices when used on Classic Desktop apps.\r\n\r\n";
+                warningText += "If the call to PaymentBuilder.UseBluetoothGattConnectionAsync() never returns, then Creator Update may be the reason.";
+                string warningCaption = "SumUp SDK compatibility warning";
+                MessageBox.Show(warningText, warningCaption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        #endregion
+
+        #region setup code
         public MainForm()
         {
             InitializeComponent();
+            
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
             UpdateUI(UIState.NotLoggedIn);
             ArduinoSetup(this);
-            //CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
-            Console.WriteLine(@"mainform() finished");
-
+            AppendToLog(@"mainform() finished loading");
+            
 
         }
 
         private void MainForm_Load(object sender, System.EventArgs e)
         {
-
-            Console.WriteLine(IsAvailable);
+            //AppendToLog(""+IsAvailable);
             logInButton.PerformClick();
-            Console.WriteLine(@"mainform loaded");
             ArduinoSetup();
-
-            
-            FormBorderStyle = FormBorderStyle.None;
+             FormBorderStyle = FormBorderStyle.None;
             //WindowState = FormWindowState.Maximized;
-           
-
-            Cursor.Hide();
-
+             Cursor.Hide();
             //encrypt password easily like this
-            Console.WriteLine(EncryptString(ToSecureString("password")));
-            Console.WriteLine(ToInsecureString(DecryptString(  EncryptString(ToSecureString("password"))    )));
+            AppendToLog(EncryptString(ToSecureString("password")));
+            AppendToLog(ToInsecureString(DecryptString(  EncryptString(ToSecureString("password"))    )));
             interfacePanel.Hide();
             priceLabel.Hide();
-
+            AppendToLog(@"mainform loaded");
         }
 
+       
+        #endregion
+
+        #region ui change code
         public int _setPrice
         {
             set
@@ -227,14 +249,12 @@ namespace SAM4application
             }
         }
 
-
-
-
+        
         public int _changeInterface
         {
             set
             {
-                if (value == 2) value = 3;
+                //if (value == 2) value = 3;
                 //Image oldImage = interfaceImage.Image;
                 //if (oldImage != null) oldImage.Dispose();
                 interfaceState = value;
@@ -265,14 +285,16 @@ namespace SAM4application
             }
         }
 
+        #endregion        
 
+        #region button code
         private void InterfaceImage_Click(object sender, EventArgs e)
         {
             if (interfaceState == 0)
             {
 
-                MainForm master = (MainForm)Application.OpenForms["MainForm"];
-                master.drinkButton.PerformClick();
+                //MainForm master = (MainForm)Application.OpenForms["MainForm"];
+                //master.drinkButton.PerformClick();
 
 
                 //MainForm.startClick();
@@ -285,46 +307,13 @@ namespace SAM4application
             }
             if (interfaceState == 2)
             {
-                MainForm.pumpClick();
+                //MainForm.pumpClick();
                 //wait for tapping
             }
             if (interfaceState == 3)
             {
                 //thank you
             }
-        }
-
-        private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
-        {
-            IsAvailable = e.IsAvailable;
-        }
-
-        private void ArduinoSetup()
-        {
-            //for some reason the first command does not get picked up
-            var command = new SendCommand((int)Command.Acknowledge);
-            _cmdMessenger.SendCommand(new SendCommand((int)Command.Acknowledge));
-
-            command = new SendCommand((int)Command.Acknowledge);
-            _cmdMessenger.SendCommand(new SendCommand((int)Command.Acknowledge));
-
-
-            //the led settings
-            command = new SendCommand((int)Command.SetLedBreathMax, LedBreathMaxNumericUpDown.Value.ToString());
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-
-            command = new SendCommand((int)Command.SetLedBreathMin, LedBreathMinNumericUpDown.Value.ToString());
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-
-            float value = float.Parse(LedBreathSpeedNumericUpDown.Value.ToString());
-            command = new SendCommand((int)Command.SetLedBreathSpeed, value);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            AppendToLog($"Arduino functional if there is three lines below here ");
-
-            SAMstate = (int)SAMstates.idle;
-            command = new SendCommand((int)Command.SetLedState, SAMstate);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            _changeInterface = (int)SAMstate;
         }
 
         private async void LogInButton_Click(object sender, EventArgs e)
@@ -419,7 +408,7 @@ namespace SAM4application
                 _currentPayment = null;
                 UpdateUI(UIState.Idle, paymentResultText);
 
-                if (realPaymentHappening)
+                if (true)
                 {
                     //AppendToLog(paymentResultShort);
                     if (paymentResultShort.Equals("Successful"))
@@ -449,7 +438,7 @@ namespace SAM4application
                         Reset();
                     }
 
-                    realPaymentHappening = false;
+                    //realPaymentHappening = false;
                 }
             }
         }
@@ -520,27 +509,9 @@ namespace SAM4application
             CancelPaymentButton.Visible = CancelPaymentButton.Enabled;
         }
 
+        #endregion
 
-
-
-        private OperatingSystem _osVersion;
-        private void PmntMtdConnection_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            if (_osVersion != null) return;
-
-            _osVersion = System.Environment.OSVersion;
-
-            if (_osVersion.Version.Major == 10
-                && _osVersion.Version.Minor == 0
-                && _osVersion.Version.Build == 15063)
-            {
-                string warningText = "It seems that you are running Windows 10 Creators Update.";
-                warningText += "Note, that this version has severe issue with Bluetooth LE devices when used on Classic Desktop apps.\r\n\r\n";
-                warningText += "If the call to PaymentBuilder.UseBluetoothGattConnectionAsync() never returns, then Creator Update may be the reason.";
-                string warningCaption = "SumUp SDK compatibility warning";
-                MessageBox.Show(warningText, warningCaption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
+        #region logging code
 
         private void AppendToLog(string text)
         {
@@ -556,10 +527,40 @@ namespace SAM4application
             {
                 logTextBox.AppendText(txt);
             }
+            Console.WriteLine(txt);
         }
         #endregion
 
-        /// arduinostuffs
+        #region arduino communication code
+
+        private void ArduinoSetup()
+        {
+            //for some reason the first command does not get picked up
+            var command = new SendCommand((int)Command.Acknowledge);
+            _cmdMessenger.SendCommand(new SendCommand((int)Command.Acknowledge));
+
+            command = new SendCommand((int)Command.Acknowledge);
+            _cmdMessenger.SendCommand(new SendCommand((int)Command.Acknowledge));
+
+
+            //the led settings
+            command = new SendCommand((int)Command.SetLedBreathMax, LedBreathMaxNumericUpDown.Value.ToString());
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+            command = new SendCommand((int)Command.SetLedBreathMin, LedBreathMinNumericUpDown.Value.ToString());
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+            float value = float.Parse(LedBreathSpeedNumericUpDown.Value.ToString());
+            command = new SendCommand((int)Command.SetLedBreathSpeed, value);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            AppendToLog($"Arduino functional if there is three lines below here ");
+
+            SAMstate = (int)SAMstates.idle;
+            command = new SendCommand((int)Command.SetLedState, SAMstate);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            _changeInterface = (int)SAMstate;
+        }
+
         ///  private SerialTransport   _serialTransport;
         ///  
         private SerialTransport _serialTransport;
@@ -636,7 +637,6 @@ namespace SAM4application
         {
             //int message = arguments.ReadInt16Arg();
             String message = arguments.ReadStringArg();
-            //Console.WriteLine(@"TEST Arduino Received > " + message);
             AppendToLog(@"TEST Arduino Received > " + message);
         }
 
@@ -644,7 +644,6 @@ namespace SAM4application
         {
             //int message = arguments.ReadInt16Arg();
             String message = arguments.ReadStringArg();
-            //Console.WriteLine(@"TEST Tap Received > " + message);
             AppendToLog(@"TEST Tap for mL > " + message);
 
         }
@@ -653,39 +652,19 @@ namespace SAM4application
         {
             //int message = arguments.ReadInt16Arg();
             String message = arguments.ReadStringArg();
-            //Console.WriteLine(@"TEST Tap Received > " + message);
             AppendToLog(@"Tap turned to > " + message);
 
         }
 
-        public void startClick(){
-            drinkButton.PerformClick();
-            }
-
-       public static void     pumpClick()
-        {
-
-        }
+        
 
         public void OnSodaButtonPressed(ReceivedCommand arguments)
         {
 
             
         }
-
-        private void makePayment()
-        {
-
-            price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
-            Properties.Settings.Default.ReceiptNo++;
-            ReceiptNoNumericUpDown.Update();
-            _setPrice = price;
-            AppendToLog(@"Starting payment for €" + price / 100f+" and receipt no "+ Properties.Settings.Default.ReceiptNo);
-            AmountText.Text = price.ToString();
-            realPaymentHappening = true;
-            PayButton.PerformClick();
-        }
-
+     
+       
         void OnGrainButtonPressed(ReceivedCommand arguments)
         {
 
@@ -717,51 +696,36 @@ namespace SAM4application
             Reset();
         }
 
-        void Reset()
-        {
-            //CancelPaymentButton.PerformClick();
-            realPaymentHappening = false;
-            AppendToLog(@"Resetted");
-            
-            SAMstate = (int)SAMstates.idle;
-            var command = new SendCommand((int)Command.SetLedState, SAMstate);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            _changeInterface = (int)SAMstate;
-        }
-        // Called when a received command has no attached function.
-        // In a WinForm application, console output gets routed to the output panel of your IDE
-
 
         void OnUnknownCommand(ReceivedCommand arguments)
         {
-            Console.WriteLine(@"Command without attached callback received");
+            
             String message = arguments.ReadStringArg();
-            //Console.WriteLine(@"TEST Tap Received > " + message);
             AppendToLog(@"Command without attached callback received > " + message);
         }
 
         // Callback function that prints that the Arduino has acknowledged
         void OnAcknowledge(ReceivedCommand arguments)
         {
-            Console.WriteLine(@" Arduino is ready");
+            AppendToLog(@" Arduino is ready");
         }
 
         // Callback function that prints that the Arduino has experienced an error
         void OnError(ReceivedCommand arguments)
         {
-            Console.WriteLine(@"Arduino has experienced an error");
+            AppendToLog(@"Arduino has experienced an error");
         }
 
         // Log received line to console
         private void NewLineReceived(object sender, CommandEventArgs e)
         {
-            Console.WriteLine(@"Received > " + e.Command.CommandString());
+            AppendToLog(@"Received > " + e.Command.CommandString());
         }
 
         // Log sent line to console
         private void NewLineSent(object sender, CommandEventArgs e)
         {
-            Console.WriteLine(@"Sent > " + e.Command.CommandString());
+            AppendToLog(@"Sent > " + e.Command.CommandString());
         }
 
         private void ArduinoTest_click(object sender, EventArgs e)
@@ -781,7 +745,39 @@ namespace SAM4application
             PrintReceipt();
         }
 
-  
+        void Reset()
+        {
+            //CancelPaymentButton.PerformClick();
+            //realPaymentHappening = false;
+            AppendToLog(@"Resetted");
+
+            SAMstate = (int)SAMstates.idle;
+            var command = new SendCommand((int)Command.SetLedState, SAMstate);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            _changeInterface = (int)SAMstate;
+        }
+        // Called when a received command has no attached function.
+        // In a WinForm application, console output gets routed to the output panel of your IDE
+
+        #endregion
+
+        #region payment code
+
+        private void makePayment()
+        {
+
+            price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
+            Properties.Settings.Default.ReceiptNo++;
+            ReceiptNoNumericUpDown.Update();
+            _setPrice = price;
+            AppendToLog(@"Starting payment for €" + price / 100f + " and receipt no " + Properties.Settings.Default.ReceiptNo);
+            AmountText.Text = price.ToString();
+            //realPaymentHappening = true;
+            PayButton.PerformClick();
+        }
+        #endregion
+
+        #region printing code
 
         private void PrintReceipt()
         {
@@ -883,6 +879,10 @@ namespace SAM4application
             e.Graphics.DrawString("www.arvidandmarie.com", MainFont, Brushes.Black, centerpoint, (int)(linedistance * 22.5), formatCenter);
 
         }
+
+        #endregion
+
+        #region ui click and change functions
         private void TapTest_click(object sender, EventArgs e)
         {
             var command = new SendCommand((int)Command.TestTap, (int)Properties.Settings.Default.TestTapAmount);
@@ -920,12 +920,7 @@ namespace SAM4application
             makePayment();
         }
 
-        private void FakeGrainButton_Click(object sender, EventArgs e)
-        {
-            var command = new SendCommand((int)Command.GrainButtonPressed);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-        }
-
+  
         private void arduinoConnectCheckBox_Click(object sender, EventArgs e)
         {
 
@@ -989,11 +984,6 @@ namespace SAM4application
 
         }
 
-        private void InternetButton_Click(object sender, EventArgs e)
-        {
-            AppendToLog(@"internet " + IsAvailable);
-        }
-
         private void SwitchInterface_Click(object sender, EventArgs e)
         {
             if (interfacePanel.Visible)
@@ -1012,7 +1002,11 @@ namespace SAM4application
         {
             Application.Exit();
         }
+        #endregion
     }
+
+
+    #region enums
 
     internal enum UIState
     {
@@ -1058,5 +1052,5 @@ namespace SAM4application
         testing,
     };
 
-
+    #endregion
 }
