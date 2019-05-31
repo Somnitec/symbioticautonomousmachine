@@ -63,7 +63,6 @@
             this.statusLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.fakePayment = new System.Windows.Forms.Button();
-            this.AmountText = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.ReceiptNoNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LedBreathSpeedNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -77,6 +76,7 @@
             this.PrintingCheckBox = new System.Windows.Forms.CheckBox();
             this.priceLabel = new System.Windows.Forms.Label();
             this.interfaceImage = new System.Windows.Forms.PictureBox();
+            this.priceAmount = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).BeginInit();
             this.interfacePanel.SuspendLayout();
@@ -88,6 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // logInButton
@@ -105,7 +106,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(92, 81);
+            this.label2.Location = new System.Drawing.Point(105, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 16;
@@ -196,7 +197,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(173, 87);
+            this.label13.Location = new System.Drawing.Point(173, 95);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(32, 13);
             this.label13.TabIndex = 16;
@@ -252,7 +253,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(174, 112);
+            this.label18.Location = new System.Drawing.Point(174, 120);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(35, 13);
             this.label18.TabIndex = 16;
@@ -380,6 +381,7 @@
             // 
             this.interfacePanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.interfacePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.interfacePanel.Controls.Add(this.priceAmount);
             this.interfacePanel.Controls.Add(this.CloseProgramButton);
             this.interfacePanel.Controls.Add(this.statusLabel);
             this.interfacePanel.Controls.Add(this.progressBar);
@@ -399,7 +401,6 @@
             this.interfacePanel.Controls.Add(this.ledStateNumericUpDown);
             this.interfacePanel.Controls.Add(this.label2);
             this.interfacePanel.Controls.Add(this.SaveSettingsButton);
-            this.interfacePanel.Controls.Add(this.AmountText);
             this.interfacePanel.Controls.Add(this.textBox2);
             this.interfacePanel.Controls.Add(this.label8);
             this.interfacePanel.Controls.Add(this.ReceiptNoNumericUpDown);
@@ -465,15 +466,6 @@
             this.fakePayment.TabIndex = 14;
             this.fakePayment.Text = "Fake Payment";
             this.fakePayment.UseVisualStyleBackColor = false;
-            // 
-            // AmountText
-            // 
-            this.AmountText.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM4application.Properties.Settings.Default, "PaymentTestAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.AmountText.Location = new System.Drawing.Point(65, 77);
-            this.AmountText.Name = "AmountText";
-            this.AmountText.Size = new System.Drawing.Size(27, 20);
-            this.AmountText.TabIndex = 12;
-            this.AmountText.Text = global::SAM4application.Properties.Settings.Default.PaymentTestAmount;
             // 
             // textBox2
             // 
@@ -580,7 +572,7 @@
             0,
             0,
             131072});
-            this.numericUpDown3.Location = new System.Drawing.Point(133, 110);
+            this.numericUpDown3.Location = new System.Drawing.Point(133, 118);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             10,
             0,
@@ -600,7 +592,7 @@
             0,
             0,
             131072});
-            this.numericUpDown1.Location = new System.Drawing.Point(133, 84);
+            this.numericUpDown1.Location = new System.Drawing.Point(133, 92);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
@@ -665,6 +657,25 @@
             this.interfaceImage.TabStop = false;
             this.interfaceImage.Click += new System.EventHandler(this.InterfaceImage_Click);
             // 
+            // priceAmount
+            // 
+            this.priceAmount.Location = new System.Drawing.Point(64, 80);
+            this.priceAmount.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.priceAmount.Name = "priceAmount";
+            this.priceAmount.Size = new System.Drawing.Size(43, 20);
+            this.priceAmount.TabIndex = 45;
+            this.priceAmount.ThousandsSeparator = true;
+            this.priceAmount.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.priceAmount.ValueChanged += new System.EventHandler(this.PriceAmount_ValueChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -694,6 +705,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceAmount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -702,7 +714,6 @@
         #endregion
         private System.Windows.Forms.Button logInButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox AmountText;
         private System.Windows.Forms.Button PayButton;
         private System.Windows.Forms.TextBox logTextBox;
         private System.Windows.Forms.Button CancelPaymentButton;
@@ -748,6 +759,7 @@
         private System.Windows.Forms.Button CloseProgramButton;
         private System.Windows.Forms.Button fakePayment;
         private System.Windows.Forms.CheckBox PaymentOnOffCheckbox;
+        private System.Windows.Forms.NumericUpDown priceAmount;
     }
 }
 

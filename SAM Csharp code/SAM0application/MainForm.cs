@@ -21,9 +21,7 @@ namespace SAM4application
         private Random rand = new Random();
         private SumUpService _sumUpService;
         private Tuple<Payment, CancellationTokenSource> _currentPayment;
-        private int price = 111;
-        int SAMstate = (int)SAMstates.idle;
-
+       
 
         //interface stuff
         Image idleimage = new Bitmap(Properties.Resources.idle);
@@ -31,7 +29,58 @@ namespace SAM4application
         Image waitingtotapimage = new Bitmap(Properties.Resources.waitingtotap);
         Image thankyouimage = new Bitmap(Properties.Resources.thankyou);
 
-        int interfaceState = 0;
+        #region interface change code
+        SAMstates samstate = SAMstates.idle;
+        private SAMstates SAMstate
+        {
+            get
+            {
+                return samstate;
+            }
+            set
+            {
+                samstate = value;
+                interfaceStateNumericUpDown.Value = (int)value;
+
+                AppendToLog(@"interface to " + samstate);
+       
+                priceLabel.Hide();
+                if (samstate == SAMstates.idle)
+                {
+                    interfaceImage.Image = idleimage;
+
+                }
+                if (samstate == SAMstates.waitingForPayment)
+                {
+                    interfaceImage.Image = priceimage;
+                    priceLabel.Show();
+                }
+                if (samstate == SAMstates.waitingForTapping)
+                {
+                    interfaceImage.Image = waitingtotapimage;
+                }
+                if (samstate == SAMstates.thankYou)
+                {
+                    interfaceImage.Image = thankyouimage;
+                    //Thread.Sleep(1000);
+                    //SAMstate = SAMstates.idle;
+                    
+                }
+                if (samstate ==SAMstates.error)
+                {
+
+                }
+                if (samstate == SAMstates.testing)
+                {
+
+                }
+            }
+        
+        }
+
+        #endregion
+
+
 
         #region password storage code
         //method by https://weblogs.asp.net/jongalloway/encrypting-passwords-in-a-net-app-config-file
@@ -205,117 +254,6 @@ namespace SAM4application
             }
         }
 
-        #endregion
-
-        #region setup code
-        public MainForm()
-        {
-            InitializeComponent();
-            
-            NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
-            UpdateUI(UIState.NotLoggedIn);
-            ArduinoSetup(this);
-            AppendToLog(@"mainform() finished loading");
-            
-
-        }
-
-        private void MainForm_Load(object sender, System.EventArgs e)
-        {
-            //AppendToLog(""+IsAvailable);
-            logInButton.PerformClick();
-            ArduinoSetup();
-             FormBorderStyle = FormBorderStyle.None;
-            //WindowState = FormWindowState.Maximized;
-             Cursor.Hide();
-            //encrypt password easily like this
-            AppendToLog(EncryptString(ToSecureString("password")));
-            AppendToLog(ToInsecureString(DecryptString(  EncryptString(ToSecureString("password"))    )));
-            interfacePanel.Hide();
-            priceLabel.Hide();
-            AppendToLog(@"mainform loaded");
-        }
-
-       
-        #endregion
-
-        #region ui change code
-        public int _setPrice
-        {
-            set
-            {
-                float amount = value / 100;
-                priceLabel.Text = "€ " + (amount).ToString("0.00") + " ≈  kr " + (amount * 7.5).ToString("0.00");
-            }
-        }
-
-        
-        public int _changeInterface
-        {
-            set
-            {
-                //if (value == 2) value = 3;
-                //Image oldImage = interfaceImage.Image;
-                //if (oldImage != null) oldImage.Dispose();
-                interfaceState = value;
-
-                priceLabel.Hide();
-                if (value == 0)
-                {
-                    interfaceImage.Image = idleimage;
-
-                }
-                if (value == 1)
-                {
-                    interfaceImage.Image = priceimage;
-                    //priceLabel.Show();
-                }
-                if (value == 2)
-                {
-                    interfaceImage.Image = waitingtotapimage;
-                }
-                if (value == 3)
-                {
-                    interfaceImage.Image = thankyouimage;
-                    System.Threading.Thread.Sleep(5000);
-                    interfaceState = 0;
-                    interfaceImage.Image = idleimage;
-                }
-
-            }
-        }
-
-        #endregion        
-
-        #region button code
-        private void InterfaceImage_Click(object sender, EventArgs e)
-        {
-            if (interfaceState == 0)
-            {
-
-                //MainForm master = (MainForm)Application.OpenForms["MainForm"];
-                //master.drinkButton.PerformClick();
-
-
-                //MainForm.startClick();
-                //click sodabutton
-            }
-
-            if (interfaceState == 1)
-            {
-                //wait for payment
-            }
-            if (interfaceState == 2)
-            {
-                //MainForm.pumpClick();
-                //wait for tapping
-            }
-            if (interfaceState == 3)
-            {
-                //thank you
-            }
-        }
-
         private async void LogInButton_Click(object sender, EventArgs e)
         {
             UpdateUI(UIState.LoggingIn);
@@ -350,7 +288,7 @@ namespace SAM4application
         {
             if (_sumUpService == null) return;
 
-            if (!ulong.TryParse(AmountText.Text, out ulong amount))
+            if (!ulong.TryParse(priceAmount.Value.ToString(), out ulong amount))
             {
                 UpdateUI(UIState.Idle, "Enter valid amount (i.e. \"100\" = 1.00)");
                 return;
@@ -422,19 +360,19 @@ namespace SAM4application
 
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
 
-                        SAMstate = (int)SAMstates.waitingForTapping;
-                        command = new SendCommand((int)Command.SetLedState, SAMstate);
+                        SAMstate = SAMstates.waitingForTapping;
+                        command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-                        _changeInterface = (int)SAMstate;
+                        //_changeInterface = (int)SAMstate;
                     }
                     else
                     {
                         AppendToLog("payment was not successfull, resetting");
 
-                        SAMstate = (int)SAMstates.error;
-                        var command = new SendCommand((int)Command.SetLedState, SAMstate);
+                        SAMstate = SAMstates.error;
+                        var command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
                         _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-                        _changeInterface = (int)SAMstate;
+                        //_changeInterface = (int)SAMstate;
                         Reset();
                     }
 
@@ -502,14 +440,73 @@ namespace SAM4application
 
             logInButton.Enabled = loginControlsEnabled;
 
-            AmountText.Enabled = paymentControlsEnabled;
+            //AmountText.Enabled = paymentControlsEnabled;
             PayButton.Enabled = paymentControlsEnabled;
             PayButton.Visible = uiState != UIState.PaymentInProgress;
             CancelPaymentButton.Enabled = uiState == UIState.PaymentInProgress;
             CancelPaymentButton.Visible = CancelPaymentButton.Enabled;
         }
 
+
         #endregion
+
+        #region setup code
+        public MainForm()
+        {
+            InitializeComponent();
+            
+            NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
+            UpdateUI(UIState.NotLoggedIn);
+            ArduinoSetup(this);
+            AppendToLog(@"mainform() finished loading");
+            
+
+        }
+
+        private void MainForm_Load(object sender, System.EventArgs e)
+        {
+            //AppendToLog(""+IsAvailable);
+            logInButton.PerformClick();
+            ArduinoSetup();
+             FormBorderStyle = FormBorderStyle.None;
+            //WindowState = FormWindowState.Maximized;
+             Cursor.Hide();
+            //encrypt password easily like this
+            AppendToLog(EncryptString(ToSecureString("password")));
+            AppendToLog(ToInsecureString(DecryptString(  EncryptString(ToSecureString("password"))    )));
+            interfacePanel.Hide();
+            priceLabel.Hide();
+            AppendToLog(@"mainform loaded");
+        }
+
+
+        #endregion
+
+        #region price change code
+        private int currentPrice = 111;
+        private int price
+        {
+            get
+            {
+                return currentPrice;
+            }
+
+            set
+            {
+                currentPrice = value;
+                priceAmount.Value = currentPrice;
+                decimal amount = value / 100m;
+                AppendToLog(@"€ " + (amount).ToString("0.00") + " ≈  kr " + (amount * 7.47m).ToString("0.00"));
+                priceLabel.Text = "€ " + (amount).ToString("0.00") + " ≈  kr " + (amount * 7.47m).ToString("0.00");
+            }
+        }
+
+        
+        
+
+        #endregion        
+
+   
 
         #region logging code
 
@@ -556,9 +553,9 @@ namespace SAM4application
             AppendToLog($"Arduino functional if there is three lines below here ");
 
             SAMstate = (int)SAMstates.idle;
-            command = new SendCommand((int)Command.SetLedState, SAMstate);
+            command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            _changeInterface = (int)SAMstate;
+            //_changeInterface = (int)SAMstate;
         }
 
         ///  private SerialTransport   _serialTransport;
@@ -752,9 +749,9 @@ namespace SAM4application
             AppendToLog(@"Resetted");
 
             SAMstate = (int)SAMstates.idle;
-            var command = new SendCommand((int)Command.SetLedState, SAMstate);
+            var command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            _changeInterface = (int)SAMstate;
+            //_changeInterface = (int)SAMstate;
         }
         // Called when a received command has no attached function.
         // In a WinForm application, console output gets routed to the output panel of your IDE
@@ -769,9 +766,8 @@ namespace SAM4application
             price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
             Properties.Settings.Default.ReceiptNo++;
             ReceiptNoNumericUpDown.Update();
-            _setPrice = price;
             AppendToLog(@"Starting payment for €" + price / 100f + " and receipt no " + Properties.Settings.Default.ReceiptNo);
-            AmountText.Text = price.ToString();
+            
             //realPaymentHappening = true;
             PayButton.PerformClick();
         }
@@ -883,11 +879,35 @@ namespace SAM4application
         #endregion
 
         #region ui click and change functions
-        private void TapTest_click(object sender, EventArgs e)
+
+        private void InterfaceImage_Click(object sender, EventArgs e)
         {
-            var command = new SendCommand((int)Command.TestTap, (int)Properties.Settings.Default.TestTapAmount);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            AppendToLog(@"testing tap with " + (int)Properties.Settings.Default.TestTapAmount + "mL");
+            /*
+            if (SAMstate == 0)
+            {
+
+                //MainForm master = (MainForm)Application.OpenForms["MainForm"];
+                //master.drinkButton.PerformClick();
+
+
+                //MainForm.startClick();
+                //click sodabutton
+            }
+
+            if (SAMstate == 1)
+            {
+                //wait for payment
+            }
+            if (SAMstate == 2)
+            {
+                //MainForm.pumpClick();
+                //wait for tapping
+            }
+            if (SAMstate == 3)
+            {
+                //thank you
+            }
+            */
         }
 
 
@@ -913,10 +933,10 @@ namespace SAM4application
         private void FakeSodaButton_Click(object sender, EventArgs e)
         {
             AppendToLog(@"Soda button pressed");
-            SAMstate = (int)SAMstates.waitingForPayment;
-            var command = new SendCommand((int)Command.SetLedState, SAMstate);
+            SAMstate = SAMstates.waitingForPayment;
+            var command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            _changeInterface = (int)SAMstate;
+            //_changeInterface = (int)SAMstate;
             makePayment();
         }
 
@@ -967,8 +987,9 @@ namespace SAM4application
 
         private void interfaceStateNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            
-            _changeInterface = (int)interfaceStateNumericUpDown.Value;
+
+            //_changeInterface = (int)interfaceStateNumericUpDown.Value;
+            SAMstate = (SAMstates)interfaceStateNumericUpDown.Value;
         }
 
         private void tapMillisecondsNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -1003,6 +1024,13 @@ namespace SAM4application
             Application.Exit();
         }
         #endregion
+
+
+        private void PriceAmount_ValueChanged(object sender, EventArgs e)
+        {
+            //AppendToLog(@"setting price to " + (int)priceAmount.Value);
+            price = (int)priceAmount.Value;
+        }
     }
 
 
@@ -1043,11 +1071,12 @@ namespace SAM4application
         PumpTapMilliseconds,
     };
 
-    internal enum SAMstates
+    internal enum SAMstates :int
     {
         idle,
         waitingForPayment,
         waitingForTapping,
+        thankYou,
         error,
         testing,
     };
