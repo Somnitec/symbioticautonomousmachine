@@ -59,6 +59,7 @@
             this.testTapMsButton = new System.Windows.Forms.Button();
             this.switchInterface = new System.Windows.Forms.Button();
             this.interfacePanel = new System.Windows.Forms.Panel();
+            this.priceAmount = new System.Windows.Forms.NumericUpDown();
             this.CloseProgramButton = new System.Windows.Forms.Button();
             this.statusLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
@@ -76,10 +77,10 @@
             this.PrintingCheckBox = new System.Windows.Forms.CheckBox();
             this.priceLabel = new System.Windows.Forms.Label();
             this.interfaceImage = new System.Windows.Forms.PictureBox();
-            this.priceAmount = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).BeginInit();
             this.interfacePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.priceAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReceiptNoNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathSpeedNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathMinNumericUpDown)).BeginInit();
@@ -88,7 +89,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.priceAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // logInButton
@@ -368,7 +368,7 @@
             // 
             // switchInterface
             // 
-            this.switchInterface.Location = new System.Drawing.Point(514, 490);
+            this.switchInterface.Location = new System.Drawing.Point(621, 496);
             this.switchInterface.Name = "switchInterface";
             this.switchInterface.Size = new System.Drawing.Size(60, 59);
             this.switchInterface.TabIndex = 42;
@@ -424,10 +424,29 @@
             this.interfacePanel.Controls.Add(this.checkBox6);
             this.interfacePanel.Controls.Add(this.PrintingCheckBox);
             this.interfacePanel.Controls.Add(this.ledTestCheckBox);
-            this.interfacePanel.Location = new System.Drawing.Point(12, 12);
+            this.interfacePanel.Location = new System.Drawing.Point(624, 26);
             this.interfacePanel.Name = "interfacePanel";
             this.interfacePanel.Size = new System.Drawing.Size(577, 455);
             this.interfacePanel.TabIndex = 43;
+            // 
+            // priceAmount
+            // 
+            this.priceAmount.Location = new System.Drawing.Point(64, 80);
+            this.priceAmount.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.priceAmount.Name = "priceAmount";
+            this.priceAmount.Size = new System.Drawing.Size(43, 20);
+            this.priceAmount.TabIndex = 45;
+            this.priceAmount.ThousandsSeparator = true;
+            this.priceAmount.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.priceAmount.ValueChanged += new System.EventHandler(this.PriceAmount_ValueChanged);
             // 
             // CloseProgramButton
             // 
@@ -466,6 +485,7 @@
             this.fakePayment.TabIndex = 14;
             this.fakePayment.Text = "Fake Payment";
             this.fakePayment.UseVisualStyleBackColor = false;
+            this.fakePayment.Click += new System.EventHandler(this.FakePayment_Click);
             // 
             // textBox2
             // 
@@ -606,6 +626,8 @@
             // PaymentOnOffCheckbox
             // 
             this.PaymentOnOffCheckbox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.PaymentOnOffCheckbox.Checked = global::SAM4application.Properties.Settings.Default.paymentEnabled;
+            this.PaymentOnOffCheckbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM4application.Properties.Settings.Default, "paymentEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PaymentOnOffCheckbox.Location = new System.Drawing.Point(211, 110);
             this.PaymentOnOffCheckbox.Name = "PaymentOnOffCheckbox";
             this.PaymentOnOffCheckbox.Size = new System.Drawing.Size(68, 33);
@@ -657,31 +679,12 @@
             this.interfaceImage.TabStop = false;
             this.interfaceImage.Click += new System.EventHandler(this.InterfaceImage_Click);
             // 
-            // priceAmount
-            // 
-            this.priceAmount.Location = new System.Drawing.Point(64, 80);
-            this.priceAmount.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.priceAmount.Name = "priceAmount";
-            this.priceAmount.Size = new System.Drawing.Size(43, 20);
-            this.priceAmount.TabIndex = 45;
-            this.priceAmount.ThousandsSeparator = true;
-            this.priceAmount.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.priceAmount.ValueChanged += new System.EventHandler(this.PriceAmount_ValueChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(617, 985);
+            this.ClientSize = new System.Drawing.Size(1179, 985);
             this.Controls.Add(this.priceLabel);
             this.Controls.Add(this.interfacePanel);
             this.Controls.Add(this.switchInterface);
@@ -697,6 +700,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).EndInit();
             this.interfacePanel.ResumeLayout(false);
             this.interfacePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.priceAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReceiptNoNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathSpeedNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathMinNumericUpDown)).EndInit();
@@ -705,7 +709,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.priceAmount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

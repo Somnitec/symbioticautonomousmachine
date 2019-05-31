@@ -21,7 +21,7 @@ namespace SAM4application
         private Random rand = new Random();
         private SumUpService _sumUpService;
         private Tuple<Payment, CancellationTokenSource> _currentPayment;
-       
+        private bool fakePaymentVar = false;
 
         //interface stuff
         Image idleimage = new Bitmap(Properties.Resources.idle);
@@ -31,6 +31,7 @@ namespace SAM4application
 
         #region interface change code
         SAMstates samstate = SAMstates.idle;
+        static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
         private SAMstates SAMstate
         {
             get
@@ -62,8 +63,13 @@ namespace SAM4application
                 if (samstate == SAMstates.thankYou)
                 {
                     interfaceImage.Image = thankyouimage;
-                    //Thread.Sleep(1000);
-                    //SAMstate = SAMstates.idle;
+                    myTimer.Tick += (o, ea) =>
+                    {
+                        SAMstate = SAMstates.idle;
+                    };
+                    myTimer.Interval = 2000; 
+                    myTimer.Start();
+                    
                     
                 }
                 if (samstate ==SAMstates.error)
@@ -138,23 +144,55 @@ namespace SAM4application
         }
         #endregion
 
-        #region sumup code
+        #region sumup/payment code
+
+        private void makePayment()
+        {
+
+            price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
+            Properties.Settings.Default.ReceiptNo++;
+            ReceiptNoNumericUpDown.Update();
+            AppendToLog(@"Starting payment for €" + price / 100f + " and receipt no " + Properties.Settings.Default.ReceiptNo);
+
+            //realPaymentHappening = true;
+            PayButton.PerformClick();
+        }
+       private void paymentSuccess()
+        {
+            AppendToLog("payment was successfull, printing receipt!");
+            PrintReceipt();
+            AppendToLog(@"finished printing, now tapping");
+
+            // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
+            var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
+
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+            SAMstate = SAMstates.waitingForTapping;
+            command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            //_changeInterface = (int)SAMstate;
+        }
+
+        private void paymentFail()
+        {
+            AppendToLog("payment was not successfull, resetting");
+
+            SAMstate = SAMstates.error;
+            var command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            //_changeInterface = (int)SAMstate;
+            Reset();
+        }
+
         public bool IsAvailable { get; set; }
 
         // ======= Authenticate with SumUp system and create SDK instance =======		
         private async Task CreateSumUpService(string clientId, string clientSecret, string email, string password)
         {
-            // Create SumUp.Sdk.OAuthCredentials which holds:
-            //   - Email /Password of existing SumUp Account
-            //   - Client ID/Secret from https://me.sumup.com/developers for the account above
             OAuthCredentials credentials = new OAuthCredentials(clientId, clientSecret, email, password);
-
-
-            // Do SumUp.Sdk.SumUpService initialization and login with credentials from above
-            // The SumUpService object is used to initiate a payment and can be stored for multiple use
             _sumUpService = await SumUpService.CreateInstanceAsync(credentials);
         }
-
 
         // ======= Construct and make the payment =======		
         private async Task<PaymentResult> DoSumUpPayment(ulong amountInCents, PaymentMethod method, ConnectionMethod connection, string reference = null)
@@ -286,6 +324,18 @@ namespace SAM4application
 
         private async void DoPaymentButton_Click(object sender, EventArgs e)
         {
+            if (!Properties.Settings.Default.paymentEnabled)
+            {
+                while (!fakePaymentVar)
+                {
+                    AppendToLog("waiting for you to press fakepayment button");
+                    await Task.Delay(100);
+                }
+
+                fakePaymentVar = false;
+                return;
+            }
+
             if (_sumUpService == null) return;
 
             if (!ulong.TryParse(priceAmount.Value.ToString(), out ulong amount))
@@ -351,32 +401,13 @@ namespace SAM4application
                     //AppendToLog(paymentResultShort);
                     if (paymentResultShort.Equals("Successful"))
                     {
-                        AppendToLog("payment was successfull, printing receipt!");
-                        PrintReceipt();
-                        AppendToLog(@"finished printing, now tapping");
-
-                        // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
-                        var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
-
-                        _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-
-                        SAMstate = SAMstates.waitingForTapping;
-                        command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
-                        _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-                        //_changeInterface = (int)SAMstate;
+                        paymentSuccess();
                     }
                     else
                     {
-                        AppendToLog("payment was not successfull, resetting");
-
-                        SAMstate = SAMstates.error;
-                        var command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
-                        _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-                        //_changeInterface = (int)SAMstate;
-                        Reset();
+                        paymentFail();
                     }
 
-                    //realPaymentHappening = false;
                 }
             }
         }
@@ -468,13 +499,17 @@ namespace SAM4application
             //AppendToLog(""+IsAvailable);
             logInButton.PerformClick();
             ArduinoSetup();
-             FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.None;
             //WindowState = FormWindowState.Maximized;
-             Cursor.Hide();
+            if (Properties.Settings.Default.paymentEnabled) { 
+
+              Cursor.Hide();
+              interfacePanel.Hide();
+            }
             //encrypt password easily like this
             AppendToLog(EncryptString(ToSecureString("password")));
             AppendToLog(ToInsecureString(DecryptString(  EncryptString(ToSecureString("password"))    )));
-            interfacePanel.Hide();
+            
             priceLabel.Hide();
             AppendToLog(@"mainform loaded");
         }
@@ -758,21 +793,6 @@ namespace SAM4application
 
         #endregion
 
-        #region payment code
-
-        private void makePayment()
-        {
-
-            price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
-            Properties.Settings.Default.ReceiptNo++;
-            ReceiptNoNumericUpDown.Update();
-            AppendToLog(@"Starting payment for €" + price / 100f + " and receipt no " + Properties.Settings.Default.ReceiptNo);
-            
-            //realPaymentHappening = true;
-            PayButton.PerformClick();
-        }
-        #endregion
-
         #region printing code
 
         private void PrintReceipt()
@@ -882,32 +902,18 @@ namespace SAM4application
 
         private void InterfaceImage_Click(object sender, EventArgs e)
         {
-            /*
-            if (SAMstate == 0)
+            
+            if (SAMstate == SAMstates.idle)
             {
 
                 //MainForm master = (MainForm)Application.OpenForms["MainForm"];
-                //master.drinkButton.PerformClick();
-
+                drinkButton.PerformClick();
 
                 //MainForm.startClick();
                 //click sodabutton
             }
 
-            if (SAMstate == 1)
-            {
-                //wait for payment
-            }
-            if (SAMstate == 2)
-            {
-                //MainForm.pumpClick();
-                //wait for tapping
-            }
-            if (SAMstate == 3)
-            {
-                //thank you
-            }
-            */
+            
         }
 
 
@@ -932,7 +938,7 @@ namespace SAM4application
 
         private void FakeSodaButton_Click(object sender, EventArgs e)
         {
-            AppendToLog(@"Soda button pressed");
+            AppendToLog(@"Soda button pressed, SAMstate to "+ SAMstate.ToString());
             SAMstate = SAMstates.waitingForPayment;
             var command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
@@ -1030,6 +1036,11 @@ namespace SAM4application
         {
             //AppendToLog(@"setting price to " + (int)priceAmount.Value);
             price = (int)priceAmount.Value;
+        }
+
+        private void FakePayment_Click(object sender, EventArgs e)
+        {
+            fakePaymentVar = true;
         }
     }
 

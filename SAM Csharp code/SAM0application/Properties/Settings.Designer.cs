@@ -178,5 +178,17 @@ namespace SAM4application.Properties {
                 this["tapMilliseconds"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool paymentEnabled {
+            get {
+                return ((bool)(this["paymentEnabled"]));
+            }
+            set {
+                this["paymentEnabled"] = value;
+            }
+        }
     }
 }
