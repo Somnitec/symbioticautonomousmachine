@@ -150,25 +150,27 @@ namespace SAM4application
 
         private void makePayment()
         {
-
+            SAMstate = SAMstates.waitingForPayment;
             price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
             Properties.Settings.Default.ReceiptNo++;
             ReceiptNoNumericUpDown.Update();
             AppendToLog(@"Starting payment for €" + price / 100f + " and receipt no " + Properties.Settings.Default.ReceiptNo);
 
             //realPaymentHappening = true;
+            //PayButton.Show();
             PayButton.PerformClick();
+            //PayButton.Hide();
         }
        private async void paymentSuccess()
         {
             AppendToLog("payment was successfull, waiting for cup");
             SAMstate = SAMstates.waitingForTapping;
 
-
+            AppendToLog("waiting for tap button to be pressed");
             while (!cupplaced)
             {
-                AppendToLog("waiting for tap button to be pressed");
-                await Task.Delay(100);
+                
+                await Task.Delay(10);
                 //add a timeout to call paymentFail();?
             }
             cupplaced = false;
@@ -182,12 +184,12 @@ namespace SAM4application
 
             TimeSpan maxDuration = TimeSpan.FromSeconds((double)Properties.Settings.Default.tapMilliseconds/1000 + (double)Properties.Settings.Default.receiptTimeout);
             Stopwatch sw = Stopwatch.StartNew();
-
+            AppendToLog("waiting for receipt button to be pressed");
             while (sw.Elapsed < maxDuration && !receiptRequested)
             {
                 //just waiting
-                AppendToLog("waiting for receipt button to be pressed");
-                await Task.Delay(100);
+                
+                await Task.Delay(10);
             }
 
             if (receiptRequested) PrintReceipt();
@@ -196,7 +198,7 @@ namespace SAM4application
             SAMstate = SAMstates.idle;
 
 
-            //command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
+            //command = new SendCommand((int)Command.SetLedState, (int)SAMstate);
             //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
             //_changeInterface = (int)SAMstate;
         }
@@ -206,7 +208,7 @@ namespace SAM4application
             AppendToLog("payment was not successfull, resetting");
 
             SAMstate = SAMstates.error;
-            var command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
+            var command = new SendCommand((int)Command.SetLedState, (int)SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
             //_changeInterface = (int)SAMstate;
             Reset();
@@ -351,6 +353,7 @@ namespace SAM4application
 
         private async void DoPaymentButton_Click(object sender, EventArgs e)
         {
+            AppendToLog("paymentbuttonpressed");
             if (!Properties.Settings.Default.paymentEnabled)
             {
                 while (!fakePaymentVar)
@@ -529,7 +532,7 @@ namespace SAM4application
             logInButton.PerformClick();
             ArduinoSetup();
             FormBorderStyle = FormBorderStyle.None;
-            //WindowState = FormWindowState.Maximized;
+            WindowState = FormWindowState.Maximized;
             if (Properties.Settings.Default.paymentEnabled) { 
 
               Cursor.Hide();
@@ -541,6 +544,22 @@ namespace SAM4application
             
             priceLabel.Hide();
             AppendToLog(@"mainform loaded");
+
+            Blink();
+
+            switchInterface.FlatStyle = FlatStyle.Flat;
+            switchInterface.FlatAppearance.BorderColor = BackColor;
+            switchInterface.FlatAppearance.MouseOverBackColor = BackColor;
+            switchInterface.FlatAppearance.MouseDownBackColor = BackColor;
+            switchInterface.ForeColor = BackColor;
+        }
+        private async void Blink()
+        {
+            while (true)
+            {
+                await Task.Delay(100);
+                manualOverrideLabel.ForeColor = manualOverrideLabel.ForeColor == Color.Red ? Color.Green : Color.Red;
+            }
         }
 
 
@@ -615,7 +634,7 @@ namespace SAM4application
             AppendToLog($"Arduino functional if there is three lines below here ");
 
             SAMstate = (int)SAMstates.idle;
-            command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
+            command = new SendCommand((int)Command.SetLedState, (int)SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
             //_changeInterface = (int)SAMstate;
         }
@@ -720,7 +739,7 @@ namespace SAM4application
         public void OnSodaButtonPressed(ReceivedCommand arguments)
         {
 
-            
+            AppendToLog(@"soda button pressed");
         }
      
        
@@ -747,12 +766,12 @@ namespace SAM4application
         void OnTapSucceeded(ReceivedCommand arguments)
         {
             AppendToLog(@"Tap succeeded");
-            Reset();
+            //Reset();
         }
 
         void OnReset(ReceivedCommand arguments)
         {
-            Reset();
+            //Reset();
         }
 
 
@@ -787,34 +806,6 @@ namespace SAM4application
             AppendToLog(@"Sent > " + e.Command.CommandString());
         }
 
-        private void ArduinoTest_click(object sender, EventArgs e)
-        {
-
-            int value = rand.Next(0, 100);
-            var command = new SendCommand((int)Command.TestArduino, value);
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            AppendToLog(@"Arduino value send > " + value);
-        }
-
-        private void PrintTest_click(object sender, EventArgs e)
-        {
-            
-            AppendToLog(@"test printing receipt "+ Properties.Settings.Default.ReceiptNo);
-
-            PrintReceipt();
-        }
-
-        void Reset()
-        {
-            //CancelPaymentButton.PerformClick();
-            //realPaymentHappening = false;
-            AppendToLog(@"Resetted");
-
-            SAMstate = (int)SAMstates.idle;
-            var command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-            //_changeInterface = (int)SAMstate;
-        }
         // Called when a received command has no attached function.
         // In a WinForm application, console output gets routed to the output panel of your IDE
 
@@ -934,8 +925,8 @@ namespace SAM4application
             {
 
                 //MainForm master = (MainForm)Application.OpenForms["MainForm"];
-                drinkButton.PerformClick();
-
+                //drinkButton.PerformClick();
+                makePayment();
                 //MainForm.startClick();
                 //click sodabutton
             }
@@ -971,15 +962,16 @@ namespace SAM4application
 
         private void PumpTapTestCheckbox_Click(object sender, EventArgs e)
         {
+            AppendToLog(@"manual pumping: " + PumpTapTestCheckbox.Checked);
             var command = new SendCommand((int)Command.PumpTap, PumpTapTestCheckbox.Checked);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
 
         private void FakeSodaButton_Click(object sender, EventArgs e)
         {
-            AppendToLog(@"Soda button pressed, SAMstate to "+ SAMstate.ToString());
-            SAMstate = SAMstates.waitingForPayment;
-            var command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
+            AppendToLog(@"fake/arduino Soda button pressed");
+            //SAMstate = SAMstates.waitingForPayment;
+            var command = new SendCommand((int)Command.SetLedState, (int)SAMstate);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
             //_changeInterface = (int)SAMstate;
             makePayment();
@@ -1050,25 +1042,47 @@ namespace SAM4application
 
         }
 
+        private int switchInterfaceButtonClicks = 0;
         private void SwitchInterface_Click(object sender, EventArgs e)
         {
-            if (interfacePanel.Visible)
+
+            if (interfacePanel.Left == 10)
             {
-                interfacePanel.Hide();
+                //interfacePanel.Hide();
+                interfacePanel.Left = 680;
                 Cursor.Hide();
+
+                switchInterface.FlatStyle = FlatStyle.Flat;
+                switchInterface.FlatAppearance.BorderColor = BackColor;
+                switchInterface.FlatAppearance.MouseOverBackColor = BackColor;
+                switchInterface.FlatAppearance.MouseDownBackColor = BackColor;
+                switchInterface.ForeColor = BackColor;
+
+                AppendToLog(@"interface hidden");
             }
-            else
+
+            else if (switchInterfaceButtonClicks >= 4)
             {
-                interfacePanel.Show();
+                //interfacePanel.Show();
+                interfacePanel.Left = 10;
                 Cursor.Show();
+                switchInterfaceButtonClicks = 0;
+
+                switchInterface.FlatStyle = FlatStyle.Standard;
+                switchInterface.ForeColor = Color.Black;
+
+                AppendToLog(@"interface visible" );
             }
+            else switchInterfaceButtonClicks++;
+            
         }
 
         private void CloseProgramButton_Click(object sender, EventArgs e)
         {
+            AppendToLog(@"shutting down");
             Application.Exit();
         }
-        #endregion
+       
 
 
         private void PriceAmount_ValueChanged(object sender, EventArgs e)
@@ -1081,6 +1095,37 @@ namespace SAM4application
         {
             fakePaymentVar = true;
         }
+
+
+        private void ArduinoTest_click(object sender, EventArgs e)
+        {
+
+            int value = rand.Next(0, 100);
+            var command = new SendCommand((int)Command.TestArduino, value);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            AppendToLog(@"Arduino value send > " + value);
+        }
+
+        private void PrintTest_click(object sender, EventArgs e)
+        {
+
+            AppendToLog(@"test printing receipt " + Properties.Settings.Default.ReceiptNo);
+
+            PrintReceipt();
+        }
+
+        void Reset()
+        {
+            //CancelPaymentButton.PerformClick();
+            //realPaymentHappening = false;
+            AppendToLog(@"Resetted");
+
+            SAMstate = (int)SAMstates.idle;
+            var command = new SendCommand((int)Command.SetLedState, (int)SAMstate);
+            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            //_changeInterface = (int)SAMstate;
+        }
+        #endregion
     }
 
 
