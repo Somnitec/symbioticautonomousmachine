@@ -190,5 +190,17 @@ namespace SAM4application.Properties {
                 this["paymentEnabled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public decimal receiptTimeout {
+            get {
+                return ((decimal)(this["receiptTimeout"]));
+            }
+            set {
+                this["receiptTimeout"] = value;
+            }
+        }
     }
 }

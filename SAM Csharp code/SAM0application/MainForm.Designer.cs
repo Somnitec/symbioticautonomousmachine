@@ -64,31 +64,34 @@
             this.statusLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.fakePayment = new System.Windows.Forms.Button();
+            this.priceLabel = new System.Windows.Forms.Label();
+            this.interfaceImage = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.ReceiptNoNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LedBreathSpeedNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LedBreathMinNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LedBreathMaxNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.tapMillisecondsNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.PaymentOnOffCheckbox = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.PrintingCheckBox = new System.Windows.Forms.CheckBox();
-            this.priceLabel = new System.Windows.Forms.Label();
-            this.interfaceImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).BeginInit();
             this.interfacePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.priceAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReceiptNoNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathSpeedNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathMinNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathMaxNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tapMillisecondsNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).BeginInit();
             this.SuspendLayout();
             // 
             // logInButton
@@ -349,7 +352,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(214, 171);
+            this.label8.Location = new System.Drawing.Point(217, 151);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 13);
             this.label8.TabIndex = 16;
@@ -402,6 +405,7 @@
             this.interfacePanel.Controls.Add(this.label2);
             this.interfacePanel.Controls.Add(this.SaveSettingsButton);
             this.interfacePanel.Controls.Add(this.textBox2);
+            this.interfacePanel.Controls.Add(this.label9);
             this.interfacePanel.Controls.Add(this.label8);
             this.interfacePanel.Controls.Add(this.ReceiptNoNumericUpDown);
             this.interfacePanel.Controls.Add(this.label15);
@@ -411,6 +415,7 @@
             this.interfacePanel.Controls.Add(this.label16);
             this.interfacePanel.Controls.Add(this.LedBreathMaxNumericUpDown);
             this.interfacePanel.Controls.Add(this.label17);
+            this.interfacePanel.Controls.Add(this.numericUpDown4);
             this.interfacePanel.Controls.Add(this.tapMillisecondsNumericUpDown);
             this.interfacePanel.Controls.Add(this.label13);
             this.interfacePanel.Controls.Add(this.numericUpDown3);
@@ -487,6 +492,34 @@
             this.fakePayment.UseVisualStyleBackColor = false;
             this.fakePayment.Click += new System.EventHandler(this.FakePayment_Click);
             // 
+            // priceLabel
+            // 
+            this.priceLabel.AutoSize = true;
+            this.priceLabel.Font = new System.Drawing.Font("Segoe MDL2 Assets", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceLabel.Location = new System.Drawing.Point(201, 552);
+            this.priceLabel.Name = "priceLabel";
+            this.priceLabel.Size = new System.Drawing.Size(204, 27);
+            this.priceLabel.TabIndex = 44;
+            this.priceLabel.Text = "1 EUR ≈ 7.50 DKK ";
+            // 
+            // interfaceImage
+            // 
+            this.interfaceImage.Location = new System.Drawing.Point(2, 1);
+            this.interfaceImage.Name = "interfaceImage";
+            this.interfaceImage.Size = new System.Drawing.Size(600, 1024);
+            this.interfaceImage.TabIndex = 45;
+            this.interfaceImage.TabStop = false;
+            this.interfaceImage.Click += new System.EventHandler(this.InterfaceImage_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(113, 286);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "s wait for receipt";
+            // 
             // textBox2
             // 
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM4application.Properties.Settings.Default, "ArduinoPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -562,6 +595,22 @@
             this.LedBreathMaxNumericUpDown.Value = global::SAM4application.Properties.Settings.Default.LEDbrightnessMax;
             this.LedBreathMaxNumericUpDown.ValueChanged += new System.EventHandler(this.LedBreathMaxNumericUpDown_ValueChanged);
             // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM4application.Properties.Settings.Default, "receiptTimeout", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown4.Location = new System.Drawing.Point(71, 283);
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(41, 20);
+            this.numericUpDown4.TabIndex = 31;
+            this.numericUpDown4.ThousandsSeparator = true;
+            this.numericUpDown4.Value = global::SAM4application.Properties.Settings.Default.receiptTimeout;
+            this.numericUpDown4.ValueChanged += new System.EventHandler(this.tapMillisecondsNumericUpDown_ValueChanged);
+            // 
             // tapMillisecondsNumericUpDown
             // 
             this.tapMillisecondsNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM4application.Properties.Settings.Default, "tapMilliseconds", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -570,7 +619,7 @@
             0,
             0,
             0});
-            this.tapMillisecondsNumericUpDown.Location = new System.Drawing.Point(155, 167);
+            this.tapMillisecondsNumericUpDown.Location = new System.Drawing.Point(158, 147);
             this.tapMillisecondsNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -660,25 +709,6 @@
             this.PrintingCheckBox.Text = "Printing on/off";
             this.PrintingCheckBox.UseVisualStyleBackColor = true;
             // 
-            // priceLabel
-            // 
-            this.priceLabel.AutoSize = true;
-            this.priceLabel.Font = new System.Drawing.Font("Segoe MDL2 Assets", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceLabel.Location = new System.Drawing.Point(201, 552);
-            this.priceLabel.Name = "priceLabel";
-            this.priceLabel.Size = new System.Drawing.Size(204, 27);
-            this.priceLabel.TabIndex = 44;
-            this.priceLabel.Text = "1 EUR ≈ 7.50 DKK ";
-            // 
-            // interfaceImage
-            // 
-            this.interfaceImage.Location = new System.Drawing.Point(2, 1);
-            this.interfaceImage.Name = "interfaceImage";
-            this.interfaceImage.Size = new System.Drawing.Size(600, 1024);
-            this.interfaceImage.TabIndex = 45;
-            this.interfaceImage.TabStop = false;
-            this.interfaceImage.Click += new System.EventHandler(this.InterfaceImage_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -701,14 +731,15 @@
             this.interfacePanel.ResumeLayout(false);
             this.interfacePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.priceAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReceiptNoNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathSpeedNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathMinNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathMaxNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tapMillisecondsNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -763,6 +794,8 @@
         private System.Windows.Forms.Button fakePayment;
         private System.Windows.Forms.CheckBox PaymentOnOffCheckbox;
         private System.Windows.Forms.NumericUpDown priceAmount;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
     }
 }
 

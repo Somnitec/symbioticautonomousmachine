@@ -11,7 +11,7 @@ using System.Drawing.Printing;
 using System.Drawing;
 using System.Net.NetworkInformation;
 using System.Security;
-
+using System.Diagnostics;
 
 namespace SAM4application
 {
@@ -22,6 +22,9 @@ namespace SAM4application
         private SumUpService _sumUpService;
         private Tuple<Payment, CancellationTokenSource> _currentPayment;
         private bool fakePaymentVar = false;
+        private bool cupplaced = false;
+        private bool receiptRequested = false;
+        
 
         //interface stuff
         Image idleimage = new Bitmap(Properties.Resources.idle);
@@ -63,13 +66,14 @@ namespace SAM4application
                 if (samstate == SAMstates.thankYou)
                 {
                     interfaceImage.Image = thankyouimage;
+                    /*
                     myTimer.Tick += (o, ea) =>
                     {
                         SAMstate = SAMstates.idle;
                     };
                     myTimer.Interval = 2000; 
                     myTimer.Start();
-                    
+                    */
                     
                 }
                 if (samstate ==SAMstates.error)
@@ -85,8 +89,6 @@ namespace SAM4application
         }
 
         #endregion
-
-
 
         #region password storage code
         //method by https://weblogs.asp.net/jongalloway/encrypting-passwords-in-a-net-app-config-file
@@ -157,20 +159,45 @@ namespace SAM4application
             //realPaymentHappening = true;
             PayButton.PerformClick();
         }
-       private void paymentSuccess()
+       private async void paymentSuccess()
         {
-            AppendToLog("payment was successfull, printing receipt!");
-            PrintReceipt();
-            AppendToLog(@"finished printing, now tapping");
-
-            // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
-            var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
-
-            _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
-
+            AppendToLog("payment was successfull, waiting for cup");
             SAMstate = SAMstates.waitingForTapping;
-            command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
+
+
+            while (!cupplaced)
+            {
+                AppendToLog("waiting for tap button to be pressed");
+                await Task.Delay(100);
+                //add a timeout to call paymentFail();?
+            }
+            cupplaced = false;
+             SAMstate = SAMstates.thankYou;
+            await Task.Delay(100);//to make the ui update
+            // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
+            AppendToLog("tapping now for "+ Properties.Settings.Default.tapMilliseconds+" ms");
+            var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            //decide on receipt or not
+
+            TimeSpan maxDuration = TimeSpan.FromSeconds((double)Properties.Settings.Default.tapMilliseconds/1000 + (double)Properties.Settings.Default.receiptTimeout);
+            Stopwatch sw = Stopwatch.StartNew();
+
+            while (sw.Elapsed < maxDuration && !receiptRequested)
+            {
+                //just waiting
+                AppendToLog("waiting for receipt button to be pressed");
+                await Task.Delay(100);
+            }
+
+            if (receiptRequested) PrintReceipt();
+            receiptRequested = false;
+            await Task.Delay(1000);
+            SAMstate = SAMstates.idle;
+
+
+            //command = new SendCommand((int)Command.SetLedState, SAMstate.ToString());
+            //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
             //_changeInterface = (int)SAMstate;
         }
 
@@ -330,9 +357,11 @@ namespace SAM4application
                 {
                     AppendToLog("waiting for you to press fakepayment button");
                     await Task.Delay(100);
+                    //add a timeout to call paymentFail();?
                 }
-
                 fakePaymentVar = false;
+                paymentSuccess();
+
                 return;
             }
 
@@ -540,8 +569,6 @@ namespace SAM4application
         
 
         #endregion        
-
-   
 
         #region logging code
 
@@ -913,7 +940,19 @@ namespace SAM4application
                 //click sodabutton
             }
 
+            if (SAMstate == SAMstates.waitingForTapping)
+            {
+                cupplaced = true;
+
+            }
+
+            if (SAMstate == SAMstates.thankYou)
+            {
+                receiptRequested = true;
+
+            }
             
+
         }
 
 
