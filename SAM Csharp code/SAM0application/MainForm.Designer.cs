@@ -432,7 +432,7 @@
             this.interfacePanel.Controls.Add(this.PrintingCheckBox);
             this.interfacePanel.Controls.Add(this.ledTestCheckBox);
             this.interfacePanel.Controls.Add(this.logTextBox);
-            this.interfacePanel.Location = new System.Drawing.Point(610, 78);
+            this.interfacePanel.Location = new System.Drawing.Point(12, 82);
             this.interfacePanel.Name = "interfacePanel";
             this.interfacePanel.Size = new System.Drawing.Size(577, 455);
             this.interfacePanel.TabIndex = 43;
@@ -721,7 +721,7 @@
             // 
             this.interfaceImage.Location = new System.Drawing.Point(2, 1);
             this.interfaceImage.Name = "interfaceImage";
-            this.interfaceImage.Size = new System.Drawing.Size(600, 1024);
+            this.interfaceImage.Size = new System.Drawing.Size(590, 1024);
             this.interfaceImage.TabIndex = 45;
             this.interfaceImage.TabStop = false;
             this.interfaceImage.Click += new System.EventHandler(this.InterfaceImage_Click);
@@ -730,8 +730,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1232, 985);
+            this.ClientSize = new System.Drawing.Size(604, 985);
             this.Controls.Add(this.priceLabel);
             this.Controls.Add(this.interfacePanel);
             this.Controls.Add(this.switchInterface);
@@ -739,8 +740,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(633, 376);
+            this.MinimumSize = new System.Drawing.Size(598, 376);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SAM4 application";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).EndInit();

@@ -76,3 +76,12 @@ C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMesse
 C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csproj.CopyComplete
 C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.dll
 C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.pdb
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.Transport.Serial.dll
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.Transport.Serial.pdb
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.dll
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\bin\Debug\CommandMessenger.pdb
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csprojAssemblyReference.cache
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csproj.CoreCompileInputs.cache
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.csproj.CopyComplete
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.dll
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger.Transport.Serial\obj\Debug\CommandMessenger.Transport.Serial.pdb

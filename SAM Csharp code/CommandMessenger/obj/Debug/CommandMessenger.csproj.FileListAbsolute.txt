@@ -1,57 +1,6 @@
-C:\Users\arvid\Google Drive\code\Arduino\libraries\CmdMessenger\extras\CSharp\CommandMessenger\bin\Debug\CommandMessenger.dll
-C:\Users\arvid\Google Drive\code\Arduino\libraries\CmdMessenger\extras\CSharp\CommandMessenger\bin\Debug\CommandMessenger.pdb
-C:\Users\arvid\Google Drive\code\Arduino\libraries\CmdMessenger\extras\CSharp\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
-C:\Users\arvid\Google Drive\code\Arduino\libraries\CmdMessenger\extras\CSharp\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
-C:\Users\arvid\Google Drive\code\Arduino\libraries\CmdMessenger\extras\CSharp\CommandMessenger\obj\Debug\CommandMessenger.dll
-C:\Users\arvid\Google Drive\code\Arduino\libraries\CmdMessenger\extras\CSharp\CommandMessenger\obj\Debug\CommandMessenger.pdb
-C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\CommandMessenger\bin\Debug\CommandMessenger.dll
-C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\CommandMessenger\bin\Debug\CommandMessenger.pdb
-C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
-C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
-C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\CommandMessenger\obj\Debug\CommandMessenger.dll
-C:\Users\arvid\Documents\symbioticautonomousmachine\SumUp Sample App\CommandMessenger\obj\Debug\CommandMessenger.pdb
-C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
-C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
-C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
-C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
-C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
-C:\Users\Arvid Jense\Google Drive\MarieGraduation\Autonomous Water Kefir Robot\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
-C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
-C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
-C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
-C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
-C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
-C:\Users\Sam Nonhuman\Documents\SAM code\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
-C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
-C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
-C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
-C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
-C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
-C:\Users\zotac\code\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
-D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
-D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
-D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
-D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
-D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
-D:\Arvid Jense\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
-<<<<<<< HEAD
-C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
-C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
-C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
-C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
-C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
-C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
-=======
-D:\code\Symbiotic Autonomous Machine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
-D:\code\Symbiotic Autonomous Machine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
-D:\code\Symbiotic Autonomous Machine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojResolveAssemblyReference.cache
-D:\code\Symbiotic Autonomous Machine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
-D:\code\Symbiotic Autonomous Machine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
-D:\code\Symbiotic Autonomous Machine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
->>>>>>> 86a4547a3d9f8879026b3f41f46e6468a133739b
-C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
-C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
-C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojAssemblyReference.cache
-C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
-C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
-C:\Users\arvid\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.dll
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\bin\Debug\CommandMessenger.pdb
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojAssemblyReference.cache
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csproj.CoreCompileInputs.cache
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
+C:\Users\lattepanda\cod\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb

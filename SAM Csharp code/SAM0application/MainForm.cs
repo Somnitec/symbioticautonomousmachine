@@ -333,10 +333,11 @@ namespace SAM4application
                 ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAADfHdR7AXIoy61QYYZgS/vUxtsMylaJCrz7zjhfzPZSewAAAAAOgAAAAAIAACAAAACzdb7Z09j6/lcACCsfLKecuukIf2BtcZhJXeOVS3Np/zAAAACQNqDp7BM/+CrfP1wwUjhf1MNOKZt9G73OdJ+2iJNyjSA1M27WeKutZzHPonLlkKpAAAAAnGi4r7tWgT/6w/85THgT1hIYhfdZ2mBMr1FE9OCa9/VrGRSJ27uAth9R0UnFIW4FZzop2appggHFnhc4lCimyw==")),//user
                     ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAADrz0sHMLzW88jn+YB4ehhxe5izenGL9IS2PSQck1BClgAAAAAOgAAAAAIAACAAAAARZjKTXKIG1qs11gwtSqLh70oMEng2usIx0uR0Qf3zdxAAAACoHPhj3jSwIek8xIDR7kejQAAAANOWaFbr1M58mcigk3488mSbjgQAZyyuaf5fyaKr0BouWt6RbVErtTBpLxEvDWAoXsenBafZRKr7xJcfg2pfz1c=")));//password
                     */
-                //real payments
+                //real payments //need to remake the keys for every computer
                 await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c",
-                    ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAABxPGQ6Pv1tUtDb3cnlrsaaADQkSsPP56uKVmHFCgYqWwAAAAAOgAAAAAIAACAAAACbFgpJSyp+aGjsWIiZuDQlqoYx2DglM6wvC+AhL3YrMDAAAADS5CwMUjJeBL50wdXgpyfxqVGZzGHZJ5mcbRgZ+mvOs9B3YtahV4b9p3JBGrkt6uFAAAAAA2/dznMs9zah0OpIv90RhUCtLlOaajpsBVvmbOC0SckfJ/DBkaWECYXmeHBh7eejE1bFHEEhyxv+vxL5edE98w==")), //user
-                    ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAAD4drCESJd3sTf2jyMP4daSlhbPt9vzJOcb69bxMLujDwAAAAAOgAAAAAIAACAAAADQYzqelqZaDbAxSxp7EGP1ixwOSgWI7m/cZ+55ZpRLuSAAAABDBp5t8/AzC/8FLIrPY46+fyyLd3Rmn9UzSuaiP4dtk0AAAAAqorYe1rLdCHuPlyi8CcgYANYVHwPFS8rXQ2kBrk2TGYPGmppNvlp7YU5Bhrm9JHwkpw9kYkwzwgihKiT7+smJ")));//password
+                    ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE / Cl + sBAAAABGDYa4CyqUG / 35LjPEID8QAAAAACAAAAAAAQZgAAAAEAACAAAAB3ICT7effdwyPW29XYiMIrWQ07Xtd7TaJ1xFGQMX7sHwAAAAAOgAAAAAIAACAAAAD + mFgqcL2q + ZpjiFYSjYaqxgKm35VihLd1QMcxnU5zYTAAAADor9fTsDk8JeFWfznmHSuvgsCH7vdVxFXt48PYs / cw7Mh1jTFOof9zvB4OxezdE0xAAAAAA2F + 2xMj8GFffvPvcrQElAdT4GM0c12F508x6RkXv9cofdz1bS7 + jwrmzkWCp4BDBCLDILNcsOsvkM6rOeSf6A ==")), //user
+                    ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE / Cl + sBAAAABGDYa4CyqUG / 35LjPEID8QAAAAACAAAAAAAQZgAAAAEAACAAAAChBeLPk / 066X24baGjxaX6k26spUO1TsSEJUKe4qZeHAAAAAAOgAAAAAIAACAAAAAi4QL0 + Fx4leJHbyudVEtzYeeGQ7O0g2rUS5o7KBNYwCAAAAAaYwfHAoAKZmztjyworkONwiN5BpxsOQkJcqKFmGUzdEAAAAC2pYGimvblNN + tNDBBiUXgdqiV2 / lYNHFsZJ9p5OlWkefrS / cLcS9 + vOOvGobwf6 / UcuJGLl20s + iBdWAEkRnj")));//password
+ 
 
                 UpdateUI(UIState.Idle);
 
@@ -530,17 +531,19 @@ namespace SAM4application
         {
             //AppendToLog(""+IsAvailable);
             logInButton.PerformClick();
-            ArduinoSetup();
+            SAMstate = SAMstates.idle;
+            //ArduinoSetup();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             if (Properties.Settings.Default.paymentEnabled) { 
 
               Cursor.Hide();
-              interfacePanel.Hide();
+              interfacePanel.Left=680;
             }
             //encrypt password easily like this
-            AppendToLog(EncryptString(ToSecureString("password")));
-            AppendToLog(ToInsecureString(DecryptString(  EncryptString(ToSecureString("password"))    )));
+            AppendToLog(EncryptString(ToSecureString("user")));
+            AppendToLog(EncryptString(ToSecureString("pass")));
+            AppendToLog(ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE / Cl + sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAABxPGQ6Pv1tUtDb3cnlrsaaADQkSsPP56uKVmHFCgYqWwAAAAAOgAAAAAIAACAAAACbFgpJSyp + aGjsWIiZuDQlqoYx2DglM6wvC + AhL3YrMDAAAADS5CwMUjJeBL50wdXgpyfxqVGZzGHZJ5mcbRgZ + mvOs9B3YtahV4b9p3JBGrkt6uFAAAAAA2 / dznMs9zah0OpIv90RhUCtLlOaajpsBVvmbOC0SckfJ / DBkaWECYXmeHBh7eejE1bFHEEhyxv + vxL5edE98w == "    )));
             
             priceLabel.Hide();
             AppendToLog(@"mainform loaded");
@@ -817,6 +820,8 @@ namespace SAM4application
         {
             if (PrintingCheckBox.Checked) {
                 PrintDocument printDocument = new PrintDocument();
+                PrintController printController = new StandardPrintController();
+                printDocument.PrintController = printController;
                 printDocument.PrintPage += PrintReceiptOnPrintPage;
                 printDocument.Print();
             }
