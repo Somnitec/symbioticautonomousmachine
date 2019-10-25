@@ -49,3 +49,4 @@ D:\code\Symbiotic Autonomous Machine\SAM Csharp code\CommandMessenger\obj\Debug\
 D:\code\Symbiotic Autonomous Machine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.dll
 D:\code\Symbiotic Autonomous Machine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.pdb
 >>>>>>> 86a4547a3d9f8879026b3f41f46e6468a133739b
+C:\Users\wintelbox\Documents\symbioticautonomousmachine\SAM Csharp code\CommandMessenger\obj\Debug\CommandMessenger.csprojAssemblyReference.cache
