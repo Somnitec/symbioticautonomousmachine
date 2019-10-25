@@ -1,7 +1,8 @@
-
+#include "FastLED.h"
+#include <Bounce2.h>
 #include <CmdMessenger.h>  // CmdMessenger
 
-
+CRGB buttonled[1];
 CmdMessenger cmdMessenger = CmdMessenger(Serial);
 
 #define pumppin 2
@@ -11,9 +12,11 @@ CmdMessenger cmdMessenger = CmdMessenger(Serial);
 #define buttonPin 3
 #define buttonledpin 6
 #define buttonledvcc 4
+Bounce sodaButton = Bounce();
 
 #define statusLedPin 13
 
+#define  buttonUpdateTime 1//ms
 #define  ledUpdateTime 10//ms
 #define  serialUpdateTime 1//ms
 
@@ -21,6 +24,8 @@ CmdMessenger cmdMessenger = CmdMessenger(Serial);
 float ledBreathSpeed = 0.02;
 int ledBreathMax = 50;
 int ledBreathMin = 20;
+
+
 
 //waiting animation
 
@@ -42,6 +47,8 @@ unsigned long tapTimer = 0;
 
 void setup()
 {
+  pinMode(pumppin, OUTPUT);
+  digitalWrite(pumppin, LOW);
   //improving PWM speed
   //ideal speed is = ??
 
@@ -53,8 +60,19 @@ void setup()
 
   pinMode(led1pin, OUTPUT);
   pinMode(led2pin, OUTPUT);
-  pinMode(pumppin, OUTPUT);
-  digitalWrite(pumppin, LOW);
+  
+
+  pinMode(buttonPin, INPUT_PULLUP);
+  sodaButton.attach(buttonPin);
+  sodaButton.interval(10);
+
+  pinMode(buttonledvcc, OUTPUT);
+  digitalWrite(buttonledvcc, HIGH);
+
+
+
+  FastLED.addLeds<NEOPIXEL, buttonledpin>(buttonled, 1).setCorrection(0xD4EBFF);
+
 
   blinkLed(3);
 }
@@ -62,6 +80,7 @@ void setup()
 // Loop function
 void loop()
 {
+  buttonStuff();
   ledStuff();
   serialStuff();
 

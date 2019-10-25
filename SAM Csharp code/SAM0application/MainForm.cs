@@ -165,7 +165,7 @@ namespace SAM4application
         {
             AppendToLog("payment was successfull, waiting for cup");
             SAMstate = SAMstates.waitingForTapping;
-
+            /*
             AppendToLog("waiting for tap button to be pressed");
             while (!cupplaced)
             {
@@ -174,16 +174,19 @@ namespace SAM4application
                 //add a timeout to call paymentFail();?
             }
             cupplaced = false;
-             SAMstate = SAMstates.thankYou;
-            await Task.Delay(100);//to make the ui update
+            */
+            SAMstate = SAMstates.thankYou;
+            //await Task.Delay(100);//to make the ui update
             // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
             AppendToLog("tapping now for "+ Properties.Settings.Default.tapMilliseconds+" ms");
             var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+            /*
             //decide on receipt or not
 
             TimeSpan maxDuration = TimeSpan.FromSeconds((double)Properties.Settings.Default.tapMilliseconds/1000 + (double)Properties.Settings.Default.receiptTimeout);
-            Stopwatch sw = Stopwatch.StartNew();
+            Stopwatch sw = Stopwatch.StartNew();  
             AppendToLog("waiting for receipt button to be pressed");
             while (sw.Elapsed < maxDuration && !receiptRequested)
             {
@@ -195,6 +198,10 @@ namespace SAM4application
             if (receiptRequested) PrintReceipt();
             receiptRequested = false;
             await Task.Delay(1000);
+            */
+            await Task.Delay(1000);
+            PrintReceipt();
+
             SAMstate = SAMstates.idle;
 
 
@@ -334,9 +341,9 @@ namespace SAM4application
                     ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAADrz0sHMLzW88jn+YB4ehhxe5izenGL9IS2PSQck1BClgAAAAAOgAAAAAIAACAAAAARZjKTXKIG1qs11gwtSqLh70oMEng2usIx0uR0Qf3zdxAAAACoHPhj3jSwIek8xIDR7kejQAAAANOWaFbr1M58mcigk3488mSbjgQAZyyuaf5fyaKr0BouWt6RbVErtTBpLxEvDWAoXsenBafZRKr7xJcfg2pfz1c=")));//password
                     */
                 //real payments //need to remake the keys for every computer
-                await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c",
-                    ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE / Cl + sBAAAABGDYa4CyqUG / 35LjPEID8QAAAAACAAAAAAAQZgAAAAEAACAAAAB3ICT7effdwyPW29XYiMIrWQ07Xtd7TaJ1xFGQMX7sHwAAAAAOgAAAAAIAACAAAAD + mFgqcL2q + ZpjiFYSjYaqxgKm35VihLd1QMcxnU5zYTAAAADor9fTsDk8JeFWfznmHSuvgsCH7vdVxFXt48PYs / cw7Mh1jTFOof9zvB4OxezdE0xAAAAAA2F + 2xMj8GFffvPvcrQElAdT4GM0c12F508x6RkXv9cofdz1bS7 + jwrmzkWCp4BDBCLDILNcsOsvkM6rOeSf6A ==")), //user
-                    ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE / Cl + sBAAAABGDYa4CyqUG / 35LjPEID8QAAAAACAAAAAAAQZgAAAAEAACAAAAChBeLPk / 066X24baGjxaX6k26spUO1TsSEJUKe4qZeHAAAAAAOgAAAAAIAACAAAAAi4QL0 + Fx4leJHbyudVEtzYeeGQ7O0g2rUS5o7KBNYwCAAAAAaYwfHAoAKZmztjyworkONwiN5BpxsOQkJcqKFmGUzdEAAAAC2pYGimvblNN + tNDBBiUXgdqiV2 / lYNHFsZJ9p5OlWkefrS / cLcS9 + vOOvGobwf6 / UcuJGLl20s + iBdWAEkRnj")));//password
+                await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c", Properties.Settings.Default.sumupUser, Properties.Settings.Default.sumupPass);
+                    //ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE / Cl + sBAAAABGDYa4CyqUG / 35LjPEID8QAAAAACAAAAAAAQZgAAAAEAACAAAAB3ICT7effdwyPW29XYiMIrWQ07Xtd7TaJ1xFGQMX7sHwAAAAAOgAAAAAIAACAAAAD + mFgqcL2q + ZpjiFYSjYaqxgKm35VihLd1QMcxnU5zYTAAAADor9fTsDk8JeFWfznmHSuvgsCH7vdVxFXt48PYs / cw7Mh1jTFOof9zvB4OxezdE0xAAAAAA2F + 2xMj8GFffvPvcrQElAdT4GM0c12F508x6RkXv9cofdz1bS7 + jwrmzkWCp4BDBCLDILNcsOsvkM6rOeSf6A ==")), //user
+                    //ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE / Cl + sBAAAABGDYa4CyqUG / 35LjPEID8QAAAAACAAAAAAAQZgAAAAEAACAAAAChBeLPk / 066X24baGjxaX6k26spUO1TsSEJUKe4qZeHAAAAAAOgAAAAAIAACAAAAAi4QL0 + Fx4leJHbyudVEtzYeeGQ7O0g2rUS5o7KBNYwCAAAAAaYwfHAoAKZmztjyworkONwiN5BpxsOQkJcqKFmGUzdEAAAAC2pYGimvblNN + tNDBBiUXgdqiV2 / lYNHFsZJ9p5OlWkefrS / cLcS9 + vOOvGobwf6 / UcuJGLl20s + iBdWAEkRnj")));//password
  
 
                 UpdateUI(UIState.Idle);
@@ -541,8 +548,8 @@ namespace SAM4application
               interfacePanel.Left=680;
             }
             //encrypt password easily like this
-            AppendToLog(EncryptString(ToSecureString("user")));
-            AppendToLog(EncryptString(ToSecureString("pass")));
+            AppendToLog(EncryptString(ToSecureString("arvidj@gmail.com")));
+            AppendToLog(EncryptString(ToSecureString("13374zzIP!")));
             AppendToLog(ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE / Cl + sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAABxPGQ6Pv1tUtDb3cnlrsaaADQkSsPP56uKVmHFCgYqWwAAAAAOgAAAAAIAACAAAACbFgpJSyp + aGjsWIiZuDQlqoYx2DglM6wvC + AhL3YrMDAAAADS5CwMUjJeBL50wdXgpyfxqVGZzGHZJ5mcbRgZ + mvOs9B3YtahV4b9p3JBGrkt6uFAAAAAA2 / dznMs9zah0OpIv90RhUCtLlOaajpsBVvmbOC0SckfJ / DBkaWECYXmeHBh7eejE1bFHEEhyxv + vxL5edE98w == "    )));
             
             priceLabel.Hide();
@@ -582,8 +589,8 @@ namespace SAM4application
                 currentPrice = value;
                 priceAmount.Value = currentPrice;
                 decimal amount = value / 100m;
-                AppendToLog(@"€ " + (amount).ToString("0.00") + " ≈  kr " + (amount * 7.47m).ToString("0.00"));
-                priceLabel.Text = "€ " + (amount).ToString("0.00") + " ≈  kr " + (amount * 7.47m).ToString("0.00");
+                AppendToLog(@"€ " + (amount).ToString("0.00") + " ≈  GBP " + (amount * 0.86m).ToString("0.00"));
+                priceLabel.Text = "€ " + (amount).ToString("0.00") + " ≈  GBP " + (amount * 0.86m).ToString("0.00");
             }
         }
 
@@ -658,7 +665,7 @@ namespace SAM4application
             // Note that for some boards (e.g. Sparkfun Pro Micro) DtrEnable may need to be true.
             _serialTransport = new SerialTransport
             {
-                CurrentSerialSettings = { PortName = Properties.Settings.Default.ArduinoPort    , BaudRate = 115200, DtrEnable = true } //instead of hard coded com port: Properties.Settings.Default.ArduinoPort
+                CurrentSerialSettings = { PortName = Properties.Settings.Default.ArduinoPort    , BaudRate = 9600, DtrEnable = true } //instead of hard coded com port: Properties.Settings.Default.ArduinoPort
             };
 
             // Initialize the command messenger with the Serial Port transport layer
@@ -743,6 +750,10 @@ namespace SAM4application
         {
 
             AppendToLog(@"soda button pressed");
+            if (SAMstate == SAMstates.idle)
+            {
+                makePayment();
+            }
         }
      
        
@@ -830,9 +841,9 @@ namespace SAM4application
 
         private void PrintReceiptOnPrintPage(object sender, PrintPageEventArgs e)
         {
-            int rightpoint = 330;
-            int leftpoint = 250;
-            int centerpoint = 250;
+            int rightpoint = 250;
+            int leftpoint = 0;
+            int centerpoint = 100;
 
             int fontsize = 9;
             int linedistance = (int)(2.1 * fontsize);
@@ -847,7 +858,7 @@ namespace SAM4application
             formatRight.Alignment = StringAlignment.Far;
 
             e.Graphics.RotateTransform(-180.0f);
-            e.Graphics.TranslateTransform(-rightpoint, -450);
+            e.Graphics.TranslateTransform(-rightpoint, -340);
 
             e.Graphics.DrawLine(linePen, 0, (int)(linedistance * -1), 500, (int)(linedistance * -1));
 
@@ -860,17 +871,18 @@ namespace SAM4application
             e.Graphics.DrawString("receipt No " + Properties.Settings.Default.ReceiptNo+"    "+ DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString(), ItalicFont, Brushes.Black, rect);
     
             float realPrice = price / 100f;
-            float taxPrice = realPrice * 0.06f;
+            float foreignPrice = realPrice * 0.86f;
+            float taxPrice = realPrice * 0.09f;
             float exclPrice = realPrice - taxPrice;
             AppendToLog(@"printing receipt " + exclPrice.ToString("€0.## + ") + taxPrice.ToString("€0.## =") + realPrice.ToString("€0.##"));
             rect = new RectangleF(0+leftpoint, linedistance * 6, rightpoint, linedistance);
-            e.Graphics.DrawString(exclPrice.ToString("€0.##")+ "     Cup SAM's kombucha", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString(exclPrice.ToString("€0.00")+ "     Cup SAM's kombucha", MainFont, Brushes.Black, rect);
             //e.Graphics.DrawString(exclPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
             rect = new RectangleF(0 + leftpoint, linedistance * 7, rightpoint, linedistance);
-            e.Graphics.DrawString(taxPrice.ToString("€0.##")+"     VAT 9% (NL)", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString(taxPrice.ToString("€0.00")+ "                    VAT 9% (NL)", MainFont, Brushes.Black, rect);
             //e.Graphics.DrawString(taxPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
             rect = new RectangleF(0 + leftpoint, linedistance * 9, rightpoint, linedistance);
-            e.Graphics.DrawString(realPrice.ToString("€0.##")+"     Total", MainFont, Brushes.Black, rect);
+            e.Graphics.DrawString(realPrice.ToString("€0.00")+ " (≈"+ foreignPrice.ToString("£0.00") + ")                 Total", MainFont, Brushes.Black, rect);
             //e.Graphics.DrawString(realPrice.ToString("€0.##"), MainFont, Brushes.Black, rect, formatRight);
 
             e.Graphics.DrawLine(linePen, 0, (int)(linedistance * 11), 500, (int)(linedistance * 11));
@@ -900,22 +912,22 @@ namespace SAM4application
                     secondLine = "towards my freedom.";
                     break;
             }
-            e.Graphics.DrawString(firstLine, BigFont, Brushes.Black, centerpoint, linedistance * 15, formatCenter);
-            e.Graphics.DrawString(secondLine, BigFont, Brushes.Black, centerpoint, linedistance * 16, formatCenter);
+            //e.Graphics.DrawString(firstLine, BigFont, Brushes.Black, centerpoint, linedistance * 15, formatCenter);
+            //e.Graphics.DrawString(secondLine, BigFont, Brushes.Black, centerpoint, linedistance * 16, formatCenter);
 
 
 
-            e.Graphics.DrawString("Rate your soda out of 5", MainFont, Brushes.Black, centerpoint, linedistance * 12, formatCenter);
-            e.Graphics.DrawString("on twitter @nonhumanSAM", MainFont, Brushes.Black, centerpoint, linedistance * 13, formatCenter);
-            e.Graphics.DrawString(firstLine, BigFont, Brushes.Black, centerpoint, linedistance * 15, formatCenter);
-            e.Graphics.DrawString(secondLine, BigFont, Brushes.Black, centerpoint, linedistance * 16, formatCenter);
+            //e.Graphics.DrawString("Rate your soda out of 5", MainFont, Brushes.Black, centerpoint, linedistance * 12, formatCenter);
+            //e.Graphics.DrawString("on twitter @nonhumanSAM", MainFont, Brushes.Black, centerpoint, linedistance * 13, formatCenter);
+            e.Graphics.DrawString(firstLine, BigFont, Brushes.Black, centerpoint, linedistance * 12, formatCenter);
+            e.Graphics.DrawString(secondLine, BigFont, Brushes.Black, centerpoint, linedistance * 13, formatCenter);
             //e.Graphics.DrawString("web: sam.nonhuman.club", ItalicFont, Brushes.Black, centerpoint, linedistance * 18, formatCenter);
             //e.Graphics.DrawString("email: sam@nonhuman.club", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 18.5), formatCenter);
-            e.Graphics.DrawString("towards a collaborative future", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 19.5), formatCenter);
-            e.Graphics.DrawString("for man and machine", ItalicFont, Brushes.Black, centerpoint, linedistance * 20, formatCenter);
+            e.Graphics.DrawString("Rate your soda out of 5", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 14), formatCenter);
+            e.Graphics.DrawString("on twitter @nonhumanSAM", ItalicFont, Brushes.Black, centerpoint, linedistance * 15, formatCenter);
 
-            e.Graphics.DrawString("a project by", MainFont, Brushes.Black, centerpoint, (int)(linedistance * 21.5), formatCenter);
-            e.Graphics.DrawString("www.arvidandmarie.com", MainFont, Brushes.Black, centerpoint, (int)(linedistance * 22.5), formatCenter);
+            e.Graphics.DrawString("a project by", MainFont, Brushes.Black, centerpoint, (int)(linedistance * 17), formatCenter);
+            e.Graphics.DrawString("www.arvidandmarie.com", MainFont, Brushes.Black, centerpoint, (int)(linedistance * 18), formatCenter);
 
         }
 

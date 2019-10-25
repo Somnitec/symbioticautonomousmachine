@@ -65,8 +65,14 @@
             this.statusLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.fakePayment = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.priceLabel = new System.Windows.Forms.Label();
+            this.interfaceImage = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.ReceiptNoNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LedBreathSpeedNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LedBreathMinNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -78,12 +84,11 @@
             this.PaymentOnOffCheckbox = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.PrintingCheckBox = new System.Windows.Forms.CheckBox();
-            this.priceLabel = new System.Windows.Forms.Label();
-            this.interfaceImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).BeginInit();
             this.interfacePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.priceAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReceiptNoNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathSpeedNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathMinNumericUpDown)).BeginInit();
@@ -92,7 +97,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tapMillisecondsNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).BeginInit();
             this.SuspendLayout();
             // 
             // logInButton
@@ -138,7 +142,7 @@
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
             this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.logTextBox.Size = new System.Drawing.Size(270, 437);
+            this.logTextBox.Size = new System.Drawing.Size(270, 533);
             this.logTextBox.TabIndex = 24;
             this.logTextBox.WordWrap = false;
             // 
@@ -278,7 +282,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(155, 440);
+            this.label3.Location = new System.Drawing.Point(156, 524);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(124, 13);
             this.label3.TabIndex = 36;
@@ -288,7 +292,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(-3, 427);
+            this.label4.Location = new System.Drawing.Point(-2, 511);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(170, 26);
             this.label4.TabIndex = 36;
@@ -387,6 +391,7 @@
             this.interfacePanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.interfacePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.interfacePanel.Controls.Add(this.manualOverrideLabel);
+            this.interfacePanel.Controls.Add(this.priceLabel);
             this.interfacePanel.Controls.Add(this.priceAmount);
             this.interfacePanel.Controls.Add(this.CloseProgramButton);
             this.interfacePanel.Controls.Add(this.statusLabel);
@@ -434,7 +439,7 @@
             this.interfacePanel.Controls.Add(this.logTextBox);
             this.interfacePanel.Location = new System.Drawing.Point(12, 82);
             this.interfacePanel.Name = "interfacePanel";
-            this.interfacePanel.Size = new System.Drawing.Size(577, 455);
+            this.interfacePanel.Size = new System.Drawing.Size(577, 551);
             this.interfacePanel.TabIndex = 43;
             // 
             // manualOverrideLabel
@@ -446,7 +451,7 @@
             this.manualOverrideLabel.Name = "manualOverrideLabel";
             this.manualOverrideLabel.Size = new System.Drawing.Size(201, 17);
             this.manualOverrideLabel.TabIndex = 46;
-            this.manualOverrideLabel.Text = "SAM4 MANUAL OVERRIDE";
+            this.manualOverrideLabel.Text = "SAM3 MANUAL OVERRIDE";
             // 
             // priceAmount
             // 
@@ -506,15 +511,6 @@
             this.fakePayment.UseVisualStyleBackColor = false;
             this.fakePayment.Click += new System.EventHandler(this.FakePayment_Click);
             // 
-            // textBox2
-            // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM4application.Properties.Settings.Default, "ArduinoPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBox2.Location = new System.Drawing.Point(170, 304);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(43, 20);
-            this.textBox2.TabIndex = 32;
-            this.textBox2.Text = global::SAM4application.Properties.Settings.Default.ArduinoPort;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -524,6 +520,71 @@
             this.label9.Size = new System.Drawing.Size(84, 13);
             this.label9.TabIndex = 16;
             this.label9.Text = "s wait for receipt";
+            // 
+            // priceLabel
+            // 
+            this.priceLabel.AutoSize = true;
+            this.priceLabel.Font = new System.Drawing.Font("Segoe MDL2 Assets", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceLabel.Location = new System.Drawing.Point(89, 451);
+            this.priceLabel.Name = "priceLabel";
+            this.priceLabel.Size = new System.Drawing.Size(158, 27);
+            this.priceLabel.TabIndex = 44;
+            this.priceLabel.Text = "1 EUR ≈ £0.86";
+            // 
+            // interfaceImage
+            // 
+            this.interfaceImage.Location = new System.Drawing.Point(2, 1);
+            this.interfaceImage.Name = "interfaceImage";
+            this.interfaceImage.Size = new System.Drawing.Size(590, 1024);
+            this.interfaceImage.TabIndex = 45;
+            this.interfaceImage.TabStop = false;
+            this.interfaceImage.Click += new System.EventHandler(this.InterfaceImage_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(-33, 518);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "username";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(-36, 557);
+            this.label10.Name = "label10";
+            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.TabIndex = 49;
+            this.label10.Text = "password";
+            // 
+            // textBox3
+            // 
+            this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM4application.Properties.Settings.Default, "sumupPass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox3.Location = new System.Drawing.Point(-30, 570);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(43, 20);
+            this.textBox3.TabIndex = 50;
+            this.textBox3.Text = global::SAM4application.Properties.Settings.Default.sumupPass;
+            // 
+            // textBox1
+            // 
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM4application.Properties.Settings.Default, "sumupUser", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox1.Location = new System.Drawing.Point(-23, 534);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(43, 20);
+            this.textBox1.TabIndex = 48;
+            this.textBox1.Text = global::SAM4application.Properties.Settings.Default.sumupUser;
+            // 
+            // textBox2
+            // 
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM4application.Properties.Settings.Default, "ArduinoPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox2.Location = new System.Drawing.Point(170, 304);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(43, 20);
+            this.textBox2.TabIndex = 32;
+            this.textBox2.Text = global::SAM4application.Properties.Settings.Default.ArduinoPort;
             // 
             // ReceiptNoNumericUpDown
             // 
@@ -707,25 +768,6 @@
             this.PrintingCheckBox.Text = "Printing on/off";
             this.PrintingCheckBox.UseVisualStyleBackColor = true;
             // 
-            // priceLabel
-            // 
-            this.priceLabel.AutoSize = true;
-            this.priceLabel.Font = new System.Drawing.Font("Segoe MDL2 Assets", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceLabel.Location = new System.Drawing.Point(201, 552);
-            this.priceLabel.Name = "priceLabel";
-            this.priceLabel.Size = new System.Drawing.Size(204, 27);
-            this.priceLabel.TabIndex = 44;
-            this.priceLabel.Text = "1 EUR ≈ 7.50 DKK ";
-            // 
-            // interfaceImage
-            // 
-            this.interfaceImage.Location = new System.Drawing.Point(2, 1);
-            this.interfaceImage.Name = "interfaceImage";
-            this.interfaceImage.Size = new System.Drawing.Size(590, 1024);
-            this.interfaceImage.TabIndex = 45;
-            this.interfaceImage.TabStop = false;
-            this.interfaceImage.Click += new System.EventHandler(this.InterfaceImage_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -733,8 +775,11 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(604, 985);
-            this.Controls.Add(this.priceLabel);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.interfacePanel);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.switchInterface);
             this.Controls.Add(this.interfaceImage);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -750,6 +795,7 @@
             this.interfacePanel.ResumeLayout(false);
             this.interfacePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.priceAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReceiptNoNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathSpeedNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LedBreathMinNumericUpDown)).EndInit();
@@ -758,7 +804,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tapMillisecondsNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -816,6 +861,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.Label manualOverrideLabel;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

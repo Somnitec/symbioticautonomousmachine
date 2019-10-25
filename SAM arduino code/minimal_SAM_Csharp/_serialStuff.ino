@@ -22,7 +22,7 @@ enum
 
 
 void setupSerial() {
-  Serial.begin(115200);
+  Serial.begin(9600);
    while (!Serial) {
     ; // leonardo fix
    }
@@ -32,7 +32,7 @@ void setupSerial() {
   // Attach my application's user-defined callback methods
   attachCommandCallbacks();
 
-  cmdMessenger.sendCmd(kAcknowledge, "Arduino has started!");
+  cmdMessenger.sendCmd(kAcknowledge, F("Arduino has started!"));
 }
 
 unsigned long serialTimer = 0;
@@ -53,11 +53,9 @@ void attachCommandCallbacks()
   cmdMessenger.attach(kTestTap, OnTestTap);
   cmdMessenger.attach(kTestLeds, OnTestLeds);
   cmdMessenger.attach(kPumpTap, OnPumpTap);
-  cmdMessenger.attach(kSodaButtonPressed, OnSodaButtonPressed);
-  cmdMessenger.attach(kTapAmount, OnTapAmount);
-  cmdMessenger.attach(kSetLedBreathSpeed, OnSetLedBreathSpeed);
-  cmdMessenger.attach(kSetLedBreathMax, OnSetLedBreathMax);
-  cmdMessenger.attach(kSetLedBreathMin, OnSetLedBreathMin);
+  //cmdMessenger.attach(kSetLedBreathSpeed, OnSetLedBreathSpeed);
+  //cmdMessenger.attach(kSetLedBreathMax, OnSetLedBreathMax);
+  //cmdMessenger.attach(kSetLedBreathMin, OnSetLedBreathMin);
   cmdMessenger.attach(kSetLedState, OnSetLedState);
   cmdMessenger.attach(kPumpTapMilliseconds, OnPumpTapMilliseconds);
 
@@ -66,7 +64,7 @@ void attachCommandCallbacks()
 // Called when a received command has no attached function
 void OnUnknownCommand()
 {
-  cmdMessenger.sendCmd(kError, "Command without attached callback");
+  cmdMessenger.sendCmd(kError, F("Command without attached callback"));
 }
 
 void OnReset()
@@ -86,20 +84,20 @@ void OnTestArduino()
 void OnTestTap()
 {
 
-  cmdMessenger.sendCmd(kTestTap, "tapping now mL->");
+  cmdMessenger.sendCmd(kTestTap, F("test tap ->"));
   cmdMessenger.sendCmd(kTestTap, cmdMessenger.readInt16Arg());
   blinkLed(5);
-  cmdMessenger.sendCmd(kTestTap, "tapping done");
+  cmdMessenger.sendCmd(kTestTap, F("not implemented"));
 }
 
 void OnTestLeds()
 {
   bool value = cmdMessenger.readBoolArg();
   if (value == true) {
-    cmdMessenger.sendCmd(kTestLeds, "led stest starting");
+    cmdMessenger.sendCmd(kTestLeds, F("led stest starting"));
     stateNow = testing;
   } else if (value == false) {
-    cmdMessenger.sendCmd(kTestLeds, "led stest stopped");
+    cmdMessenger.sendCmd(kTestLeds, F("led stest stopped"));
     stateNow = idle;
   }
 
@@ -109,11 +107,12 @@ void OnPumpTap()
 {
   bool value = cmdMessenger.readBoolArg();
   if (value == true) {
-    cmdMessenger.sendCmd(kPumpTap, "turning on tap");
+    cmdMessenger.sendCmd(kPumpTap, F("turning on tap"));
     //waterFlow = 0;
     tapTimer = 0;
   } else if (value == false) {
     //cmdMessenger.sendCmd(kPumpTap, waterFlow);
+    cmdMessenger.sendCmd(kPumpTap, F("turning off tap"));
     cmdMessenger.sendCmd(kPumpTap, tapTimer);
 
   }
@@ -128,12 +127,6 @@ void OnSodaButtonPressed()
 }
 
 
-void OnTapAmount()
-{
-
-  cmdMessenger.sendCmd(kTapAmount, "tapping now mL->");
- 
-}
 
 void OnSetLedBreathSpeed()
 {
@@ -167,25 +160,13 @@ void OnPumpTapMilliseconds() {
   nowTappingMilliseconds = true;
   tapAmountMilliseconds = cmdMessenger.readInt16Arg();
 
-  cmdMessenger.sendCmd(kPumpTapMilliseconds, "tapping now ms->");
+  cmdMessenger.sendCmd(kPumpTapMilliseconds, F("tapping now ms->"));
   cmdMessenger.sendCmd(kPumpTapMilliseconds, tapAmountMilliseconds);
-  
-  //cmdMessenger.sendCmd(kPumpTapMilliseconds, "waiting for cup");
-  //cupSwitch.update();
-  //while (cupSwitch.read() == false) {
-  /*
-  while (digitalRead(cuppin) == false) {
-    //cupSwitch.update();
-    //cmdMessenger.sendCmd(kPumpTapMilliseconds, cupSwitch.read());
-    cmdMessenger.sendCmd(kPumpTapMilliseconds, digitalRead(cuppin));
-    delay(100);
-  }
-  cmdMessenger.sendCmd(kPumpTapMilliseconds, "cup placed, waiting a short moment");
-  */
-  //delay(2000);
-  //cmdMessenger.sendCmd(kPumpTapMilliseconds, "pumping");
+  //delay(100);
   digitalWrite(pumppin, HIGH);
-  delay(tapAmountMilliseconds);
+  //delay(3000);
+  delay(tapAmountMilliseconds+100);//100 as a little buffer
   digitalWrite(pumppin, LOW);
-  cmdMessenger.sendCmd(kPumpTapMilliseconds, "done tapping");
+  //delay(100);
+  cmdMessenger.sendCmd(kPumpTapMilliseconds, F("done tapping"));
 }

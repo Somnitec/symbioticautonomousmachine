@@ -34,31 +34,35 @@ void ledStuff() {
     else if (stateNow == waitingForPayment) {
 
       //analogWrite(buttonledpin, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
-      
+      buttonled[0] = CHSV(100, 255, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
+      FastLED.show();
     }//pumping state
     else if (stateNow == waitingForTapping) {
+      buttonled[0] = CHSV(100, 255, fmap(sin(ledPos * 15 + (6 * PI) / 3), -1, 1, 50, 255));
+      FastLED.show();
 
-    
     }//error state
     else if (stateNow == error) {
-      //analogWrite(buttonledpin, 255);
-     
+      buttonled[0] = CRGB::Red;
+      FastLED.show();
       delay(blinkOnTime);
       //analogWrite(buttonledpin, 0);
-    
+      buttonled[0] = CRGB::Black;
+      FastLED.show();
       delay(blinkOffTime);
-      //ledState = 0;
     }
     //test state
     else if (stateNow == testing) {
       int pins[] = {led1pin, led2pin};
       for (int i = 0; i < 2; i++) {
-      
+        buttonled[0] = CHSV(random(255), 255, 255);
+        FastLED.show();
         digitalWrite(pins[i], HIGH);
-        delay(100);
-        
+        delay(500);
+        buttonled[0] = CRGB::Black;
+        FastLED.show();
         digitalWrite(pins[i], LOW);
-        delay(100);
+        delay(500);
       }
     }
   }
@@ -67,15 +71,16 @@ void ledStuff() {
 void breath() {
   analogWrite(led1pin, fmap(sin(ledPos), -1, 1, ledBreathMin, ledBreathMax));
   analogWrite(led2pin, fmap(sin(ledPos + PI / 3), -1, 1, ledBreathMin, ledBreathMax));
-  
+  buttonled[0] = CHSV(255, 0, fmap(sin(ledPos + (2 * PI) / 3), -1, 1, ledBreathMin, 255));
+  FastLED.show();
 }
 
 void blinkLed(int amount) {
   int blinkTime = 200;
   for (int i = 0; i < amount; i++ ) {
-    digitalWrite(statusLedPin, HIGH);
-    delay(blinkTime);
     digitalWrite(statusLedPin, LOW);
+    delay(blinkTime);
+    digitalWrite(statusLedPin, HIGH);
     delay(blinkTime);
   }
 

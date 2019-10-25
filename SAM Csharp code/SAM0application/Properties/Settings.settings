@@ -47,5 +47,11 @@
     <Setting Name="receiptTimeout" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">5</Value>
     </Setting>
+    <Setting Name="sumupUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">USR</Value>
+    </Setting>
+    <Setting Name="sumupPass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PASS</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
