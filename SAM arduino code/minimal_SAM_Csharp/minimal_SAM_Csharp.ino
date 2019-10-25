@@ -6,13 +6,13 @@ CRGB buttonled[1];
 
 CmdMessenger cmdMessenger = CmdMessenger(Serial);
 
-#define pumppin 7
+#define pumppin 2
 #define led1pin 5
 #define led2pin 10
 #define buttonPin 3
 #define buttonledpin 6
 #define buttonledvcc 4
-#define coinPin 2
+#define coinPin 100
 
 #define statusLedPin 13
 
