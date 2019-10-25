@@ -184,8 +184,8 @@ void OnPumpTapMilliseconds() {
   */
   //delay(2000);
   //cmdMessenger.sendCmd(kPumpTapMilliseconds, "pumping");
-  analogWrite(pumppin, 255);
+  digitalWrite(pumppin, HIGH);
   delay(tapAmountMilliseconds);
-  analogWrite(pumppin, 0);
+  digitalWrite(pumppin, LOW);
   cmdMessenger.sendCmd(kPumpTapMilliseconds, "done tapping");
 }

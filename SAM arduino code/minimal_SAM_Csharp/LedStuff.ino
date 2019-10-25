@@ -51,8 +51,8 @@ void ledStuff() {
     }
     //test state
     else if (stateNow == testing) {
-      int pins[] = {led1pin, led2pin,led3pin};
-      for (int i = 0; i < 3; i++) {
+      int pins[] = {led1pin, led2pin};
+      for (int i = 0; i < 2; i++) {
       
         digitalWrite(pins[i], HIGH);
         delay(100);
@@ -67,7 +67,6 @@ void ledStuff() {
 void breath() {
   analogWrite(led1pin, fmap(sin(ledPos), -1, 1, ledBreathMin, ledBreathMax));
   analogWrite(led2pin, fmap(sin(ledPos + PI / 3), -1, 1, ledBreathMin, ledBreathMax));
-   analogWrite(led3pin, fmap(sin(ledPos + TWO_PI / 3), -1, 1, ledBreathMin, ledBreathMax));
   
 }
 

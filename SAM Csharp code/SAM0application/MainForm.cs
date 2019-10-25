@@ -658,7 +658,7 @@ namespace SAM4application
             // Note that for some boards (e.g. Sparkfun Pro Micro) DtrEnable may need to be true.
             _serialTransport = new SerialTransport
             {
-                CurrentSerialSettings = { PortName = Properties.Settings.Default.ArduinoPort, BaudRate = 115200, DtrEnable = true } // object initializer
+                CurrentSerialSettings = { PortName = Properties.Settings.Default.ArduinoPort    , BaudRate = 115200, DtrEnable = true } //instead of hard coded com port: Properties.Settings.Default.ArduinoPort
             };
 
             // Initialize the command messenger with the Serial Port transport layer
