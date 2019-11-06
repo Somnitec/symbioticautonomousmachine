@@ -6,7 +6,7 @@
 
 CmdMessenger cmdMessenger = CmdMessenger(Serial);
 
-#define pump1pin 0
+#define pump1pin 5
 #define pump2pin 1
 #define pump3pin 2
 #define led1pin 3

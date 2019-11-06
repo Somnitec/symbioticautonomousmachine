@@ -88,8 +88,8 @@ void OnNEWreset() {
 
 }
 void OnNEWbuttonPress() {
-//send buttonpress
-//1    waitingforpaymentstate
+  //send buttonpress
+  //1    waitingforpaymentstate
 
   cmdMessenger.sendCmd(kNEWbuttonPress);
   stateNow = 1;
@@ -103,7 +103,7 @@ void OnNEWcoinWait() {
   while (coinValue < coindDesired) {
     cmdMessenger.sendCmd(kTestArduino, String("now ").concat(coinValue).concat(String(" desired")).concat(coindDesired));
     delay(100);
-    }
+  }
   cmdMessenger.sendCmd(kNEWpaymentCompleted);
 
   //receive coinwait
@@ -125,15 +125,18 @@ void OnNEWtappingMS() {
 
   int waittime = cmdMessenger.readInt16Arg();
   cmdMessenger.sendCmd(kTestArduino, String("waiting  ").concat(waittime).concat(String(" ms")));
-    
+
   stateNow = 2;
+  digitalWrite(led1pin, LOW);
+  digitalWrite(led2pin, LOW);
+  digitalWrite(led3pin, LOW);
   delay(500);//?
   digitalWrite(pump1pin, HIGH);
   delay(waittime );
   digitalWrite(pump1pin, LOW);
   delay(500);//?
   stateNow = 0;
-  _softRestart;
+  _softRestart();
 }
 void OnNEWtesttap() {
 
@@ -242,6 +245,10 @@ void OnSetLedState()
 }
 
 void OnPumpTapMilliseconds() {
+  digitalWrite(led1pin, LOW);
+  digitalWrite(led2pin, LOW);
+  digitalWrite(led3pin, LOW);
+  delay(100);
   waterFlow = 0;
   nowTappingMilliseconds = true;
   tapAmountMilliseconds = cmdMessenger.readInt16Arg();
@@ -253,6 +260,7 @@ void OnPumpTapMilliseconds() {
   //    analogWrite(pump1pin, fadeValue);
   //    delay(1000 / 255);
   //  }
+  
   digitalWrite(pump1pin, HIGH);
   delay(tapAmountMilliseconds ); //simplfied the shit
   //CPU_RESTART;
@@ -267,13 +275,15 @@ void OnPumpTapMilliseconds() {
   //Serial.end();
   //Serial.begin(115200);
   //cmdMessenger.sendCmd(kTapSucceeded, "all done");
+  
+  _softRestart();
   cmdMessenger.sendCmd(kTestArduino, String("DONE!with this tapping"));
-/*
-  coinValue = 0;
-  cmdMessenger.sendCmd(kCoinAmount, coinValue);
+  /*
+    coinValue = 0;
+    cmdMessenger.sendCmd(kCoinAmount, coinValue);
 
-  attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
-*/
+    attachInterrupt(digitalPinToInterrupt(11), coinInterrupt , FALLING);
+  */
 
 }
 

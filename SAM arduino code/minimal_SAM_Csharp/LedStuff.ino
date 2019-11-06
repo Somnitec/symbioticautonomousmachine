@@ -5,11 +5,11 @@
 //4=cup full, printing note, sends back '0' to ack
 
 
- #define  idle 0
- #define  waitingForPayment 1
- #define  waitingForTapping 2 
- #define  error 3 
- #define  testing 4
+#define  idle 0
+#define  waitingForPayment 1
+#define  waitingForTapping 2
+#define  error 3
+#define  testing 4
 
 
 unsigned long ledTimer = 0;
@@ -19,41 +19,48 @@ float ledPos = 0;
 void ledStuff() {
   unsigned long currentMillis = millis();
   if (currentMillis - ledTimer >= ledUpdateTime) {
-    ledTimer = currentMillis;
-    ledPos += ledBreathSpeed;
-    if (ledPos > TWO_PI)ledPos -= TWO_PI;
-    breath();
-
-    //idle state
-    if (stateNow == idle) {
-
-       analogWrite(buttonledpin, fmap(sin(ledPos + (4 * PI) / 3), -1, 1, 100, 255));
-
-    }//waiting for payment state
-    else if (stateNow == waitingForPayment) {
-
-      analogWrite(buttonledpin, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
-
-    }//pumping state
-    else if (stateNow == waitingForTapping) {
-
-      analogWrite(buttonledpin, fmap(sin(ledPos * 15 + (6 * PI) / 3), -1, 1, 50, 255));
-
-    }//error state
-    else if (stateNow == error) {
-      analogWrite(buttonledpin, 255);
-      delay(blinkOnTime);
-      analogWrite(buttonledpin, 0);
-       delay(blinkOffTime);
-      //ledState = 0;
+    if (nowTappingMilliseconds) {
+      digitalWrite(led1pin, LOW);
+      digitalWrite(led2pin, LOW);
+      digitalWrite(led3pin, LOW);
     }
-    //test state
-    else if (stateNow == testing) {
-      int pins[] = {led1pin, led2pin, led3pin, buttonledpin};
-      for (int i = 0; i < 4; i++) {
-        digitalWrite(pins[i], HIGH);
-        delay(100);
-        digitalWrite(pins[i], LOW);
+    else {
+      ledTimer = currentMillis;
+      ledPos += ledBreathSpeed;
+      if (ledPos > TWO_PI)ledPos -= TWO_PI;
+      breath();
+
+      //idle state
+      if (stateNow == idle) {
+
+        analogWrite(buttonledpin, fmap(sin(ledPos + (4 * PI) / 3), -1, 1, 100, 255));
+
+      }//waiting for payment state
+      else if (stateNow == waitingForPayment) {
+
+        analogWrite(buttonledpin, fmap(sin(ledPos * 4 + (6 * PI) / 3), -1, 1, 50, 255));
+
+      }//pumping state
+      else if (stateNow == waitingForTapping) {
+
+        analogWrite(buttonledpin, fmap(sin(ledPos * 15 + (6 * PI) / 3), -1, 1, 50, 255));
+
+      }//error state
+      else if (stateNow == error) {
+        analogWrite(buttonledpin, 255);
+        delay(blinkOnTime);
+        analogWrite(buttonledpin, 0);
+        delay(blinkOffTime);
+        //ledState = 0;
+      }
+      //test state
+      else if (stateNow == testing) {
+        int pins[] = {led1pin, led2pin, led3pin, buttonledpin};
+        for (int i = 0; i < 4; i++) {
+          digitalWrite(pins[i], HIGH);
+          delay(100);
+          digitalWrite(pins[i], LOW);
+        }
       }
     }
   }

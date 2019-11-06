@@ -56,7 +56,7 @@
             this.priceLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.priceLabel.AutoSize = true;
             this.priceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F);
-            this.priceLabel.Location = new System.Drawing.Point(4, 324);
+            this.priceLabel.Location = new System.Drawing.Point(-5, 324);
             this.priceLabel.Name = "priceLabel";
             this.priceLabel.Size = new System.Drawing.Size(607, 91);
             this.priceLabel.TabIndex = 5;
@@ -68,7 +68,7 @@
             this.interfaceText.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.interfaceText.AutoSize = true;
             this.interfaceText.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold);
-            this.interfaceText.Location = new System.Drawing.Point(-190, 0);
+            this.interfaceText.Location = new System.Drawing.Point(-199, 0);
             this.interfaceText.Margin = new System.Windows.Forms.Padding(0);
             this.interfaceText.MaximumSize = new System.Drawing.Size(700, 1280);
             this.interfaceText.MinimumSize = new System.Drawing.Size(700, 1280);
@@ -84,7 +84,7 @@
             this.priceLabelChinese.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.priceLabelChinese.AutoSize = true;
             this.priceLabelChinese.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F);
-            this.priceLabelChinese.Location = new System.Drawing.Point(-180, 527);
+            this.priceLabelChinese.Location = new System.Drawing.Point(-189, 527);
             this.priceLabelChinese.MinimumSize = new System.Drawing.Size(1000, 0);
             this.priceLabelChinese.Name = "priceLabelChinese";
             this.priceLabelChinese.Size = new System.Drawing.Size(1000, 91);
@@ -116,7 +116,7 @@
             this.arrowBox.BackColor = System.Drawing.Color.Transparent;
             this.arrowBox.Image = global::SAM1application.Properties.Resources.arrow;
             this.arrowBox.InitialImage = global::SAM1application.Properties.Resources.arrow;
-            this.arrowBox.Location = new System.Drawing.Point(91, 252);
+            this.arrowBox.Location = new System.Drawing.Point(82, 252);
             this.arrowBox.MaximumSize = new System.Drawing.Size(100, 100);
             this.arrowBox.Name = "arrowBox";
             this.arrowBox.Size = new System.Drawing.Size(100, 100);
@@ -140,7 +140,7 @@
             this.Controls.Add(this.arrowBox);
             this.Controls.Add(this.interfaceText);
             this.Name = "UserInterface";
-            this.Text = "UserInterface";
+            this.Text = " ";
             ((System.ComponentModel.ISupportInitialize)(this.gif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowBox)).EndInit();
