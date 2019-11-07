@@ -117,4 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+<<<<<<< HEAD
+<<<<<<<< HEAD:SAM Csharp code/SAM1application/UserInterface.resx
+========
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+>>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/Properties/Resources.resx
+=======
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
 </root>

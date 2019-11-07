@@ -6,7 +6,11 @@
 
 CmdMessenger cmdMessenger = CmdMessenger(Serial);
 
+<<<<<<< HEAD
 #define pump1pin 5
+=======
+#define pump1pin 0
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
 #define pump2pin 1
 #define pump3pin 2
 #define led1pin 3
@@ -21,7 +25,11 @@ CmdMessenger cmdMessenger = CmdMessenger(Serial);
 #define weightclock 5
 #define weight1pin 7
 #define weight2pin 8
+<<<<<<< HEAD
 #define coinPin 11 //last minute hack change
+=======
+#define weight3pin 11
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
 #define weight4pin 12
 #define servo1pin 23
 #define servo2pin 22
@@ -32,9 +40,14 @@ CmdMessenger cmdMessenger = CmdMessenger(Serial);
 #define pHpin 21
 #define cuppin 25
 #define gaspin 24
+<<<<<<< HEAD
 
 #define statusLedPin 13
+=======
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
 
+#define statusLedPin 13
+ 
 volatile double waterFlow = 0;
 
 #define  buttonUpdateTime 1//ms
@@ -62,10 +75,17 @@ boolean nowTapping = false;
 int tapAmount = 0;
 
 boolean nowTappingMilliseconds = false;
+<<<<<<< HEAD
 unsigned int tapAmountMilliseconds = 0;
 elapsedMillis tapTimer = 0;
+=======
+int tapAmountMilliseconds = 0;
+elapsedMillis tapTimer =0;
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
 
+//printing
 
+<<<<<<< HEAD
 int coinDebounce = 100;
 elapsedMillis coinTimer;
 bool coinEnabled = true;
@@ -79,10 +99,17 @@ Bounce sodaButton = Bounce();
 void setup()
 {
   stateNow = 0;
+=======
+
+Bounce sodaButton = Bounce();
+void setup()
+{
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
   //improving PWM speed
   //ideal speed is = ??
 
 
+<<<<<<< HEAD
 
 
   setupSerial();
@@ -98,6 +125,17 @@ void setup()
   pinMode(led2pin, OUTPUT);
   pinMode(led3pin, OUTPUT);
 
+=======
+  setupSerial();
+
+  pinMode(statusLedPin, OUTPUT);
+  digitalWrite(statusLedPin,HIGH);
+
+  pinMode(led1pin, OUTPUT);
+  pinMode(led2pin, OUTPUT);
+  pinMode(led3pin, OUTPUT);
+
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
   pinMode(buttonpin, INPUT_PULLUP);
   pinMode(buttonledpin, OUTPUT);
   sodaButton.attach(buttonpin);
@@ -105,6 +143,7 @@ void setup()
 
   pinMode(pump1pin, OUTPUT);
 
+<<<<<<< HEAD
   //attachInterrupt(flowsensor1pin, flowSensor, RISING); //flowsensor setup
 
   pinMode(servo1pin, OUTPUT);
@@ -115,6 +154,18 @@ void setup()
   digitalWrite( servo2pin, LOW);
   digitalWrite( servo3pin, LOW);
   digitalWrite( servo4pin, LOW);
+=======
+  attachInterrupt(flowsensor1pin, flowSensor, RISING); //flowsensor setup
+
+ pinMode(servo1pin, OUTPUT);
+ pinMode( servo2pin, OUTPUT);
+ pinMode( servo3pin, OUTPUT);
+ pinMode( servo4pin, OUTPUT);
+  digitalWrite(servo1pin, LOW);
+ digitalWrite( servo2pin, LOW);
+ digitalWrite( servo3pin, LOW);
+ digitalWrite( servo4pin, LOW);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
 
   //blinkLed(3);
 }

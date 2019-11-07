@@ -6,8 +6,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5D0F9A6A-580C-4BBE-8DCD-401308332285}</ProjectGuid>
     <OutputType>WinExe</OutputType>
+<<<<<<< HEAD:SAM Csharp code/SAM1application/SAM1application.csproj
     <RootNamespace>SAM1application</RootNamespace>
     <AssemblyName>SAM1application</AssemblyName>
+=======
+    <RootNamespace>SAM0application</RootNamespace>
+    <AssemblyName>SAM0application</AssemblyName>
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/SAM0application.csproj
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -58,16 +63,27 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
+<<<<<<< HEAD:SAM Csharp code/SAM1application/SAM1application.csproj
     <ManifestCertificateThumbprint>0400F220517C28E0C0696E4FA3DCDD6F77703213</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>SAM1application_1_TemporaryKey.pfx</ManifestKeyFile>
+=======
+    <ManifestCertificateThumbprint>E4C24736DA4907F0CB96CD775A1C9E8BEFC109E3</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SAM0application_TemporaryKey.pfx</ManifestKeyFile>
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/SAM0application.csproj
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
+<<<<<<< HEAD:SAM Csharp code/SAM1application/SAM1application.csproj
     <SignManifests>false</SignManifests>
+=======
+    <SignManifests>true</SignManifests>
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/SAM0application.csproj
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -129,6 +145,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SAM0application_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -143,7 +160,21 @@
       <Name>CommandMessenger</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+<<<<<<< HEAD:SAM Csharp code/SAM1application/SAM1application.csproj
     <None Include="Resources\giffy.gif" />
     <None Include="Resources\samp2.jpg" />
     <None Include="Resources\sam2p1.gif" />
@@ -162,6 +193,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+=======
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/SAM0application.csproj
     <None Include="Resources\arrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -81,7 +81,10 @@
             this.PrintingCheckBox = new System.Windows.Forms.CheckBox();
             this.AmountText = new System.Windows.Forms.TextBox();
             this.testTapMsButton = new System.Windows.Forms.Button();
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.coinTestButton = new System.Windows.Forms.Button();
+=======
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).BeginInit();
@@ -114,7 +117,11 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Location = new System.Drawing.Point(12, 126);
             this.panel4.Name = "panel4";
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.panel4.Size = new System.Drawing.Size(564, 1);
+=======
+            this.panel4.Size = new System.Drawing.Size(772, 1);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.panel4.TabIndex = 8;
             // 
             // statusStrip
@@ -124,7 +131,11 @@
             this.statusStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 406);
             this.statusStrip.Name = "statusStrip";
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.statusStrip.Size = new System.Drawing.Size(588, 22);
+=======
+            this.statusStrip.Size = new System.Drawing.Size(796, 22);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.statusStrip.TabIndex = 9;
             // 
             // statusStripProgressBar
@@ -137,7 +148,11 @@
             // statusStripStatusLabel
             // 
             this.statusStripStatusLabel.Name = "statusStripStatusLabel";
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.statusStripStatusLabel.Size = new System.Drawing.Size(471, 17);
+=======
+            this.statusStripStatusLabel.Size = new System.Drawing.Size(679, 17);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.statusStripStatusLabel.Spring = true;
             this.statusStripStatusLabel.Text = "Status text";
             this.statusStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -172,7 +187,11 @@
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
             this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.logTextBox.Size = new System.Drawing.Size(232, 267);
+=======
+            this.logTextBox.Size = new System.Drawing.Size(440, 267);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.logTextBox.TabIndex = 24;
             this.logTextBox.WordWrap = false;
             // 
@@ -279,7 +298,11 @@
             // label12
             // 
             this.label12.AutoSize = true;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.label12.Location = new System.Drawing.Point(323, 89);
+=======
+            this.label12.Location = new System.Drawing.Point(241, 173);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(51, 13);
             this.label12.TabIndex = 16;
@@ -288,7 +311,11 @@
             // label13
             // 
             this.label13.AutoSize = true;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.label13.Location = new System.Drawing.Point(245, 224);
+=======
+            this.label13.Location = new System.Drawing.Point(241, 198);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(38, 13);
             this.label13.TabIndex = 16;
@@ -297,7 +324,11 @@
             // label14
             // 
             this.label14.AutoSize = true;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.label14.Location = new System.Drawing.Point(243, 317);
+=======
+            this.label14.Location = new System.Drawing.Point(243, 291);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(54, 13);
             this.label14.TabIndex = 16;
@@ -306,7 +337,11 @@
             // label15
             // 
             this.label15.AutoSize = true;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.label15.Location = new System.Drawing.Point(241, 342);
+=======
+            this.label15.Location = new System.Drawing.Point(241, 316);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(101, 13);
             this.label15.TabIndex = 16;
@@ -316,7 +351,11 @@
             // label16
             // 
             this.label16.AutoSize = true;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.label16.Location = new System.Drawing.Point(253, 388);
+=======
+            this.label16.Location = new System.Drawing.Point(253, 362);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(84, 13);
             this.label16.TabIndex = 16;
@@ -325,7 +364,11 @@
             // label17
             // 
             this.label17.AutoSize = true;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.label17.Location = new System.Drawing.Point(243, 410);
+=======
+            this.label17.Location = new System.Drawing.Point(243, 384);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(65, 13);
             this.label17.TabIndex = 16;
@@ -344,7 +387,11 @@
             // label18
             // 
             this.label18.AutoSize = true;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.label18.Location = new System.Drawing.Point(246, 249);
+=======
+            this.label18.Location = new System.Drawing.Point(242, 223);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(41, 13);
             this.label18.TabIndex = 16;
@@ -404,7 +451,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.label5.Location = new System.Drawing.Point(241, 366);
+=======
+            this.label5.Location = new System.Drawing.Point(241, 340);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 13);
             this.label5.TabIndex = 16;
@@ -412,7 +463,11 @@
             // 
             // ledStateNumericUpDown
             // 
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.ledStateNumericUpDown.Location = new System.Drawing.Point(20, 333);
+=======
+            this.ledStateNumericUpDown.Location = new System.Drawing.Point(20, 307);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.ledStateNumericUpDown.Name = "ledStateNumericUpDown";
             this.ledStateNumericUpDown.Size = new System.Drawing.Size(51, 20);
             this.ledStateNumericUpDown.TabIndex = 37;
@@ -421,7 +476,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.label6.Location = new System.Drawing.Point(73, 335);
+=======
+            this.label6.Location = new System.Drawing.Point(73, 309);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 38;
@@ -430,7 +489,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.label7.Location = new System.Drawing.Point(88, 71);
+=======
+            this.label7.Location = new System.Drawing.Point(73, 335);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 13);
             this.label7.TabIndex = 40;
@@ -438,7 +501,11 @@
             // 
             // interfaceStateNumericUpDown
             // 
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.interfaceStateNumericUpDown.Location = new System.Drawing.Point(91, 48);
+=======
+            this.interfaceStateNumericUpDown.Location = new System.Drawing.Point(20, 333);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.interfaceStateNumericUpDown.Name = "interfaceStateNumericUpDown";
             this.interfaceStateNumericUpDown.Size = new System.Drawing.Size(51, 20);
             this.interfaceStateNumericUpDown.TabIndex = 39;
@@ -447,7 +514,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.label8.Location = new System.Drawing.Point(43, 21);
+=======
+            this.label8.Location = new System.Drawing.Point(253, 139);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 13);
             this.label8.TabIndex = 16;
@@ -474,8 +545,13 @@
             // 
             // textBox2
             // 
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM1application.Properties.Settings.Default, "ArduinoPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBox2.Location = new System.Drawing.Point(201, 407);
+=======
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SAM0application.Properties.Settings.Default, "ArduinoPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox2.Location = new System.Drawing.Point(201, 381);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(43, 20);
             this.textBox2.TabIndex = 32;
@@ -483,8 +559,13 @@
             // 
             // ReceiptNoNumericUpDown
             // 
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.ReceiptNoNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "ReceiptNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ReceiptNoNumericUpDown.Location = new System.Drawing.Point(201, 315);
+=======
+            this.ReceiptNoNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "ReceiptNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ReceiptNoNumericUpDown.Location = new System.Drawing.Point(201, 289);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.ReceiptNoNumericUpDown.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -505,7 +586,11 @@
             0,
             0,
             196608});
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.LedBreathSpeedNumericUpDown.Location = new System.Drawing.Point(201, 386);
+=======
+            this.LedBreathSpeedNumericUpDown.Location = new System.Drawing.Point(201, 360);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.LedBreathSpeedNumericUpDown.Maximum = new decimal(new int[] {
             200,
             0,
@@ -519,8 +604,13 @@
             // 
             // LedBreathMinNumericUpDown
             // 
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.LedBreathMinNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "ledBrightnessMin", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.LedBreathMinNumericUpDown.Location = new System.Drawing.Point(201, 364);
+=======
+            this.LedBreathMinNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "ledBrightnessMin", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.LedBreathMinNumericUpDown.Location = new System.Drawing.Point(201, 338);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.LedBreathMinNumericUpDown.Maximum = new decimal(new int[] {
             255,
             0,
@@ -534,8 +624,13 @@
             // 
             // LedBreathMaxNumericUpDown
             // 
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.LedBreathMaxNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "LEDbrightnessMax", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.LedBreathMaxNumericUpDown.Location = new System.Drawing.Point(201, 340);
+=======
+            this.LedBreathMaxNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "LEDbrightnessMax", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.LedBreathMaxNumericUpDown.Location = new System.Drawing.Point(201, 314);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.LedBreathMaxNumericUpDown.Maximum = new decimal(new int[] {
             255,
             0,
@@ -549,13 +644,21 @@
             // 
             // tapMillisecondsNumericUpDown
             // 
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.tapMillisecondsNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "tapMilliseconds", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+=======
+            this.tapMillisecondsNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "tapMilliseconds", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.tapMillisecondsNumericUpDown.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.tapMillisecondsNumericUpDown.Location = new System.Drawing.Point(-1, 21);
+=======
+            this.tapMillisecondsNumericUpDown.Location = new System.Drawing.Point(201, 137);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.tapMillisecondsNumericUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -565,7 +668,11 @@
             this.tapMillisecondsNumericUpDown.Size = new System.Drawing.Size(54, 20);
             this.tapMillisecondsNumericUpDown.TabIndex = 31;
             this.tapMillisecondsNumericUpDown.ThousandsSeparator = true;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.tapMillisecondsNumericUpDown.Value = global::SAM1application.Properties.Settings.Default.tapMilliseconds;
+=======
+            this.tapMillisecondsNumericUpDown.Value = global::SAM0application.Properties.Settings.Default.tapMilliseconds;
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.tapMillisecondsNumericUpDown.ValueChanged += new System.EventHandler(this.tapMillisecondsNumericUpDown_ValueChanged);
             // 
             // numericUpDown2
@@ -576,7 +683,11 @@
             0,
             0,
             0});
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.numericUpDown2.Location = new System.Drawing.Point(283, 87);
+=======
+            this.numericUpDown2.Location = new System.Drawing.Point(201, 171);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.numericUpDown2.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -589,9 +700,20 @@
             // 
             // numericUpDown3
             // 
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.numericUpDown3.Cursor = System.Windows.Forms.Cursors.Default;
             this.numericUpDown3.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "MaxPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown3.Location = new System.Drawing.Point(201, 247);
+=======
+            this.numericUpDown3.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "MaxPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown3.DecimalPlaces = 2;
+            this.numericUpDown3.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDown3.Location = new System.Drawing.Point(201, 221);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.numericUpDown3.Maximum = new decimal(new int[] {
             10,
             0,
@@ -604,8 +726,19 @@
             // 
             // numericUpDown1
             // 
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM1application.Properties.Settings.Default, "MinPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numericUpDown1.Location = new System.Drawing.Point(201, 221);
+=======
+            this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::SAM0application.Properties.Settings.Default, "MinPrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown1.DecimalPlaces = 2;
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDown1.Location = new System.Drawing.Point(201, 195);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
@@ -622,7 +755,11 @@
             this.checkBox6.Checked = global::SAM1application.Properties.Settings.Default.PrintingShortVersion;
             this.checkBox6.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM1application.Properties.Settings.Default, "PrintingShortVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBox6.Enabled = false;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.checkBox6.Location = new System.Drawing.Point(186, 56);
+=======
+            this.checkBox6.Location = new System.Drawing.Point(201, 266);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(124, 17);
             this.checkBox6.TabIndex = 30;
@@ -634,8 +771,13 @@
             this.PrintingCheckBox.AutoSize = true;
             this.PrintingCheckBox.Checked = global::SAM1application.Properties.Settings.Default.PrintingEnabled;
             this.PrintingCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.PrintingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM1application.Properties.Settings.Default, "PrintingEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PrintingCheckBox.Location = new System.Drawing.Point(186, 37);
+=======
+            this.PrintingCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SAM0application.Properties.Settings.Default, "PrintingEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.PrintingCheckBox.Location = new System.Drawing.Point(201, 247);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.PrintingCheckBox.Name = "PrintingCheckBox";
             this.PrintingCheckBox.Size = new System.Drawing.Size(93, 17);
             this.PrintingCheckBox.TabIndex = 30;
@@ -671,12 +813,26 @@
             this.coinTestButton.UseVisualStyleBackColor = true;
             this.coinTestButton.Click += new System.EventHandler(this.coinTestButton_Click);
             // 
+            // testTapMsButton
+            // 
+            this.testTapMsButton.Location = new System.Drawing.Point(135, 121);
+            this.testTapMsButton.Name = "testTapMsButton";
+            this.testTapMsButton.Size = new System.Drawing.Size(69, 23);
+            this.testTapMsButton.TabIndex = 41;
+            this.testTapMsButton.Text = "testTapMs";
+            this.testTapMsButton.UseVisualStyleBackColor = true;
+            this.testTapMsButton.Click += new System.EventHandler(this.testTapMsButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
             this.ClientSize = new System.Drawing.Size(588, 428);
             this.Controls.Add(this.coinTestButton);
+=======
+            this.ClientSize = new System.Drawing.Size(796, 428);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
             this.Controls.Add(this.testTapMsButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.interfaceStateNumericUpDown);
@@ -804,7 +960,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown tapMillisecondsNumericUpDown;
         private System.Windows.Forms.Button testTapMsButton;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.Designer.cs
         private System.Windows.Forms.Button coinTestButton;
+=======
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.Designer.cs
     }
 }
 

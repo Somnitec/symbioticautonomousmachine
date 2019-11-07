@@ -34,6 +34,17 @@ void flowStuff() {
       }
     }
 
+    if (nowTappingMilliseconds) {
+      if (tapTimer < tapAmountMilliseconds) {
+        digitalWrite(pump1pin,HIGH);
+        //cmdMessenger.sendCmd(kTapAmount, waterFlow);
+      }else {
+        digitalWrite(pump1pin,LOW);
+        nowTappingMilliseconds = false;
+        cmdMessenger.sendCmd(kTapSucceeded, "all done");
+      }
+    }
+
 
     /*
         if (ledState == 3) {

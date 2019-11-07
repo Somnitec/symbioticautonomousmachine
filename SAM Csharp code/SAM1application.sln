@@ -7,7 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandMessenger", "Command
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandMessenger.Transport.Serial", "CommandMessenger.Transport.Serial\CommandMessenger.Transport.Serial.csproj", "{00D85F0B-00A5-41FA-8A99-428C0199C663}"
 EndProject
+<<<<<<< HEAD:SAM Csharp code/SAM1application.sln
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAM1application", "SAM1application\SAM1application.csproj", "{5D0F9A6A-580C-4BBE-8DCD-401308332285}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAM1application", "SAM0application\SAM1application.csproj", "{5D0F9A6A-580C-4BBE-8DCD-401308332285}"
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application.sln
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

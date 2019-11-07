@@ -9,8 +9,12 @@ void buttonStuff() {
     sodaButton.update();
 
     if (sodaButton.fell()) {
+<<<<<<< HEAD
       //sodaButtonPress();
       OnNEWbuttonPress();
+=======
+      sodaButtonPress();
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
     }
 
 

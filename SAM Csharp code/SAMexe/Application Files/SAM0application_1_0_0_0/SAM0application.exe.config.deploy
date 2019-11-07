@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
     <configSections>
-        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-<<<<<<< HEAD:SAM Csharp code/SAM1application/App.config
-            <section name="SAM1application.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
-=======
-            <section name="SAM0application.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
->>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/App.config
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="SAM0application.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
         </sectionGroup>
     </configSections>
     <startup> 
-        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6"/>
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2"/>
     </startup>
     <userSettings>
-        <SAM1application.Properties.Settings>
+        <SAM0application.Properties.Settings>
             <setting name="TapAmount" serializeAs="String">
                 <value>100</value>
             </setting>
             <setting name="MinPrice" serializeAs="String">
-                <value>1</value>
+                <value>0.5</value>
             </setting>
             <setting name="MaxPrice" serializeAs="String">
-                <value>4</value>
+                <value>1.5</value>
             </setting>
             <setting name="PrintingEnabled" serializeAs="String">
                 <value>True</value>
@@ -50,13 +46,6 @@
             <setting name="ledBrightnessMin" serializeAs="String">
                 <value>20</value>
             </setting>
-            <setting name="tapMilliseconds" serializeAs="String">
-                <value>1000</value>
-            </setting>
-<<<<<<< HEAD:SAM Csharp code/SAM1application/App.config
-        </SAM1application.Properties.Settings>
-=======
         </SAM0application.Properties.Settings>
->>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/App.config
     </userSettings>
 </configuration>

@@ -3,17 +3,10 @@ using System.Drawing;
 using System.Windows.Forms;
 
 
-namespace SAM1application
+namespace SAM0application
 {
     public partial class UserInterface : Form
     {
-
-        Image image1 = new Bitmap(Properties.Resources.sam2gif);
-        Image image2 = new Bitmap(Properties.Resources.sam2p1);
-        Image image3 = new Bitmap(Properties.Resources.samp2);
-
-
-
         String[] text = {
             "NL:\nHallo, mijn naam is SAM, Symbiotic Autonomous Machine. Ik ben een machine-ondernemer! Druk op de knop hierboven om de Kombucha-thee te proberen die ik maak.\n\n\n" +
                 "EN:\nHello, my name is SAM, the\nSymbiotic Autonomous Machine.\nI am a machine business owner!\nPress the button to try the kombucha tea I make.",
@@ -32,7 +25,7 @@ namespace SAM1application
   
             {150,90 },
             {150 ,180},
-            {900 ,0},
+            {900 ,0},            
             {-100,0},
             {-100,0},
         };
@@ -40,78 +33,24 @@ namespace SAM1application
         public UserInterface()
         {
             InitializeComponent();
-            priceLabel.Hide();
-            priceLabelChinese.Hide();
-            currentAmount.Hide();
-
-        }
-
-        public int _setAmount
-        {
-            set
-            {
-                currentAmount.Text = value.ToString() + " 元";
-            }
-        }
-
-        public int _setPrice
-        {
-            set
-            {
-                priceLabel.Text = "the price is " + value.ToString() + " 元";
-                priceLabelChinese.Text = "价格 " + value.ToString() + " 元";
-
-            }
+            
         }
 
         public int _changeInterface
         {
-            set
-            {
+            set {
+                Image image = new Bitmap(Properties.Resources.arrow);
+                arrowBox.Image=(Bitmap)image.Clone();
+                Image oldImage = arrowBox.Image;
+                arrowBox.Image = RotateImage(image, arrowPos[value % text.Length, 1]);
+                if (oldImage != null)oldImage.Dispose();
+                arrowBox.Top = arrowPos[value % text.Length, 0];
 
-                //Image oldImage = interfaceImage.Image;
-                //if (oldImage != null) oldImage.Dispose();
-
-
-                if (value % text.Length == 0)
-                {
-                    interfaceImage.Image = image1;
-                    gif.Show();
-                }
-                else gif.Hide();
-                if (value % text.Length == 1)
-                {
-                    interfaceImage.Image = image2;
-                    priceLabel.Show();
-                    priceLabelChinese.Show();
-                    currentAmount.Show();
-                    _setAmount = 0;
-                }
-                else
-                {
-                    priceLabel.Hide();
-                    priceLabelChinese.Hide();
-                    currentAmount.Hide();
-                }
-                if (value % text.Length == 2)
-                {
-                    interfaceImage.Image = image3;
-                    priceLabel.Hide();
-                    priceLabelChinese.Hide();
-                    currentAmount.Hide();
-                }
-
-
-                //arrowBox.Image = RotateImage(image, arrowPos[value % text.Length, 1]);
-                //arrowBox.Top = arrowPos[value % text.Length, 0];
-
-                //interfaceText.Text = text[value % text.Length];
-
-
+                interfaceText.Text = text[value % text.Length];
             }
         }
 
-        public static Bitmap RotateImage(Image image, float angle)
+        public static Bitmap RotateImage(Image image,  float angle)
         {
             if (image == null)
                 throw new ArgumentNullException("image");
@@ -124,7 +63,7 @@ namespace SAM1application
             Graphics g = Graphics.FromImage(rotatedBmp);
 
             //Put the rotation point in the center of the image
-            g.TranslateTransform(image.Width / 2, image.Height / 2);
+            g.TranslateTransform(image.Width/2, image.Height/2);
 
             //rotate the image
             g.RotateTransform(angle);
@@ -141,5 +80,5 @@ namespace SAM1application
 
     }
 
-
+    
 }

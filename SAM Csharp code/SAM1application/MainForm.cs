@@ -24,9 +24,15 @@ namespace SAM1application
         private bool realPaymentHappening = false;
         private int price = 111;
         int SAMstate = (int)SAMstates.idle;
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.cs
 
         UserInterface userInterface = new UserInterface();
 
+=======
+        
+        UserInterface userInterface = new UserInterface();
+        
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.cs
 
         // ======= Authenticate with SumUp system and create SDK instance =======		
         private async Task CreateSumUpService(string clientId, string clientSecret, string email, string password)
@@ -139,10 +145,15 @@ namespace SAM1application
             userInterface.WindowState = FormWindowState.Maximized;
             userInterface.Activate();
 
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.cs
             //Cursor.Hide();
             this.WindowState = FormWindowState.Minimized;
             this.Cursor = new Cursor(Cursor.Current.Handle);
             Cursor.Position = new Point(0, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height);
+=======
+            Cursor.Hide();
+
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.cs
         }
 
         private void ArduinoSetup()
@@ -180,7 +191,11 @@ namespace SAM1application
             try
             {
                 //await CreateSumUpService("yVDoUpXUZMJj_joXuQP2TEPHXdwX", "586d98472b564dd87120f9af9f3d3bca9c960a8078c0c0670c0f2122fa864a98", "arvidandmarie@sumup.com", "extdev");
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.cs
                 await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c", "arvidj@gmail.com", "13374zzIP");
+=======
+                await CreateSumUpService("2RgkKPeVbg89OvmDTlWt-QFYPycl", "5a23e86c3012f12f91df35f4cb876e167cecac6e78f29926c9a084fc25e3243c", "arvidj@gmail.com", "***REMOVED***");
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.cs
 
                 UpdateUI(UIState.Idle);
 
@@ -648,11 +663,19 @@ namespace SAM1application
         {
 
             AppendToLog(@"Grain button pressed");//now only blinks itself
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.cs
                                                  //var command = new SendCommand((int)Command.SetLedState,2);
                                                  //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
                                                  // command = new SendCommand((int)Command.SetLedState,0);
                                                  //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
 
+=======
+            //var command = new SendCommand((int)Command.SetLedState,2);
+            //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            // command = new SendCommand((int)Command.SetLedState,0);
+            //_cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.cs
             /*
             if (!realPaymentHappening)
             {
@@ -682,7 +705,11 @@ namespace SAM1application
             //CancelPaymentButton.PerformClick();
             realPaymentHappening = false;
             AppendToLog(@"Resetted");
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.cs
 
+=======
+            
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.cs
             SAMstate = (int)SAMstates.idle;
             userInterface._changeInterface = (int)SAMstate;
             var command = new SendCommand((int)Command.SetLedState, SAMstate);
@@ -831,7 +858,11 @@ namespace SAM1application
             e.Graphics.DrawString(firstLine, BigFont, Brushes.Black, centerpoint, linedistance * 15, formatCenter);
             e.Graphics.DrawString(secondLine, BigFont, Brushes.Black, centerpoint, linedistance * 16, formatCenter);
 
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.cs
             e.Graphics.DrawString("web: sam.nonhuman.club", ItalicFont, Brushes.Black, centerpoint, linedistance * 18, formatCenter);
+=======
+              e.Graphics.DrawString("web: sam.nonhuman.club", ItalicFont, Brushes.Black, centerpoint, linedistance * 18, formatCenter);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.cs
             e.Graphics.DrawString("email: sam@nonhuman.club", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 18.5), formatCenter);
 
             e.Graphics.DrawString("a project by", ItalicFont, Brushes.Black, centerpoint, (int)(linedistance * 19.5), formatCenter);
@@ -925,14 +956,22 @@ namespace SAM1application
 
         private void ledStateNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.cs
 
+=======
+            
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.cs
             var command = new SendCommand((int)Command.SetLedState, ledStateNumericUpDown.Value.ToString());
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
         }
 
         private void interfaceStateNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.cs
 
+=======
+            
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.cs
             userInterface._changeInterface = (int)interfaceStateNumericUpDown.Value;
         }
 
@@ -948,11 +987,14 @@ namespace SAM1application
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
 
         }
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.cs
 
         private void coinTestButton_Click(object sender, EventArgs e)
         {
 
         }
+=======
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.cs
     }
 
     internal enum UIState
@@ -988,6 +1030,7 @@ namespace SAM1application
         SetLedBreathMax,
         SetLedBreathMin,
         PumpTapMilliseconds,
+<<<<<<< HEAD:SAM Csharp code/SAM1application/MainForm.cs
         CoinWait,
         CoinAmount,
         NEWtest,
@@ -1008,5 +1051,18 @@ namespace SAM1application
         testing,
     };
 
+=======
+    };
+
+    internal enum SAMstates
+    {
+        idle,
+        waitingForPayment,
+        waitingForTapping,
+        error,
+        testing,
+    };
+
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/MainForm.cs
 
 }

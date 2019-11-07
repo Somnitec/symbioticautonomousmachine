@@ -69,6 +69,7 @@ namespace SAM1application.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+<<<<<<< HEAD:SAM Csharp code/SAM1application/Properties/Resources.Designer.cs
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -109,5 +110,7 @@ namespace SAM1application.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+=======
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b:SAM Csharp code/SAM0application/Properties/Resources.Designer.cs
     }
 }

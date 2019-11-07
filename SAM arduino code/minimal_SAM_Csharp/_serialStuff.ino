@@ -16,6 +16,7 @@ enum
   kSetLedState,
   kSetLedBreathSpeed,
   kSetLedBreathMax,
+<<<<<<< HEAD
   kSetLedBreathMin,
   kPumpTapMilliseconds,
   kCoinWait,
@@ -28,6 +29,10 @@ enum
   kNEWpaymentCompleted,
   kNEWtappingMS,
   kNEWtesttap,
+=======
+  kSetLedBreathMin,  
+  kPumpTapMilliseconds,
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
 };
 
 
@@ -66,6 +71,7 @@ void attachCommandCallbacks()
   cmdMessenger.attach(kSetLedBreathMax, OnSetLedBreathMax);
   cmdMessenger.attach(kSetLedBreathMin, OnSetLedBreathMin);
   cmdMessenger.attach(kSetLedState, OnSetLedState);
+<<<<<<< HEAD
   cmdMessenger.attach(kPumpTapMilliseconds, OnPumpTapMilliseconds);
   cmdMessenger.attach(kCoinWait, OnCoinWait);
   //cmdMessenger.attach(kCoinAmount, OnCoinAmount);
@@ -139,6 +145,9 @@ void OnNEWtappingMS() {
   _softRestart();
 }
 void OnNEWtesttap() {
+=======
+  cmdMessenger.attach(kPumpTapMilliseconds,OnPumpTapMilliseconds);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
 
 }
 
@@ -195,7 +204,11 @@ void OnPumpTap()
   } else if (value == false) {
     cmdMessenger.sendCmd(kPumpTap, waterFlow);
     cmdMessenger.sendCmd(kPumpTap, tapTimer);
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
   }
 
   digitalWrite(statusLedPin, value);
@@ -244,6 +257,7 @@ void OnSetLedState()
   stateNow = value ;
 }
 
+<<<<<<< HEAD
 void OnPumpTapMilliseconds() {
   digitalWrite(led1pin, LOW);
   digitalWrite(led2pin, LOW);
@@ -311,5 +325,14 @@ void OnCoinWait() {
   //Serial.println(digitalRead(19));
   //delay(10);
 
+=======
+void OnPumpTapMilliseconds(){
+  waterFlow = 0;
+  nowTappingMilliseconds = true;
+  tapAmountMilliseconds = cmdMessenger.readInt16Arg();
+  tapTimer=0;
+  cmdMessenger.sendCmd(kPumpTapMilliseconds, "tapping now ms->");
+  cmdMessenger.sendCmd(kPumpTapMilliseconds, tapAmount);
+>>>>>>> ada216cae6c3121b6b99362d141fb2c860ae561b
 }
 
