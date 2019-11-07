@@ -585,6 +585,8 @@ namespace SAM4application
             //if (Properties.Settings.Default.paymentEnabled) { 
             priceLabel.Parent = interfaceImage;
             priceLabel.BackColor = Color.Transparent;
+            switchInterface.Parent = interfaceImage;
+            switchInterface.BackColor = Color.Transparent;
 
             Cursor.Hide();
               interfacePanel.Left=680;//uncomment the if to start with the interface

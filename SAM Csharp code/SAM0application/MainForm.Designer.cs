@@ -60,7 +60,6 @@
             this.switchInterface = new System.Windows.Forms.Button();
             this.interfacePanel = new System.Windows.Forms.Panel();
             this.manualOverrideLabel = new System.Windows.Forms.Label();
-            this.priceLabel = new System.Windows.Forms.Label();
             this.priceAmount = new System.Windows.Forms.NumericUpDown();
             this.CloseProgramButton = new System.Windows.Forms.Button();
             this.statusLabel = new System.Windows.Forms.Label();
@@ -79,6 +78,7 @@
             this.PaymentOnOffCheckbox = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.PrintingCheckBox = new System.Windows.Forms.CheckBox();
+            this.priceLabel = new System.Windows.Forms.Label();
             this.interfaceImage = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -380,6 +380,7 @@
             this.switchInterface.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.switchInterface.FlatAppearance.BorderSize = 0;
             this.switchInterface.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.switchInterface.ForeColor = System.Drawing.Color.Transparent;
             this.switchInterface.Location = new System.Drawing.Point(0, 0);
             this.switchInterface.Name = "switchInterface";
             this.switchInterface.Size = new System.Drawing.Size(98, 75);
@@ -454,18 +455,6 @@
             this.manualOverrideLabel.Size = new System.Drawing.Size(201, 17);
             this.manualOverrideLabel.TabIndex = 46;
             this.manualOverrideLabel.Text = "SAM3 MANUAL OVERRIDE";
-            // 
-            // priceLabel
-            // 
-            this.priceLabel.BackColor = System.Drawing.Color.Transparent;
-            this.priceLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.priceLabel.Font = new System.Drawing.Font("Courier New", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceLabel.Location = new System.Drawing.Point(0, 0);
-            this.priceLabel.Name = "priceLabel";
-            this.priceLabel.Size = new System.Drawing.Size(604, 981);
-            this.priceLabel.TabIndex = 44;
-            this.priceLabel.Text = "1 EUR ≈ £0.86";
-            this.priceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // priceAmount
             // 
@@ -726,11 +715,25 @@
             this.PrintingCheckBox.Text = "Printing on/off";
             this.PrintingCheckBox.UseVisualStyleBackColor = true;
             // 
+            // priceLabel
+            // 
+            this.priceLabel.BackColor = System.Drawing.Color.Transparent;
+            this.priceLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.priceLabel.Font = new System.Drawing.Font("Courier New", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceLabel.ForeColor = System.Drawing.Color.White;
+            this.priceLabel.Location = new System.Drawing.Point(0, 0);
+            this.priceLabel.Name = "priceLabel";
+            this.priceLabel.Size = new System.Drawing.Size(604, 981);
+            this.priceLabel.TabIndex = 44;
+            this.priceLabel.Text = "1 EUR ≈ £0.86";
+            this.priceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // interfaceImage
             // 
-            this.interfaceImage.Location = new System.Drawing.Point(2, 1);
+            this.interfaceImage.Location = new System.Drawing.Point(0, 0);
+            this.interfaceImage.Margin = new System.Windows.Forms.Padding(0);
             this.interfaceImage.Name = "interfaceImage";
-            this.interfaceImage.Size = new System.Drawing.Size(590, 1024);
+            this.interfaceImage.Size = new System.Drawing.Size(600, 1024);
             this.interfaceImage.TabIndex = 45;
             this.interfaceImage.TabStop = false;
             this.interfaceImage.Click += new System.EventHandler(this.InterfaceImage_Click);
@@ -780,13 +783,13 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(604, 981);
             this.Controls.Add(this.switchInterface);
-            this.Controls.Add(this.priceLabel);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.interfacePanel);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.interfaceImage);
+            this.Controls.Add(this.priceLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
