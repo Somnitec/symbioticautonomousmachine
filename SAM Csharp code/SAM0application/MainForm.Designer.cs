@@ -767,7 +767,7 @@
             // 
             // interfaceImage
             // 
-            this.interfaceImage.Location = new System.Drawing.Point(-1, 0);
+            this.interfaceImage.Location = new System.Drawing.Point(0, 0);
             this.interfaceImage.Margin = new System.Windows.Forms.Padding(0);
             this.interfaceImage.Name = "interfaceImage";
             this.interfaceImage.Size = new System.Drawing.Size(600, 1024);
