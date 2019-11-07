@@ -22,8 +22,8 @@ namespace SAM4application
         private SumUpService _sumUpService;
         private Tuple<Payment, CancellationTokenSource> _currentPayment;
         private bool fakePaymentVar = false;
-        private bool cupplaced = false;
-        private bool receiptRequested = false;
+        //private bool cupplaced = false;
+        //private bool receiptRequested = false;
         
 
         //interface stuff
@@ -57,15 +57,41 @@ namespace SAM4application
                 if (samstate == SAMstates.waitingForPayment)
                 {
                     interfaceImage.Image = pressedimage;
+
+                   
+                    priceLabel.Location = new Point(300,-500);
+                    priceLabel.Top = 600; 
+
+                    
                     priceLabel.Show();
                 }
                 if (samstate == SAMstates.waitingForTapping)
                 {
+
                     interfaceImage.Image = waitingforcupimage;
                 }
                 if (samstate == SAMstates.thankYou)
                 {
+                    String cheers = "";
+                    switch (rand.Next(3))
+                    {
+                        case 0:
+                            cheers = "Thanks for keeping me alive and functioning!";
+                            break;
+                        case 1:
+                            cheers = "Towards a collaborative future for man and machine.";
+                            break;
+                        case 2:
+                            cheers = "One small sip for mankind. One giant gulp for machinekind";
+                            break;
+                        case 3:
+                            cheers = "Cheers to contributing  towards my freedom.";
+                            break;
+                    }
                     interfaceImage.Image = tappingimage;
+                    priceLabel.Location = new Point(300, 500);
+                    priceLabel.Text = cheers;
+                    priceLabel.Show();
                     /*
                     myTimer.Tick += (o, ea) =>
                     {
@@ -74,7 +100,7 @@ namespace SAM4application
                     myTimer.Interval = 2000; 
                     myTimer.Start();
                     */
-                    
+
                 }
                 if (samstate ==SAMstates.error)
                 {
@@ -170,6 +196,7 @@ namespace SAM4application
         {
             AppendToLog("payment was successfull, waiting for cup");
             SAMstate = SAMstates.waitingForTapping;
+            await Task.Delay(1);
 
             /*
             AppendToLog("waiting for tap button to be pressed");
@@ -552,8 +579,10 @@ namespace SAM4application
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             //if (Properties.Settings.Default.paymentEnabled) { 
+            priceLabel.Parent = interfaceImage;
+            priceLabel.BackColor = Color.Transparent;
 
-              Cursor.Hide();
+            Cursor.Hide();
               interfacePanel.Left=680;//uncomment the if to start with the interface
            // }
             //encrypt password easily like this
@@ -562,6 +591,7 @@ namespace SAM4application
             AppendToLog(ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE / Cl + sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAABxPGQ6Pv1tUtDb3cnlrsaaADQkSsPP56uKVmHFCgYqWwAAAAAOgAAAAAIAACAAAACbFgpJSyp + aGjsWIiZuDQlqoYx2DglM6wvC + AhL3YrMDAAAADS5CwMUjJeBL50wdXgpyfxqVGZzGHZJ5mcbRgZ + mvOs9B3YtahV4b9p3JBGrkt6uFAAAAAA2 / dznMs9zah0OpIv90RhUCtLlOaajpsBVvmbOC0SckfJ / DBkaWECYXmeHBh7eejE1bFHEEhyxv + vxL5edE98w == "    )));
             
             priceLabel.Hide();
+            drinkButton.Focus();
             AppendToLog(@"mainform loaded");
             AppendToLog(@"press a lot of times in the top left corner to make the interface (dis)appear");
             Blink();
@@ -598,8 +628,8 @@ namespace SAM4application
                 currentPrice = value;
                 priceAmount.Value = currentPrice;
                 decimal amount = value / 100m;
-                AppendToLog(@"€ " + (amount).ToString("0.00") + " ≈  GBP " + (amount * 0.86m).ToString("0.00"));
-                priceLabel.Text = "€ " + (amount).ToString("0.00") + " ≈  GBP " + (amount * 0.86m).ToString("0.00");
+                AppendToLog(@"the price is HK$ " + (amount * 8.67m).ToString("0.00"));
+                priceLabel.Text = "HK$ " + (amount * 8.67m).ToString("0.00");// + " ≈  GBP " + (amount * 0.86m).ToString("0.00");
             }
         }
 
@@ -969,13 +999,13 @@ namespace SAM4application
 
             if (SAMstate == SAMstates.waitingForTapping)
             {
-                cupplaced = true;
+                //cupplaced = true;
 
             }
 
             if (SAMstate == SAMstates.thankYou)
             {
-                receiptRequested = true;
+                //receiptRequested = true;
 
             }
             
@@ -1087,6 +1117,7 @@ namespace SAM4application
                 //interfacePanel.Hide();
                 interfacePanel.Left = 680;
                 Cursor.Hide();
+                interfacePanel.Focus();
 
                 switchInterface.FlatStyle = FlatStyle.Flat;
                 switchInterface.FlatAppearance.BorderColor = BackColor;
