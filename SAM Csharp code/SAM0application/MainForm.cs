@@ -59,8 +59,8 @@ namespace SAM4application
                     interfaceImage.Image = pressedimage;
 
                    
-                    priceLabel.Location = new Point(300,-500);
-                    priceLabel.Top = 600; 
+                    //priceLabel.Location = new Point(300,-500);
+                    priceLabel.Top = 400; 
 
                     
                     priceLabel.Show();
@@ -93,7 +93,8 @@ namespace SAM4application
                             break;
                     }
                     interfaceImage.Image = tappingimage;
-                    priceLabel.Location = new Point(300, 500);
+                    //priceLabel.Location = new Point(300, 500);
+                    priceLabel.Top = 400;
                     priceLabel.Text = cheers;
                     priceLabel.Show();
                     /*
@@ -589,7 +590,7 @@ namespace SAM4application
             switchInterface.BackColor = Color.Transparent;
 
             Cursor.Hide();
-              interfacePanel.Left=680;//uncomment the if to start with the interface
+            interfacePanel.Left=680;//uncomment the if to start with the interface
            // }
             //encrypt password easily like this
             AppendToLog(EncryptString(ToSecureString("arvidj@gmail.com")));

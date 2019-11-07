@@ -79,11 +79,11 @@
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.PrintingCheckBox = new System.Windows.Forms.CheckBox();
             this.priceLabel = new System.Windows.Forms.Label();
-            this.interfaceImage = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.interfaceImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ledStateNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.interfaceStateNumericUpDown)).BeginInit();
             this.interfacePanel.SuspendLayout();
@@ -385,7 +385,7 @@
             this.switchInterface.Name = "switchInterface";
             this.switchInterface.Size = new System.Drawing.Size(98, 75);
             this.switchInterface.TabIndex = 42;
-            this.switchInterface.Text = "Switch Manual Override";
+            this.switchInterface.Text = " ";
             this.switchInterface.UseMnemonic = false;
             this.switchInterface.UseVisualStyleBackColor = true;
             this.switchInterface.Click += new System.EventHandler(this.SwitchInterface_Click);
@@ -717,26 +717,16 @@
             // 
             // priceLabel
             // 
-            this.priceLabel.BackColor = System.Drawing.Color.Transparent;
-            this.priceLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.priceLabel.Font = new System.Drawing.Font("Courier New", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceLabel.BackColor = System.Drawing.Color.DarkGray;
+            this.priceLabel.Font = new System.Drawing.Font("Roboto", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.priceLabel.ForeColor = System.Drawing.Color.White;
-            this.priceLabel.Location = new System.Drawing.Point(0, 0);
+            this.priceLabel.Location = new System.Drawing.Point(50, 700);
+            this.priceLabel.Margin = new System.Windows.Forms.Padding(0);
             this.priceLabel.Name = "priceLabel";
-            this.priceLabel.Size = new System.Drawing.Size(604, 981);
+            this.priceLabel.Size = new System.Drawing.Size(500, 200);
             this.priceLabel.TabIndex = 44;
             this.priceLabel.Text = "1 EUR ≈ £0.86";
             this.priceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // interfaceImage
-            // 
-            this.interfaceImage.Location = new System.Drawing.Point(0, 0);
-            this.interfaceImage.Margin = new System.Windows.Forms.Padding(0);
-            this.interfaceImage.Name = "interfaceImage";
-            this.interfaceImage.Size = new System.Drawing.Size(600, 1024);
-            this.interfaceImage.TabIndex = 45;
-            this.interfaceImage.TabStop = false;
-            this.interfaceImage.Click += new System.EventHandler(this.InterfaceImage_Click);
             // 
             // label1
             // 
@@ -775,6 +765,16 @@
             this.textBox1.TabIndex = 48;
             this.textBox1.Text = global::SAM4application.Properties.Settings.Default.sumupUser;
             // 
+            // interfaceImage
+            // 
+            this.interfaceImage.Location = new System.Drawing.Point(-1, 0);
+            this.interfaceImage.Margin = new System.Windows.Forms.Padding(0);
+            this.interfaceImage.Name = "interfaceImage";
+            this.interfaceImage.Size = new System.Drawing.Size(600, 1024);
+            this.interfaceImage.TabIndex = 45;
+            this.interfaceImage.TabStop = false;
+            this.interfaceImage.Click += new System.EventHandler(this.InterfaceImage_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -782,6 +782,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(604, 981);
+            this.Controls.Add(this.priceLabel);
             this.Controls.Add(this.switchInterface);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label10);
@@ -789,7 +790,6 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.interfaceImage);
-            this.Controls.Add(this.priceLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
