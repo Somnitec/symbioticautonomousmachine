@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-/*
+
 namespace SAM4application.Properties {
     
     
@@ -228,4 +228,3 @@ namespace SAM4application.Properties {
         }
     }
 }
-*/

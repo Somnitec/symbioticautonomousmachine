@@ -28,9 +28,9 @@ namespace SAM4application
 
         //interface stuff
         Image idleimage = new Bitmap(Properties.Resources.idle);
-        Image priceimage = new Bitmap(Properties.Resources.price);
-        Image waitingtotapimage = new Bitmap(Properties.Resources.waitingtotap);
-        Image thankyouimage = new Bitmap(Properties.Resources.thankyou);
+        Image pressedimage = new Bitmap(Properties.Resources.pressed);
+        Image waitingforcupimage = new Bitmap(Properties.Resources.waitingforcup);
+        Image tappingimage = new Bitmap(Properties.Resources.tapping);
 
         #region interface change code
         SAMstates samstate = SAMstates.idle;
@@ -56,16 +56,16 @@ namespace SAM4application
                 }
                 if (samstate == SAMstates.waitingForPayment)
                 {
-                    interfaceImage.Image = priceimage;
+                    interfaceImage.Image = pressedimage;
                     priceLabel.Show();
                 }
                 if (samstate == SAMstates.waitingForTapping)
                 {
-                    interfaceImage.Image = waitingtotapimage;
+                    interfaceImage.Image = waitingforcupimage;
                 }
                 if (samstate == SAMstates.thankYou)
                 {
-                    interfaceImage.Image = thankyouimage;
+                    interfaceImage.Image = tappingimage;
                     /*
                     myTimer.Tick += (o, ea) =>
                     {
@@ -148,7 +148,7 @@ namespace SAM4application
 
         #region sumup/payment code
 
-        private void makePayment()
+        private async void makePayment()
         {
             SAMstate = SAMstates.waitingForPayment;
             price = rand.Next((int)(Properties.Settings.Default.MinPrice * 100.0m), (int)(Properties.Settings.Default.MaxPrice * 100.0m));
@@ -156,15 +156,21 @@ namespace SAM4application
             ReceiptNoNumericUpDown.Update();
             AppendToLog(@"Starting payment for €" + price / 100f + " and receipt no " + Properties.Settings.Default.ReceiptNo);
 
+            //delay ... 
+            await Task.Delay(8000);
+            //go to waiting for cup state
+            paymentSuccess();
+
             //realPaymentHappening = true;
             //PayButton.Show();
-            PayButton.PerformClick();
+            //PayButton.PerformClick();
             //PayButton.Hide();
         }
        private async void paymentSuccess()
         {
             AppendToLog("payment was successfull, waiting for cup");
             SAMstate = SAMstates.waitingForTapping;
+
             /*
             AppendToLog("waiting for tap button to be pressed");
             while (!cupplaced)
@@ -175,12 +181,15 @@ namespace SAM4application
             }
             cupplaced = false;
             */
+
+            /*
             SAMstate = SAMstates.thankYou;
             //await Task.Delay(100);//to make the ui update
             // var command = new SendCommand((int)Command.TapAmount, Properties.Settings.Default.TapAmount);
             AppendToLog("tapping now for "+ Properties.Settings.Default.tapMilliseconds+" ms");
             var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
             _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+            */
 
             /*
             //decide on receipt or not
@@ -199,10 +208,10 @@ namespace SAM4application
             receiptRequested = false;
             await Task.Delay(1000);
             */
-            await Task.Delay(1000);
-            PrintReceipt();
+            //await Task.Delay(1000);
+            //PrintReceipt();
 
-            SAMstate = SAMstates.idle;
+            //SAMstate = SAMstates.idle;
 
 
             //command = new SendCommand((int)Command.SetLedState, (int)SAMstate);
@@ -355,7 +364,7 @@ namespace SAM4application
 
                 UpdateUI(UIState.NotLoggedIn, ex.ToString());
                 AppendToLog("Cardreader not Logged in");
-                logInButton.PerformClick();
+                //logInButton.PerformClick();//uncomment this to keep logging in until success
             }
         }
 
@@ -537,24 +546,24 @@ namespace SAM4application
         private void MainForm_Load(object sender, System.EventArgs e)
         {
             //AppendToLog(""+IsAvailable);
-            logInButton.PerformClick();
+            //logInButton.PerformClick();
             SAMstate = SAMstates.idle;
             //ArduinoSetup();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
-            if (Properties.Settings.Default.paymentEnabled) { 
+            //if (Properties.Settings.Default.paymentEnabled) { 
 
               Cursor.Hide();
-              interfacePanel.Left=680;
-            }
+              interfacePanel.Left=680;//uncomment the if to start with the interface
+           // }
             //encrypt password easily like this
             AppendToLog(EncryptString(ToSecureString("arvidj@gmail.com")));
-            AppendToLog(EncryptString(ToSecureString("13374zzIP!")));
+            AppendToLog(EncryptString(ToSecureString("lolol!")));
             AppendToLog(ToInsecureString(DecryptString("AQAAANCMnd8BFdERjHoAwE / Cl + sBAAAAbPvYWR5YlUiVYL6f0m5CxAAAAAACAAAAAAAQZgAAAAEAACAAAABxPGQ6Pv1tUtDb3cnlrsaaADQkSsPP56uKVmHFCgYqWwAAAAAOgAAAAAIAACAAAACbFgpJSyp + aGjsWIiZuDQlqoYx2DglM6wvC + AhL3YrMDAAAADS5CwMUjJeBL50wdXgpyfxqVGZzGHZJ5mcbRgZ + mvOs9B3YtahV4b9p3JBGrkt6uFAAAAAA2 / dznMs9zah0OpIv90RhUCtLlOaajpsBVvmbOC0SckfJ / DBkaWECYXmeHBh7eejE1bFHEEhyxv + vxL5edE98w == "    )));
             
             priceLabel.Hide();
             AppendToLog(@"mainform loaded");
-
+            AppendToLog(@"press a lot of times in the top left corner to make the interface (dis)appear");
             Blink();
 
             switchInterface.FlatStyle = FlatStyle.Flat;
@@ -744,15 +753,25 @@ namespace SAM4application
 
         }
 
-        
 
-        public void OnSodaButtonPressed(ReceivedCommand arguments)
+
+        public async void OnSodaButtonPressed(ReceivedCommand arguments)
         {
 
             AppendToLog(@"soda button pressed");
             if (SAMstate == SAMstates.idle)
             {
                 makePayment();
+            }
+            if (SAMstate == SAMstates.waitingForTapping) {
+                SAMstate = SAMstates.thankYou;
+                
+                AppendToLog("tapping now for " + Properties.Settings.Default.tapMilliseconds + " ms");
+                var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
+                _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+
+                await Task.Delay(5000);
+                SAMstate = SAMstates.idle;
             }
         }
      

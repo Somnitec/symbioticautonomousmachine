@@ -23,10 +23,11 @@ enum
 
 void setupSerial() {
   Serial.begin(9600);
+   /*
    while (!Serial) {
     ; // leonardo fix
    }
-
+*/
   // Adds newline to every command
   //cmdMessenger.printLfCr();
   // Attach my application's user-defined callback methods

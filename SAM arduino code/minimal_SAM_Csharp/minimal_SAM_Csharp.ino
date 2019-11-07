@@ -1,17 +1,15 @@
-#include "FastLED.h"
 #include <Bounce2.h>
 #include <CmdMessenger.h>  // CmdMessenger
 
-CRGB buttonled[1];
+//CRGB buttonled[1];
 CmdMessenger cmdMessenger = CmdMessenger(Serial);
 
-#define pumppin 2
-#define led1pin 5
-#define led2pin 10
+#define pumppin 5
+#define led1pin 3
+#define led2pin 4
 
-#define buttonPin 3
-#define buttonledpin 6
-#define buttonledvcc 4
+#define buttonPin 26
+#define buttonledpin 16
 Bounce sodaButton = Bounce();
 
 #define statusLedPin 13
@@ -61,18 +59,11 @@ void setup()
   pinMode(led1pin, OUTPUT);
   pinMode(led2pin, OUTPUT);
   
+  pinMode(buttonledpin, OUTPUT);
 
   pinMode(buttonPin, INPUT_PULLUP);
   sodaButton.attach(buttonPin);
   sodaButton.interval(10);
-
-  pinMode(buttonledvcc, OUTPUT);
-  digitalWrite(buttonledvcc, HIGH);
-
-
-
-  FastLED.addLeds<NEOPIXEL, buttonledpin>(buttonled, 1).setCorrection(0xD4EBFF);
-
 
   blinkLed(3);
 }
