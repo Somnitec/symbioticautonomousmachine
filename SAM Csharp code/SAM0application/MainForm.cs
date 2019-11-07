@@ -76,16 +76,20 @@ namespace SAM4application
                     switch (rand.Next(3))
                     {
                         case 0:
-                            cheers = "Thanks for keeping me alive and functioning!";
+                            cheers = "Thanks for keeping me alive and functioning!\n" +
+                                "感謝大家讓我持續生存和運作！";
                             break;
                         case 1:
-                            cheers = "Towards a collaborative future for man and machine.";
+                            cheers = "Towards a collaborative future for man and machine.\n" +
+                                "為邁向人類與機械的共同未來。";
                             break;
                         case 2:
-                            cheers = "One small sip for mankind. One giant gulp for machinekind";
+                            cheers = "One small sip for mankind. One giant gulp for machinekind.\n" +
+                                "人類的一小啜，是推動機械權益的一大步。";
                             break;
                         case 3:
-                            cheers = "Cheers to contributing  towards my freedom.";
+                            cheers = "Cheers to contributing  towards my freedom!\n" +
+                                "請為我促成的機械自由而乾杯 !";
                             break;
                     }
                     interfaceImage.Image = tappingimage;
