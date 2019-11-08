@@ -600,7 +600,7 @@ namespace SAM4application
             priceLabel.Hide();
             drinkButton.Focus();
             AppendToLog(@"mainform loaded");
-            AppendToLog(@"press a lot of times in the top left corner to make the interface (dis)appear");
+            AppendToLog(@"press a lot of times in the top right corner to make the interface (dis)appear");
             Blink();
 
             switchInterface.FlatStyle = FlatStyle.Flat;

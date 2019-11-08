@@ -377,17 +377,19 @@
             // 
             // switchInterface
             // 
+            this.switchInterface.BackColor = System.Drawing.Color.Transparent;
             this.switchInterface.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.switchInterface.FlatAppearance.BorderSize = 0;
-            this.switchInterface.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.switchInterface.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.switchInterface.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.switchInterface.ForeColor = System.Drawing.Color.Transparent;
-            this.switchInterface.Location = new System.Drawing.Point(0, 0);
+            this.switchInterface.Location = new System.Drawing.Point(504, -2);
             this.switchInterface.Name = "switchInterface";
             this.switchInterface.Size = new System.Drawing.Size(98, 75);
             this.switchInterface.TabIndex = 42;
             this.switchInterface.Text = " ";
             this.switchInterface.UseMnemonic = false;
-            this.switchInterface.UseVisualStyleBackColor = true;
+            this.switchInterface.UseVisualStyleBackColor = false;
             this.switchInterface.Click += new System.EventHandler(this.SwitchInterface_Click);
             // 
             // interfacePanel
