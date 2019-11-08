@@ -167,6 +167,7 @@ void OnPumpTapMilliseconds() {
   digitalWrite(pumppin, HIGH);
   //delay(3000);
   delay(tapAmountMilliseconds+100);//100 as a little buffer
+  SCB_AIRCR = 0x05FA0004;
   digitalWrite(pumppin, LOW);
   //delay(100);
   cmdMessenger.sendCmd(kPumpTapMilliseconds, F("done tapping"));
