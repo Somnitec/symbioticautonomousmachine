@@ -806,8 +806,13 @@ namespace SAM4application
                 AppendToLog("tapping now for " + Properties.Settings.Default.tapMilliseconds + " ms");
                 var command = new SendCommand((int)Command.PumpTapMilliseconds, (int)Properties.Settings.Default.tapMilliseconds);
                 _cmdMessenger.QueueCommand(new CollapseCommandStrategy(command));
+                _cmdMessenger.Disconnect();
+                await Task.Delay((int)Properties.Settings.Default.tapMilliseconds+1000);
 
-                await Task.Delay(5000);
+                AppendToLog(@"reconnecting Arduino");
+                _cmdMessenger.Connect();
+                
+
                 SAMstate = SAMstates.idle;
             }
         }
@@ -999,7 +1004,7 @@ namespace SAM4application
 
                 //MainForm master = (MainForm)Application.OpenForms["MainForm"];
                 //drinkButton.PerformClick();
-                makePayment();
+                //makePayment();
                 //MainForm.startClick();
                 //click sodabutton
             }
